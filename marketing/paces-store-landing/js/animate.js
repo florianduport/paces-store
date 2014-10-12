@@ -21,9 +21,9 @@ var checkAnimation = function(){
 	//tous les éléments à animer sont à ajouter ici
 	//cf classes d'animations de ANIMATE.CSS
 	var animationArray = [
-		{selector: ".logo-paces-store", animation: "bounceIn animated", timeout: 1000},
-		{selector: ".newsletter-form", animation: "tada animated", timeout: 1000},
-		{selector: "#video-container", animation: "tada animated", timeout: 0},
+		{selector: ".logo-paces-store", animation: "bounceIn", timeout: 1000},
+		{selector: ".newsletter-form", animation: "tada", timeout: 1000},
+		{selector: "#video-container", animation: "tada", timeout: 0},
 	];
 
 	for(i = 0; i < animationArray.length; i++) {
