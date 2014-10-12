@@ -93,9 +93,11 @@ h3 {
     padding: 50px;
     color: white;
 }
-.row h3 {
+.newsletter-form h3{
     margin-top: 0px;
     margin-bottom: 0px;
+}
+.row h3 {
     text-align: center;
 }
 #inputmail{
@@ -149,6 +151,17 @@ input[type=email]
     border-bottom: 70px solid white;
     float:right;
 }
-#contact-row {
+#contact-row,
+#content-row-1
+{
     padding-bottom: 68px;
+}
+#contact-row input[type=text],
+#contact-row input[type=email],
+#contact-row textarea
+{
+    opacity: 0.70;
+}
+.visibility-hidden{
+    visibility: hidden;
 }
