@@ -1,5 +1,5 @@
 body {
-    background: none repeat scroll 0 0 #f2f2f2;
+    background: none repeat scroll 0 0 white;
     color: #7f7f7f;
     font-family: "Roboto",sans-serif;
     font-size: 16px;
@@ -65,15 +65,90 @@ h3 {
     width: 260px;
 }
 .logo-paces-store {
-    width: 530px;
+    width: 520px;
+    border: 1px white solid;
+    padding: 15px;
+}
+.logo-paces-store-footer {
+    width: 300px;
+    border: 1px white solid;
+    padding: 15px;
+    margin-top: 50px;
 }
 .p-logo-rmp{
-    padding-right: 25px;
+    margin-top: 25px;
 }
-#newsletter-form {
-    background-color: #f36c60;
+.colored-row{
+    /*background-color: #f36c60;*/
+    background-color : #2c3e50;
+    color: #ffffff;
+}
+.colored-row h3{
+    color: #ffffff;
+}
+.alter-colored-row{
+    background-color: #f2f2f2;
+}
+.newsletter-form {
     padding: 50px;
+    color: white;
+}
+.row h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
 }
 #inputmail{
-    width: 375px;
+    width: 515px;
+    padding-right: 130px;
+}
+#inputmail + input[type=submit]{
+    margin-left: -135px;
+}
+input[type=text],
+input[type=email]
+{
+    height: 45px;
+}
+.box-vendeur{
+    width: 515px;
+    margin: auto;
+}
+#contact-row{
+    background: url('../img/contact.jpg');
+}
+.triangle-left{
+    width: 0;
+    height: 0;
+    float: left;
+    margin-top: -68px;
+    border-right: 700px solid transparent;
+    border-bottom: 70px solid #2c3e50;
+}
+.triangle-right{
+    width: 0;
+    height: 0;
+    margin-top: -68px;
+    border-left: 700px solid transparent;
+    border-bottom: 70px solid #2c3e50;
+    float:right;
+}
+.bottom-triangle-left{
+    width: 0;
+    height: 0;
+    float: left;
+    bottom: 0;
+    border-right: 700px solid transparent;
+    border-bottom: 70px solid white;
+}
+.bottom-triangle-right{
+    width: 0;
+    height: 0;
+    bottom: 0;
+    border-left: 700px solid transparent;
+    border-bottom: 70px solid white;
+    float:right;
+}
+#contact-row {
+    padding-bottom: 68px;
 }
