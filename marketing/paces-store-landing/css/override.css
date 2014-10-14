@@ -17,7 +17,7 @@ body {
     background-size: cover;
 }
 .dark.transparent .section-inner {
-    background: none repeat scroll 0 0 rgba(51, 65, 72, 0.75);
+    background: none repeat scroll 0 0 rgba(51, 65, 72, 0.5);
 }
 .dark .section-inner {
     background: none repeat scroll 0 0 #254254;
@@ -32,14 +32,14 @@ body {
 h1 {
     color: #738f9d;
     font-family: "Roboto",sans-serif;
-    font-size: 60px;
-    font-weight: 600;
+    font-size: 76px;
+    font-weight: 500;
     line-height: 72px;
     margin: 0 0 48px;
     text-align: left;
     padding-left: 105px;
     padding-right: 105px;
-    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 .line {
     background: none repeat scroll 0 0 #fff;
@@ -66,12 +66,10 @@ h3 {
 }
 .logo-paces-store {
     width: 520px;
-    border: 1px white solid;
     padding: 15px;
 }
 .logo-paces-store-footer {
     width: 300px;
-    border: 1px white solid;
     padding: 15px;
     margin-top: 50px;
 }
@@ -80,7 +78,7 @@ h3 {
 }
 .colored-row{
     /*background-color: #f36c60;*/
-    background-color : #2c3e50;
+    background-color : #E84E40;
     color: #ffffff;
 }
 .colored-row h3{
@@ -125,14 +123,14 @@ input[type=email]
     float: left;
     margin-top: -68px;
     border-right: 700px solid transparent;
-    border-bottom: 70px solid #2c3e50;
+    border-bottom: 70px solid #E84E40;
 }
 .triangle-right{
     width: 0;
     height: 0;
     margin-top: -68px;
     border-left: 700px solid transparent;
-    border-bottom: 70px solid #2c3e50;
+    border-bottom: 70px solid #E84E40;
     float:right;
 }
 .bottom-triangle-left{
