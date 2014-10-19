@@ -37,8 +37,6 @@ h1 {
     line-height: 72px;
     margin: 0 0 48px;
     text-align: left;
-    padding-left: 105px;
-    padding-right: 105px;
     letter-spacing: 2px;
 }
 .line {
@@ -150,7 +148,7 @@ input[type=email]
     float:right;
 }
 #contact-row,
-#content-row-1
+.content-row
 {
     padding-bottom: 68px;
 }
@@ -162,4 +160,48 @@ input[type=email]
 }
 .visibility-hidden{
     visibility: hidden;
+}
+.footer-social-link {
+    font-size: 14px;
+    padding-top: 15px;
+    font-weight: normal;
+    color: #d9e2e9;
+}
+.footer-social-link span{
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border: 0px solid white;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    margin: 5px;
+    font-size: 20px;
+    color: #ffffff;
+    background: transparent;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+.footer-social-link span:hover{
+    background-color: #3f61a9;
+}
+.footer-social-link + .footer-social-link > span:hover{
+    background-color: #54c8f9;
+}
+.footer-social-link + .footer-social-link + .footer-social-link > span:hover{
+    background-color: #ef6565;
+}
+.fa-ul{
+    margin-left: 0px;
+}
+.fa-ul li > i {
+    margin-top: 8px;
+}
+.fa-li{
+    left: 0px;
+}
+.fa-li + span {
+    margin-left: 2em;
 }
