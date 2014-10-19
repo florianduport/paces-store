@@ -23,7 +23,10 @@ var checkAnimation = function(){
 	var animationArray = [
 		{selector: ".logo-paces-store", animation: "bounceIn", timeout: 1000},
 		{selector: ".newsletter-form", animation: "tada", timeout: 1000},
-		{selector: "#video-container", animation: "tada", timeout: 0},
+		{selector: "#content-row-1", animation: "fadeInUp", timeout: 1000},
+		{selector: "#content-row-2", animation: "fadeInUp", timeout: 1000},
+		{selector: "#content-row-3", animation: "fadeInUp", timeout: 1000},
+		{selector: "#content-row-4", animation: "fadeInUp", timeout: 1000},
 	];
 
 	for(i = 0; i < animationArray.length; i++) {
@@ -36,7 +39,7 @@ var checkAnimation = function(){
 			var objectBottom = element.position().top + element.outerHeight();
             var windowBottom = $(window).scrollTop() + $(window).height();
 
-            if( windowBottom > objectBottom ){
+            if( objectBottom > windowBottom ){
             		delayedAnimation(element, animationArray[i].animation, animationArray[i].timeout !== undefined ? animationArray[i].timeout : 0);
             }
 
