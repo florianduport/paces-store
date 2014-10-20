@@ -205,3 +205,21 @@ input[type=email]
 .fa-li + span {
     margin-left: 2em;
 }
+#lightbulb img{
+    margin-top:-45px;
+    -ms-transform: rotate(-15deg); /* IE 9 */
+    -webkit-transform: rotate(-15deg); /* Chrome, Safari, Opera */
+    transform: rotate(-15deg);
+    width: 100%;
+}
+#lightbulb{
+    height: 100%;
+}
+#content-row-4 img{
+    width: 100%;
+    max-width: 200px;
+}
+#schema{
+    width: 100%;
+    max-width: 1000px;
+}
