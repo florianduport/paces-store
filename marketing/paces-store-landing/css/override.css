@@ -107,7 +107,7 @@ label[for=check-box-vendeur]{
     padding-right: 130px;
 }
 #inputmail + input[type=submit]{
-    margin-left: -135px;
+    margin-left: -133px;
 }
 input[type=text],
 input[type=email]
