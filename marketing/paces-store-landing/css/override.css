@@ -82,6 +82,9 @@ h3 {
     background-color : #E84E40;
     color: #ffffff;
 }
+label[for=check-box-vendeur]{
+	font-weight: 300;
+}
 .colored-row h3{
     color: #ffffff;
 }
