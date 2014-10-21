@@ -232,3 +232,9 @@ input[type=email]
     display: flex;
     align-items: center;
 }
+#content-row-2{
+	padding-bottom: 0px;
+}
+#content-row-2 h3{
+	font-size: 34px;
+}
