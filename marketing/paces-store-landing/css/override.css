@@ -220,10 +220,6 @@ input[type=email]
 #lightbulb{
     height: 100%;
 }
-#content-row-4 img{
-    width: 100%;
-    max-width: 200px;
-}
 #schema{
     width: 100%;
     max-width: 1000px;
@@ -237,4 +233,7 @@ input[type=email]
 }
 #content-row-2 h3{
 	font-size: 30px;
+}
+.logo-rmp-colored {
+	width: 400px;
 }
