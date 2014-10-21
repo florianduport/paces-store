@@ -39,6 +39,9 @@ h1 {
     text-align: left;
     letter-spacing: 2px;
 }
+p{
+    text-align: justify;
+}
 .line {
     background: none repeat scroll 0 0 #fff;
     border-top: 1px solid #e1e1e1;
@@ -206,7 +209,6 @@ input[type=email]
     margin-left: 2em;
 }
 #lightbulb img{
-    margin-top:-45px;
     -ms-transform: rotate(-15deg); /* IE 9 */
     -webkit-transform: rotate(-15deg); /* Chrome, Safari, Opera */
     transform: rotate(-15deg);
@@ -222,4 +224,8 @@ input[type=email]
 #schema{
     width: 100%;
     max-width: 1000px;
+}
+.vcenter {
+    display: flex;
+    align-items: center;
 }
