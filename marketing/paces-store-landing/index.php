@@ -1,3 +1,30 @@
+<?php
+$valid_passwords = array ("giantapp" => "pigeon2000");
+$valid_users = array_keys($valid_passwords);
+
+$user = $_SERVER['PHP_AUTH_USER'];
+$pass = $_SERVER['PHP_AUTH_PW'];
+
+$validated = (in_array($user, $valid_users)) && ($pass == $valid_passwords[$user]);
+
+if (!$validated) {
+  header('WWW-Authenticate: Basic realm="Dev en cours"');
+  header('HTTP/1.0 401 Unauthorized');
+  die ("Not authorized");
+}
+
+//si c'est une inscription mail
+if (isset($_POST['form-mail'])) {
+    $file = fopen("emails.csv", "w");
+    fputcsv($file, $_POST['check-box-vendeur'] . ',' . $_POST['input-mail']);
+}
+//si c'est un formulaire QUESTION
+if (isset($_POST['form-mail'])) {
+    $file = fopen("emails.csv", "w");
+    fputcsv($file, '0' . $_POST['input-mail'] . ',' . $_POST['name'] . ',' . $_POST['question']);
+    //mail();
+}
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -55,13 +82,13 @@ and open the template in the editor.
         <!-- SIGNUP ! -->
         <div class="signup-row colored-row row">
             <div class="col-md-12">
-                <form class='form-inline newsletter-form'>
+                <form class='form-inline newsletter-form' action="#" method="POST" role="form" name="form-mail">
                     <div class="row text-center">
-                        <input type='email' class="form-control input-lg" id="inputmail" placeholder="Mon adresse mail" />
+                        <input type='email' class="form-control input-lg" id="input-mail" name="input-mail" placeholder="Mon adresse mail" required/>
                         <input type='submit' class="btn btn-lg btn-warning" value="Je m'inscris">
                     </div>
                     <div class="row box-vendeur">
-                        <input type='checkbox' class="checkbox-inline" value='1' id="check-box-vendeur"> 
+                        <input type='checkbox' class="checkbox-inline" name="check-box-vendeur" value='1' id="check-box-vendeur"> 
                         <label for="check-box-vendeur" class="control-label">Je souhaite être vendeur</label>
                     </div>
                 </form>
@@ -168,17 +195,17 @@ and open the template in the editor.
                 <h3>Une question ? On est là pour ça <i class="fa fa-smile-o"></i></h3>
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <form name="contact-form" role="form">
+                    <form name="contact-form" role="form" action="#" method="POST" name="form-question">
                         <div class="form-group row">
                             <div class="col-md-6">
-                                <input type="text" class="form-control" value="Mon nom et prénom" />
+                                <input type="text" class="form-control" name="name" value="Mon nom et prénom" required/>
                             </div>
                             <div class="col-md-6">
-                                <input type="email" class="form-control"  value="Mon adresse mail" />
+                                <input type="email" class="form-control" name="inputmail" value="Mon adresse mail" required />
                             </div>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" rows="8">Ma question</textarea>
+                            <textarea class="form-control" name="question" rows="8" required>Ma question</textarea>
                         </div>
                         <input type="submit" class="btn btn-warning btn-lg btn-block" value="Envoyer"/>
                     </form>
