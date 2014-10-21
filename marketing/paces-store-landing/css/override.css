@@ -121,6 +121,9 @@ input[type=email]
 #contact-row{
     background: url('../img/contact.jpg');
 }
+#contact-row h3{
+	margin-bottom: 20px;
+}
 .triangle-left{
     width: 0;
     height: 0;
@@ -177,7 +180,7 @@ input[type=email]
     width: 70px;
     height: 70px;
     line-height: 70px;
-    border: 0px solid white;
+    border: 1px solid white;
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -187,8 +190,6 @@ input[type=email]
     font-size: 20px;
     color: #ffffff;
     background: transparent;
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
 }
 .footer-social-link span:hover{
     background-color: #3f61a9;
@@ -236,4 +237,7 @@ input[type=email]
 }
 .logo-rmp-colored {
 	width: 400px;
+}
+#qui-sommes-nous{
+	margin-bottom: 20px;
 }
