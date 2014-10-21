@@ -1,5 +1,5 @@
 <?php
-$valid_passwords = array ("giantapp" => "pigeon2000");
+$valid_passwords = array ("giant" => "app");
 $valid_users = array_keys($valid_passwords);
 
 $user = $_SERVER['PHP_AUTH_USER'];
@@ -8,15 +8,15 @@ $pass = $_SERVER['PHP_AUTH_PW'];
 $validated = (in_array($user, $valid_users)) && ($pass == $valid_passwords[$user]);
 
 if (!$validated) {
-  header('WWW-Authenticate: Basic realm="Dev en cours"');
+  header('WWW-Authenticate: Basic realm="Dev"');
   header('HTTP/1.0 401 Unauthorized');
   die ("Not authorized");
 }
 
 //si c'est une inscription mail
-if (isset($_POST['form-mail'])) {
+if (isset($_POST['inputmail'])) {
     $file = fopen("emails.csv", "w");
-    fputcsv($file, $_POST['check-box-vendeur'] . ',' . $_POST['input-mail']);
+    fputcsv($file, array($_POST['check-box-vendeur'] , $_POST['inputmail']));
 }
 //si c'est un formulaire QUESTION
 if (isset($_POST['form-mail'])) {
@@ -84,7 +84,7 @@ and open the template in the editor.
             <div class="col-md-12">
                 <form class='form-inline newsletter-form' action="#" method="POST" role="form" name="form-mail">
                     <div class="row text-center">
-                        <input type='email' class="form-control input-lg" id="input-mail" name="input-mail" placeholder="Mon adresse mail" required/>
+                        <input type='email' class="form-control input-lg" id="inputmail" name="inputmail" placeholder="Mon adresse mail" required/>
                         <input type='submit' class="btn btn-lg btn-warning" value="Je m'inscris">
                     </div>
                     <div class="row box-vendeur">
