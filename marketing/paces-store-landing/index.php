@@ -84,6 +84,8 @@ and open the template in the editor.
             <div class="col-md-12">
                 <form class='form-inline newsletter-form' action="#" method="POST" role="form" name="form-mail">
                     <div class="row text-center">
+                        <h3>Je suis intéressé(e) ?</h3>
+                        <br/>
                         <input type='email' class="form-control input-lg" id="inputmail" name="inputmail" placeholder="Mon adresse mail" required/>
                         <input type='submit' class="btn btn-lg btn-warning" value="Je m'inscris">
                     </div>
@@ -96,7 +98,7 @@ and open the template in the editor.
         </div>
 
         <!-- CONTENT ROW 1 -->
-        <div id="content-row-1" class="content-row">
+        <div id="content-row-1" class="visibility-hidden content-row">
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-md-2"></div>
@@ -122,7 +124,7 @@ and open the template in the editor.
         </div>
 
         <!-- CONTENT ROW 2 -->
-        <div id="content-row-2" class="content-row alter-colored-row">
+        <div id="content-row-2" class="content-row alter-colored-row visibility-hidden">
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-md-2"></div>
@@ -138,7 +140,7 @@ and open the template in the editor.
 
 
         <!-- CONTENT ROW 3 -->
-        <div id="content-row-3" class="content-row row">
+        <div id="content-row-3" class="content-row row visibility-hidden">
             <div class="col-md-12">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
@@ -156,13 +158,13 @@ and open the template in the editor.
         </div>
 
         <!-- CONTENT ROW 4 -->
-        <div id="content-row-4" class="content-row alter-colored-row row">
+        <div id="content-row-4" class="content-row alter-colored-row row visibility-hidden">
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
                         <h3 class="text-center" id="qui-sommes-nous">Qui sommes-nous ?</h3>
-                        <p class="text-center">Elaboré par l'équipe de référence en PACES :</p>
+                        <p class="text-center">Elaboré avec <i class="fa fa-heart"></i> par l'équipe de référence en PACES :</p>
                         <p class="p-logo-rmp text-center"><img class="logo-rmp logo-rmp-colored" src="img/Logo-RMP-PACES-STORE-COLORED.png" alt="PACES Store"/></p>
                     </div>
                     <div class="col-md-2"></div>
@@ -176,7 +178,7 @@ and open the template in the editor.
             <div class="col-md-12">
                 <form class='form-inline newsletter-form'>
                     <div class="row text-center">
-                        <h3>Je suis intéressé !</h3>
+                        <h3>Intéressé(e) et envie d’en savoir encore plus ?</h3>
                         <br/>
                         <input type='email' class="form-control input-lg" id="inputmail" placeholder="Mon adresse mail" />
                         <input type='submit' class="btn btn-lg btn-warning" value="Je m'inscris">

@@ -1,33 +1,56 @@
 $(document).ready(function(){
 
-	//check animation => lancer les animations sur les éléments directement visibles
-	checkAnimation();
+	var enableOnlyAtScroll0 = true;
+	var isStartAtScroll0 = $(window).scrollTop() == 0;
 
-	$(window).scroll( function(){
-		//relancer les animations potentielles à chaque scroll
+	if(!enableOnlyAtScroll0 || (enableOnlyAtScroll0 && isStartAtScroll0)){
+
+		//check animation => lancer les animations sur les éléments directement visibles
 		checkAnimation();
-	});
+
+		$(window).scroll( function(){
+			//relancer les animations potentielles à chaque scroll
+			checkAnimation();
+		});
+
+	}
+	else{
+		$("*").removeClass("visibility-hidden");
+	}
 });
 
+//tous les éléments à animer sont à ajouter ici
+//cf classes d'animations de ANIMATE.CSS
+var animationArray = [
+	{selector: ".logo-paces-store", animation: "fadeInUp", 	outerHeight: 50,	timeout: 1000, count: 1},
+	{selector: ".newsletter-form", 	animation: "tada", 		outerHeight: 50,	timeout: 1000, count: 2},
+	{selector: "#content-row-1", 	animation: "fadeInUp", 	outerHeight: 50,	timeout: 0, count: 1},
+	{selector: "#content-row-2", 	animation: "fadeInUp", 	outerHeight: 50,	timeout: 0, count: 1},
+	{selector: "#content-row-3", 	animation: "fadeInUp", 	outerHeight: 50,	timeout: 0, count: 1},
+	{selector: "#content-row-4", 	animation: "fadeInDown", 	outerHeight: 50,	timeout: 0, count: 1},
+];
 
-var delayedAnimation = function(animationElement, animation, timeout){
-	setTimeout(function(){ 
-		animationElement.removeClass("visibility-hidden");
-		animationElement.addClass(animation+" animated"); 
-	}, timeout);
+var delayedAnimation = function(animationDomElement, animationObject){
+	
+	if(animationObject.count > 0 || animationObject.count == -1){
+		setTimeout(function(){ 
+			animationDomElement.removeClass("visibility-hidden");
+			animationDomElement.addClass(animationObject.animation+" animated");
+
+			if(animationObject.count > 0)
+				animationObject.count = animationObject.count-1;
+			//reboot
+			setTimeout(function(){
+				animationDomElement.removeClass("animated");
+				animationDomElement.removeClass(animationObject.animation);
+			}, 3000)
+
+		}, animationObject.timeout !== undefined ? animationObject.timeout : 0);
+	}
 }
 
 var checkAnimation = function(){
-	//tous les éléments à animer sont à ajouter ici
-	//cf classes d'animations de ANIMATE.CSS
-	var animationArray = [
-		{selector: ".logo-paces-store", animation: "bounceIn", timeout: 1000},
-		{selector: ".newsletter-form", animation: "tada", timeout: 1000},
-		{selector: "#content-row-1", animation: "fadeInUp", timeout: 1000},
-		{selector: "#content-row-2", animation: "fadeInUp", timeout: 1000},
-		{selector: "#content-row-3", animation: "fadeInUp", timeout: 1000},
-		{selector: "#content-row-4", animation: "fadeInUp", timeout: 1000},
-	];
+	
 
 	for(i = 0; i < animationArray.length; i++) {
 
@@ -36,11 +59,12 @@ var checkAnimation = function(){
 		if(elementArray.length > 0){
 
 			var element = $(elementArray[0]);
-			var objectBottom = element.position().top + element.outerHeight();
+			var objectBottom = element.position().top + animationArray[i].outerHeight;
             var windowBottom = $(window).scrollTop() + $(window).height();
-
-            if( objectBottom > windowBottom ){
-            		delayedAnimation(element, animationArray[i].animation, animationArray[i].timeout !== undefined ? animationArray[i].timeout : 0);
+            if(i==0)
+            	console.log(objectBottom + " / "+windowBottom);
+            if( objectBottom < windowBottom ){
+            		delayedAnimation(element, animationArray[i]);
             }
 
 		}
