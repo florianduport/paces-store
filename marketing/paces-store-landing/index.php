@@ -85,7 +85,7 @@ and open the template in the editor.
                     </div>
                     <div class="row box-vendeur">
                         <input type='checkbox' class="checkbox-inline" name="check-box-vendeur" value='1' id="check-box-vendeur"> 
-                        <label for="check-box-vendeur" class="control-label">Je souhaite être vendeur</label>
+                        <label for="check-box-vendeur" class="control-label">J'ai réussi ma PACES et souhaite proposer mes contenus</label>
                     </div>
                 </form>
             </div>
@@ -179,7 +179,7 @@ and open the template in the editor.
                     </div>
                     <div class="row box-vendeur">
                         <input type='checkbox' class="checkbox-inline" value='1' id="check-box-vendeur"> 
-                        <label for="check-box-vendeur" class="control-label">Je souhaite être vendeur</label>
+                        <label for="check-box-vendeur" class="control-label">J'ai réussi ma PACES et souhaite proposer mes contenus</label>
                     </div>
                 </form>
             </div>
