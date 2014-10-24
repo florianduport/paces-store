@@ -1,30 +1,24 @@
 <?php
-$valid_passwords = array ("giant" => "app");
-$valid_users = array_keys($valid_passwords);
-
-$user = $_SERVER['PHP_AUTH_USER'];
-$pass = $_SERVER['PHP_AUTH_PW'];
-
-$validated = (in_array($user, $valid_users)) && ($pass == $valid_passwords[$user]);
-
-if (!$validated) {
-  header('WWW-Authenticate: Basic realm="Dev"');
-  header('HTTP/1.0 401 Unauthorized');
-  die ("Not authorized");
+session_start();
+if (isset($_POST['login']) && isset($_POST['password'])) {
+    if ($_POST['login'] == 'giant' && $_POST['password'] == 'app') {
+        $_SESSION['authenticated'] = 'youpi';
+    }
 }
+if (isset($_SESSION['authenticated']) && $_SESSION['authenticated'] == 'youpi2') {
 
 //si c'est une inscription mail
-if (isset($_POST['inputmail'])) {
-    $file = fopen("emails.csv", "w");
-    fputcsv($file, array($_POST['check-box-vendeur'] , $_POST['inputmail']));
-}
+    if (isset($_POST['inputmail'])) {
+        $file = fopen("emails.csv", "w");
+        fputcsv($file, array($_POST['check-box-vendeur'], $_POST['inputmail']));
+    }
 //si c'est un formulaire QUESTION
-if (isset($_POST['form-mail'])) {
-    $file = fopen("emails.csv", "w");
-    fputcsv($file, '0' . $_POST['input-mail'] . ',' . $_POST['name'] . ',' . $_POST['question']);
-    //mail();
-}
-?>
+    if (isset($_POST['form-mail'])) {
+        $file = fopen("emails.csv", "w");
+        fputcsv($file, '0' . $_POST['input-mail'] . ',' . $_POST['name'] . ',' . $_POST['question']);
+        //mail();
+    }
+    ?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -229,3 +223,51 @@ and open the template in the editor.
         </div>
     </body>
 </html>
+    <?php
+} else {
+    ?>
+    <html>
+        <head>
+            <title>PACES STORE ?</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+            <link rel="stylesheet" href="css/loginForm.css">
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+            <script>
+                (function (i, s, o, g, r, a, m) {
+                    i['GoogleAnalyticsObject'] = r;
+                    i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+                    a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0];
+                    a.async = 1;
+                    a.src = g;
+                    m.parentNode.insertBefore(a, m)
+                })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+                ga('create', 'UA-55970631-1', 'auto');
+                ga('send', 'pageview');
+
+            </script>
+            <meta name="google-site-verification" content="hIfrtfmDJXM5vy7BkFSyYpxPlUFfVLp2F8jcbcMztls" />
+        </head>
+        <body>
+            <div id="fullscreen_bg" class="fullscreen_bg"/>
+            <div class="container">
+                <form class="form-signin" action="#" method="POST">
+                    <h1 class="form-signin-heading text-muted">BETA</h1>
+                    <input type="text" class="form-control" name="login" placeholder="Login ?" required="" autofocus="">
+                    <input type="password" class="form-control" name="password" placeholder="Password ?" required="">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                        Here we go !
+                    </button>
+                </form>
+            </div>
+        </div>
+    </body>
+    <?php
+} 
