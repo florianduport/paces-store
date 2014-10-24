@@ -24,7 +24,7 @@ body {
     color: #fff;
 }
 .transparent .section-inner {
-    padding: 120px 12px;
+    padding: 120px 0;
 }
 .section.dark h1, .section.dark h2, .section.dark h3, .section.dark h4, .section.dark h5, .section.dark h6, .section.blue h1, .section.blue h2, .section.blue h3, .section.blue h4, .section.blue h5, .section.blue h6, .section.green h1, .section.green h2, .section.green h3, .section.green h4, .section.green h5, .section.green h6, .section.purple h1, .section.purple h2, .section.purple h3, .section.purple h4, .section.purple h5, .section.purple h6, .section.white.transparent h1, .section.white.transparent h2, .section.white.transparent h3, .section.white.transparent h4, .section.white.transparent h5, .section.white.transparent h6 {
     color: white;
@@ -68,11 +68,12 @@ h3 {
 .logo-paces-store {
     width: 520px;
     padding: 15px;
+    margin: 0 auto;
 }
 .logo-paces-store-footer {
     width: 300px;
     padding: 15px;
-    margin-top: 50px;
+    margin: 50px auto;
 }
 .p-logo-rmp{
     margin-top: 25px;
@@ -83,7 +84,7 @@ h3 {
     color: #ffffff;
 }
 label[for=check-box-vendeur]{
-	font-weight: 300;
+    font-weight: 300;
 }
 .colored-row h3{
     color: #ffffff;
@@ -121,7 +122,7 @@ input[type=email]
 #contact-row{
 }
 #contact-row h3{
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 .triangle-left{
     width: 0;
@@ -229,14 +230,16 @@ input[type=email]
     align-items: center;
 }
 #content-row-2{
-	padding-bottom: 0px;
+    padding-bottom: 0px;
 }
 #content-row-2 h3{
-	font-size: 30px;
+    font-size: 30px;
 }
 .logo-rmp-colored {
-	width: 400px;
+    width: 400px;
+        margin: 0 auto;
+
 }
 #qui-sommes-nous{
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
