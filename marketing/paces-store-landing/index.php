@@ -5,7 +5,7 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
         $_SESSION['authenticated'] = 'youpi';
     }
 }
-if (isset($_SESSION['authenticated']) && $_SESSION['authenticated'] == 'youpi2') {
+if (isset($_SESSION['authenticated']) && $_SESSION['authenticated'] == 'youpi') {
 
 //si c'est une inscription mail
     if (isset($_POST['inputmail'])) {
