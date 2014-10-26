@@ -248,8 +248,8 @@ else if (isset($_POST['inputmail'])) {
                     </div>
                     <div class="row box-vendeur">
                         <div class="col-md-12">
-                            <input type='checkbox' class="checkbox-inline" value='1' id="check-box-vendeur"> 
-                            <label for="check-box-vendeur" class="control-label">J'ai réussi ma PACES et souhaite proposer mes contenus</label>
+                            <input type='checkbox' name="check-box-vendeur" class="checkbox-inline" value='1' id="check-box-vendeur-bottom"> 
+                            <label for="check-box-vendeur-bottom" class="control-label">J'ai réussi ma PACES et souhaite proposer mes contenus</label>
                         </div>
                     </div>
                 </form>
