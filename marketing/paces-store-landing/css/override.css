@@ -286,7 +286,7 @@ input[type=email]
     vertical-align: baseline !important;
 }
 
-@media screen and (max-width: 640px)
+@media screen and (max-width: 767px)
 {
   #home h1{
     padding: 20px;
