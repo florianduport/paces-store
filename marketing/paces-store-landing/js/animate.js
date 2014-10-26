@@ -59,8 +59,7 @@ var checkAnimation = function(){
 			var element = $(elementArray[0]);
 			var objectBottom = element.position().top + animationArray[i].outerHeight;
             var windowBottom = $(window).scrollTop() + $(window).height();
-            if(i==0)
-            	console.log(objectBottom + " / "+windowBottom);
+
             if( objectBottom < windowBottom ){
             		delayedAnimation(element, animationArray[i]);
             }

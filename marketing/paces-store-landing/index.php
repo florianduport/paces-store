@@ -59,6 +59,19 @@ else if (isset($_POST['inputmail'])) {
             ga('create', 'UA-55970631-1', 'auto');
             ga('send', 'pageview');
 
+            //Tracking
+            $(document).ready(function(){
+                    $("#signup-top").click(function(){
+                        ga('send', 'event', 'LandingPage', 'Click','SignupTop');
+                    });
+                    $("#signup-bottom").click(function(){
+                        ga('send', 'event', 'LandingPage', 'Click','SignupBottom');
+                    });
+                    $("#signup-contact").click(function(){
+                        ga('send', 'event', 'LandingPage', 'Click','SignupContact');
+                    });
+            });
+
         </script>
         <meta name="google-site-verification" content="hIfrtfmDJXM5vy7BkFSyYpxPlUFfVLp2F8jcbcMztls" />
     </head>
@@ -124,7 +137,7 @@ else if (isset($_POST['inputmail'])) {
         <!-- SIGNUP ! -->
         <div class="signup-row colored-row row">
             <div class="col-md-12">
-                <form class='form-inline newsletter-form' action="#" method="POST" role="form" name="form-mail">
+                <form class='form-inline newsletter-form' id="signup-top-form" action="#" method="POST" role="form" name="form-mail">
                     <div class="row text-center">
                         <div class="col-md-12">
                             <div class="row">
@@ -135,7 +148,7 @@ else if (isset($_POST['inputmail'])) {
                             </div>
                             <div class="row">
                                 <input type='email' class="form-control input-lg" id="inputmail" name="inputmail" placeholder="Mon adresse mail" required/>
-                                <input type='submit' class="btn btn-lg btn-warning" value="Je suis intéressé(e)">
+                                <input type='submit' id="signup-top" class="btn btn-lg btn-warning" value="Je suis intéressé(e)">
                             </div>
                         </div>
                     </div>
@@ -225,12 +238,12 @@ else if (isset($_POST['inputmail'])) {
         <!-- SIGNUP ! -->
         <div class="signup-row colored-row row">
             <div class="col-md-12">
-                <form class='form-inline newsletter-form'>
+                <form class='form-inline newsletter-form' id="signup-bottom-form" action="#" method="POST" role="form" name="form-mail-bottom">
                     <div class="row text-center">
                         <h3>Intéressé(e) et envie d’en savoir encore plus ?</h3>
                         <br/>
-                        <input type='email' class="form-control input-lg" id="inputmail" placeholder="Mon adresse mail" />
-                        <input type='submit' class="btn btn-lg btn-warning" value="Je suis intéressé(e)">
+                        <input type='email' class="form-control input-lg" id="inputmail" name="inputmail" placeholder="Mon adresse mail" required/>
+                        <input type='submit' id="signup-bottom" class="btn btn-lg btn-warning" value="Je suis intéressé(e)">
                     </div>
                     <div class="row box-vendeur">
                         <div class="col-md-12">
@@ -248,7 +261,7 @@ else if (isset($_POST['inputmail'])) {
                 <h3>Une question ? On est là pour ça <i class="fa fa-smile-o"></i></h3>
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <form name="contact-form" role="form" action="#" method="POST" name="form-question">
+                    <form name="contact-form" id="signup-contact-form" role="form" action="#" method="POST" name="form-question">
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="name" placeholder="Mon nom et prénom" required/>
@@ -260,7 +273,7 @@ else if (isset($_POST['inputmail'])) {
                         <div class="form-group">
                             <textarea class="form-control" name="question" rows="8" placeholder="Ma question" required></textarea>
                         </div>
-                        <input type="submit" class="btn btn-warning btn-lg btn-block" value="Envoyer"/>
+                        <input type="submit" id="signup-contact" class="btn btn-warning btn-lg btn-block" value="Envoyer"/>
                     </form>
                 </div>
                 <div class="col-md-3"></div>
