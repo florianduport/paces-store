@@ -25,7 +25,7 @@ var animationArray = [
 	{selector: "#content-row-1", 	animation: "fadeInUp", 	outerHeight: 50,	timeout: 0, count: 1},
 	{selector: "#content-row-2", 	animation: "fadeInUp", 	outerHeight: 50,	timeout: 0, count: 1},
 	{selector: "#content-row-3", 	animation: "fadeInUp", 	outerHeight: 50,	timeout: 0, count: 1},
-	{selector: "#content-row-4", 	animation: "fadeInDown", 	outerHeight: 50,	timeout: 0, count: 1},
+	{selector: "#content-row-4", 	animation: "fadeInUp", 	outerHeight: 50,	timeout: 0, count: 1},
 ];
 
 var delayedAnimation = function(animationDomElement, animationObject){
