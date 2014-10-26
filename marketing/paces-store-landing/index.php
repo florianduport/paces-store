@@ -18,6 +18,7 @@ if (isset($_POST['name']) && isset($_POST['inputmailquestion'])) {
             'Bcc: adrien.dhuicq@gmail.com' . "\r\n" .
             'Reply-To: noreply@paces-store.fr' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
+    mail($to, $subject, $message, $headers);
     $actionSubmitted = 1;
 }
 //si c'est une inscription mail
