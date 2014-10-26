@@ -10,10 +10,12 @@ if (isset($_POST['name']) && isset($_POST['inputmailquestion'])) {
     fputcsv($file, array("0", $mail, $name, $question), ";");
     $to = 'paxeld@gmail.com';
     $subject = '[PACES STORE] Question de ' . $name . ' ';
-    $message = 'Salut \n'
-            . $name . ' ( ' . $mail . ' ) ' . 'vient de poser une question sur PACES Store : \n'
-            . $question . '\n';
-    $headers = 'From: question@paces-store.fr' . "\r\n" .
+    $message = 'Salut <br/>'
+            . $name . ' ( ' . $mail . ' ) ' . 'vient de poser une question sur PACES Store : <br/>'
+            . $question . '';
+    $headers = 'MIME-Version: 1.0' . "\r\n" .
+            'Content-type: text/html; charset=utf-8' . "\r\n" .
+            'From: question@paces-store.fr' . "\r\n" .
             'Cc: florianduport@gmail.com' . "\r\n" .
             'Bcc: adrien.dhuicq@gmail.com' . "\r\n" .
             'Reply-To: noreply@paces-store.fr' . "\r\n" .
@@ -186,15 +188,15 @@ else if (isset($_POST['inputmail'])) {
         <!-- CONTENT ROW 1 -->
         <div id="content-row-1" class="visibility-hidden content-row">
             <div class="row">
-                <div class="col-xs-12">
-                    <div class="col-xs-2"></div>
-                    <div class="col-xs-8">
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
                         <h3>La première plateforme de travail par et pour les étudiants</h3>
                         <div class="row vcenter">
                             <div id="lightbulb" class="col-xs-2">
                                 <img src="img/rocket70.png" alt="nice idea" class="img-responsive"/>
                             </div>
-                            <div class="col-xs-10">
+                            <div class="col-md-10">
                                 <p>
                                     <b>PACES Store</b> est la première plateforme collaborative et participative de travail, entièrement dédiée à la réussite de la PACES. 
                                 </p>
@@ -204,7 +206,7 @@ else if (isset($_POST['inputmail'])) {
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-2"></div>
+                    <div class="col-md-2"></div>
                 </div>
             </div>
         </div>
@@ -212,14 +214,14 @@ else if (isset($_POST['inputmail'])) {
         <!-- CONTENT ROW 2 -->
         <div id="content-row-2" class="content-row alter-colored-row visibility-hidden">
             <div class="row">
-                <div class="col-xs-12">
-                    <div class="col-xs-2"></div>
-                    <div class="col-xs-8">
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
                         <h3 class="text-center">
                             <i class="fa fa-quote-left fa-lg"></i><i> Avant, s’entrainer à faire des colles, exercices, fiches etc. était couteux ou répétitif. Mais ça, c’était avant <b>PACES Store</b> ! <i class="fa fa-quote-right fa-lg"></i></i>
                         </h3>
                     </div>
-                    <div class="col-xs-2"></div>
+                    <div class="col-md-2"></div>
                 </div>
             </div>
         </div>
