@@ -2,51 +2,33 @@
 session_start();
 $actionSubmitted = 0;
 //si c'est un formulaire QUESTION
-if (isset($_POST['name'])) {
+if (isset($_POST['name']) && isset($_POST['inputmailquestion'])) {
     $file = fopen("emails.csv", "a");
     $name = htmlspecialchars($_POST['name']);
+    $mail = htmlspecialchars($_POST['inputmailquestion']);
     $question = htmlspecialchars($_POST['question']);
-    fputcsv($file, array("0", $_POST['inputmail'], $name, $question), ";");
-    //mail();
-    $actionSubmitted = 1;
-}
-//si c'est une inscription mail
-else if (isset($_POST['inputmail'])) {
-    if($_POST['inputmail'] == "") {
-        $actionSubmitted = 3;
-    }
-    else
-    {
-        $file = fopen("emails.csv", "a");
-        fputcsv($file, array($_POST['check-box-vendeur'] == "" ? 0 : 1, $_POST['inputmail']), ";");
-        $actionSubmitted = 2;
-    }
-}
-
-if (isset($_GET['mail']) && $_GET['mail'] = 'ok') {
-//    $to = 'paxeld@gmail.com';
-//    $subject = '[PACES STORE] Question de ' . $name . ' ';
-//    $message = 'Salut <br>'
-//            . $name . ' vient de poser une question sur PACES Store : </br>'
-//            . $question;
-//    $headers = 'From: question@paces-store.fr' . "\r\n" .
-//            'Cc: florianduport@gmail.com' . "\r\n" .
-//            'Bcc: adrien.dhuicq@gmail.com' . "\r\n" .
-//            'Reply-To: noreply@paces-store.fr' . "\r\n" .
-//            'X-Mailer: PHP/' . phpversion();
-    $name = 'adrien dhuicq';
-    $question = 'super michel';
-    $to = 'admingrospigeon@gmail.com';
+    fputcsv($file, array("0", $mail, $name, $question), ";");
+    $to = 'paxeld@gmail.com';
     $subject = '[PACES STORE] Question de ' . $name . ' ';
-    $message = 'Salut <br>'
-            . $name . ' vient de poser une question sur PACES Store : </br>'
-            . $question;
+    $message = 'Salut \n'
+            . $name . ' ( ' . $mail . ' ) ' . 'vient de poser une question sur PACES Store : \n'
+            . $question . '\n';
     $headers = 'From: question@paces-store.fr' . "\r\n" .
             'Cc: florianduport@gmail.com' . "\r\n" .
             'Bcc: adrien.dhuicq@gmail.com' . "\r\n" .
             'Reply-To: noreply@paces-store.fr' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
-    mail($to, $subject, $message, $headers);
+    $actionSubmitted = 1;
+}
+//si c'est une inscription mail
+else if (isset($_POST['inputmail'])) {
+    if ($_POST['inputmail'] == "") {
+        $actionSubmitted = 3;
+    } else {
+        $file = fopen("emails.csv", "a");
+        fputcsv($file, array($_POST['check-box-vendeur'] == "" ? 0 : 1, $_POST['inputmail']), ";");
+        $actionSubmitted = 2;
+    }
 }
 ?>
 
@@ -109,15 +91,15 @@ if (isset($_GET['mail']) && $_GET['mail'] = 'ok') {
         <?php if ($actionSubmitted != 0) { ?>
             <div id="message-box">
                 <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6" id="message-box-content">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-6" id="message-box-content">
                         <i class="close fa fa-close fa-lg"></i>
                         <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-10 text-center">
+                            <div class="col-xs-1"></div>
+                            <div class="col-xs-10 text-center">
                                 <img class="logo-paces-store-popin img-responsive text-center" src="img/Logo-PACES-Store-noir.png" alt="PACES Store"/>
                                 <br/>
-                                <?php if($actionSubmitted != 3) { ?>
+                                <?php if ($actionSubmitted != 3) { ?>
                                     <div class="alert alert-success" role="alert">
                                         <strong>Merci !</strong> 
                                         <?php if ($actionSubmitted == 1) { ?>
@@ -130,7 +112,7 @@ if (isset($_GET['mail']) && $_GET['mail'] = 'ok') {
                                     <p id="message-box-share-text" class="text-center">Partagez PACES Store autour de vous :</p>
                                     <div class="fb-share-button" data-href="http://www.paces-store.fr" data-width="200"></div>
                                     <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.paces-store.fr" data-text="Découvrez PACES-Store !" data-lang="fr" data-count="none" data-hashtags="PACES-Store">Tweeter</a>
-                                <?php } else if($actionSubmitted == 3){ ?>
+                                <?php } else if ($actionSubmitted == 3) { ?>
                                     <div class="alert alert-danger" role="alert">
                                         <strong>Oups ! une erreur est survenue.</strong>
                                         <span>Merci de renseigner à nouveau votre mail.</span><br/>
@@ -138,10 +120,10 @@ if (isset($_GET['mail']) && $_GET['mail'] = 'ok') {
                                     </div>
                                 <?php } ?>
                             </div>
-                            <div class="col-md-1"></div>
+                            <div class="col-xs-1"></div>
                         </div>
                     </div>
-                    <div class="col-md-3"></div>
+                    <div class="col-xs-3"></div>
                 </div>
             </div>
             <div id="overlayer">
@@ -149,22 +131,22 @@ if (isset($_GET['mail']) && $_GET['mail'] = 'ok') {
             </div> 
         <?php } ?>
         <div id="home" class="section dark transparent text-center row">
-            <div class="section-inner col-md-12">
+            <div class="section-inner col-xs-12">
                 <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-10">
+                    <div class="col-xs-1"></div>
+                    <div class="col-xs-10">
                         <h1>Découvrez une toute nouvelle façon de travailler</h1>
                     </div>
-                    <div class="col-md-1"></div>
+                    <div class="col-xs-1"></div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-xs-12">
                         <img class="logo-paces-store img-responsive" src="img/Logo-PACES-Store.png" alt="PACES Store"/>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <p class="p-logo-rmp text-center col-md-12 img-responsive">
+                    <div class="col-xs-12">
+                        <p class="p-logo-rmp text-center col-xs-12 img-responsive">
                             Par <img class="logo-rmp" src="img/Logo-RMP-PACES-STORE.png" alt="PACES Store"/>
                         </p>
                     </div>
@@ -174,12 +156,12 @@ if (isset($_GET['mail']) && $_GET['mail'] = 'ok') {
 
         <!-- SIGNUP ! -->
         <div class="signup-row colored-row row">
-            <div class="col-md-12">
+            <div class="col-xs-12">
                 <form class='form-inline newsletter-form' id="signup-top-form" action="#" method="POST" role="form" name="form-mail">
                     <div class="row text-center">
-                        <div class="col-md-12">
+                        <div class="col-xs-12">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-xs-12">
                                     <h3>Intéressé(e) et envie d’en savoir encore plus ?</h3>
                                     <br/>
                                 </div>
@@ -191,7 +173,7 @@ if (isset($_GET['mail']) && $_GET['mail'] = 'ok') {
                         </div>
                     </div>
                     <div class="row box-vendeur">
-                        <div class="col-md-12">
+                        <div class="col-xs-12">
                             <input type='checkbox' class="checkbox-inline" name="check-box-vendeur" value='1' id="check-box-vendeur"> 
                             <label for="check-box-vendeur" class="control-label">J'ai réussi ma PACES et souhaite proposer mes contenus</label>
                         </div>
@@ -203,15 +185,15 @@ if (isset($_GET['mail']) && $_GET['mail'] = 'ok') {
         <!-- CONTENT ROW 1 -->
         <div id="content-row-1" class="visibility-hidden content-row">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
+                <div class="col-xs-12">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-8">
                         <h3>La première plateforme de travail par et pour les étudiants</h3>
                         <div class="row vcenter">
-                            <div id="lightbulb" class="col-md-2">
+                            <div id="lightbulb" class="col-xs-2">
                                 <img src="img/rocket70.png" alt="nice idea" class="img-responsive"/>
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-xs-10">
                                 <p>
                                     <b>PACES Store</b> est la première plateforme collaborative et participative de travail, entièrement dédiée à la réussite de la PACES. 
                                 </p>
@@ -221,7 +203,7 @@ if (isset($_GET['mail']) && $_GET['mail'] = 'ok') {
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2"></div>
+                    <div class="col-xs-2"></div>
                 </div>
             </div>
         </div>
@@ -229,14 +211,14 @@ if (isset($_GET['mail']) && $_GET['mail'] = 'ok') {
         <!-- CONTENT ROW 2 -->
         <div id="content-row-2" class="content-row alter-colored-row visibility-hidden">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
+                <div class="col-xs-12">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-8">
                         <h3 class="text-center">
                             <i class="fa fa-quote-left fa-lg"></i><i> Avant, s’entrainer à faire des colles, exercices, fiches etc. était couteux ou répétitif. Mais ça, c’était avant <b>PACES Store</b> ! <i class="fa fa-quote-right fa-lg"></i></i>
                         </h3>
                     </div>
-                    <div class="col-md-2"></div>
+                    <div class="col-xs-2"></div>
                 </div>
             </div>
         </div>
@@ -244,30 +226,25 @@ if (isset($_GET['mail']) && $_GET['mail'] = 'ok') {
 
         <!-- CONTENT ROW 3 -->
         <div id="content-row-3" class="content-row row visibility-hidden">
-            <div class="col-md-12">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
+            <div class="col-xs-12">
                     <h3 class="text-center">Aussi simple que bonjour</h3>
                     <p class="text-center">
                         <img id="schema" src="img/PACES-Store-schema.png"/>
                     </p>
-
-                </div>
-                <div class="col-md-2"></div>
             </div>
         </div>
 
         <!-- CONTENT ROW 4 -->
         <div id="content-row-4" class="content-row alter-colored-row row visibility-hidden">
-            <div class="col-md-12">
+            <div class="col-xs-12">
                 <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-8">
                         <h3 class="text-center" id="qui-sommes-nous">Qui sommes-nous ?</h3>
                         <p class="text-center">Elaboré avec <i class="fa fa-heart"></i> par l'équipe de référence en PACES :</p>
                         <p class="p-logo-rmp text-center"><img class="logo-rmp logo-rmp-colored" src="img/Logo-RMP-PACES-STORE-COLORED.png" alt="PACES Store"/></p>
                     </div>
-                    <div class="col-md-2"></div>
+                    <div class="col-xs-2"></div>
                 </div>
             </div>
         </div>
@@ -275,7 +252,7 @@ if (isset($_GET['mail']) && $_GET['mail'] = 'ok') {
 
         <!-- SIGNUP ! -->
         <div class="signup-row colored-row row">
-            <div class="col-md-12">
+            <div class="col-xs-12">
                 <form class='form-inline newsletter-form' id="signup-bottom-form" action="#" method="POST" role="form" name="form-mail-bottom">
                     <div class="row text-center">
                         <h3>Intéressé(e) et envie d’en savoir encore plus ?</h3>
@@ -284,7 +261,7 @@ if (isset($_GET['mail']) && $_GET['mail'] = 'ok') {
                         <input type='submit' id="signup-bottom" class="btn btn-lg btn-warning" value="Je suis intéressé(e)">
                     </div>
                     <div class="row box-vendeur">
-                        <div class="col-md-12">
+                        <div class="col-xs-12">
                             <input type='checkbox' name="check-box-vendeur" class="checkbox-inline" value='1' id="check-box-vendeur-bottom"> 
                             <label for="check-box-vendeur-bottom" class="control-label">J'ai réussi ma PACES et souhaite proposer mes contenus</label>
                         </div>
@@ -295,7 +272,7 @@ if (isset($_GET['mail']) && $_GET['mail'] = 'ok') {
 
         <!-- CONTACT US -->
         <div id="contact-row" class="content-row row">
-            <div class="col-md-12">
+            <div class="col-xs-12">
                 <h3>Une question ? On est là pour ça <i class="fa fa-smile-o"></i></h3>
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
@@ -305,7 +282,7 @@ if (isset($_GET['mail']) && $_GET['mail'] = 'ok') {
                                 <input type="text" class="form-control" name="name" placeholder="Mon nom et prénom" required/>
                             </div>
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="inputmail" placeholder="Mon adresse mail" required />
+                                <input type="email" class="form-control" name="inputmailquestion" placeholder="Mon adresse mail" required />
                             </div>
                         </div>
                         <div class="form-group">
