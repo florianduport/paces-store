@@ -22,8 +22,6 @@ $(document).ready(function(){
 //tous les éléments à animer sont à ajouter ici
 //cf classes d'animations de ANIMATE.CSS
 var animationArray = [
-	{selector: ".logo-paces-store", animation: "fadeInUp", 	outerHeight: 50,	timeout: 1000, count: 1},
-	{selector: ".newsletter-form", 	animation: "tada", 		outerHeight: 50,	timeout: 1000, count: 2},
 	{selector: "#content-row-1", 	animation: "fadeInUp", 	outerHeight: 50,	timeout: 0, count: 1},
 	{selector: "#content-row-2", 	animation: "fadeInUp", 	outerHeight: 50,	timeout: 0, count: 1},
 	{selector: "#content-row-3", 	animation: "fadeInUp", 	outerHeight: 50,	timeout: 0, count: 1},
