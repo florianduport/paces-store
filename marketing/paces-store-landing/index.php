@@ -79,7 +79,8 @@ else if (isset($_POST['inputmail'])) {
                                     <?php if($actionSubmitted == 1) { ?>
                                     <span>Votre question a bien été prise en compte. Nous vous répondrons dans les plus bref délais.</span>
                                     <?php } else if($actionSubmitted == 2) { ?>
-                                    <span>Votre inscription est bien prise en compte !</span>
+                                    <span>Votre inscription est bien prise en compte !</span><br/>
+                                    <span>Préparez-vous à être tenu au courant des toutes dernières avancées de PACES Store.</span>
                                     <?php } ?>
                                 </div>
                                 <p id="message-box-share-text" class="text-center">Partagez PACES Store autour de vous :</p>
@@ -128,13 +129,13 @@ else if (isset($_POST['inputmail'])) {
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h3>Je suis intéressé(e) ?</h3>
+                                    <h3>Intéressé(e) et envie d’en savoir encore plus ?</h3>
                                     <br/>
                                 </div>
                             </div>
                             <div class="row">
                                 <input type='email' class="form-control input-lg" id="inputmail" name="inputmail" placeholder="Mon adresse mail" required/>
-                                <input type='submit' class="btn btn-lg btn-warning" value="Je m'inscris">
+                                <input type='submit' class="btn btn-lg btn-warning" value="Je suis intéressé(e)">
                             </div>
                         </div>
                     </div>
@@ -229,11 +230,13 @@ else if (isset($_POST['inputmail'])) {
                         <h3>Intéressé(e) et envie d’en savoir encore plus ?</h3>
                         <br/>
                         <input type='email' class="form-control input-lg" id="inputmail" placeholder="Mon adresse mail" />
-                        <input type='submit' class="btn btn-lg btn-warning" value="Je m'inscris">
+                        <input type='submit' class="btn btn-lg btn-warning" value="Je suis intéressé(e)">
                     </div>
                     <div class="row box-vendeur">
-                        <input type='checkbox' class="checkbox-inline" value='1' id="check-box-vendeur"> 
-                        <label for="check-box-vendeur" class="control-label">J'ai réussi ma PACES et souhaite proposer mes contenus</label>
+                        <div class="col-md-12">
+                            <input type='checkbox' class="checkbox-inline" value='1' id="check-box-vendeur"> 
+                            <label for="check-box-vendeur" class="control-label">J'ai réussi ma PACES et souhaite proposer mes contenus</label>
+                        </div>
                     </div>
                 </form>
             </div>
