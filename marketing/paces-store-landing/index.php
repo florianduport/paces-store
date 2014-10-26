@@ -28,6 +28,9 @@ else if (isset($_POST['inputmail'])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta property="og:locale" content="fr_FR">
+        <meta property="og:title" content="PACES Store" />
+        <meta property="og:description" content="Découvrez une toute nouvelle façon de travailler. La première plateforme de travail par et pour les étudiants." />
+        <meta name="description" content="PACES Store : Découvrez une toute nouvelle façon de travailler. La première plateforme de travail par et pour les étudiants." />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -69,7 +72,7 @@ else if (isset($_POST['inputmail'])) {
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-10 text-center">
-                                <img class="logo-paces-store-popin img-responsive text-center" src="img/Logo-PACES-Store.png" alt="PACES Store"/>
+                                <img class="logo-paces-store-popin img-responsive text-center" src="img/Logo-PACES-Store-noir.png" alt="PACES Store"/>
                                 <br/>
                                 <div class="alert alert-success" role="alert">
                                     <strong>Merci !</strong> 
@@ -272,7 +275,7 @@ else if (isset($_POST['inputmail'])) {
                 <a href="https://plus.google.com/u/0/108208639336250490854/posts"  target="_blank" class="footer-social-link"><span class="fa fa-google-plus fa-lg"></span></a>
             </div>
         </div>
-        
+
         <div id="fb-root"></div>
         <!-- FACEBOOK --> 
         <script>
