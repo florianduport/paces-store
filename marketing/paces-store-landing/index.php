@@ -24,7 +24,7 @@ else if (isset($_POST['inputmail'])) {
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Paces-Store</title>
+        <title>PACES Store</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta property="og:locale" content="fr_FR">
@@ -36,6 +36,7 @@ else if (isset($_POST['inputmail'])) {
         <link rel="stylesheet" href="css/font-awesome.min.css">
         <link rel="stylesheet" href="css/override.css">
         <link rel="stylesheet" href="css/animate.css">
+        <link rel="icon" href="img/PACES-STORE-ICO.ico" />
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <script type="text/javascript" src="js/ketchup.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
