@@ -86,6 +86,7 @@ and open the template in the editor.
                                 </div>
                                 <p id="message-box-share-text" class="text-center">Partagez PACES Store autour de vous :</p>
                                 <div class="fb-share-button" data-href="http://www.paces-store.fr" data-width="200"></div>
+                                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.paces-store.fr" data-text="Découvrez PACES-Store !" data-lang="fr" data-count="none" data-hashtags="PACES-Store">Tweeter</a>
                             </div>
                             <div class="col-md-1"></div>
                         </div>
@@ -285,6 +286,7 @@ and open the template in the editor.
 //                });
         </script>
         <div id="fb-root"></div>
+        <!-- FACEBOOK --> 
         <script>
             (function(d, s, id) {
               var js, fjs = d.getElementsByTagName(s)[0];
@@ -294,5 +296,8 @@ and open the template in the editor.
               fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
         </script>
+        <!-- TWITTER -->
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
     </body>
 </html>

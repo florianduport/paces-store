@@ -278,3 +278,9 @@ input[type=email]
 #message-box-share-text{
     margin-bottom: 0px;
 }
+#twitter-widget-0{
+    vertical-align: text-bottom;
+}
+.fb_iframe_widget span{
+    vertical-align: baseline !important;
+}
