@@ -284,3 +284,50 @@ input[type=email]
 .fb_iframe_widget span{
     vertical-align: baseline !important;
 }
+
+@media screen and (max-width: 640px)
+{
+  #home h1{
+    padding: 20px;
+    font-size: 3em;
+    letter-spacing: normal;
+    text-align: center;
+  }
+  #inputmail{
+    width: 100%;
+    padding-right: 0px;
+  }
+  #inputmail + input[type=submit] {
+    margin-left: 0px;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .box-vendeur{
+    width: 100%;
+    margin-top: 10px;
+  }
+  .box-vendeur label{
+    display: inline;
+  }
+  #lightbulb{
+    display: none;
+  }
+  h3{
+    font-size: 1.8em;
+  }
+  .logo-rmp-colored{
+    width: 70%;
+  }
+  #content-row-2 h3{
+    line-height: normal;
+    font-size: 1em;
+    margin-bottom: 48px;
+  }
+  #home .logo-paces-store{
+    padding: 25px;
+  }
+  #home .p-logo-rmp{
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
