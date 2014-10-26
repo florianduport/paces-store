@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 $actionSubmitted = 0;
 //si c'est un formulaire QUESTION
@@ -12,15 +11,43 @@ if (isset($_POST['name'])) {
     $actionSubmitted = 1;
 }
 //si c'est une inscription mail
-else if (isset($_POST['inputmail']) && $_POST['inputmail'] != "") {
-    $file = fopen("emails.csv", "a");
-    fputcsv($file, array($_POST['check-box-vendeur'] == "" ? 0 : 1, $_POST['inputmail']), ";");
-    $actionSubmitted = 2;
-}
-else if($_POST['inputmail'] == "") {
-    $actionSubmitted = 3;
+else if (isset($_POST['inputmail'])) {
+    if($_POST['inputmail'] == "") {
+        $actionSubmitted = 3;
+    }
+    else
+    {
+        $file = fopen("emails.csv", "a");
+        fputcsv($file, array($_POST['check-box-vendeur'] == "" ? 0 : 1, $_POST['inputmail']), ";");
+        $actionSubmitted = 2;
+    }
 }
 
+if (isset($_GET['mail']) && $_GET['mail'] = 'ok') {
+//    $to = 'paxeld@gmail.com';
+//    $subject = '[PACES STORE] Question de ' . $name . ' ';
+//    $message = 'Salut <br>'
+//            . $name . ' vient de poser une question sur PACES Store : </br>'
+//            . $question;
+//    $headers = 'From: question@paces-store.fr' . "\r\n" .
+//            'Cc: florianduport@gmail.com' . "\r\n" .
+//            'Bcc: adrien.dhuicq@gmail.com' . "\r\n" .
+//            'Reply-To: noreply@paces-store.fr' . "\r\n" .
+//            'X-Mailer: PHP/' . phpversion();
+    $name = 'adrien dhuicq';
+    $question = 'super michel';
+    $to = 'admingrospigeon@gmail.com';
+    $subject = '[PACES STORE] Question de ' . $name . ' ';
+    $message = 'Salut <br>'
+            . $name . ' vient de poser une question sur PACES Store : </br>'
+            . $question;
+    $headers = 'From: question@paces-store.fr' . "\r\n" .
+            'Cc: florianduport@gmail.com' . "\r\n" .
+            'Bcc: adrien.dhuicq@gmail.com' . "\r\n" .
+            'Reply-To: noreply@paces-store.fr' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+    mail($to, $subject, $message, $headers);
+}
 ?>
 
 <!DOCTYPE html>
@@ -63,23 +90,23 @@ else if($_POST['inputmail'] == "") {
             ga('send', 'pageview');
 
             //Tracking
-            $(document).ready(function(){
-                    $("#signup-top").click(function(){
-                        ga('send', 'event', 'LandingPage', 'Click','SignupTop');
-                    });
-                    $("#signup-bottom").click(function(){
-                        ga('send', 'event', 'LandingPage', 'Click','SignupBottom');
-                    });
-                    $("#signup-contact").click(function(){
-                        ga('send', 'event', 'LandingPage', 'Click','SignupContact');
-                    });
+            $(document).ready(function () {
+                $("#signup-top").click(function () {
+                    ga('send', 'event', 'LandingPage', 'Click', 'SignupTop');
+                });
+                $("#signup-bottom").click(function () {
+                    ga('send', 'event', 'LandingPage', 'Click', 'SignupBottom');
+                });
+                $("#signup-contact").click(function () {
+                    ga('send', 'event', 'LandingPage', 'Click', 'SignupContact');
+                });
             });
 
         </script>
         <meta name="google-site-verification" content="hIfrtfmDJXM5vy7BkFSyYpxPlUFfVLp2F8jcbcMztls" />
     </head>
     <body>
-        <?php if($actionSubmitted != 0) { ?>
+        <?php if ($actionSubmitted != 0) { ?>
             <div id="message-box">
                 <div class="row">
                     <div class="col-md-3"></div>
@@ -93,11 +120,11 @@ else if($_POST['inputmail'] == "") {
                                 <?php if($actionSubmitted != 3) { ?>
                                     <div class="alert alert-success" role="alert">
                                         <strong>Merci !</strong> 
-                                        <?php if($actionSubmitted == 1) { ?>
-                                        <span>Votre question a bien été prise en compte. Nous vous répondrons dans les plus bref délais.</span>
-                                        <?php } else if($actionSubmitted == 2) { ?>
-                                        <span>Votre inscription est bien prise en compte !</span><br/>
-                                        <span>Préparez-vous à être tenu au courant des toutes dernières avancées de PACES Store.</span>
+                                        <?php if ($actionSubmitted == 1) { ?>
+                                            <span>Votre question a bien été prise en compte. Nous vous répondrons dans les plus bref délais.</span>
+                                        <?php } else if ($actionSubmitted == 2) { ?>
+                                            <span>Votre inscription est bien prise en compte !</span><br/>
+                                            <span>Préparez-vous à être tenu au courant des toutes dernières avancées de PACES Store.</span>
                                         <?php } ?>
                                     </div>
                                     <p id="message-box-share-text" class="text-center">Partagez PACES Store autour de vous :</p>
@@ -306,16 +333,26 @@ else if($_POST['inputmail'] == "") {
         <div id="fb-root"></div>
         <!-- FACEBOOK --> 
         <script>
-            (function(d, s, id) {
-              var js, fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id)) return;
-              js = d.createElement(s); js.id = id;
-              js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&appId=1509404119329099&version=v2.0";
-              fjs.parentNode.insertBefore(js, fjs);
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id))
+                    return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&appId=1509404119329099&version=v2.0";
+                fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
         </script>
         <!-- TWITTER -->
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <script>!function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                if (!d.getElementById(id)) {
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = p + '://platform.twitter.com/widgets.js';
+                    fjs.parentNode.insertBefore(js, fjs);
+                }
+            }(document, 'script', 'twitter-wjs');</script>
 
     </body>
 </html>
