@@ -22,11 +22,6 @@ else if (isset($_POST['inputmail'])) {
 ?>
 
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>Paces-Store</title>
@@ -198,9 +193,6 @@ and open the template in the editor.
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
                     <h3 class="text-center">Aussi simple que bonjour</h3>
-                    <!--<p>
-                        <b>PACES Store</b> fonctionne très simplement : les étudiants ayant réussi la PACES, proposent  leurs colles, exercices, fiches cours etc qu’ils auront préalablebement rédigés, aux étudiants en PACES de leur université. C’est aussi simple que cela. C’est le complément qu’il manquait aux tutorats et aux prépas privées.
-                    </p>-->
                     <p class="text-center">
                         <img id="schema" src="img/PACES-Store-schema.png"/>
                     </p>
@@ -280,11 +272,7 @@ and open the template in the editor.
                 <a href="https://plus.google.com/u/0/108208639336250490854/posts"  target="_blank" class="footer-social-link"><span class="fa fa-google-plus fa-lg"></span></a>
             </div>
         </div>
-        <script>
-//                $('body').flowtype({
-//                    fontRatio : 30
-//                });
-        </script>
+        
         <div id="fb-root"></div>
         <!-- FACEBOOK --> 
         <script>
