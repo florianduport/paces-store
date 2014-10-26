@@ -12,12 +12,14 @@ if (isset($_POST['name'])) {
     $actionSubmitted = 1;
 }
 //si c'est une inscription mail
-else if (isset($_POST['inputmail'])) {
+else if (isset($_POST['inputmail']) && $_POST['inputmail'] != "") {
     $file = fopen("emails.csv", "a");
     fputcsv($file, array($_POST['check-box-vendeur'] == "" ? 0 : 1, $_POST['inputmail']), ";");
     $actionSubmitted = 2;
 }
-
+else if($_POST['inputmail'] == "") {
+    $actionSubmitted = 3;
+}
 
 ?>
 
@@ -88,18 +90,26 @@ else if (isset($_POST['inputmail'])) {
                             <div class="col-md-10 text-center">
                                 <img class="logo-paces-store-popin img-responsive text-center" src="img/Logo-PACES-Store-noir.png" alt="PACES Store"/>
                                 <br/>
-                                <div class="alert alert-success" role="alert">
-                                    <strong>Merci !</strong> 
-                                    <?php if($actionSubmitted == 1) { ?>
-                                    <span>Votre question a bien été prise en compte. Nous vous répondrons dans les plus bref délais.</span>
-                                    <?php } else if($actionSubmitted == 2) { ?>
-                                    <span>Votre inscription est bien prise en compte !</span><br/>
-                                    <span>Préparez-vous à être tenu au courant des toutes dernières avancées de PACES Store.</span>
-                                    <?php } ?>
-                                </div>
-                                <p id="message-box-share-text" class="text-center">Partagez PACES Store autour de vous :</p>
-                                <div class="fb-share-button" data-href="http://www.paces-store.fr" data-width="200"></div>
-                                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.paces-store.fr" data-text="Découvrez PACES-Store !" data-lang="fr" data-count="none" data-hashtags="PACES-Store">Tweeter</a>
+                                <?php if($actionSubmitted != 3) { ?>
+                                    <div class="alert alert-success" role="alert">
+                                        <strong>Merci !</strong> 
+                                        <?php if($actionSubmitted == 1) { ?>
+                                        <span>Votre question a bien été prise en compte. Nous vous répondrons dans les plus bref délais.</span>
+                                        <?php } else if($actionSubmitted == 2) { ?>
+                                        <span>Votre inscription est bien prise en compte !</span><br/>
+                                        <span>Préparez-vous à être tenu au courant des toutes dernières avancées de PACES Store.</span>
+                                        <?php } ?>
+                                    </div>
+                                    <p id="message-box-share-text" class="text-center">Partagez PACES Store autour de vous :</p>
+                                    <div class="fb-share-button" data-href="http://www.paces-store.fr" data-width="200"></div>
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.paces-store.fr" data-text="Découvrez PACES-Store !" data-lang="fr" data-count="none" data-hashtags="PACES-Store">Tweeter</a>
+                                <?php } else if($actionSubmitted == 3){ ?>
+                                    <div class="alert alert-danger" role="alert">
+                                        <strong>Oups ! une erreur est survenue.</strong>
+                                        <span>Merci de renseigner à nouveau votre mail.</span><br/>
+                                        <span>Si le problème persiste, utilisez le formulaire de contact.</span>
+                                    </div>
+                                <?php } ?>
                             </div>
                             <div class="col-md-1"></div>
                         </div>
