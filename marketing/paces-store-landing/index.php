@@ -135,7 +135,7 @@ else if (isset($_POST['inputmail'])) {
                 <!-- -->
             </div> 
         <?php } ?>
-        <div id="home" class="section dark transparent text-center row">
+        <div id="home" class="section dark transparent text-center row scroll-0">
             <div class="section-inner col-xs-12">
                 <div class="row">
                     <div class="col-xs-1"></div>
@@ -160,14 +160,14 @@ else if (isset($_POST['inputmail'])) {
         </div>
 
         <!-- SIGNUP ! -->
-        <div class="signup-row colored-row row">
+        <div class="signup-row colored-row row scroll-1">
             <div class="col-xs-12">
-                <form class='form-inline newsletter-form' id="signup-top-form" action="#" method="POST" role="form" name="form-mail">
+                <form class='form-inline newsletter-form' id="signup-top-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" role="form" name="form-mail">
                     <div class="row text-center">
                         <div class="col-xs-12">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <h3>Intéressé(e) et envie d’en savoir encore plus ?</h3>
+                                    <h3>Intéressé(e) et envie d’en savoir plus ?</h3>
                                     <br/>
                                 </div>
                             </div>
@@ -188,12 +188,12 @@ else if (isset($_POST['inputmail'])) {
         </div>
 
         <!-- CONTENT ROW 1 -->
-        <div id="content-row-1" class="visibility-hidden content-row">
+        <div id="content-row-1" class="visibility-hidden content-row scroll-2">
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
-                        <h3>La première plateforme de travail par et pour les étudiants</h3>
+                        <h3>La première plateforme de travail par et pour les étudiants en PACES</h3>
                         <div class="row vcenter">
                             <div id="lightbulb" class="col-xs-2">
                                 <img src="img/rocket70.png" alt="nice idea" class="img-responsive"/>
@@ -214,7 +214,7 @@ else if (isset($_POST['inputmail'])) {
         </div>
 
         <!-- CONTENT ROW 2 -->
-        <div id="content-row-2" class="content-row alter-colored-row visibility-hidden">
+        <div id="content-row-2" class="content-row alter-colored-row visibility-hidden scroll-3">
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-md-2"></div>
@@ -230,9 +230,9 @@ else if (isset($_POST['inputmail'])) {
 
 
         <!-- CONTENT ROW 3 -->
-        <div id="content-row-3" class="content-row row visibility-hidden">
+        <div id="content-row-3" class="content-row row visibility-hidden scroll-4">
             <div class="col-xs-12">
-                <h3 class="text-center">Aussi simple que bonjour</h3>
+                <h3 class="text-center"></h3>
                 <p class="text-center">
                     <img id="schema" src="img/PACES-Store-schema.png"/>
                 </p>
@@ -240,14 +240,14 @@ else if (isset($_POST['inputmail'])) {
         </div>
 
         <!-- CONTENT ROW 4 -->
-        <div id="content-row-4" class="content-row alter-colored-row row visibility-hidden">
+        <div id="content-row-4" class="content-row alter-colored-row row visibility-hidden scroll-5">
             <div class="col-xs-12">
                 <div class="row">
                     <div class="col-xs-2"></div>
                     <div class="col-xs-8">
                         <h3 class="text-center" id="qui-sommes-nous">Qui sommes-nous ?</h3>
-                        <p class="text-center">Elaboré avec <i class="fa fa-heart"></i> par l'équipe de référence en PACES :</p>
-                        <p class="p-logo-rmp text-center"><img class="logo-rmp logo-rmp-colored" src="img/Logo-RMP-PACES-STORE-COLORED.png" alt="PACES Store"/></p>
+                        <p class="text-center p-logo-rmp ">Elaboré avec <i class="fa fa-heart"></i> par 
+                            <img class="logo-rmp logo-rmp-colored" src="img/Logo-RMP-PACES-STORE-COLORED.png" alt="PACES Store"/></p>
                     </div>
                     <div class="col-xs-2"></div>
                 </div>
@@ -256,11 +256,11 @@ else if (isset($_POST['inputmail'])) {
 
 
         <!-- SIGNUP ! -->
-        <div class="signup-row colored-row row">
+        <div class="signup-row colored-row row scroll-6">
             <div class="col-xs-12">
-                <form class='form-inline newsletter-form' id="signup-bottom-form" action="#" method="POST" role="form" name="form-mail-bottom">
+                <form class='form-inline newsletter-form' id="signup-bottom-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" role="form" name="form-mail-bottom">
                     <div class="row text-center">
-                        <h3>Intéressé(e) et envie d’en savoir encore plus ?</h3>
+                        <h3>Intéressé(e) et envie d’en savoir plus ?</h3>
                         <br/>
                         <input type='email' class="form-control input-lg" id="inputmail" name="inputmail" placeholder="Mon adresse mail" required/>
                         <input type='submit' id="signup-bottom" class="btn btn-lg btn-warning" value="Je suis intéressé(e)">
@@ -276,15 +276,15 @@ else if (isset($_POST['inputmail'])) {
         </div>
 
         <!-- CONTACT US -->
-        <div id="contact-row" class="content-row row">
+        <div id="contact-row" class="content-row row scroll-7">
             <div class="col-xs-12">
                 <h3>Une question ? On est là pour ça <i class="fa fa-smile-o"></i></h3>
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <form name="contact-form" id="signup-contact-form" role="form" action="#" method="POST" name="form-question">
+                    <form name="contact-form" id="signup-contact-form" role="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" name="form-question">
                         <div class="form-group row">
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" placeholder="Mon nom et prénom" required/>
+                                <input type="text" class="form-control" name="name" placeholder="Mon nom et mon prénom" required/>
                             </div>
                             <div class="col-md-6">
                                 <input type="email" class="form-control" name="inputmailquestion" placeholder="Mon adresse mail" required />
@@ -338,8 +338,9 @@ else if (isset($_POST['inputmail'])) {
         <script>
             var easter_egg = new Konami();
             easter_egg.code = function () {
-                alert('Konami code!');
-            }
-            easter_egg.load();</script>
+                alert('Oui oui il y a bien un Konami code là!');
+            };
+            easter_egg.load();
+        </script>
     </body>
 </html>
