@@ -73,6 +73,7 @@ else if (isset($_POST['inputmail'])) {
             })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
             ga('create', 'UA-55970631-1', 'auto');
+            ga('require', 'displayfeatures');
             ga('send', 'pageview');
 
             //Tracking
