@@ -57,6 +57,7 @@ else if (isset($_POST['inputmail'])) {
         <script type="text/javascript" src="js/animate.js"></script>
         <script type="text/javascript" src="js/overlayer.js"></script>
         <script type="text/javascript" src="js/flowtype.js"></script>
+        <script type="text/javascript" src="js/omg.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900' rel='stylesheet' type='text/css'>
         <script>
             (function (i, s, o, g, r, a, m) {
@@ -230,10 +231,10 @@ else if (isset($_POST['inputmail'])) {
         <!-- CONTENT ROW 3 -->
         <div id="content-row-3" class="content-row row visibility-hidden">
             <div class="col-xs-12">
-                    <h3 class="text-center">Aussi simple que bonjour</h3>
-                    <p class="text-center">
-                        <img id="schema" src="img/PACES-Store-schema.png"/>
-                    </p>
+                <h3 class="text-center">Aussi simple que bonjour</h3>
+                <p class="text-center">
+                    <img id="schema" src="img/PACES-Store-schema.png"/>
+                </p>
             </div>
         </div>
 
@@ -333,6 +334,11 @@ else if (isset($_POST['inputmail'])) {
                     fjs.parentNode.insertBefore(js, fjs);
                 }
             }(document, 'script', 'twitter-wjs');</script>
-
+        <script>
+            var easter_egg = new Konami();
+            easter_egg.code = function () {
+                alert('Konami code!');
+            }
+            easter_egg.load();</script>
     </body>
 </html>
