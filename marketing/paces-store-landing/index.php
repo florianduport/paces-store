@@ -96,8 +96,8 @@ else if (isset($_POST['inputmail'])) {
         <?php if ($actionSubmitted != 0) { ?>
             <div id="message-box">
                 <div class="row">
-                    <div class="col-xs-3"></div>
-                    <div class="col-xs-6" id="message-box-content">
+                    <div class="col-md-3 col-xs-1"></div>
+                    <div class="col-md-6 col-xs-10" id="message-box-content">
                         <i class="close fa fa-close fa-lg"></i>
                         <div class="row">
                             <div class="col-xs-1"></div>
@@ -128,7 +128,7 @@ else if (isset($_POST['inputmail'])) {
                             <div class="col-xs-1"></div>
                         </div>
                     </div>
-                    <div class="col-xs-3"></div>
+                    <div class="col-md-3 col-xs-1"></div>
                 </div>
             </div>
             <div id="overlayer">
