@@ -45,6 +45,7 @@ else if (isset($_POST['inputmail'])) {
         <meta property="og:title" content="PACES Store" />
         <meta property="og:description" content="Découvrez une toute nouvelle façon de travailler. La première plateforme de travail par et pour les étudiants." />
         <meta name="description" content="PACES Store : Découvrez une toute nouvelle façon de travailler. La première plateforme de travail par et pour les étudiants." />
+        <link rel="canonical" href="http://www.paces-store.fr/landing/" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/font-awesome.min.css">
