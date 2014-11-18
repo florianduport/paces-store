@@ -94,6 +94,7 @@ else if (isset($_POST['inputmail'])) {
         <meta name="google-site-verification" content="hIfrtfmDJXM5vy7BkFSyYpxPlUFfVLp2F8jcbcMztls" />
     </head>
     <body>
+        <div class="container-fluid">
         <?php if ($actionSubmitted != 0) { ?>
             <div id="message-box">
                 <div class="row">
@@ -314,6 +315,7 @@ else if (isset($_POST['inputmail'])) {
         </div>
 
         <div id="fb-root"></div>
+        </div>
         <!-- FACEBOOK --> 
         <script>
             (function (d, s, id) {
