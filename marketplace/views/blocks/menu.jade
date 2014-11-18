@@ -1,0 +1,9 @@
+.sb-slidebar.sb-left
+	nav
+		ul.sb-menu
+			li(class="sb-menu-top")
+			each navElement in model.navigation
+				li(class="sb-close")
+					a(href="#{navElement.link}") #{navElement.name} 
+						img(src="/img/icons/#{navElement.link}.svg" class="menu-icon")
+
