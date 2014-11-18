@@ -10,7 +10,7 @@ var ProductService = {
     * getProductById : Récupère un produit en base par son ID
     * @param productId : l'id du produit
     * @param done : la méthode de retour
-    * @return True : si l'utilisateur existe. Sinon False.
+    * @return Produit / Sinon False
     */
     getProductById : function(productId, done){
         DatabaseHelper.getDatabase(function(db){

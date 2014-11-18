@@ -27,10 +27,11 @@ var ProductRoutes = {
     			LoggerService.logError("services", "Wrong get product parameters", {});
     			Base.send(req, res, false);
     		}
-    
-    		ProductService.getProductById(req.body.productId, function(result){
-    			Base.send(req, res, result);
-    		});
+            else {
+        		ProductService.getProductById(req.body.productId, function(result){
+        			Base.send(req, res, result);
+        		});
+            }
     	});
     	
     }

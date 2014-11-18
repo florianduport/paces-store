@@ -20,7 +20,8 @@ var Routes = {
 		
 		//CATALOG
 		app.get('/', HomepageController.initialize);
-		app.get('/list/:school', ProductListController.initialize);
+		app.get('/list/:universe', ProductListController.initialize);
+		app.get('/list/', ProductListController.initialize);
 		app.get('/product/:product', ProductController.initialize);
 
 		//SHOPPING CART

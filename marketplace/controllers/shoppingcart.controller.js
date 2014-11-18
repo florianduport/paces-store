@@ -4,6 +4,7 @@ var ShoppingCartController = {
 
 	initialize : function(req, res){
 	    model.initialize(req, function(model){
+	    	res.send(req.session.shoppingcart);
 	    	/*if(!model)
 	    		res.redirect(301, '/'+req.params.appId+'/error');
 	    	else
@@ -13,6 +14,8 @@ var ShoppingCartController = {
 
 	addToShoppingCart : function(req, res){
 	    model.initialize(req, function(model){
+	    	req.session.shoppingcart = "1";
+	    	res.send("ajout ok");
 	    	/*if(!model)
 	    		res.redirect(301, '/'+req.params.appId+'/error');
 	    	else

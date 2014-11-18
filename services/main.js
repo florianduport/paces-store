@@ -16,6 +16,7 @@ var Main = {
         require('./services/logger/logger.routes').LoggerRoutes,
         require('./services/customer/customer.routes').CustomerRoutes,
         require('./services/product/product.routes').ProductRoutes,
+        require('./services/productList/productList.routes').ProductListRoutes,
         require('./helpers/error.helper').ErrorHelper //last one
     ],
     
