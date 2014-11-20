@@ -23,12 +23,14 @@ var ProductListRoutes = {
     	app.post(configuration.routes.productList.getProductsByFilter, HmacHelper.verifyRequest, function(req, res){
             
     		//check parameters
-            if(req.body === undefined || !req.body || req.body.filter === undefined || !req.body.filter){
+            if( req.body === undefined || !req.body || 
+                req.body.filter === undefined || !req.body.filter || 
+                req.body.order === undefined || !req.body.order){
     			LoggerService.logError("services", "Wrong get product list parameters", {});
     			Base.send(req, res, false);
     		}
             else {
-        		ProductListService.getProductsByFilter(req.body.filter, function(result){
+        		ProductListService.getProductsByFilter(req.body.filter, req.body.order, req.body.reversed, function(result){
         			Base.send(req, res, result);
         		});
             }   

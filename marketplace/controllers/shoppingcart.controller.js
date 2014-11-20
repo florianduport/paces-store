@@ -13,22 +13,14 @@ var ShoppingCartController = {
 	},
 
 	addToShoppingCart : function(req, res){
-	    model.initialize(req, function(model){
-	    	req.session.shoppingcart = "1";
+	    model.addToShoppingCart(req, function(model){
 	    	res.send("ajout ok");
-	    	/*if(!model)
-	    		res.redirect(301, '/'+req.params.appId+'/error');
-	    	else
-	        	res.render(model.type+'/pages/articles', {model: model});*/
 	    });
 	},
 
 	removeFromShoppingCart : function(req, res){
-	    model.initialize(req, function(model){
-	    	/*if(!model)
-	    		res.redirect(301, '/'+req.params.appId+'/error');
-	    	else
-	        	res.render(model.type+'/pages/articles', {model: model});*/
+	    model.removeFromShoppingCart(req, function(model){
+	    	res.send("suppression ok");
 	    });
 	}
 

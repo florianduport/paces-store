@@ -3,13 +3,13 @@ var ServiceHelper = require('../helpers/service.helper').ServiceHelper;
 var ProductListModel = {
 
 	initialize : function(req, callback){
-		var filter = {name : "Produit de test 2"};
-		ServiceHelper.getService('productList', 'getProductsByFilter', {data: { filter : filter}, method : "POST"}, function(products){
+		var filter = {city : "Paris"};
+		ServiceHelper.getService('productList', 'getProductsByFilter', {data: { filter : filter, order : "price", reversed : true}, method : "POST"}, function(products){
 			console.log(products);
 			if(!products)
 				callback(false);
 			else {
-				this.products = products;
+				this.products = JSON.stringify(products);
 				callback(this);
 			}
 

@@ -4,8 +4,9 @@ var ProductListController = {
 
 	initialize : function(req, res){
 	    model.initialize(req, function(model){
-	    	res.send(model.products);
-	        //res.render('pages/productList', {model: model});
+	    	//res.send(model.products);
+	        
+	        res.render('pages/productList', {model: model});
 	    });
 	}
 

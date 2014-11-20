@@ -6,13 +6,13 @@ ObjectID = require('mongodb').ObjectID
  */
 var ProductListService = {
 
-    /**
+    /*
     * getProductsByFilter : Récupère un ensemble de produits correspondant aux critères demandés
     * @param filter : le filtre à appliquer
     * @param done : la méthode de retour
     * @return Liste de produit / Sinon False
     */
-    getProductsByFilter : function(filter, done){
+    getProductsByFilter : function(filter, order, reversed, done){
 
         DatabaseHelper.getDatabase(function(db){
             db.collection("Products", function(err, products){
@@ -20,8 +20,11 @@ var ProductListService = {
                 {
                     return done(false);
                 } 
-                //password should be sent with sha1 encryption
-                products.find(filter).toArray(function(err, products){
+
+                var sortObject = {};
+                sortObject[order] = reversed !== undefined && reversed == true ? -1 : 1;
+
+                products.find(filter).sort(sortObject).toArray(function(err, products){
                     if (err || !products)
                     {
                         return done(false);
@@ -30,8 +33,8 @@ var ProductListService = {
                 });
             });
         });
-
     }
+
 };
 
 module.exports.ProductListService = ProductListService;
