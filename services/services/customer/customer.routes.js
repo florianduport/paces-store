@@ -53,7 +53,7 @@ var CustomerRoutes = {
                 req.body.password === undefined || !req.body.password || 
                 req.body.confirmedPassword === undefined || !req.body.confirmedPassword ||
                 req.body.firstName === undefined || !req.body.firstName ||
-                req.body.lastName === undefined || !req.body.lastName ||){
+                req.body.lastName === undefined || !req.body.lastName){
                 LoggerService.logError("services", "Wrong create customer parameters", {});
                 Base.send(req, res, false);
             }

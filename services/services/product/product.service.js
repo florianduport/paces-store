@@ -19,7 +19,6 @@ var ProductService = {
                 {
                     return done(false);
                 } 
-                //password should be sent with sha1 encryption
                 products.findOne({ _id: ObjectID(productId) }, function(err, product){
                     if (err || !product)
                     {
@@ -27,6 +26,48 @@ var ProductService = {
                     }    
                     return done(product); 
                 });
+            });
+        }); 
+    },
+
+    createProduct : function(name, description, price, city, seller, done){
+        DatabaseHelper.getDatabase(function(db){
+            db.collection("Products", function(err, products){
+                if (err || !products)
+                {
+                    return done(false);
+                } 
+
+                var productObject = {
+                    name : name,
+                    description : description,
+                    price : price,
+                    city : city,
+                    seller : seller,
+                    data : {
+                        sellCount : 0
+                    }
+                }
+
+                products.insert(productObject, { w: 0 });
+            });
+        });
+    },
+
+    updateProduct : function(id, name, description, price, city, done){
+        DatabaseHelper.getDatabase(function(db){
+            db.collection("Products", function(err, products){
+                if (err || !products)
+                {
+                    return done(false);
+                } 
+
+                collection.update({ _id: ObjectID(id)}, {$set:{
+                        name : name,
+                        description : description,
+                        price : price,
+                        city : city
+                }});
             });
         });
     }

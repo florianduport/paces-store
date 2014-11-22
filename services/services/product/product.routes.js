@@ -33,7 +33,85 @@ var ProductRoutes = {
         		});
             }
     	});
-    	
+
+        //Create product
+
+        app.post(configuration.routes.product.createProduct, HmacHelper.verifyRequest, function(req, res){
+
+            //check parameters
+            if(req.body === undefined || !req.body || 
+                req.body.name === undefined || !req.body.name ||
+                req.body.description === undefined || !req.body.description ||
+                req.body.price === undefined || !req.body.price ||
+                req.body.city === undefined || !req.body.city ||
+                req.body.seller === undefined || !req.body.seller){
+                LoggerService.logError("services", "Wrong create product parameters", {});
+                Base.send(req, res, false);
+            }
+            else {
+                ProductService.createProduct(req.body.name, 
+                                            req.body.description, 
+                                            req.body.price,
+                                            req.body.city,
+                                            req.body.seller,
+                                             function(result){
+                    Base.send(req, res, result);
+                });
+            }
+        });
+
+        //update product
+
+        app.post(configuration.routes.product.updateProduct, HmacHelper.verifyRequest, function(req, res){
+
+            //check parameters
+            if(req.body === undefined || !req.body ||
+                req.body.id === undefined || !req.body.id || 
+                req.body.name === undefined || !req.body.name ||
+                req.body.description === undefined || !req.body.description ||
+                req.body.price === undefined || !req.body.price ||
+                req.body.city === undefined || !req.body.city){
+                LoggerService.logError("services", "Wrong update product parameters", {});
+                Base.send(req, res, false);
+            }
+            else {
+                ProductService.updateProduct(req.body.id,
+                                            req.body.name, 
+                                            req.body.description, 
+                                            req.body.price,
+                                            req.body.city,
+                                             function(result){
+                    Base.send(req, res, result);
+                });
+            }
+        });
+
+        /*
+        app.post(configuration.routes.product.createProduct, HmacHelper.verifyRequest, function(req, res){
+
+            //check parameters
+            if(req.body === undefined || !req.body || 
+                req.body.name === undefined || !req.body.name ||
+                req.body.description === undefined || !req.body.description ||
+                req.body.price === undefined || !req.body.price ||
+                req.body.city === undefined || !req.body.city ||
+                req.body.seller === undefined || !req.body.seller){
+                LoggerService.logError("services", "Wrong create product parameters", {});
+                Base.send(req, res, false);
+            }
+            else {
+                ProductService.createProduct(req.body.name, 
+                                            req.body.description, 
+                                            req.body.price,
+                                            req.body.city,
+                                            req.body.seller,
+                                             function(result){
+                    Base.send(req, res, result);
+                });
+            }
+        });
+*/
+
     }
     
 };
