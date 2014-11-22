@@ -4,6 +4,10 @@ var PageController = {
 
 	initialize : function(req, res){
 	    model.initialize(req, function(model){
+	    	if(model == false){
+	    		res.status(404);
+	    		res.render('error');
+	    	}
 	    });
 	},
 

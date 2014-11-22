@@ -45,6 +45,23 @@ var CustomerRoutes = {
             });
         });
 
+        //create : /customer/create
+        app.post(configuration.routes.customer.createCustomer, HmacHelper.verifyRequest, function(req, res){
+            //check parameters
+            if(req.body === undefined || !req.body || 
+                req.body.username === undefined || !req.body.username || 
+                req.body.password === undefined || !req.body.password || 
+                req.body.confirmedPassword === undefined || !req.body.confirmedPassword ||
+                req.body.firstName === undefined || !req.body.firstName ||
+                req.body.lastName === undefined || !req.body.lastName ||){
+                LoggerService.logError("services", "Wrong create customer parameters", {});
+                Base.send(req, res, false);
+            }
+            CustomerService.createCustomer(req.body.username, req.body.password, req.body.confirmedPassword, req.body.firstName, req.body.lastName, function(result){
+                Base.send(req, res, result);
+            });
+        });
+
         // update : /customer/update
 
         app.post(configuration.routes.customer.updateCustomer, HmacHelper.verifyRequest, function(req, res){

@@ -1,5 +1,5 @@
-var DatabaseHelper = require('../../helpers/database.helper').DatabaseHelper;
-
+var DatabaseHelper = require('../../helpers/database.helper').DatabaseHelper,
+sha1 = require('sha1');
 /**
  * Service Customer
  * @class CustomerService
@@ -58,6 +58,53 @@ var CustomerService = {
         });   
     },
 
+    /**
+    * createCustomer : Modifie les informations de l'utilisateur
+    * @param username : le nom d'utilisateur
+    * @param password : le mot de passe
+    * @param confirmedPassword : le mot de passe 2
+    * @param firstName : le prénom
+    * @param lastName : le nom
+    * @param done : la méthode de retour
+    * @return le résultat de l'operation True / False
+    */
+    createCustomer : function(username, password, confirmedPassword, firstName, lastName, done){
+        try{
+            DatabaseHelper.getDatabase(function(db){
+
+                if(username == "" || 
+                    password == "" ||
+                    confirmedPassword == ""||
+                    password != confirmedPassword ||
+                    firstName == "" ||
+                    lastName == ""){
+                    done(false);
+                }
+
+                var customerObject = {
+                    ussername : username,
+                    password : sha1(password),
+                    account : {
+                        firstName : firstName,
+                        lastName : lastName
+                    }
+                };
+
+                db.collection("Customers", function(err, customers){
+                    if(!err && customers !== undefined && !customers){
+                        customers.insert(customerObject, { w: 0 });
+                        done(true);
+                    }
+                    else
+                      done(false);  
+                });
+            });
+        }
+        catch(err){
+            done(false);
+        }
+        
+    },
     /**
     * updateCustomer : Modifie les informations de l'utilisateur
     * @param username : le nom d'utilisateur

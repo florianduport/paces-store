@@ -4,8 +4,8 @@ var PageModel = {
 
 	initialize : function(req, callback){
 		this.appId = req.params.appId;
-
-		ServiceHelper.getService('application', 'getPage', {data: {"appId" : this.appId, "page" : req.params.page}, method : "POST"}, function(page){
+		callback(false);
+		/*ServiceHelper.getService('application', 'getPage', {data: {"appId" : this.appId, "page" : req.params.page}, method : "POST"}, function(page){
 			if(!page)
 				callback(false);
 			else {
@@ -13,7 +13,7 @@ var PageModel = {
 				this.navigation = page.navigation;
 				callback(this);
 			}
-		})
+		})*/
 	},
 
 	initializeError : function(req, callback){
