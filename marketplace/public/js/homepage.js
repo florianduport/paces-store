@@ -15,4 +15,8 @@ $(document).ready(function(){
 
 		}, function(){}, {});
 	}
+
+	$("#go_to_city_button").click(function(){
+		window.location = "/list/"+$(this).data("list");
+	});
 });

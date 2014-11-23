@@ -6,6 +6,6 @@ block section_main
     h1 Bonjour !
     h3 Vous êtes géolocalisé à #{model.position.city}.
     h4 #{model.school.name}
-    paper-button(id="go_to_city_button" raised class="colored" role="button") Accéder aux contenus
+    paper-button(id="go_to_city_button" raised class="colored" role="button" data-list="#{model.school.universityId}") Accéder aux contenus
       core-icon-button(icon="arrow-forward") 
     p Ce n'est pas votre ville ? Changer de ville

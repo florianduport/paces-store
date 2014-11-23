@@ -1,6 +1,7 @@
 html
   script(src="/js/libs/jquery.min.js")
   script(src="/js/libs/jquery.cookie.js")
+  script(src="/js/cart.js")
   script(src="/polymer/webcomponentsjs/webcomponents.js")
   link(rel="stylesheet" href="/css/global.css")
   link(rel="import" href="/polymer/polymer/polymer.html")
@@ -18,7 +19,7 @@ body
         div(id="siteName") PACES Store
         //core-icon-button(icon="search" id="core_icon_button" horizontal layout end-justified twelve flex) 
         //div(id="div" horizontal layout) Rechercher
-        core-icon-button(icon="shopping-basket" id="core_icon_button_basket"  one flex horizontal layout end-justified) 
-        div(id="basket_number_products") 0 produits
+        core-icon-button(icon="shopping-basket" id="core_icon_button_cart"  one flex horizontal layout end-justified) 
+        div(id="cart_number_products")
       section(id="section_main")
         block section_main

@@ -26,23 +26,25 @@ var Main = {
     		app.use(session({
 			  store: new MongoStore({
 			    url: configuration.database.address
-			  }),
+			  }, startContent),
 			  secret: 'paces-store'
 			}));
 
-			app.set('port', configuration.port);
-			app.set('views', __dirname + '/views');
-			app.set('view engine', 'jade');
-			app.use(express.static(path.join(__dirname, 'public')));
+    		function startContent(){
+				app.set('port', configuration.port);
+				app.set('views', __dirname + '/views');
+				app.set('view engine', 'jade');
+				app.use(express.static(path.join(__dirname, 'public')));
 
-			app.use(bodyParser());
+				app.use(bodyParser());
 
-			Routes.loadRoutes(app, configuration);
+				Routes.loadRoutes(app, configuration);
 
-			//lancement du serveur
-			app.listen(configuration.port, function(){
-			    console.log('marketplace started on '+(configuration.addressBasePath+":"+configuration.port));      
-			});
+				//lancement du serveur
+				app.listen(configuration.port, function(){
+				    console.log('marketplace started on '+(configuration.addressBasePath+":"+configuration.port));      
+				});
+			}
 
 		}});
 

@@ -1,4 +1,7 @@
-html
-	body
-		p #{model.products}
-		p ok
+extends ../layout
+block section_main
+	h1 une super liste produits
+	each product in model.products
+		p
+			a(href="/product/#{product._id}") #{product.name}
+			span  #{product.university}

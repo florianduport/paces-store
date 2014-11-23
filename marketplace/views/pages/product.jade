@@ -1,6 +1,12 @@
-html
-	body
+extends ../layout
+block section_main
+		h1 une super fiche produit		
 		p #{model.product.name}
 		p #{model.product.description}
 		p #{model.product.price} €
 		p #{model.product.seller}
+		paper-button(class="add_to_cart_button" raised class="colored" role="button" data-product="#{model.product._id}") Ajouter au panier
+		paper-button(class="colored custom" role="button" tabindex="0")
+			core-icon(icon="check" aria-label="check" role="img")
+			span produit ajouté
+		a(href="/shoppingcart/") Accéder au panier
