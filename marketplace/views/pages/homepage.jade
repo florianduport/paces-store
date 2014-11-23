@@ -5,7 +5,7 @@ block section_main
   div(id="section_city")
     h1 Bonjour !
     h3 Vous êtes géolocalisé à #{model.position.city}.
-    h4 Université Bordeaux Segalen 
+    h4 #{model.school.name}
     paper-button(id="go_to_city_button" raised class="colored" role="button") Accéder aux contenus
       core-icon-button(icon="arrow-forward") 
     p Ce n'est pas votre ville ? Changer de ville

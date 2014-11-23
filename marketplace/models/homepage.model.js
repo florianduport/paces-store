@@ -6,7 +6,24 @@ var HomepageModel = {
 
 	initialize : function(req, callback){
 
+		this.loadPosition(req, function(model){
+			ServiceHelper.getService('school', 'getSchools', {data: {}, method : "POST"}, function(schools){
+			
+				if(!schools)
+					callback(false);
+				else {
+					model.loadSchool(req, schools, function(model){
+						callback(model);
+					});
+				}
+
+			});
+		});
 		
+	},
+
+	loadPosition : function(req, callback){
+
 		if(req.cookies.position !== undefined){
 			//Si on a une position dans les cookies => on l'utilise
 
@@ -45,6 +62,11 @@ var HomepageModel = {
 				callback(this);
 			});
 		}
+	},
+
+	loadSchool : function(req, schools, callback){
+		this.school = schools[0];
+		callback(this);
 	}
 };
 
