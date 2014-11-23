@@ -45,7 +45,8 @@ var ProductService = {
                     city : city,
                     seller : seller,
                     data : {
-                        sellCount : 0
+                        sellCount : 0,
+                        alertCount : 0
                     }
                 }
 

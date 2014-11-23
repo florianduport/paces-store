@@ -4,7 +4,7 @@ var HomepageController = {
 
 	initialize : function(req, res){
 	    model.initialize(req, function(model){
-	    	//res.send(200, "ok");
+	    	res.cookie("position", model.position);
 	       	res.render('pages/homepage', {model: model});
 	    });
 	}
