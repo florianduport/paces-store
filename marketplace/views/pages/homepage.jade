@@ -1,11 +1,39 @@
-extends ../layout
-block header
+html
+  script(src="/js/libs/jquery.min.js")
+  script(src="/js/libs/jquery.cookie.js")
+  script(src="/js/cart.js")
   script(src="/js/homepage.js")
-block section_main
-  div(id="section_city")
-    h1 Bonjour !
-    h3 Vous êtes géolocalisé à #{model.position.city}.
-    h4 #{model.school.name}
-    paper-button(id="go_to_city_button" raised class="colored" role="button" data-list="#{model.school.universityId}") Accéder aux contenus
-      core-icon-button(icon="arrow-forward") 
-    p Ce n'est pas votre ville ? Changer de ville
+  script(src="/polymer/webcomponentsjs/webcomponents.js")
+  link(rel="stylesheet" href="/css/global.css")
+  link(rel="stylesheet" href="/css/homepage.css")
+  link(rel="import" href="/polymer/polymer/polymer.html")
+  link(rel="import" href="/polymer/font-roboto/roboto.html")
+  link(rel="import" href="/polymer/core-scaffold/core-scaffold.html")
+  link(rel="import" href="/polymer/core-header-panel/core-header-panel.html")
+  link(rel="import" href="/polymer/core-toolbar/core-toolbar.html")
+  link(rel="import" href="/polymer/core-menu/core-menu.html")
+  link(rel="import" href="/polymer/core-item/core-item.html")
+  link(rel="import" href="/polymer/paper-button/paper-button.html")
+  link(href="//fonts.googleapis.com/css?family=RobotoDraft:300,400,500|Source+Code+Pro:400,500,700" rel="stylesheet")
+body
+    core-header-panel(mode="standard" id="core-header-panel") 
+      core-toolbar(id="core-toolbar") 
+        div(id="siteName") PACES Store
+        core-icon-button(icon="shopping-basket" id="core-icon-button-cart"  one flex horizontal layout end-justified) 
+        div(id="cart_number_products")
+      section(id="section-main")
+        div(id="section-city-container"  layout horizontal center center-justified)
+          div(id="section-city")
+            h1 Bienvenue sur PACES Store !
+            p PACES Store est la première plateforme collaborative et participative de travail, entièrement dédiée à la réussite de la PACES. 
+              br
+              br
+              span PACES Store simplifie l’entre-aide et la transmission de savoir-faire entre les étudiants ayant réussi les concours et les étudiants en PACES. Les premiers participent à la réussite des seconds.
+            br
+            p Vous êtes géolocalisé à #{model.position.city}. #{model.school.name}
+            paper-button(id="go-to-city-button" raised role="button"  data-list="#{model.school.universityId}") 
+              core-icon(icon="arrow-forward" aria-label="arrow-forward" role="img") 
+              span Accéder aux contenus
+            paper-button(id="change-city-button" role="button") 
+              core-icon(icon="explore" aria-label="explore" role="img") 
+              span Changer d'université

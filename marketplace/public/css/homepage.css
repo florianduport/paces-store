@@ -1,0 +1,50 @@
+html { height: 100% }
+body {
+    margin: 0;
+    height: 100%;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    font-family: "RobotoDraft",Helvetica,Arial,sans-serif;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+#core-header-panel {
+    width: 300px;
+    height: 400px;
+    left: 0px;
+    top: 0px;
+    position: static;
+}
+#section-city-container{
+	width: 100%;
+	background-color: #eee;
+	padding: 50px;
+	color : #444;
+}
+#section-city{
+	width: 30%;
+	height: 30%;
+}
+#section-city h1{
+	font-weight: 300;
+	letter-spacing: -0.01em;
+	line-height: 48px;
+	margin: 0;
+	font-size: 40px;
+}
+#section-main {
+    height: 1000px;
+    background: linear-gradient(rgb(255, 255, 255), #c1c1c1);
+}
+#go-to-city-button{
+    background: #fafafa;
+    font-size: 14px;
+    padding: 0px;
+    margin: 0px;
+}
+#change-city-button{
+	color: #666;
+	background: #eee;
+}
+#core-toolbar {
+    background-color: #eee;
+}
