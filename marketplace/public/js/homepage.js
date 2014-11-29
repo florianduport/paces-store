@@ -16,7 +16,7 @@ $(document).ready(function(){
 		}, function(){}, {});
 	}
 
-	$("#go_to_city_button").click(function(){
+	$("#go-to-city-button").click(function(){
 		window.location = "/list/"+$(this).data("list");
 	});
 });

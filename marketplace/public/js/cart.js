@@ -1,20 +1,20 @@
 $(document).ready(function(){
-	$(".add_to_cart_button").click(function(){
+	$(".add-to-cart-button").click(function(){
 		$.ajax({
 			url : "/addtocart/"+$(this).data("product"),
 			success : function(cartCount){
-				$.cookie("cart_count", cartCount);
+				$.cookie("cart-count", cartCount);
 				reloadCartCount();
 			}
 		});
 	});
 	var reloadCartCount = function(){
-		if($.cookie("cart_count") !== undefined){
+		if($.cookie("cart-count") !== undefined){
 			if($.cookie("cart_count") == 1){
-				$("#cart_number_products").html("1 produit");
+				$("#cart-number-products").html("1 produit");
 			}
-			else if($.cookie("cart_count") > 1){
-				$("#cart_number_products").html($.cookie("cart_count")+" produits");
+			else if($.cookie("cart-count") > 1){
+				$("#cart-number-products").html($.cookie("cart_count")+" produits");
 			}	
 		}
 		
