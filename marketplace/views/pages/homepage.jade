@@ -18,12 +18,16 @@ html
 body
     core-header-panel(mode="standard" id="core-header-panel") 
       core-toolbar(id="core-toolbar") 
-        div(id="siteName") PACES Store
+        div(id="siteName") 
+            img(src="/img/logo.png" id="logo-toolbar")
         core-icon-button(icon="shopping-basket" id="core-icon-button-cart"  one flex horizontal layout end-justified) 
         div(id="cart_number_products")
       section(id="section-main")
         div(id="section-city-container"  layout horizontal center center-justified)
-          div(id="section-city")
+          div(flex one)
+          div(flex one layout horizontal center center-justified)
+              img(src="/img/logo-big.png" id="logo-main")
+          div(id="section-city" flex two)
             h1 Bienvenue sur PACES Store !
             p PACES Store est la première plateforme collaborative et participative de travail, entièrement dédiée à la réussite de la PACES. 
               br
@@ -37,3 +41,4 @@ body
             paper-button(id="change-city-button" role="button") 
               core-icon(icon="explore" aria-label="explore" role="img") 
               span Changer d'université
+          div(flex one)
