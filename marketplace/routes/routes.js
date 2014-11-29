@@ -19,10 +19,10 @@ var Routes = {
 		//routes / mapping controller
 		
 		//CATALOG
-		app.get('/', HomepageController.initialize);
-		app.get('/list/:universityId', ProductListController.initialize);
-		app.get('/list/', ProductListController.initialize);
-		app.get('/product/:product', ProductController.initialize);
+		app.get('/', PageController.initializeGeoloc, HomepageController.initialize);
+		app.get('/list/:universityId', PageController.initializeGeoloc, ProductListController.initialize);
+		app.get('/list/', PageController.initializeGeoloc, ProductListController.initialize);
+		app.get('/product/:product', PageController.initializeGeoloc, ProductController.initialize);
 
 		//SHOPPING CART
 		app.get('/shoppingcart/', ShoppingCartController.initialize);

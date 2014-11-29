@@ -15,6 +15,14 @@ var PageController = {
 		model.initializeError(req, function(model){
 	        res.render(model.type+"/error", {model: model});
 	    });
+	},
+
+	initializeGeoloc : function(req, res, next){
+	    model.initializeGeoloc(req, function(model){
+	    	res.cookie("position", model.position);
+	    	req.session.position = model.position;
+	    	next();
+	    });
 	}
 
 };

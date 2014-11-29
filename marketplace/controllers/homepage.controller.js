@@ -3,9 +3,8 @@ var model = require('../models/homepage.model').HomepageModel;
 var HomepageController = {
 
 	initialize : function(req, res){
-	    model.initialize(req, function(model){
-	    	res.cookie("position", model.position);
-	       	res.render('pages/homepage', {model: model});
+	    model.initialize(req, res, function(model){
+	    	res.render('pages/homepage', {model: model});
 	    });
 	}
 

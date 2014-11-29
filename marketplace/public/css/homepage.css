@@ -81,3 +81,15 @@ img#logo-main {
     padding: 5px;
   }  
 }
+#section {
+    width: 100%;
+    height: 630px;
+    left: 390px;
+    top: 130px;
+    position: static;
+}
+#paper_tabs {
+    color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 2px;
+    background-color: rgb(0, 188, 212);
+}
