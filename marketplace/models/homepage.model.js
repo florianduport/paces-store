@@ -15,6 +15,9 @@ var HomepageModel = {
 				callback(false);
 			else {
 				model.loadSchool(req, schools, model, function(model){
+					if(model.position.city === undefined || model.position.city === ""){
+						model.position.city = model.school.city;
+					}
 					callback(model);
 				});
 			}
