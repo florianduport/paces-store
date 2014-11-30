@@ -4,7 +4,6 @@ html
   script(src="/js/cart.js")
   script(src="/js/homepage.js")
   script(src="/polymer/webcomponentsjs/webcomponents.js")
-  link(rel="stylesheet" href="/css/global.css")
   link(rel="stylesheet" href="/css/homepage.css")
   link(rel="import" href="/polymer/polymer/polymer.html")
   link(rel="import" href="/polymer/font-roboto/roboto.html")
@@ -13,7 +12,13 @@ html
   link(rel="import" href="/polymer/core-toolbar/core-toolbar.html")
   link(rel="import" href="/polymer/core-menu/core-menu.html")
   link(rel="import" href="/polymer/core-item/core-item.html")
+  link(rel="import" href="/polymer/core-transition/core-transition.html")
   link(rel="import" href="/polymer/paper-button/paper-button.html")
+  link(rel="import" href="/polymer/paper-item/paper-item.html")
+  link(rel="import" href="/polymer/paper-dialog/paper-dialog.html")
+  link(rel="import" href="/polymer/paper-dialog/paper-action-dialog.html")
+  link(rel="import" href="/polymer/paper-dropdown/paper-dropdown.html")
+  link(rel="import" href="/polymer/paper-dropdown-menu/paper-dropdown-menu.html")
   link(href="//fonts.googleapis.com/css?family=RobotoDraft:300,400,500|Source+Code+Pro:400,500,700" rel="stylesheet")
 body
     core-header-panel(mode="standard" id="core-header-panel") 
@@ -41,9 +46,14 @@ body
             paper-button(id="go-to-city-button" raised role="button"  data-list="#{model.school.universityId}") 
               core-icon(icon="arrow-forward" aria-label="arrow-forward" role="img") 
               span Accéder aux contenus
-            paper-button(id="change-city-button" role="button") 
+            paper-button(id="change-city-button" role="button" data-opened="false") 
               core-icon(icon="explore" aria-label="explore" role="img") 
               span Changer d'université
+                paper-dropdown(class="with-margin core-transition core-closed" tabindex="-1" style="outline: none; display: none;")
+                      p Croissant
+                      p Donut
+                      p Financier
+                      p Madeleine
           div(flex one class="space")
 
 

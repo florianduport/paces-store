@@ -1,0 +1,20 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+core-header-panel {
+  height: 100%;
+}
+#logo-toolbar{
+    height:50%;
+}
+#left-drawer,
+#left-drawer core-toolbar{
+    background: #eee;
+}
+#left-drawer ::content #dropShadow{
+    display: none;
+}
+#main-panel core-toolbar{
+    background: #7986cb !important
+}

@@ -19,4 +19,10 @@ $(document).ready(function(){
 	$("#go-to-city-button").click(function(){
 		window.location = "/list/"+$(this).data("list");
 	});
+	$("#change-city-button").click(function(){
+		if($(this).data("opened") === "false"){
+			$(this).find("paper-dropdown").toggle();
+			$(this).data("opened", "true");
+		}
+	});
 });
