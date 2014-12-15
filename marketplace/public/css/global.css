@@ -11,6 +11,11 @@ core-header-panel {
     margin-left: auto;
     margin-right: auto;
 }
+#logo-link{
+  width: 100%;
+  text-align: center;
+  margin: 0px;
+}
 #left-drawer,
 #left-drawer core-toolbar{
     background: #eee;

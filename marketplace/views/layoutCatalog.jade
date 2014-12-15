@@ -3,7 +3,8 @@ block section_main
 	core-drawer-panel
 		core-header-panel(drawer mode="seamed" id="left-drawer")
 			core-toolbar 
-				img(src="/img/logo.png" id="logo-toolbar")
+				a(href="/" id="logo-link")
+					img(src="/img/logo.png" id="logo-toolbar")
 			div
 				each category in model.categories
 					- var shortDescription = category.description.length > 20 ? category.description.substring(0, 25)+"..." : category.description;

@@ -1,10 +1,11 @@
 $(document).ready(function(){
 
 	var applyFilter = function(){
+		var university = $.cookie("current-university") !== undefined ? $.cookie("current-university") : "";
 		var formData = "<input type='hidden' name='category' value='"+$("*[current-category=true]").data("value")+"' />";
 		var formData = formData + "<input type='hidden' name='sort' value='dateDown' />";
 		var formData = formData + "<input type='hidden' name='ajax' value='false' />";
-		var form = $("<form method='post' action='/list/"+$.cookie("current-university")+"'>"+formData+"</form>");
+		var form = $("<form method='post' action='/list/"+university+"'>"+formData+"</form>");
 
 		form.submit();/*
 		$.post("", {
