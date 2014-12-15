@@ -1,90 +1,12 @@
-extends ../layout
-block section_main
-	core-drawer-panel
-		core-header-panel(drawer id="left-drawer")
-			core-toolbar 
-				img(src="/img/logo.png" id="logo-toolbar")
-			div
-				p content
-		core-header-panel(id="main-panel" main navigation flex mode="waterfall-tall")
-			core-toolbar 
-				div.bottom une super liste produits
-			div.content
-				each product in model.products
-					p
-					a(href="/product/#{product._id}") #{product.name}
-					span  #{product.university}
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
-					br
+extends ../layoutCatalog
+block header
+	script(src="/js/libs/animate.js")
+	link(rel="stylesheet" href="/css/libs/animate.css")
+	script(src="/js/productList.js")
+block section_content
+	select(filter-element data-type="sort")
+		option(value="dateDown" selected) Les plus récents
+		option(value="priceDown") Prix croissant
+		option(value="priceUp") Prix décroissant
+	div.productList
+		include ../blocks/productListBlock.jade

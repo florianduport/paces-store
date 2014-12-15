@@ -18,21 +18,37 @@ var SchoolRoutes = {
     */
     loadRoutes : function(app, configuration){
 
-    	// get schools list
+        // get schools list
     
-    	app.post(configuration.routes.school.getSchools, HmacHelper.verifyRequest, function(req, res){
+        app.post(configuration.routes.school.getSchools, HmacHelper.verifyRequest, function(req, res){
             
-    		//check parameters
+            //check parameters
             if( req.body === undefined || !req.body){
-    			LoggerService.logError("services", "Wrong get schools parameters", {});
-    			Base.send(req, res, false);
-    		}
+                LoggerService.logError("services", "Wrong get schools parameters", {});
+                Base.send(req, res, false);
+            }
             else {
-        		SchoolService.getSchools(function(result){
-        			Base.send(req, res, result);
-        		});
+                SchoolService.getSchools(function(result){
+                    Base.send(req, res, result);
+                });
             }   
-    	});
+        });     
+
+        // get school by url id
+    
+        app.post(configuration.routes.school.getSchoolByUrlId, HmacHelper.verifyRequest, function(req, res){
+            
+            //check parameters
+            if( req.body === undefined || !req.body || req.body.universityId === undefined || !req.body.universityId){
+                LoggerService.logError("services", "Wrong get school by url id parameters", {});
+                Base.send(req, res, false);
+            }
+            else {
+                SchoolService.getSchoolByUrlId(req.body.universityId, function(result){
+                    Base.send(req, res, result);
+                });
+            }   
+        });
     	
     }
     

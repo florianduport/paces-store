@@ -18,6 +18,7 @@ var Main = {
         require('./services/product/product.routes').ProductRoutes,
         require('./services/productList/productList.routes').ProductListRoutes,
         require('./services/school/school.routes').SchoolRoutes,
+        require('./services/category/category.routes').CategoryRoutes,
         require('./helpers/error.helper').ErrorHelper //last one
     ],
     

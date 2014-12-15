@@ -9,8 +9,17 @@ var ProductModel = {
 				callback(false);
 			else {
 				this.product = product;
-				callback(this);
+				var model = this;
+				ProductModel.loadCategories(model, callback);
+
 			}
+		});
+	},
+
+	loadCategories : function(model, callback){
+		ServiceHelper.getService('category', 'getCategories', {data: {}, method : "POST"}, function(categories){
+			model.categories = categories;
+			callback(model);
 		});
 	}
 

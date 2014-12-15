@@ -22,6 +22,8 @@ var Routes = {
 		app.get('/', PageController.initializeGeoloc, HomepageController.initialize);
 		app.get('/list/:universityId', PageController.initializeGeoloc, ProductListController.initialize);
 		app.get('/list/', PageController.initializeGeoloc, ProductListController.initialize);
+		app.post('/list/:universityId', PageController.initializeGeoloc, ProductListController.initializeFilter);
+		app.post('/list/', PageController.initializeGeoloc, ProductListController.initializeFilter);
 		app.get('/product/:product', PageController.initializeGeoloc, ProductController.initialize);
 
 		//SHOPPING CART

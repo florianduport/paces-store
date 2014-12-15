@@ -8,18 +8,43 @@ var SchoolService = {
 
     /**
     * getSchoolById : Récupère une université en base par son ID
-    * @param shoolId : l'id du produit
+    * @param shoolId : l'id de l'université
     * @param done : la méthode de retour
     * @return Produit / Sinon False
     */
     getSchoolById : function(schoolId, done){
         DatabaseHelper.getDatabase(function(db){
-            db.collection("Schools", function(err, schools){
-                if (err || !schools)
+            db.collection("Schools", function(err, schoolsCollection){
+                if (err || !schoolsCollection)
                 {
                     return done(false);
                 } 
-                Schools.findOne({ _id: ObjectID(schoolId) }, function(err, school){
+                schoolsCollection.findOne({ _id: ObjectID(schoolId) }, function(err, school){
+                    if (err || !school)
+                    {
+                        return done(false);
+                    }    
+                    return done(school); 
+                });
+            });
+        }); 
+    },    
+
+    /**
+    * getSchoolByUrlId : Récupère une université en base par son url 
+    * @param shoolUrlId : l'url de l'université
+    * @param done : la méthode de retour
+    * @return Produit / Sinon False
+    */
+    getSchoolByUrlId : function(shoolUrlId, done){
+        DatabaseHelper.getDatabase(function(db){
+            db.collection("Schools", function(err, schoolsCollection){
+                if (err || !schoolsCollection)
+                {
+                    console.log(err);
+                    return done(false);
+                } 
+                schoolsCollection.findOne({ universityId : shoolUrlId }, function(err, school){
                     if (err || !school)
                     {
                         return done(false);

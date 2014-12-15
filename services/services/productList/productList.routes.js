@@ -30,7 +30,7 @@ var ProductListRoutes = {
     			Base.send(req, res, false);
     		}
             else {
-        		ProductListService.getProductsByFilter(req.body.filter, req.body.order, req.body.reversed, function(result){
+        		ProductListService.getProductsByFilter(req.body.filter, req.body.order, function(result){
         			Base.send(req, res, result);
         		});
             }   

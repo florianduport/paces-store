@@ -12,7 +12,7 @@ var ProductListService = {
     * @param done : la méthode de retour
     * @return Liste de produit / Sinon False
     */
-    getProductsByFilter : function(filter, order, reversed, done){
+    getProductsByFilter : function(filter, order, done){
 
         DatabaseHelper.getDatabase(function(db){
             db.collection("Products", function(err, products){
@@ -22,7 +22,7 @@ var ProductListService = {
                 } 
 
                 var sortObject = {};
-                sortObject[order] = reversed !== undefined && reversed == true ? -1 : 1;
+                sortObject[order.order] = order.reversed !== undefined && order.reversed == true ? -1 : 1;
 
                 products.find(filter).sort(sortObject).toArray(function(err, products){
                     if (err || !products)

@@ -6,7 +6,10 @@ core-header-panel {
   height: 100%;
 }
 #logo-toolbar{
-    height:50%;
+    height:32px;
+    margin: 15px;
+    margin-left: auto;
+    margin-right: auto;
 }
 #left-drawer,
 #left-drawer core-toolbar{

@@ -40,6 +40,7 @@ var HomepageModel = {
 				schoolIndex = i;
 				schoolDistance = distance;
 			}
+			console.log("distance from "+schools[i].city+" is "+distance);
 		}
 
 		model.school = schools[schoolIndex];

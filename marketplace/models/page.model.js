@@ -39,7 +39,6 @@ var PageModel = {
 	},
 
 	loadPosition : function(req, model, callback){
-
 		if(req.cookies.position !== undefined){
 			//Si on a une position dans les cookies => on l'utilise
 
@@ -47,7 +46,6 @@ var PageModel = {
 				//Si l'utilisateur vient de mettre à jour sa géoloc => on recharge la Ville
 				Geocoder.reverse(req.cookies.position.latitude, req.cookies.position.longitude, function(err, res) {
 					if(!err && res !== undefined && res.length > 0){
-						console.log("city : ");
 						model.position = req.cookies.position;
 						model.position.isNew = false;
     					model.position.city = res[0].city !== undefined ? res[0].city : model.position.city;
@@ -75,6 +73,10 @@ var PageModel = {
 					model.position.city = res[0].city;
 					model.position.isNew = false;
 					model.position.isAlreadyCalculated = false;
+				}else {
+					//that's baaaaaad
+
+					model.position = {latitude : "48.856614", longitude : "2.352222", city : undefined, isNew : false, isAlreadyCalculated : false };
 				}
 				callback(model);
 			});

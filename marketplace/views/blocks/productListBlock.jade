@@ -1,0 +1,8 @@
+if model.products.length > 0
+	each product in model.products
+		p
+			a(href="/product/#{product._id}") #{product.name}
+			span  #{product.university}
+			paper-button(class="add-to-cart-button" raised class="colored" role="button" data-product="#{product._id}") Ajouter au panier
+else
+	p Oups ! Il n'y a pas encore de contenu pour cette catégorie.
