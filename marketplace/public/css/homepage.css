@@ -9,7 +9,6 @@ body {
 }
 #core-header-panel {
     width: 300px;
-    height: 400px;
     left: 0px;
     top: 0px;
     position: static;
@@ -88,8 +87,9 @@ img#logo-main {
     top: 130px;
     position: static;
 }
-#paper_tabs {
-    color: rgb(255, 255, 255);
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 2px;
-    background-color: rgb(0, 188, 212);
+paper-tab::shadow #ink {
+  color: #000000;
+}
+paper-tabs::shadow #selectionBar{
+  background-color: #000000;
 }

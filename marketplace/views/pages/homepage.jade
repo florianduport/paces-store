@@ -18,6 +18,8 @@ html
   link(rel="import" href="/polymer/paper-dialog/paper-dialog.html")
   link(rel="import" href="/polymer/paper-dialog/paper-action-dialog.html")
   link(rel="import" href="/polymer/paper-dropdown/paper-dropdown.html")
+  link(rel="import" href="/polymer/paper-tabs/paper-tabs.html")
+  link(rel="import" href="/polymer/paper-tabs/paper-tab.html")
   link(rel="import" href="/polymer/paper-dropdown-menu/paper-dropdown-menu.html")
   link(href="//fonts.googleapis.com/css?family=RobotoDraft:300,400,500|Source+Code+Pro:400,500,700" rel="stylesheet")
 body
@@ -29,7 +31,7 @@ body
         div(flex one layout horizontal center end-justified)
           span(id="cart-number-products") panier vide    
           core-icon(icon="shopping-basket" id="core-icon-button-cart")
-        div(id="cart_number_products")
+        div(id="cart-number-products")
       section(id="section-main")
         div(id="section-city-container" layout horizontal center center-justified)
           div(flex one class="space")
@@ -54,6 +56,30 @@ body
                       p Donut
                       p Financier
                       p Madeleine
+          div(flex one class="space")
+        div(id="section-container-1" class="section-container" layout horizontal center center-justified)
+          paper-tabs(selected="0")
+            paper-tab Je suis étudiant en PACES
+            paper-tab J'ai déjà réussi ma PACES
+          div(flex one class="space")
+          div(id="section-city" flex two)
+            h1 LA PREMIÈRE PLATEFORME DE TRAVAIL PAR ET POUR LES ÉTUDIANTS EN PACES
+          div(flex one class="space")
+        div(id="section-container-2" class="section-container" layout horizontal center center-justified)
+          div(flex one class="space")
+          div(id="section-city" flex two)
+            h1 AVANT, S’ENTRAINER À FAIRE DES COLLES, EXERCICES, FICHES ETC. ÉTAIT COUTEUX OU RÉPÉTITIF. MAIS ÇA, C’ÉTAIT AVANT PACES STORE ! 
+          div(flex one class="space")
+        div(id="section-container-3" class="section-container" layout horizontal center center-justified)
+          div(flex one class="space")
+          div(id="section-city" flex two)
+            img(src="/img/PACES-Store-schema.png") 
+          div(flex one class="space")
+        div(id="section-container-4" class="section-container" layout horizontal center center-justified)
+          div(flex one class="space")
+          div(id="section-city" flex two)
+            h1 Qui sommes-nous ?
+            p Elaboré avec <3 par RMP
           div(flex one class="space")
 
 
