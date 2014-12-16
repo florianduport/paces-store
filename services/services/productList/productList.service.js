@@ -24,7 +24,14 @@ var ProductListService = {
                 var sortObject = {};
                 sortObject[order.order] = order.reversed !== undefined && order.reversed == true ? -1 : 1;
 
+                if(filter["_id"] && typeof(filter["_id"]) === "object"){
+                   if(filter["_id"]["$in"] !== undefined && filter["_id"]["$in"].length > 0){
+                        filter["_id"]["$in"] = filter["_id"]["$in"].map(function(id) { return ObjectID(id); });
+                   } 
+                }
+
                 products.find(filter).sort(sortObject).toArray(function(err, products){
+                    console.log(err);
                     if (err || !products)
                     {
                         return done(false);

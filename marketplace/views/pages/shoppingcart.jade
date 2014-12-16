@@ -1,0 +1,10 @@
+h1 Votre panier
+if model.shoppingcart.products.length == 0
+	p Oups, votre panier est vide !
+else
+	-var s = model.shoppingcart.products.length == 1 ? "" : "s";
+	p Vous avez #{model.shoppingcart.products.length} article#{s}
+	ul
+		each product in model.shoppingcart.products
+			li #{product.name} (#{product.price})
+	p Total : #{model.shoppingcart.total}	

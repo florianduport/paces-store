@@ -3,12 +3,25 @@ var ServiceHelper = require('../helpers/service.helper').ServiceHelper;
 var ShoppingCartModel = {
 
 	initialize : function(req, callback){
-		callback(this);
-	    //récupérer toutes les infos du menu
-		/*ServiceHelper.getService('application', 'getNavigation', {data: {"appId" : appId}, method : "POST"}, function(navigation){
-			this.navigation = navigation;
-			callback(this);
-		});*/
+		this.shoppingcartIds = req.session.shoppingcart !== undefined && req.session.shoppingcart.length > 0 ? req.session.shoppingcart : [];
+		this.shoppingcart = { products : [] };
+
+		var filter = {_id : { $in : this.shoppingcartIds}};
+		var model = this;
+		ServiceHelper.getService('productList', 'getProductsByFilter', {data: {filter : filter, order : {}}, method : "POST"}, function(products){
+				if(!products){
+					callback(model);
+				}
+				else {
+					model.shoppingcart.products = products
+					model.shoppingcart.total = 0;
+					for (var i = model.shoppingcart.products.length - 1; i >= 0; i--) {
+						model.shoppingcart.total = model.shoppingcart.total+model.shoppingcart.products[i].price;
+					};
+
+					callback(model);
+				}
+			});
 	},
 	addToShoppingCart : function(req, callback){
 		this.articleCount = req.session.shoppingcart !== undefined ? req.session.shoppingcart.length : 0;

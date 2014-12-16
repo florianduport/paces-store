@@ -21,8 +21,6 @@ var ProductListModel = {
 	initializeFilter : function(req, callback){
 		var model = this;
 		model.ajax = req.body.ajax !== undefined && req.body.ajax == "true" ? true : false;
-		console.log("*****************************************************"+model.ajax)
-		console.log(req.body.category);
 
 		var order = {order : "price", reversed : true};
 		if(req.body.sort !== undefined){

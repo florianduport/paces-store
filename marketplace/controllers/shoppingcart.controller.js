@@ -4,7 +4,8 @@ var ShoppingCartController = {
 
 	initialize : function(req, res){
 	    model.initialize(req, function(model){
-	    	res.send(req.session.shoppingcart);
+	    	res.render("pages/shoppingcart", {model : model});
+	    	//res.send(req.session.shoppingcart);
 	    	/*if(!model)
 	    		res.redirect(301, '/'+req.params.appId+'/error');
 	    	else
