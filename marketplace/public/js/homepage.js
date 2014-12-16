@@ -16,7 +16,8 @@ $(document).ready(function(){
 		}, function(){}, {});
 	}
 
-	$("#go-to-city-button").click(function(){
+	$("paper-button").click(function(){
+		alert("ok");
 		window.location = "/list/"+$(this).data("list");
 	});
 	$("#change-city-button").click(function(){
