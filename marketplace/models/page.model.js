@@ -81,6 +81,19 @@ var PageModel = {
 				callback(model);
 			});
 		}
+	},
+
+	test : function(req, callback){
+		var model = this;
+		ServiceHelper.getService('payment', 'getUsers', {data: {}, method : "POST"}, function(users){
+			model.users = users;
+			callback(model);
+		})
+	},
+
+	testInc : function(i, callback){
+		console.log(i);
+		callback(this);
 	}
 };
 

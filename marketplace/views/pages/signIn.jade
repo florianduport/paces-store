@@ -1,0 +1,25 @@
+extends ../layout
+block section_main
+    div(class="login-wrapper")
+        h1 PACES Store
+        div(class="box")
+            div(class="content-wrap")
+                h6 Connectez-vous
+                form(class="form-signin" name="signin" role="form" action="/signin/" method="post")
+                    if(model  !== undefined &&  model.error !== undefined && model.error)
+                        div(class="alert alert-danger")
+                            p Votre email ou votre mot de passe entré n'est pas correct.
+                    input(type="email" name="username" class="form-control" placeholder="Adresse email" required autofocus)
+                    input(type="password" name="password" class="form-control" placeholder="Mot de passe")
+                    a(href="#" class="forgot") Mot de passe oublié?
+                    button(class="btn btn-lg btn-primary btn-block" type="submit") Se connecter
+                form(class="form-createAccount" name="createAccount" role="form" action="/createCustomer" method="post")
+                    input(type="email" name="username" class="form-control" placeholder="Adresse email" required autofocus)
+                    br
+                    input(type="password" name="password" class="form-control" placeholder="Mot de passe")
+                    br
+                    input(type="text" name="firstName" class="form-control" placeholder="Prénom")
+                    br
+                    input(type="text" name="lastName" class="form-control" placeholder="Nom")
+                    br
+                    button(class="btn btn-lg btn-primary btn-block" type="submit") Créer un compte

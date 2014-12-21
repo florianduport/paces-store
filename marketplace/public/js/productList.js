@@ -29,14 +29,15 @@ $(document).ready(function(){
 		};
 	};
 
-
-
-	$("*[filter-element]").click(function(){
+	var handleFilter = function(){
 		if($(this).data("type") == "category"){
 			$("*[current-category=true]").attr("current-category", "false");
 			$(this).attr("current-category", "true");
 		}
 		applyFilter();
-	});
+	};
+
+	$("*[filter-element-change]").change(handleFilter);
+	$("*[filter-element]").click(handleFilter);
 
 });

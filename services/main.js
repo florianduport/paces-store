@@ -15,6 +15,9 @@ var Main = {
     _routes : [
         require('./services/logger/logger.routes').LoggerRoutes,
         require('./services/customer/customer.routes').CustomerRoutes,
+        require('./services/seller/seller.routes').SellerRoutes,
+        require('./services/payment/payment.routes').PaymentRoutes,
+        require('./services/order/order.routes').OrderRoutes,
         require('./services/product/product.routes').ProductRoutes,
         require('./services/productList/productList.routes').ProductListRoutes,
         require('./services/school/school.routes').SchoolRoutes,

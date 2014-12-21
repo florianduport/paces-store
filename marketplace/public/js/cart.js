@@ -3,7 +3,7 @@ var loadAddToCartButtons = function(){
 		$.ajax({
 			url : "/addtocart/"+$(this).data("product"),
 			success : function(cartCount){
-				$.cookie("cart-count", cartCount);
+				$.cookie("cart-count", cartCount, {path : "/"});
 				reloadCartCount();
 			}
 		});

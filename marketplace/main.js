@@ -24,10 +24,12 @@ var Main = {
 			var app = express();
 			app.use(cookieParser());
     		app.use(session({
-			  store: new MongoStore({
-			    url: configuration.database.address
-			  }, startContent),
-			  secret: 'paces-store'
+	   			cookie: { maxAge: new Date(Date.now() + 30*24*60*60*1000)},
+				store: new MongoStore({
+					url: configuration.database.address,
+					clear_interval: 3600
+				}, startContent),
+				secret: 'paces-store'
 			}));
 
     		function startContent(){

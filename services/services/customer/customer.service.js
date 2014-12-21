@@ -24,6 +24,7 @@ var CustomerService = {
                 customers.findOne({ username: username, password: password }, function(err, user){
                     if (err || !user)
                     {
+                        console.log("no user found =========="+username+"/"+password);
                         return done(false);
                     }    
                     return done(true); 
@@ -68,35 +69,42 @@ var CustomerService = {
     * @param done : la méthode de retour
     * @return le résultat de l'operation True / False
     */
-    createCustomer : function(username, password, confirmedPassword, firstName, lastName, done){
+    createCustomer : function(username, password, firstName, lastName, paymentInfos, done){
         try{
             DatabaseHelper.getDatabase(function(db){
 
                 if(username == "" || 
                     password == "" ||
-                    confirmedPassword == ""||
-                    password != confirmedPassword ||
                     firstName == "" ||
                     lastName == ""){
                     done(false);
                 }
 
                 var customerObject = {
-                    ussername : username,
-                    password : sha1(password),
+                    username : username,
+                    password : password,
                     account : {
                         firstName : firstName,
-                        lastName : lastName
+                        lastName : lastName,
+                        paymentInfos : paymentInfos
                     }
                 };
+                CustomerService.getCustomerByUsername(customerObject.username, function(customerExist){
+                    if(!customerExist){
+                        db.collection("Customers", function(err, customers){
+                            if(err || !customers){
+                                console.log(customers);
+                                done(false);
+                            }
+                            customers.insert(customerObject, { w: 0 });
 
-                db.collection("Customers", function(err, customers){
-                    if(!err && customers !== undefined && !customers){
-                        customers.insert(customerObject, { w: 0 });
-                        done(true);
+
+                            done(true);
+                        });
                     }
-                    else
-                      done(false);  
+                    else{
+                        done(false);
+                    }
                 });
             });
         }

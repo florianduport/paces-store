@@ -51,13 +51,13 @@ var CustomerRoutes = {
             if(req.body === undefined || !req.body || 
                 req.body.username === undefined || !req.body.username || 
                 req.body.password === undefined || !req.body.password || 
-                req.body.confirmedPassword === undefined || !req.body.confirmedPassword ||
                 req.body.firstName === undefined || !req.body.firstName ||
-                req.body.lastName === undefined || !req.body.lastName){
+                req.body.lastName === undefined || !req.body.lastName ||
+                req.body.paymentInfos === undefined){
                 LoggerService.logError("services", "Wrong create customer parameters", {});
                 Base.send(req, res, false);
             }
-            CustomerService.createCustomer(req.body.username, req.body.password, req.body.confirmedPassword, req.body.firstName, req.body.lastName, function(result){
+            CustomerService.createCustomer(req.body.username, req.body.password, req.body.firstName, req.body.lastName, req.body.paymentInfos, function(result){
                 Base.send(req, res, result);
             });
         });

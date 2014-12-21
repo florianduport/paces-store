@@ -7,4 +7,5 @@ else
 	ul
 		each product in model.shoppingcart.products
 			li #{product.name} (#{product.price})
-	p Total : #{model.shoppingcart.total}	
+	p Total : #{model.shoppingcart.total}
+	a(href="/checkout") Valider	

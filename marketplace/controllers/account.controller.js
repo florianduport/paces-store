@@ -9,7 +9,74 @@ var AccountController = {
 	    	else
 	        	res.render(model.type+'/pages/articles', {model: model});*/
 	    });
-	}
+	},
+	
+    /**
+    * checkSignIn : Vérifie si l'utilisateur est connecté
+    * @param req : requête http
+    * @param res : reponse http
+    * @param next : méthode de callback
+    */
+    checkSignIn : function(req, res, next){
+        if(req.session.user !== undefined)
+        {
+            next();
+        }
+        else
+        {
+            model.displaySignIn(req, function(model){
+                res.render('./pages/signIn', {model: model});
+            }); 
+        }
+    },
+
+    /**
+    * signIn : Connexion 
+    * @param req : requête http
+    * @param res : reponse http
+    */
+    signIn : function(req, res){
+        var done = function(authenticated){
+            res.redirect(req.get('referer'));
+        };
+        model.signIn(req.body.username, req.body.password, req, done);
+    },
+
+    /**
+    * signOut : Déconnexion 
+    * @param req : requête http
+    * @param res : reponse http
+    */
+    signOut : function(req, res){
+        req.session.user = undefined;
+        res.redirect('/');
+    },
+
+    createCustomer : function(req, res){
+    	if(req.session.user === undefined && 
+    		req.body.username !== undefined && 
+    		req.body.password !== undefined &&
+    		req.body.firstName !== undefined &&
+    		req.body.lastName !== undefined){
+    		var reqSignin = req;
+    		model.createCustomer({
+    			username : req.body.username,
+    			password : req.body.password,
+    			firstName : req.body.firstName,
+    			lastName : req.body.lastName
+    		}, req, function(resp){
+    			if(resp){
+    				var done = function(authenticated){
+			            res.redirect(req.get('referer'));
+			        };
+			        AccountController.signIn(reqSignin, res);
+    			}
+    			else{
+    				res.redirect(req.get('referer'));
+    			}
+    		});
+    	}
+    }
 
 };
 

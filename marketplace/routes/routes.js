@@ -3,6 +3,7 @@ HomepageController = require('./../controllers/homepage.controller').HomepageCon
 ProductListController = require('./../controllers/productlist.controller').ProductListController,
 ProductController = require('./../controllers/product.controller').ProductController,
 ShoppingCartController = require('./../controllers/shoppingcart.controller').ShoppingCartController,
+CheckoutController = require('./../controllers/checkout.controller').CheckoutController,
 AccountController = require('./../controllers/account.controller').AccountController
 /**
 * Charge les routes de account controller
@@ -31,10 +32,21 @@ var Routes = {
 		app.get('/addtocart/:product', ShoppingCartController.addToShoppingCart);
 		app.get('/removefromcart/:product', ShoppingCartController.removeFromShoppingCart);
 
+		//CHECKOUT
+		app.get('/checkout/', AccountController.checkSignIn, CheckoutController.initialize);
+		app.post('/checkout/payWithNewCard', AccountController.checkSignIn, CheckoutController.payWithNewCard);
+		app.get('/checkout/wait/:orderId', AccountController.checkSignIn, CheckoutController.waitPayment);
+		app.get('/checkout/success/:orderId', AccountController.checkSignIn, CheckoutController.successPayment);
+
+
 		//CUSTOMER ACCOUNT
-		app.get('/account/connect', AccountController.initialize);
-		app.post('/account/connect', AccountController.initialize);
-		app.get('/account/disconnect', AccountController.initialize);
+		app.get('/signin', AccountController.signIn);
+		app.post('/signin', AccountController.signIn);
+		app.get('/signout', AccountController.signOut);
+		app.post('/createCustomer', AccountController.createCustomer);
+
+		app.get('/test', PageController.test);
+		app.get('/testInc', PageController.testInc);
 
 		app.get('/*', PageController.initialize);
 

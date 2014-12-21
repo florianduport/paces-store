@@ -52,7 +52,35 @@ var SellerService = {
                         return done(false);
                     }
     
-                    return done(user.account); 
+                    return done(user); 
+                });
+            });
+        });   
+    },
+    
+    /**
+    * getSeller : Récupère les informations de l'utilisateur
+    * @param username : le nom d'utilisateur'
+    * @param done : la méthode de retour
+    * @return objet contenant les informations de l'utilisateur
+    */  
+    getSellersByUsername : function(sellersParam, done){
+        DatabaseHelper.getDatabase(function(db){
+            db.collection("Sellers", function(err, sellers){
+                if (err || !sellers)
+                {
+                    return done(false);
+                } 
+                //password should be sent with sha1 encryption
+                sellers.find({username : { $in : sellersParam}}).toArray(function(err, sellersFound){
+                    if (err || !sellersFound)
+                    {
+                        console.log("===== NO SELLERS FOUND IN ");
+                        console.log(sellers);
+                        done(false);
+                    }
+    
+                    done(sellersFound); 
                 });
             });
         });   

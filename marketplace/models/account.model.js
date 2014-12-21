@@ -1,4 +1,5 @@
-var ServiceHelper = require('../helpers/service.helper').ServiceHelper;
+var ServiceHelper = require('../helpers/service.helper').ServiceHelper,
+sha1 = require('sha1');
 
 var AccountModel = {
 
@@ -9,7 +10,63 @@ var AccountModel = {
 			this.navigation = navigation;
 			callback(this);
 		});*/
-	}
+	},
+
+    displaySignIn : function(req, callback){
+        
+        if(req.session.error)
+            this.error = req.session.error;
+        else
+            this.error = false;
+        callback(this);
+    },    
+
+    signIn : function(username, password, req, done){
+
+        ServiceHelper.getService("customer", "authenticateCustomer", {data : {username : username, password : sha1(password)}, method: "POST"}, function(resp){
+            if(resp === undefined || !resp || resp !== true)
+            {
+                req.session.error = true;
+                return done(false);
+            }
+            req.session.error = false;
+            req.session.user = username;
+
+            return done(true);
+        });
+
+    },
+
+    createCustomer : function(form, req, done){
+
+    	ServiceHelper.getService("payment", "createWallet", {data : {
+    		infos : {
+    			username : form.username,
+    			firstName : form.firstName,
+    			lastName : form.lastName
+    		}
+    	}, method : "POST"}, function(paymentInfos){
+    		if(paymentInfos === undefined){
+    			done(false);
+    		} else {
+				ServiceHelper.getService("customer", "createCustomer", {data : {
+		    		username : form.username,
+		    		password : sha1(form.password),
+		    		firstName : form.firstName,
+		    		lastName : form.lastName,
+		    		paymentInfos : {
+		    			accountId : paymentInfos.user.Id,
+		    			walletId : paymentInfos.wallet.Id
+		    		}
+		    	}, method : "POST"}, function(response){
+		    		done(response);
+		    	});
+    		}
+    	});
+
+    	
+
+    }
 };
 
 module.exports.AccountModel = AccountModel;

@@ -45,6 +45,19 @@ var SellerRoutes = {
             });
         });
 
+        // get Sellers by username : /seller/getSellersByUsername
+
+        app.post(configuration.routes.seller.getSellersByUsername, HmacHelper.verifyRequest, function(req, res){
+            //check parameters
+            if(req.body === undefined || !req.body || req.body.sellers === undefined){
+                LoggerService.logError("services", "Wrong Sellers get by username parameters", {});
+                Base.send(req, res, false);
+            }
+            SellerService.getSellersByUsername(req.body.sellers, function(result){
+                Base.send(req, res, result);
+            });
+        });
+
         //create : /seller/create
         app.post(configuration.routes.seller.createSeller, HmacHelper.verifyRequest, function(req, res){
             //check parameters
