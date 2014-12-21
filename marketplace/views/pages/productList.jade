@@ -1,9 +1,9 @@
-extends ../layoutCatalog
-block header
+include ../layout
+section header
 	script(src="/js/libs/animate.js")
 	link(rel="stylesheet" href="/css/libs/animate.css")
 	script(src="/js/productList.js")
-block section_content
+section section_content
 	select(filter-element-change data-type="sort")
 		option(value="dateDown" selected) Les plus récents
 		option(value="priceDown") Prix croissant

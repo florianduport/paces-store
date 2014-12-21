@@ -1,16 +1,13 @@
-extends ../layoutCatalog
-block header
-	script(src="/js/libs/animate.js")
-	link(rel="stylesheet" href="/css/libs/animate.css")
-	script(src="/js/product.js")
+include ../layout
+script(src="/js/product.js")
 block section_content
-		h1 une super fiche produit		
+		h1 une super fiche produit
 		p #{model.product.name}
 		p #{model.product.description}
 		p #{model.product.price} €
 		p #{model.product.seller}
-		paper-button(class="add-to-cart-button" raised class="colored" role="button" data-product="#{model.product._id}") Ajouter au panier
-		paper-button(class="colored custom" role="button" tabindex="0")
+		.btn.btn-info(class="add-to-cart-button" class="colored" role="button" data-product="#{model.product._id}") Ajouter au panier
+		.btn.btn-info(class="colored custom" role="button" tabindex="0")
 			core-icon(icon="check" aria-label="check" role="img")
 			span produit ajouté
 		a(href="/shoppingcart/") Accéder au panier

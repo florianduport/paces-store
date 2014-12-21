@@ -1,11 +1,72 @@
-h1 Votre panier
+include ../layout
+.container
+    .row
+        .col-sm-12.col-md-10.col-md-offset-1
+            h1 Votre panier
 if model.shoppingcart.products.length == 0
-	p Oups, votre panier est vide !
+    p Oups, votre panier est vide !
 else
-	-var s = model.shoppingcart.products.length == 1 ? "" : "s";
-	p Vous avez #{model.shoppingcart.products.length} article#{s}
-	ul
-		each product in model.shoppingcart.products
-			li #{product.name} (#{product.price})
-	p Total : #{model.shoppingcart.total}
-	a(href="/checkout") Valider	
+    -var s = model.shoppingcart.products.length == 1 ? "" : "s";
+        p Vous avez #{model.shoppingcart.products.length} article#{s}
+        .container
+            .row
+                .col-sm-12.col-md-10.col-md-offset-1
+                    table.table.table-hover
+                        thead
+                          tr
+                            th Produit
+                            th.text-center Prix
+                            th.text-center Total
+                            th
+                        tbody
+                            each product in model.shoppingcart.products
+                                tr
+                                    td.col-sm-8.col-md-6
+                                      .media
+                                        a.thumbnail.pull-left(href='#')
+                                          img.media-object(style='width: 72px; height: 72px;', src='http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png')
+                                        .media-body
+                                          h4.media-heading
+                                            a(href='#') #{product.name}
+                                          h5.media-heading
+                                            | by
+                                            a(href='#') #{product.name}
+                                          span Status:
+                                          span.text-success
+                                            strong In Stock
+                                    td.col-sm-1.col-md-1.text-center
+                                      strong #{product.price} €
+                                    td.col-sm-1.col-md-1.text-center
+                                      strong #{product.price} €
+                                    td.col-sm-1.col-md-1
+                                      button.btn.btn-danger(type='button')
+                                        span.glyphicon.glyphicon-remove
+                                        | Remove
+                            tr
+                              td
+                              td
+                              td
+                                h5 Sous Total
+                              td.text-right
+                                h5
+                                  strong #{model.shoppingcart.total} €
+                            tr
+                              td
+                              td
+                              td
+                                h3 Total
+                              td.text-right
+                                h3
+                                  strong #{model.shoppingcart.total} €
+                            tr
+                              td
+                              td
+                              td
+                              td
+                                button.btn.btn-default(type='button')
+                                  span.glyphicon.glyphicon-shopping-cart
+                                  | Continue Shopping
+                              td
+                                button.btn.btn-success(type='button')
+                                  | Checkout
+                                  span.glyphicon.glyphicon-play
