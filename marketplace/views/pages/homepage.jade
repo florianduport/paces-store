@@ -1,86 +1,55 @@
-html
-  script(src="/js/libs/jquery.min.js")
-  script(src="/js/libs/jquery.cookie.js")
-  script(src="/js/cart.js")
-  script(src="/js/homepage.js")
-  script(src="/polymer/webcomponentsjs/webcomponents.js")
-  link(rel="stylesheet" href="/css/homepage.css")
-  link(rel="import" href="/polymer/polymer/polymer.html")
-  link(rel="import" href="/polymer/font-roboto/roboto.html")
-  link(rel="import" href="/polymer/core-scaffold/core-scaffold.html")
-  link(rel="import" href="/polymer/core-header-panel/core-header-panel.html")
-  link(rel="import" href="/polymer/core-toolbar/core-toolbar.html")
-  link(rel="import" href="/polymer/core-menu/core-menu.html")
-  link(rel="import" href="/polymer/core-item/core-item.html")
-  link(rel="import" href="/polymer/core-transition/core-transition.html")
-  link(rel="import" href="/polymer/paper-button/paper-button.html")
-  link(rel="import" href="/polymer/paper-item/paper-item.html")
-  link(rel="import" href="/polymer/paper-dialog/paper-dialog.html")
-  link(rel="import" href="/polymer/paper-dialog/paper-action-dialog.html")
-  link(rel="import" href="/polymer/paper-dropdown/paper-dropdown.html")
-  link(rel="import" href="/polymer/paper-tabs/paper-tabs.html")
-  link(rel="import" href="/polymer/paper-tabs/paper-tab.html")
-  link(rel="import" href="/polymer/paper-dropdown-menu/paper-dropdown-menu.html")
-  link(href="//fonts.googleapis.com/css?family=RobotoDraft:300,400,500|Source+Code+Pro:400,500,700" rel="stylesheet")
-body
-    core-header-panel(mode="standard" id="core-header-panel") 
-      core-toolbar(id="core-toolbar") 
-        div(id="siteName") 
-            img(src="/img/logo.png" id="logo-toolbar")
-        div(flex two class="space")
-        div(flex one layout horizontal center end-justified)
-          span(id="cart-number-products") panier vide    
-          core-icon(icon="shopping-basket" id="core-icon-button-cart")
-        div(id="cart-number-products")
-      section(id="section-main")
-        div(id="section-city-container" layout horizontal center center-justified)
-          div(flex one class="space")
-          div(class="logo-main-container" flex one layout horizontal center center-justified)
-              img(src="/img/logo-big.png" id="logo-main")
-          div(id="section-city" flex two)
-            h1 Bienvenue sur PACES Store !
-            p PACES Store est la première plateforme collaborative et participative de travail, entièrement dédiée à la réussite de la PACES. 
-              br
-              br
-              span PACES Store simplifie l’entre-aide et la transmission de savoir-faire entre les étudiants ayant réussi les concours et les étudiants en PACES. Les premiers participent à la réussite des seconds.
-            br
-            p Vous êtes géolocalisé à #{model.position.city}. #{model.school.name}
-            paper-button(id="go-to-city-button" raised role="button"  data-list="#{model.school.universityId}") 
-              core-icon(icon="arrow-forward" aria-label="arrow-forward" role="img") 
-              span Accéder aux contenus
-            paper-button(id="change-city-button" role="button" data-opened="false") 
-              core-icon(icon="explore" aria-label="explore" role="img") 
-              span Changer d'université
-                paper-dropdown(class="with-margin core-transition core-closed" tabindex="-1" style="outline: none; display: none;")
-                      p Croissant
-                      p Donut
-                      p Financier
-                      p Madeleine
-          div(flex one class="space")
-        div(id="section-container-1" class="section-container" layout horizontal center center-justified)
-          paper-tabs(selected="0")
-            paper-tab Je suis étudiant en PACES
-            paper-tab J'ai déjà réussi ma PACES
-          div(flex one class="space")
-          div(id="section-city" flex two)
-            h1 LA PREMIÈRE PLATEFORME DE TRAVAIL PAR ET POUR LES ÉTUDIANTS EN PACES
-          div(flex one class="space")
-        div(id="section-container-2" class="section-container" layout horizontal center center-justified)
-          div(flex one class="space")
-          div(id="section-city" flex two)
-            h1 AVANT, S’ENTRAINER À FAIRE DES COLLES, EXERCICES, FICHES ETC. ÉTAIT COUTEUX OU RÉPÉTITIF. MAIS ÇA, C’ÉTAIT AVANT PACES STORE ! 
-          div(flex one class="space")
-        div(id="section-container-3" class="section-container" layout horizontal center center-justified)
-          div(flex one class="space")
-          div(id="section-city" flex two)
-            img(src="/img/PACES-Store-schema.png") 
-          div(flex one class="space")
-        div(id="section-container-4" class="section-container" layout horizontal center center-justified)
-          div(flex one class="space")
-          div(id="section-city" flex two)
-            h1 Qui sommes-nous ?
-            p Elaboré avec <3 par RMP
-          div(flex one class="space")
+include ../layout
+.page-content
 
-
-
+    section.blog
+        .container
+            .row
+                .col-lg-12.col-md-12.jumbotron
+                    h1 Bienvenue sur PACES Store !
+                    .post
+                        p PACES Store est la première plateforme collaborative et participative de travail, entièrement dédiée à la réussite de la PACES.
+                        p PACES Store simplifie l’entre-aide et la transmission de savoir-faire entre les étudiants ayant réussi les concours et les étudiants en PACES. Les premiers participent à la réussite des seconds.
+                        p Vous êtes géolocalisé à #{model.position.city}. #{model.school.name}
+                        .text-center
+                            .btn.btn-success(id="" role="button"  data-list="#{model.school.universityId}")
+                                span Accéder aux contenus
+                            .btn.btn-warning(id="" role="button" data-opened="false")
+                                span Changer d'université
+    section.cat-tiles
+      div.container
+        h2 Les derniers contenus
+        div.row
+          div.category.col-lg-2.col-md-2.col-sm-4.col-xs-6
+            a(href='#')
+              img(src='http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png', alt='1')
+              p Colle d'anatomie
+          div.category.col-lg-2.col-md-2.col-sm-4.col-xs-6
+            a(href='#')
+              img(src='http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png', alt='1')
+              p Colle de biologie cellulaire
+          div.category.col-lg-2.col-md-2.col-sm-4.col-xs-6
+            a(href='#')
+              img(src='http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png', alt='1')
+              p Colle d'anatomie
+          div.category.col-lg-2.col-md-2.col-sm-4.col-xs-6
+            a(href='#')
+              img(src='http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png', alt='1')
+              p Colle de biologie cellulaire
+          div.category.col-lg-2.col-md-2.col-sm-4.col-xs-6
+            a(href='#')
+              img(src='http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png', alt='1')
+              p Colle de biologie cellulaire
+          div.category.col-lg-2.col-md-2.col-sm-4.col-xs-6
+            a(href='#')
+              img(src='http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png', alt='1')
+              p Colle d'anatomie
+    section.blog
+        .container
+            .row
+                .col-lg-12.col-md-12
+                    h3 LA PREMIÈRE PLATEFORME DE TRAVAIL PAR ET POUR LES ÉTUDIANTS EN PACES
+                    .post
+                        h3 AVANT, S’ENTRAINER À FAIRE DES COLLES, EXERCICES, FICHES ETC. ÉTAIT COUTEUX OU RÉPÉTITIF. MAIS ÇA, C’ÉTAIT AVANT PACES STORE !
+                        img.text-center(src="/img/PACES-Store-schema.png")
+                        h4.text-center Qui sommes-nous ?
+                        p.text-center Elaboré avec <3 par RMP
