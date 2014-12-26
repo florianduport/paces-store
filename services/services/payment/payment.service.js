@@ -43,8 +43,8 @@ var PaymentService = {
         PaymentService.Provider.getUsers(done);
     },
 
-    payWithNewCard : function(user, card, lines, done){
-        PaymentService.Provider.payWithNewCard(user, card, lines, done);
+    payWithNewCard : function(user, card, sellers, lines, done){
+        PaymentService.Provider.payWithNewCard(user, card, sellers, lines, done);
     }
 
 };

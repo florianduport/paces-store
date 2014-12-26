@@ -42,13 +42,13 @@ var PaymentRoutes = {
 
         app.post(configuration.routes.payment.payWithNewCard, HmacHelper.verifyRequest, function(req, res){
             //check parameters
-            if(req.body === undefined || !req.body || req.body.card === undefined || req.body.user === undefined || req.body.lines === undefined){
+            if(req.body === undefined || !req.body || req.body.card === undefined || req.body.user === undefined || req.body.sellers === undefined || req.body.lines === undefined){
                 LoggerService.logError("services", "Wrong payment pay with new card parameters", {card : req.body.card !== undefined ? req.body.card : ""});
                 console.log("wrong parameters for pay with new card");
                 Base.send(req, res, false);
             }
 
-            PaymentService.payWithNewCard(req.body.user, req.body.card, req.body.lines, function(result){
+            PaymentService.payWithNewCard(req.body.user, req.body.card, req.body.sellers, req.body.lines, function(result){
                 Base.send(req, res, result);
             });
         });

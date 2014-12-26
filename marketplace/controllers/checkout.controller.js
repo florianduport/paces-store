@@ -32,7 +32,7 @@ var CheckoutController = {
 
 	successPayment : function(req, res){
 		model.successPayment(req, function(model){
-			res.render('checkout/success', {model: model});
+			res.render('pages/checkout/success', {model: model});
 		});
 	}
 

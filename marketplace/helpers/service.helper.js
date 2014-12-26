@@ -30,7 +30,7 @@ var ServiceHelper = {
                          headers: {
                               "Content-Type": "application/json"
                          },
-                         timeout : 5000,
+                         timeout : 15000,
                          json : options.data !== undefined ? options.data : {}
                     }, function(error, response, body){
                          if(!error)

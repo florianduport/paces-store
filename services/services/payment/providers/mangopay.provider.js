@@ -31,7 +31,6 @@ var Provider = {
                         CountryOfResidence: "FR"
                     }, function(err, user, wallet){
                         if(err){
-                            console.log("========== false2");
                             done(false);
                         }
                         done({user : user, wallet : wallet});
@@ -40,12 +39,6 @@ var Provider = {
             });
 
         } else {
-            console.log("========== false1");
-            console.log(infos);
-            console.log(infos !== undefined);
-            console.log(infos.username !== undefined);
-            console.log(infos.firstName !== undefined);
-            console.log(infos.lastName !== undefined);
             done(false);
         }
 
@@ -54,71 +47,110 @@ var Provider = {
     getUsers : function(done){
         ConfigurationHelper.getConfig({application : 'marketplace', done : function(configuration){
                 var mango = require('mangopay')(configuration.mangopay);
-                 mango.user.list(function(err,users){
+                /*mango.user.list(function(err,users){
                     done(users); 
-                });
+                });*/
+                mango.user.wallets({UserId : "5009340"}, function(err, events){done(events);});
             }
         });
     },
 
-    payWithNewCard : function(user, card, lines, done){
+    payWithNewCard : function(user, card, sellers, lines, callback){
+        ConfigurationHelper.getConfig({application : 'marketplace', done : function(configuration){
+                var mango = require('mangopay')(configuration.mangopay);
 
-        function payEachLine(i) {
-            if(i<lines.length) {
-                seller = lines[i].seller;
-                amount = lines[i].amount;
+                function payEachLine(i, user, card, lines) {
+                    if(i<lines.length) {
 
-                var fees = (10/100)*amount;
-
-                mango.card.create({
-                  UserId: user.account.paymentInfos.accountId,
-                  CardNumber: card.cardNumber,
-                  CardExpirationDate: card.cardExpirationDate,
-                  CardCvx: card.cardCvx,
-                }, function(err, card, res){
-                    if(!err){
-
-                        //TRANSFER
-
-                        mango.wallet.transfer({
-                            AuthorId : user.account.paymentInfos.accountId, 
-                            DebitedFunds: {
-                                    Currency : "EUR", 
-                                    Amount : ""+amount
-                            }, 
-                            Fees : {
-                                    Currency : "EUR", 
-                                    Amount : ""+fees
-                            }, 
-                            DebitedWalletID : user.account.paymentInfos.accountId, 
-                            CreditedWalletID : seller.account.paymentInfos.walletId,
-                            CreditedUserId : seller.account.paymentInfos.accountId,
-                            Tag : "DefaultTag"
-                        }, function(err, transfer, res){
-                            if(!err){
-                                if(i+1 == lines.length){
-                                    done(true);
-                                } else {
-                                    payEachLine(i+1);
-                                }
-                            } else {
-                                done(false);
+                        var seller = lines[i].seller;
+                        for (var k = sellers.length - 1; k >= 0; k--) {
+                            if(sellers[k].username == lines[i].seller) {
+                                seller = sellers[k];
                             }
-                        });
+                        };
+                        amount = lines[i].amount;
 
-                    } else {
-                        done(false);
+                        var fees = configuration.fees*amount;
+
+                        mango.card.create({
+                          UserId: user.paymentInfos.accountId,
+                          CardNumber: card.cardNumber,
+                          CardExpirationDate: card.cardExpirationDate,
+                          CardCvx: card.cardCvx,
+                        }, function(err, cardObject, res){
+                            if(!err){
+
+                                mango.payin.createByToken({
+                                  AuthorId: user.paymentInfos.accountId,          
+                                  CreditedUserId : user.paymentInfos.accountId,    
+                                  DebitedFunds: {            
+                                        Currency: "EUR",
+                                        Amount: ""+amount
+                                  },
+                                  Fees: {
+                                        Currency: "EUR",
+                                        Amount: "0"
+                                  },
+                                  CreditedWalletId: user.paymentInfos.walletId,
+                                  CardId: cardObject.CardId,
+                                  SecureModeReturnURL:"https://www.myurl.com"
+                                 
+                                }, function(err, payin, res){
+                                    if(err){
+                                        callback(false);
+                                    } else {
+                                        //TRANSFER
+                                        mango.wallet.transfer({
+                                            AuthorId : user.paymentInfos.accountId, 
+                                            DebitedFunds: {
+                                                    Currency : "EUR", 
+                                                    Amount : ""+amount
+                                            }, 
+                                            Fees : {
+                                                    Currency : "EUR", 
+                                                    Amount : ""+fees
+                                            }, 
+                                            DebitedWalletID : user.paymentInfos.walletId, 
+                                            CreditedWalletID : seller.account.paymentInfos.walletId,
+                                            CreditedUserId : seller.account.paymentInfos.accountId,
+                                            Tag : "DefaultTag"
+                                        }, function(err, transfer, res){
+                                            if(!err){
+                                                console.log("%%%%%%%%%%%%%%%%%%%%%");
+                                                if(i+1 == lines.length){
+                                                    console.log("WIN !!");
+                                                    callback(true);
+                                                } else {
+                                                    payEachLine(i+1, user, card, lines);
+                                                }
+                                            } else {
+                                                console.log("error transfer");
+                                                console.log(user.paymentInfos.accountId);
+                                                console.log(err);
+                                                callback(false);
+                                            }
+                                        });
+                                    }
+                                });
+                            } else {
+                                console.log("ERROR CREATING CARD");
+                                console.log(err);
+                                console.log(card.cardExpirationDate);
+                                callback(false);
+                            }
+                        }); 
                     }
-                }); 
+
+                }
+                payEachLine(0, user, card, lines);
+
+
             }
+        });
+    },
 
-        }
-        payEachLine(0);
-
-
-
-
-
+    payByCard : function(){
+        
     }
 
 };

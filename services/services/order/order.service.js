@@ -1,6 +1,7 @@
 var DatabaseHelper = require('../../helpers/database.helper').DatabaseHelper,
-sha1 = require('sha1');
-var ObjectID = require('mongodb').ObjectID
+ConfigurationHelper = require('../../helpers/configuration.helper').ConfigurationHelper,
+sha1 = require('sha1'),
+ObjectID = require('mongodb').ObjectID;
 /**
  * Service Payment
  * @class PaymentService
@@ -30,35 +31,41 @@ var OrderService = {
 
     createOrder : function(products, user, done){
         try{
-            DatabaseHelper.getDatabase(function(db){
+            ConfigurationHelper.getConfig({application : 'marketplace', done : function(configuration){
+                DatabaseHelper.getDatabase(function(db){
 
-                if(products === undefined || products.length == 0){
-                    console.log("========= PAS DE PRODUITS ");
-                    done(false);
-                }
-
-                var orderObject = {
-                    products : products,
-                    user : user
-                };
-
-                db.collection("Orders", function(err, orders){
-                    if(!err){
-                        orders.insert(orderObject, { w: 0 }, function(err){
-                            if(err){
-                                console.log("FAIL INSERT");
-                                done(false);
-                            }
-                            console.log("CREATION OK");
-                            done(orderObject);
-                        });
+                    if(products === undefined || products.length == 0){
+                        done(false);
                     }
-                    else {
-                        console.log("FAIL CREATION");
-                      done(false);
-                    }  
+
+                    var amount = 0;
+                    for (var i = products.length - 1; i >= 0; i--) {
+                        amount = amount+products[i].price;
+                    };
+
+                    var orderObject = {
+                        products : products,
+                        user : user,
+                        fees : configuration.fees*amount,
+                        amount : amount,
+                        createDate : Date.now()
+                    };
+
+                    db.collection("Orders", function(err, orders){
+                        if(!err){
+                            orders.insert(orderObject, { w: 0 }, function(err){
+                                if(err){
+                                    done(false);
+                                }
+                                done(orderObject);
+                            });
+                        }
+                        else {
+                          done(false);
+                        }  
+                    });
                 });
-            });
+            }});
         }
         catch(err){
             done(false);
@@ -73,7 +80,8 @@ var OrderService = {
                     Orders.findOne({ _id : ObjectID(order._id)}, function(err, orderFound){
 
                         var updatedOrder = order;
-                        
+                        updatedOrder._id = ObjectID(updatedOrder._id);
+
                         Orders.save(updatedOrder, {w:1}, function(){
                             done(true);
                         });
