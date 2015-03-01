@@ -1,0 +1,28 @@
+<div class="container">
+            <!-- Start Search Section  -->
+            <div id="search-section">
+                <div class="row">
+                    <div class="span12">
+                        <form action="" class="form-inline" >
+                            <input type="text" class="span5 search-input" id="search" data-provide="typeahead" placeholder="Search by Keyword..." data-items="4" />  
+                            <input type="text" class="span5 search-input" id="search2" data-provide="typeahead" placeholder="Search by Location..." data-items="4" />  
+                            <button type="submit" class="btn btn-blue"> Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div> 
+            <!-- End Search Section  -->
+            <!-- Start Left Sidebar  -->
+            <div class="row">
+                {{> categories}}
+                <!-- End Left Sidebar  -->
+                <!-- Start Right Section  -->
+                <div class="span9">
+                    <ul class="thumbnails">
+                        {{> productListBlock}}
+                    </ul>
+                    <p><button type="submit" class="btn btn-large btn-block btn-blue" data-original-title=""> Load More</button></p>
+                </div>
+            </div>
+            <!-- End Right Section  -->
+        </div>

@@ -8,7 +8,7 @@ var PageController = {
 	    model.initialize(req, function(model){
 	    	if(model == false){
 	    		res.status(404);
-	    		res.render('error');
+	    		res.render('pages/error');
 	    	}
 	    });
 	},

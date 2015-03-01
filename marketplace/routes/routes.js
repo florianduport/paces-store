@@ -17,10 +17,19 @@ var Routes = {
     */
     loadRoutes : function(app, configuration){
 
+    	PageController.app = app;
+    	HomepageController.app = app;
+    	ProductListController.app = app;
+    	ProductController.app = app;
+    	ShoppingCartController.app = app;
+    	CheckoutController.app = app;
+    	AccountController.app = app;
 		//routes / mapping controller
 		
 		//CATALOG
-		app.get('/', PageController.initializeGeoloc, HomepageController.initialize);
+		//app.get('/', PageController.initializeGeoloc, HomepageController.initialize);
+		app.get('/', PageController.initializeGeoloc, ProductListController.initializeFilter);
+		
 		app.get('/list/:universityId', PageController.initializeGeoloc, ProductListController.initialize);
 		app.get('/list/', PageController.initializeGeoloc, ProductListController.initialize);
 		app.post('/list/:universityId', PageController.initializeGeoloc, ProductListController.initializeFilter);

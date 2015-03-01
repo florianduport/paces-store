@@ -35,8 +35,24 @@ var Main = {
                 function startContent() {
                     app.set('port', configuration.port);
                     app.set('views', __dirname + '/views');
-                    app.engine('html', html({layoutsDir: path.join(app.settings.views, ""), defaultLayout: 'layout', extname: '.html'}));
+
+                    var handlebars = html.create({
+                    	layoutsDir: path.join(app.settings.views, ""),
+                    	defaultLayout: 'layout',
+                    	extname: '.html', 
+                    	partialsDir: [
+        					__dirname + '/views/blocks/'
+						]
+					});
+
+                    //load partials views
+                	handlebars.getPartials().then(function(partials){
+                		app.partials = partials;
+                	});
+
+                    app.engine('html', handlebars.engine);
                     app.set('view engine', 'html');
+
                     app.use(express.static(path.join(__dirname, 'public')));
 
                     app.use(bodyParser());
