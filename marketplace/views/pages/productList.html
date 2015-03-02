@@ -1,33 +1,46 @@
 <div class="container">
-            <!-- Start Search Section  -->
-            <div id="search-section">
-                <div class="row">
-                    <div class="span12">
-                        <form action="" class="form-inline" >
-                            <input type="text" class="span5 search-input" id="search" data-provide="typeahead" placeholder="Rechercher par mot clé..." data-items="4" />
-                            <select>
-                                <option>{{model.currentSchool.name}}</option>
-                                {{#each model.otherSchools}}
-                                <option>{{this.name}}</option>
-                                {{/each}}
-                            </select>
-                            <button type="submit" class="btn btn-blue"> Search</button>
-                        </form>
-                    </div>
-                </div>
-            </div> 
-            <!-- End Search Section  -->
-            <!-- Start Left Sidebar  -->
+    <!-- Start Search Section  -->
+    <div id="search-section">
+        <div class="row">
+            <div class="span12">
+                <form action="" class="form-inline" >
+                    <input type="text" class="span5 search-input" id="search" data-provide="typeahead" placeholder="Tout le contenu..." data-items="4" />
+                    <select>
+                        <option>{{model.currentSchool.name}}</option>
+                        {{#each model.otherSchools}}
+                        <option>{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                    <button type="submit" class="btn btn-blue"> Rechercher</button>
+                </form>
+            </div>
+        </div>
+    </div> 
+    <!-- End Search Section  -->
+    <!-- Start Left Sidebar  -->
+    <div class="row">
+        {{> categories}}
+        <!-- End Left Sidebar  -->
+        <!-- Start Right Section  -->
+        <div class="span9">
             <div class="row">
-                {{> categories}}
-                <!-- End Left Sidebar  -->
-                <!-- Start Right Section  -->
-                <div class="span9">
-                    <ul class="thumbnails">
-                        {{> productListBlock}}
-                    </ul>
-                    <p><button type="submit" class="btn btn-large btn-block btn-blue" data-original-title=""> Load More</button></p>
+                <div class="span9 pull-right">
+                    <select filter-element-change="filter-element-change" data-type="sort">
+                        <option value="dateDown" selected> Les plus récents</option>
+                        <option value="priceDown"> Prix croissant</option>
+                        <option value="priceUp"> Prix décroissant</option>
+                    </select>
                 </div>
             </div>
-            <!-- End Right Section  -->
+            <ul class="thumbnails productList">
+                {{> productListBlock}}
+            </ul>
+            <!--<p><button type="submit" class="btn btn-large btn-block btn-blue" data-original-title=""> Load More</button></p>-->
         </div>
+    </div>
+    <!-- End Right Section  -->
+</div>
+
+<script src="/js/cart.js"></script>
+<script src="/js/libs/animate.js"></script>
+<script src="/js/productList.js"></script>

@@ -1,9 +1,14 @@
 $(document).ready(function(){
 
 	var applyFilter = function(){
+
+		var position = $.cookie("position");
+		var jsonPosition = JSON.parse($.cookie("position").substring(2));
+
+
 		$(".productList").addClass("animated bounceOutLeft");
 		var animationPlayed = false;
-		$.post("", {
+		$.post("/list/"+jsonPosition.universityId, {
 			category : $("*[current-category=true]").data("value"),
 			sort : $("*[data-type=sort] option:selected").val(),
 			ajax: true
