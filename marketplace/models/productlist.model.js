@@ -5,6 +5,7 @@ var ProductListModel = {
 	defaultOrder : { order : "_id", reversed: true},
 
 	initialize : function(req, callback){
+		this.position = req.session.position;
 		var model = this;
 		if(req.params.universityId !== undefined){
 
@@ -19,6 +20,7 @@ var ProductListModel = {
 	},
 
 	initializeFilter : function(req, callback){
+		this.position = req.cookies.position;
 		var model = this;
 		model.ajax = req.body.ajax !== undefined && req.body.ajax == "true" ? true : false;
 
@@ -31,9 +33,15 @@ var ProductListModel = {
 			if(req.body.sort == "dateDown")
 				order = {order : "_id", reversed : true};
 		}
-		if(req.params.universityId !== undefined){
+		if(req.params.universityId !== undefined && req.params.universityId == "all") {
+			model.universityName = "Tous les contenus";
+			if(req.body.category !== undefined){
+				var filter = { categories : req.body.category };
+			}
+			ProductListModel.loadProducts(model, {}, order, callback);
+		} else if(req.cookies.position.universityId !== undefined){
 
-			var filter = {university : req.params.universityId};
+			var filter = {university : req.cookies.position.universityId};
 			if(req.body.category !== undefined){
 				filter.categories = req.body.category;
 			}
@@ -64,7 +72,16 @@ var ProductListModel = {
 	loadSchool : function(model, filter, order, callback){
 		ServiceHelper.getService('school', 'getSchoolByUrlId', {data: { universityId : filter.university }, method : "POST"}, function(school){
 			model.universityName = school.name;
-			ProductListModel.loadProducts(model, filter, order, callback);
+			model.currentSchool = school;
+			ServiceHelper.getService('school', 'getSchools', {data: {}, method : "POST"}, function(schools){
+				var otherSchools = [];
+				for (var i = schools.length - 1; i >= 0; i--) {
+					if(schools[i].name != model.currentSchool.name)
+						otherSchools.push(schools[i]);
+				};
+				model.otherSchools = otherSchools;
+				ProductListModel.loadProducts(model, filter, order, callback);
+			});
 		});
 	},
 

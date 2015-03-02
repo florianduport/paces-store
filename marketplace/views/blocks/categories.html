@@ -2,13 +2,10 @@
     <div class="sidebar-nav">
         <div class="base">
             <ul class="nav nav-list">
-                <li class="nav-header">Categories</li>
-                <li class="active"><a href="#"><div class="fs1" aria-hidden="true" data-icon="&#xe019;"></div>All Deals + Packages</a></li>
-                <li><a href="#">Flights</a></li>
-                <li><a href="#">Hotels</a></li>
-                <li><a href="#">Cruises</a></li>
-                <li><a href="#">Vacations</a></li>
-                <li><a href="#">Car Rentals</a></li>
+                <li class="nav-header">Matière</li>
+                {{#each model.categories}}
+                <li>{{this.name}} {{this.description}} <br/><br/></li>
+                {{/each}}
                 <li class="divider"></li>
             </ul>
             <ul class="nav nav-list">

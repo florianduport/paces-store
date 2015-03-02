@@ -4,8 +4,13 @@
                 <div class="row">
                     <div class="span12">
                         <form action="" class="form-inline" >
-                            <input type="text" class="span5 search-input" id="search" data-provide="typeahead" placeholder="Search by Keyword..." data-items="4" />  
-                            <input type="text" class="span5 search-input" id="search2" data-provide="typeahead" placeholder="Search by Location..." data-items="4" />  
+                            <input type="text" class="span5 search-input" id="search" data-provide="typeahead" placeholder="Rechercher par mot clé..." data-items="4" />
+                            <select>
+                                <option>{{model.currentSchool.name}}</option>
+                                {{#each model.otherSchools}}
+                                <option>{{this.name}}</option>
+                                {{/each}}
+                            </select>
                             <button type="submit" class="btn btn-blue"> Search</button>
                         </form>
                     </div>

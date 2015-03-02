@@ -15,7 +15,9 @@ var ProductListController = {
 	initializeFilter : function(req, res){
 		model.initializeFilter(req, function(model){
 			if(req.params.universityId !== undefined){
-	        	res.cookie("current-university", req.params.universityId);
+				var position = req.cookies.position;
+				position.universityId = req.params.universityId;
+	        	res.cookie("position", position);
 	    	}
 	        if(model.ajax == true){
 				res.render('blocks/productListBlock', {model: model});
