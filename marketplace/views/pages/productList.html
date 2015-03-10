@@ -2,9 +2,9 @@
     <!-- Start Search Section  -->
     <div id="search-section">
         <div class="row">
-            <div class="span12">
+            <div class="col-md-12">
                 <form action="" class="form-inline" >
-                    <input type="text" class="span5 search-input" id="search" data-provide="typeahead" placeholder="Tout le contenu..." data-items="4" />
+                    <input type="text" class="col-md-5 search-input" id="search" data-provide="typeahead" placeholder="Tout le contenu..." data-items="4" />
                     <select>
                         <option>{{model.currentSchool.name}}</option>
                         {{#each model.otherSchools}}
@@ -22,9 +22,9 @@
         {{> categories}}
         <!-- End Left Sidebar  -->
         <!-- Start Right Section  -->
-        <div class="span9">
+        <div class="col-md-9">
             <div class="row">
-                <div class="span9 pull-right">
+                <div class="col-md-9">
                     <select filter-element-change="filter-element-change" data-type="sort">
                         <option value="dateDown" selected> Les plus récents</option>
                         <option value="priceDown"> Prix croissant</option>
@@ -32,9 +32,7 @@
                     </select>
                 </div>
             </div>
-            <ul class="thumbnails productList">
-                {{> productListBlock}}
-            </ul>
+            {{> productListBlock}}
             <!--<p><button type="submit" class="btn btn-large btn-block btn-blue" data-original-title=""> Load More</button></p>-->
         </div>
     </div>
