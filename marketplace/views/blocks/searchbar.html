@@ -1,0 +1,16 @@
+<div id="search-section">
+    <div class="row">
+        <div class="col-md-12">
+            <form action="" class="form-inline" >
+                <input type="text" class="col-md-5 search-input" id="search" data-provide="typeahead" placeholder="Tout le contenu..." data-items="4" />
+                <select>
+                    <option>{{model.currentSchool.name}}</option>
+                    {{#each model.otherSchools}}
+                    <option>{{this.name}}</option>
+                    {{/each}}
+                </select>
+                <button type="submit" class="btn btn-blue"> Rechercher</button>
+            </form>
+        </div>
+    </div>
+</div> 

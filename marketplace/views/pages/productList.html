@@ -1,21 +1,6 @@
 <div class="container">
     <!-- Start Search Section  -->
-    <div id="search-section">
-        <div class="row">
-            <div class="col-md-12">
-                <form action="" class="form-inline" >
-                    <input type="text" class="col-md-5 search-input" id="search" data-provide="typeahead" placeholder="Tout le contenu..." data-items="4" />
-                    <select>
-                        <option>{{model.currentSchool.name}}</option>
-                        {{#each model.otherSchools}}
-                        <option>{{this.name}}</option>
-                        {{/each}}
-                    </select>
-                    <button type="submit" class="btn btn-blue"> Rechercher</button>
-                </form>
-            </div>
-        </div>
-    </div> 
+    {{> searchbar}} 
     <!-- End Search Section  -->
     <!-- Start Left Sidebar  -->
     <div class="row">
@@ -39,6 +24,14 @@
     <!-- End Right Section  -->
 </div>
 
-<script src="/js/cart.js"></script>
-<script src="/js/libs/animate.js"></script>
-<script src="/js/productList.js"></script>
+{{#content "registerTopStylesheets"}}
+    <link href="/css/productList.css" rel="stylesheet">       
+{{/content}}
+{{#content "registerBottomScripts"}}
+    <script src="/js/cart.js"></script>
+    <script src="/js/libs/animate.js"></script>
+    <script src="/js/productList.js"></script>
+{{/content}}
+{{#content "registerMeta"}}
+    <title>PACES Store - {{model.currentSchool.name}}</title>
+{{/content}}

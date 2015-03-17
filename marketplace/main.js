@@ -1,5 +1,6 @@
 var express = require('express'),
         html = require('express-handlebars'),
+        layouts = require('handlebars-layouts');
         path = require('path'),
         cookieParser = require('cookie-parser'),
         bodyParser = require('body-parser'),
@@ -49,6 +50,7 @@ var Main = {
                 	handlebars.getPartials().then(function(partials){
                 		app.partials = partials;
                 	});
+                    layouts(handlebars.handlebars);
 
                     app.engine('html', handlebars.engine);
                     app.set('view engine', 'html');

@@ -33,15 +33,22 @@ var ProductListModel = {
 			if(req.body.sort == "dateDown")
 				order = {order : "_id", reversed : true};
 		}
+
+		var universityId;
+		if(req.cookies.position !== undefined)
+			universityId = req.cookies.position.universityId;
+		else if(req.cookies.position !== undefined)
+			universityId = req.session.position.universityId;
+
 		if(req.params.universityId !== undefined && req.params.universityId == "all") {
 			model.universityName = "Tous les contenus";
 			if(req.body.category !== undefined){
 				var filter = { categories : req.body.category };
 			}
 			ProductListModel.loadProducts(model, {}, order, callback);
-		} else if(req.cookies.position.universityId !== undefined){
+		} else if(universityId !== undefined){
 
-			var filter = {university : req.cookies.position.universityId};
+			var filter = {university : universityId};
 			if(req.body.category !== undefined){
 				filter.categories = req.body.category;
 			}

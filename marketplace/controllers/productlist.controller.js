@@ -19,7 +19,6 @@ var ProductListController = {
 				position.universityId = req.params.universityId;
 	        	res.cookie("position", position);
 	    	}
-	    	console.log("AJAX ??? "+model.ajax);
 	        if(model.ajax == true){
 				res.render('blocks/productListBlock', {model: model, layout : null});
 			} else {

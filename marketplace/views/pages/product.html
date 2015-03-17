@@ -1,0 +1,63 @@
+<div class="container">
+	{{> searchbar}} 
+	<div class="row">
+            <div class="col-md-12 productThumbnail">
+            	<div class="col-md-7 productMainColumn">
+                    <h1>{{model.product.name}}</h1>
+        			<div class="col-md-7">
+	                    <img data-src="holder.js/300x200" alt="300x200" class="img-responsive" src="/img/h-6.jpg">
+                    </div>
+                    <div class="col-md-5">
+	                    <div class="stars">
+	                    	***** (super bien noté)
+	                    </div>
+	                    <div class="sellBy">
+	                    	Vendu par JeanMich
+	                    </div>
+	                    <div class="caption">
+	                        <p>{{model.product.description}}</p>
+	                    </div>
+                    </div>
+                </div>
+        		<div class="col-md-3 productMainColumn">
+        			<p class="text-center productPrice">{{model.product.price}}€</p>
+        			<input type="button" class="btn-lg btn-block btn-success add-to-cart-button" data-product="{{model.product._id}}" value="Ajouter" />
+        		</div>
+        		<div class="col-md-2 productMainColumn">
+        			<p>Paiement sécuré par CB VISA MASTERCARD</p>
+        		</div>
+	        	<div class="col-md-12">
+	        		<h2>Description détaillée</h2>
+	        		<p>
+	        			Un super cours dans lequel nous allons voir les points suivants :
+	        			<ul>
+	        				<li>Avoir du swag</li>
+	        				<li>Ecouter Kingal</li>
+	        				<li>Tinderiser à mort</li>
+	        				<li>GiantAppiser tous les mardis</li>
+	        			</ul>
+	        			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	        		</p>
+	        	</div>
+
+	        	<div class="col-md-12">
+	        		<h2>Avis</h2>
+	        	</div>
+
+	        	<div class="col-md-12">
+	        		<h2>Ces contenus vous intéressent sûrement</h2>
+	        	</div>
+            </div>
+    </div>
+</div>
+
+{{#content "registerTopStylesheets"}}
+    <link href="/css/product.css" rel="stylesheet">       
+{{/content}}
+{{#content "registerBottomScripts"}}
+    <script src="/js/cart.js"></script>
+    <script src="/js/product.js"></script>
+{{/content}}
+{{#content "registerMeta"}}
+    <title>PACES Store - {{model.product.name}}</title>
+{{/content}}
