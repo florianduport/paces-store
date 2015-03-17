@@ -1,12 +1,8 @@
 <div class="col-md-3">
-    <div class="sidebar-nav">
-        <div class="base">
-            <ul class="nav nav-list">
-                <li class="nav-header">Matière</li>
-                {{#each model.categories}}
-                <li>{{this.name}} {{this.description}}</li>
-                {{/each}}
-            </ul>
-        </div>
+    <div class="list-group">
+        <a class="list-group-item" href='#'>Matière</a>
+        {{#each model.categories}}
+        <a class="list-group-item" href='#' >{{this.name}} {{this.description}}</a>
+        {{/each}}
     </div>
 </div>
