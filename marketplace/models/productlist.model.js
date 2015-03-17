@@ -63,6 +63,35 @@ var ProductListModel = {
 		}
 	},
 
+	loadProducts : function(model, filter, order, callback){
+		ServiceHelper.getService('productList', 'getProductsByFilter', {data: { filter : filter, order : order}, method : "POST"}, function(products){
+			
+			if(!products)
+				callback(false);
+			else {
+				model.products = products;
+				ProductListModel.loadCategories(model, filter, callback);
+			}
+
+		});	
+	},
+
+	loadSchool : function(model, filter, order, callback){
+		ServiceHelper.getService('school', 'getSchoolByUrlId', {data: { universityId : filter.university }, method : "POST"}, function(school){
+			model.universityName = school.name;
+			model.currentSchool = school;
+			ServiceHelper.getService('school', 'getSchools', {data: {}, method : "POST"}, function(schools){
+				var otherSchools = [];
+				for (var i = schools.length - 1; i >= 0; i--) {
+					if(schools[i].name != model.currentSchool.name)
+						otherSchools.push(schools[i]);
+				};
+				model.otherSchools = otherSchools;
+				ProductListModel.loadProducts(model, filter, order, callback);
+			});
+		});
+	},
+
 	loadCategories : function(model, filter, callback){
 		ServiceHelper.getService('category', 'getCategories', {data: {}, method : "POST"}, function(categories){
 			var categoriesList = [];
