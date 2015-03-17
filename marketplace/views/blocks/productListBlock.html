@@ -1,17 +1,16 @@
-<div class="productList row">
-    {{#each model.products}}
-    <div class="col-md-4">
-        <div class="thumbnail">
-            <span>{{this.price}}€</span>
-            <a href="/product/{{this._id}}">
-	            <img data-src="holder.js/300x200" alt="300x200" class="img-responsive" src="/img/h-6.jpg">
-	            <div class="caption">
-	                <h3>{{this.name}}</h3>
-	                <p>{{this.description}}</p>
-	            </div>
-        	</a>
-        	<input type="button" class="btn btn-block btn-success add-to-cart-button" data-product="{{this._id}}" value="Ajouter" />
-        </div>
+
+{{#each model.products}}
+<div class="col-md-4">
+    <div class="thumbnail">
+        <span>{{this.price}}€</span>
+        <a href="/product/{{this._id}}">
+            <img data-src="holder.js/300x200" alt="300x200" class="img-responsive" src="/img/h-6.jpg">
+            <div class="caption">
+                <h3>{{this.name}}</h3>
+                <p>{{this.description}}</p>
+            </div>
+        </a>
+        <input type="button" class="btn btn-block btn-success add-to-cart-button" data-product="{{this._id}}" value="Ajouter" />
     </div>
-    {{/each}}
 </div>
+{{/each}}

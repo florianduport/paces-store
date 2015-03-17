@@ -1,6 +1,6 @@
 .clearfix:before, .clearfix:after {
-  content: "";
-  display: table;
+    content: "";
+    display: table;
 }
 
 .clearfix:after {clear: both;}
@@ -18,7 +18,7 @@
 .prettyradio a{
     width: 30px;
     height: 30px;
-    background: url(../img/prettyCheckable-blue.png) top left no-repeat;
+    background: url('../img/prettyCheckable-blue.png') top left no-repeat;
     display: block;
     float: left;
     cursor: pointer;
@@ -26,13 +26,13 @@
 }
 
 .prettycheckbox.green a,
-.prettyradio.green a{ background-image: url(../img/../img/../img/prettyCheckable-green.png);}
+.prettyradio.green a{ background-image: url('../img/prettyCheckable-green.png');}
 
 .prettycheckbox.red a,
-.prettyradio.red a{ background-image: url(../img/../img/prettyCheckable-red.png);}
+.prettyradio.red a{ background-image: url('../img/prettyCheckable-red.png');}
 
 .prettycheckbox.yellow a,
-.prettyradio.yellow a{ background-image: url(../img/prettyCheckable-yellow.png);}
+.prettyradio.yellow a{ background-image: url('../img/prettyCheckable-yellow.png');}
 
 .prettyradio a {background-position: 0 -120px;}
 
@@ -50,8 +50,8 @@
 
 .prettycheckbox label,
 .prettyradio label {
-  display: block;
-  float: left;
-  margin: 6px 5px;
-  cursor: pointer;
+    display: block;
+    float: left;
+    margin: 6px 5px;
+    cursor: pointer;
 }

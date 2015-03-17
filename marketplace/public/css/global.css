@@ -9,5 +9,12 @@ body {
     padding-top: 50px;
 }
 .categories-products > div > label {
-       
+    width: 100%;   
+    cursor: pointer;
+}
+.btn span.glyphicon {    			
+	opacity: 0;				
+}
+.btn.active span.glyphicon {				
+	opacity: 1;				
 }

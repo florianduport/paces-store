@@ -10,14 +10,19 @@
         <div class="col-md-9">
             <div class="row">
                 <div class="col-md-12">
-                    <select filter-element-change="filter-element-change" data-type="sort" class="selectpicker pull-right">
-                        <option value="dateDown" selected> Les plus récents</option>
-                        <option value="priceDown"> Prix croissant</option>
-                        <option value="priceUp"> Prix décroissant</option>
+                    <h4 class='categories-names pull-left'>Toutes les fiches</h4>
+                    <select filter-element-change="filter-element-change" data-type="sort" id="tri" name="tri" class="selectpicker pull-right" data-header="Selectionner un tri">
+                        <option data-icon="glyphicon-star" value="dateDown" selected> Les plus récents</option>
+                        <option data-icon="glyphicon-sort-by-attributes" value="priceDown"> Prix croissant</option>
+                        <option data-icon="glyphicon-sort-by-attributes-alt" value="priceUp"> Prix décroissant</option>
                     </select>
                 </div>
             </div>
-            {{> productListBlock}}
+            <div class="row">
+                <div class="productList">
+                    {{> productListBlock}}
+                </div>
+            </div>
             <!--<p><button type="submit" class="btn btn-large btn-block btn-blue" data-original-title=""> Load More</button></p>-->
         </div>
     </div>
@@ -25,13 +30,14 @@
 </div>
 
 {{#content "registerTopStylesheets"}}
-    <link href="/css/productList.css" rel="stylesheet">       
+<link href="/css/productList.css" rel="stylesheet">       
 {{/content}}
 {{#content "registerBottomScripts"}}
-    <script src="/js/cart.js"></script>
-    <script src="/js/libs/animate.js"></script>
-    <script src="/js/productList.js"></script>
+<script src="/js/cart.js"></script>
+<script src="/js/libs/animate.js"></script>
+<script src="/js/productList.js"></script>
+
 {{/content}}
 {{#content "registerMeta"}}
-    <title>PACES Store - {{model.currentSchool.name}}</title>
+<title>PACES Store - {{model.currentSchool.name}}</title>
 {{/content}}
