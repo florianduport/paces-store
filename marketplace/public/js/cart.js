@@ -13,12 +13,7 @@ $(document).ready(function(){
 
 	var reloadCartCount = function(){
 		if($.cookie("cart-count") !== undefined){
-			if($.cookie("cart-count") == 1){
-				$("#cart-number-products").html("1 produit");
-			}
-			else if($.cookie("cart-count") > 1){
-				$("#cart-number-products").html($.cookie("cart-count")+" produits");
-			}	
+				$("#cart-number-products").html($.cookie("cart-count"));
 		}
 		
 	};
