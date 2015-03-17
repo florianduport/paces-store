@@ -1,4 +1,5 @@
 var ServiceHelper = require('../helpers/service.helper').ServiceHelper;
+var SchoolsHelper = require('../helpers/schools.helper').SchoolsHelper;
 
 var ProductModel = {
 
@@ -11,10 +12,7 @@ var ProductModel = {
 				this.product = product;
 				var model = this;
 
-				filter = {};
-				filter.university = ProductModel.loadUniversity(req);
-				ProductModel.loadSchool(model, filter, callback);
-
+				SchoolsHelper.loadSchool(model, { university : SchoolsHelper.loadUniversity(req)}, callback);
 			}
 		});
 	},

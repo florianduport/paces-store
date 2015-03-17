@@ -1,0 +1,36 @@
+<div class="container">
+	{{> searchbar}} 
+	<div class="row">
+            <div class="col-md-12 shoppingcartContainer">
+            	{{#if model.shoppingcart.products.length}}
+            		<h1>Mon panier</h1>
+	            	<h3>{{model.shoppingcart.products.length}} produits</h3>
+	            	{{#each model.shoppingcart.products}}
+	            		<div class="col-md-12">
+	            			<div class="col-md-2">{{this.name}}</div>
+	            			<div class="col-md-1"><input type="button" removeFromShoppingCart data-productid="{{this._id}}" value="-" /></div> 
+	            		</div>
+	            	{{/each}}
+	            	<div class="col-md-12">
+	            		Total : {{model.shoppingcart.total}}€
+	            	</div>
+            	{{else}}
+	            	<h1>Ouille votre panier est vide</h1>
+	            	<div class="col-md-12">
+	            		<a href="/">Retour à l'accueil</a>
+	            	</div>
+            	{{/if}}
+            </div>
+    </div>
+</div>
+
+{{#content "registerTopStylesheets"}}
+    <link href="/css/shoppingcart.css" rel="stylesheet">       
+{{/content}}
+{{#content "registerBottomScripts"}}
+    <script src="/js/globalcart.js"></script>
+    <script src="/js/shoppingcart.js"></script>
+{{/content}}
+{{#content "registerMeta"}}
+    <title>PACES Store - Mon panier</title>
+{{/content}}

@@ -1,4 +1,5 @@
 var ServiceHelper = require('../helpers/service.helper').ServiceHelper;
+var SchoolsHelper = require('../helpers/schools.helper').SchoolsHelper;
 
 var ShoppingCartModel = {
 
@@ -12,14 +13,14 @@ var ShoppingCartModel = {
 				if(!products){
 					callback(model);
 				}
-				else {
+				else {	
 					model.shoppingcart.products = products
 					model.shoppingcart.total = 0;
 					for (var i = model.shoppingcart.products.length - 1; i >= 0; i--) {
 						model.shoppingcart.total = model.shoppingcart.total+model.shoppingcart.products[i].price;
 					};
 
-					callback(model);
+					SchoolsHelper.loadSchool(model, { university : SchoolsHelper.loadUniversity(req)}, callback);
 				}
 			});
 	},
@@ -49,12 +50,12 @@ var ShoppingCartModel = {
 			callback(model);
 		} 
 	},
-	removeFromShoppingCart : function(req, callback){
-		console.log(req.session.shoppingcart);
-		console.log("ok");
+	removeFromShoppingCart : function(req, res, callback){
 		if(req.params !== undefined && req.params.product !== undefined && req.params.product !== ""){
 			if(req.session !== undefined  && req.session.shoppingcart !== undefined && req.session.shoppingcart.length > 0 && req.session.shoppingcart.indexOf(req.params.product) != -1){
 				req.session.shoppingcart.splice(req.session.shoppingcart.indexOf(req.params.product), 1);
+				if(req.cookies["cart-count"] !== undefined && req.cookies["cart-count"] > 0)
+					res.cookie("cart-count", req.cookies["cart-count"]-1);
 				callback(true);
 			} else {
 				callback(false);
