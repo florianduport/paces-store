@@ -9,7 +9,7 @@ $(document).ready(function(){
 		$(".productList").addClass("animated bounceOutLeft");
 		var animationPlayed = false;
 		$.post("/list/"+jsonPosition.universityId, {
-			category : $("*[current-category=true]").data("value"),
+			categories : $("input[name=categoriesSelected]").val(),
 			sort : $("*[data-type=sort] option:selected").val(),
 			ajax: true
 		}, function(data){
@@ -36,8 +36,12 @@ $(document).ready(function(){
 
 	var handleFilter = function(){
 		if($(this).data("type") == "category"){
-			$("*[current-category=true]").attr("current-category", "false");
-			$(this).attr("current-category", "true");
+			var categories = $("input[name^=categorie_]:checked");
+			$("input[name=categoriesSelected]").val("[");
+			for (var i = categories.length - 1; i >= 0; i--) {
+				$("input[name=categoriesSelected]").val($("input[name=categoriesSelected]").val()+"\""+$(categories[i]).data("name")+"\""+(i==0 ? "" : ","));
+			};
+			$("input[name=categoriesSelected]").val($("input[name=categoriesSelected]").val()+"]");
 		}
 		applyFilter();
 	};

@@ -15,7 +15,7 @@ var CategoryService = {
                 {
                     return done(false);
                 } 
-                categoriesCollection.find({}).toArray(function(err, categories){
+                categoriesCollection.find({}).sort({order : 1}).toArray(function(err, categories){
                     if (err || !categories)
                     {
                         return done(false);

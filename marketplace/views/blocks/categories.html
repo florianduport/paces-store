@@ -1,8 +1,13 @@
 <div class="col-md-3">
     <div class="list-group">
+        <input type="hidden" name="categoriesSelected" value="[]" />
         <a class="list-group-item" href='#'>Matière</a>
         {{#each model.categories}}
-        <a class="list-group-item" href='#' >{{this.name}} {{this.description}}</a>
+        <a class="list-group-item" href='#' ><input type="checkbox" name="categorie_{{this.shortName}}" data-type="category" filter-element data-name="{{this.shortName}}" value="0" /> {{this.name}}</a>
+        {{/each}}
+        <a class="list-group-item" href='#'>Spécifiques</a>
+        {{#each model.categoriesSpecifiques}}
+        <a class="list-group-item" href='#' ><input type="checkbox" name="categorie_{{this.shortName}}" data-type="category" filter-element data-name="{{this.shortName}}" value="0" /> {{this.name}}</a>
         {{/each}}
     </div>
 </div>

@@ -42,22 +42,22 @@ var ProductListModel = {
 
 		if(req.params.universityId !== undefined && req.params.universityId == "all") {
 			model.universityName = "Tous les contenus";
-			if(req.body.category !== undefined){
-				var filter = { categories : req.body.category };
+			if(req.body.categories !== undefined && req.body.categories != "[]"){
+				var filter = { categories : {$in: JSON.parse(req.body.categories)}};
 			}
 			ProductListModel.loadProducts(model, {}, order, callback);
 		} else if(universityId !== undefined){
 
 			var filter = {university : universityId};
-			if(req.body.category !== undefined){
-				filter.categories = req.body.category;
+			if(req.body.categories !== undefined && req.body.categories != "[]"){
+				filter.categories = {$in: JSON.parse(req.body.categories)};
 			}
 			ProductListModel.loadSchool(model, filter, order, callback);
 			
 		} else {
 			model.universityName = "Tous les contenus";
-			if(req.body.category !== undefined){
-				var filter = { categories : req.body.category };
+			if(req.body.categories !== undefined && req.body.categories != "[]"){
+				var filter = { categories : {$in: JSON.parse(req.body.categories)} };
 			}
 			ProductListModel.loadProducts(model, {}, order, callback);
 		}
@@ -94,7 +94,20 @@ var ProductListModel = {
 
 	loadCategories : function(model, filter, callback){
 		ServiceHelper.getService('category', 'getCategories', {data: {}, method : "POST"}, function(categories){
-			model.categories = categories;
+			var categoriesList = [];
+			var categoriesSpecifiquesList = [];
+
+			if(categories.length > 0){
+				for (var i = 0; i < categories.length; i++) {
+					if(categories[i].isSpecific !== undefined && categories[i].isSpecific == true)
+						categoriesSpecifiquesList.push(categories[i]);
+					else
+						categoriesList.push(categories[i]);
+				};
+			}
+
+			model.categories = categoriesList;
+			model.categoriesSpecifiques = categoriesSpecifiquesList;
 			callback(model);
 		});
 	}
