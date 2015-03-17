@@ -7,10 +7,10 @@
                         <input type="text" class="input" id="search" data-provide="typeahead" placeholder="Tout le contenu..." data-items="4" />
                     </div>
                     <div class="form-group">
-                        <select class="selectpicker" data-style="btn-primary">
+                        <select class="selectpicker show-tick" data-style="btn-primary">
                             <option selected>{{model.currentSchool.name}}</option>
                             {{#each model.otherSchools}}
-                            <option>{{this.name}}</option>
+                            <option>{{this.name}} </option>
                             {{/each}}
                         </select>
                     </div>
