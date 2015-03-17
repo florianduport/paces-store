@@ -100,9 +100,9 @@ var ProductListModel = {
 			if(categories.length > 0){
 				for (var i = 0; i < categories.length; i++) {
 					if(categories[i].isSpecific !== undefined && categories[i].isSpecific == true)
-						categoriesSpecifiquesList.push(categories[i]);
+						categoriesSpecifiquesList.push(_getCategorieObject(model,categories[i]));
 					else
-						categoriesList.push(categories[i]);
+						categoriesList.push(_getCategorieObject(model,categories[i]));
 				};
 			}
 
@@ -110,6 +110,16 @@ var ProductListModel = {
 			model.categoriesSpecifiques = categoriesSpecifiquesList;
 			callback(model);
 		});
+	},
+
+	_getCategorieObject : function(model, category){
+		var categoryObject = {category : category, count : 0};
+		for (var i = model.products.length - 1; i >= 0; i--) {
+			if(model.products[i].indexOf(category) != -1){
+				categoryObject.count++;
+			}
+		};
+		return categoryObject;
 	}
 
 };
