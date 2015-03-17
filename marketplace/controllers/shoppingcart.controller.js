@@ -21,7 +21,7 @@ var ShoppingCartController = {
 	},
 
 	removeFromShoppingCart : function(req, res){
-	    model.removeFromShoppingCart(req, function(model){
+	    model.removeFromShoppingCart(req, res, function(model){
 	    	res.send("suppression ok");
 	    });
 	}
