@@ -23,6 +23,10 @@ var ProductListService = {
 
                 var sortObject = {};
                 sortObject[order.order] = order.reversed !== undefined && order.reversed == true ? -1 : 1;
+                if(filter["$text"] !== undefined){
+                    sortObject.score = {}; 
+                    sortObject.score["$meta"] = "textScore";
+                }
 
                 if(filter["_id"] && typeof(filter["_id"]) === "object"){
                    if(filter["_id"]["$in"] !== undefined && filter["_id"]["$in"].length > 0){
@@ -30,7 +34,7 @@ var ProductListService = {
                    } 
                 }
 
-                products.find(filter).sort(sortObject).toArray(function(err, products){
+                products.find(filter, { "score" : { "$meta" : "textScore"}}).sort(sortObject).toArray(function(err, products){
                     console.log(err);
                     if (err || !products)
                     {

@@ -10,6 +10,7 @@ $(document).ready(function () {
         var animationPlayed = false;
         $.post("/list/" + jsonPosition.universityId, {
             categories: $("input[name=categoriesSelected]").val(),
+            keywords : $("#searchText").val(),
             sort: $("*[data-type=sort] option:selected").val(),
             ajax: true
         }, function (data) {
@@ -29,10 +30,13 @@ $(document).ready(function () {
                 $(".productList").addClass("animated bounceInRight");
                 $(".productList").html(data);
                 var name = "";
+                var i = 0;
                 $("input[filter-element]:checked + .category-name").each(
                         function (element) {
+                        	if(i > 0)
+                        		name+=', '; 
                             name += $(this).html();
-                            name += ' ';
+                            i++;
                         });
                 $(".categories-names").html(name+' ');
                 loadAddToCartButtons();

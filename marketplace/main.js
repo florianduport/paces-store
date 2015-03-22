@@ -1,13 +1,12 @@
 var express = require('express'),
-        html = require('express-handlebars'),
-        layouts = require('handlebars-layouts');
         path = require('path'),
         cookieParser = require('cookie-parser'),
         bodyParser = require('body-parser'),
         session = require('express-session'),
         Routes = require('./routes/routes').Routes,
         MongoStore = require('connect-mongo')(session),
-        ConfigurationHelper = require('./helpers/configuration.helper').ConfigurationHelper;
+        ConfigurationHelper = require('./helpers/configuration.helper').ConfigurationHelper,
+        HandlebarsHelper = require('./helpers/handlebars.helper').HandlebarsHelper;
 
 /**
  * Classe principale - Keep it simple in here
@@ -37,22 +36,10 @@ var Main = {
                     app.set('port', configuration.port);
                     app.set('views', __dirname + '/views');
 
-                    var handlebars = html.create({
-                    	layoutsDir: path.join(app.settings.views, ""),
-                    	defaultLayout: 'layout',
-                    	extname: '.html', 
-                    	partialsDir: [
-        					__dirname + '/views/blocks/'
-						]
-					});
+                    
 
-                    //load partials views
-                	handlebars.getPartials().then(function(partials){
-                		app.partials = partials;
-                	});
-                    layouts(handlebars.handlebars);
 
-                    app.engine('html', handlebars.engine);
+                    app.engine('html', HandlebarsHelper.initHandlebars(app));
                     app.set('view engine', 'html');
 
                     app.use(express.static(path.join(__dirname, 'public')));

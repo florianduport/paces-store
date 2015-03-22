@@ -8,7 +8,6 @@ $(document).ready(function(){
 				currentPosition.latitude = position.coords.latitude;
 				currentPosition.longitude = position.coords.longitude;
 				var currentPositionString = "j:"+JSON.stringify(currentPosition);
-				console.log(currentPositionString);
 				$.cookie("position", currentPositionString);
 				window.location.reload();
 			} 

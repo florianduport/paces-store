@@ -1,5 +1,3 @@
-(function($) {
-    $(document).ready(function() {
-      	$.slidebars();
-    });
-}) (jQuery);
+$(document).ready(function() {
+  	$.slidebars();
+});

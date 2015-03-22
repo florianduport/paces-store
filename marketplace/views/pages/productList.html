@@ -12,9 +12,9 @@
                 <div class="col-md-12">
                     <h4 class='categories-names pull-left'>Toutes les fiches</h4>
                     <select filter-element-change="filter-element-change" data-type="sort" id="tri" name="tri" class="selectpicker pull-right" data-header="Selectionner un tri">
-                        <option data-icon="glyphicon-star" value="dateDown" selected> Les plus récents</option>
-                        <option data-icon="glyphicon-sort-by-attributes" value="priceDown"> Prix croissant</option>
-                        <option data-icon="glyphicon-sort-by-attributes-alt" value="priceUp"> Prix décroissant</option>
+                        <option data-icon="glyphicon-star" value="dateDown" {{#ifCond model.req.body '!==' undefined}}{{#ifCond model.req.body.sort '!==' undefined}}{{#ifCond model.req.body.sort '===' "dateDown"}}selected{{/ifCond}}{{/ifCond}}{{/ifCond}}> Les plus récents</option>
+                        <option data-icon="glyphicon-sort-by-attributes" value="priceDown" {{#ifCond model.req.body '!==' undefined}}{{#ifCond model.req.body.sort '!==' undefined}}{{#ifCond model.req.body.sort '===' "priceDown"}}selected{{/ifCond}}{{/ifCond}}{{/ifCond}}> Prix croissant</option>
+                        <option data-icon="glyphicon-sort-by-attributes-alt" value="priceUp" {{#ifCond model.req.body '!==' undefined}}{{#ifCond model.req.body.sort '!==' undefined}}{{#ifCond model.req.body.sort '===' "priceUp"}}selected{{/ifCond}}{{/ifCond}}{{/ifCond}}> Prix décroissant</option>
                     </select>
                 </div>
             </div>
@@ -36,6 +36,7 @@
     <script src="/js/globalcart.js"></script>
     <script src="/js/libs/animate.js"></script>
     <script src="/js/productList.js"></script>
+    <script src="/js/searchbar.js"></script>
 {{/content}}
 {{#content "registerMeta"}}
 <title>PACES Store - {{model.currentSchool.name}}</title>

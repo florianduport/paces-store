@@ -30,6 +30,9 @@ var Routes = {
 		//app.get('/', PageController.initializeGeoloc, HomepageController.initialize);
 		app.get('/', PageController.initializeGeoloc, ProductListController.initializeFilter);
 		
+		app.post('/search/', PageController.initializeGeoloc, ProductListController.initializeFilter);
+		app.get('/search/', PageController.initializeGeoloc, function(req, res){ res.redirect('/'); });
+		
 		app.get('/list/:universityId', PageController.initializeGeoloc, ProductListController.initialize);
 		app.get('/list/', PageController.initializeGeoloc, ProductListController.initialize);
 		app.post('/list/:universityId', PageController.initializeGeoloc, ProductListController.initializeFilter);
