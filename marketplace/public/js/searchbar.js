@@ -24,11 +24,13 @@ $(document).ready(function(){
 		if($("input[name=categoriesSelected]")[0] !== undefined){
 			var categoriesElement = "<input type='hidden' name='categories' value='"+$("input[name=categoriesSelected]").val()+"'/>";
 			$("form[name=searchForm]").html($("form[name=searchForm]").html()+categoriesElement);
-		}
-
-		
+		}		
 
 		$("form[name=searchForm]").submit();
 
+	});
+
+	$("#cleanSearch").click(function(){
+		$("#searchText").remove();
 	});
 });

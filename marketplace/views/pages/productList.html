@@ -10,7 +10,11 @@
         <div class="col-md-9">
             <div class="row">
                 <div class="col-md-12">
+                    {{#if model.req.body.keywords}}
+                    <h4 class='categories-names search-names pull-left'>Resultats de votre recherche "{{model.req.body.keywords}}"</h4>
+                    {{else}}
                     <h4 class='categories-names pull-left'>Toutes les fiches</h4>
+                    {{/if}}
                     <select filter-element-change="filter-element-change" data-type="sort" id="tri" name="tri" class="selectpicker pull-right" data-header="Selectionner un tri">
                         <option data-icon="glyphicon-star" value="dateDown" {{#ifCond model.req.body '!==' undefined}}{{#ifCond model.req.body.sort '!==' undefined}}{{#ifCond model.req.body.sort '===' "dateDown"}}selected{{/ifCond}}{{/ifCond}}{{/ifCond}}> Les plus récents</option>
                         <option data-icon="glyphicon-sort-by-attributes" value="priceDown" {{#ifCond model.req.body '!==' undefined}}{{#ifCond model.req.body.sort '!==' undefined}}{{#ifCond model.req.body.sort '===' "priceDown"}}selected{{/ifCond}}{{/ifCond}}{{/ifCond}}> Prix croissant</option>

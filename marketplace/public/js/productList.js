@@ -38,7 +38,9 @@ $(document).ready(function () {
                             name += $(this).html();
                             i++;
                         });
-                $(".categories-names").html(name+' ');
+                if(!$(".categories-names").hasClass("search-names")){
+                	$(".categories-names").html(name+' ');
+            	}
                 loadAddToCartButtons();
                 animationPlayed = true;
             }
@@ -60,7 +62,7 @@ $(document).ready(function () {
 
     $("*[filter-element-change]").change(handleFilter);
     $("*[filter-element]").click(handleFilter);
-
+    if($("input[name^=categorie_]:checked").length > 0 && $("#searchText").val() == ""){handleFilter();}
 
     /* $(".categories-products").click(function () {
      var name = "";
