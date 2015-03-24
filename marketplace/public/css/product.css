@@ -25,3 +25,10 @@
 }
 .productMainColumn{
 }
+.productMainColumn > .col-md-12 {
+    margin-bottom: 20px;
+}
+#profileProduct.affix {
+    position: fixed;
+    top: 0;
+}

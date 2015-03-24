@@ -40,6 +40,9 @@ var ProductListService = {
                     {
                         return done(false);
                     }    
+                    for(var i = 0; i < products.length; i++) {
+                        products[i].truncateName = products[i].name.substr(0, 19);
+                    }
                     return done(products); 
                 });
             });

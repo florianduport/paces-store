@@ -1,24 +1,24 @@
 
 {{#if model.products}}
-    {{#each model.products}}
-    <div class="col-md-4">
-        <div class="thumbnail">
-            <span>{{this.price}}€</span>
-            <a href="/product/{{this._id}}">
-                <img data-src="holder.js/300x200" alt="300x200" class="img-responsive" src="/img/h-6.jpg">
-                <div class="caption">
-                    <h3>{{this.name}}</h3>
-                    <p>{{this.description}}</p>
-                </div>
-            </a>
-            <input type="button" class="btn btn-block btn-success add-to-cart-button" data-product="{{this._id}}" value="Ajouter" />
-        </div>
+{{#each model.products}}
+<div class="col-md-3">
+    <div class="thumbnail">
+        <a href="/product/{{this._id}}">
+            <div class="thumbnail-seller">{{this.seller}}</div>
+            <img data-src="holder.js/300x200" alt="300x200" class="img-responsive" src="/img/h-6.jpg">
+            <div class="caption">
+                <h3>{{this.truncateName}}</h3>
+            </div>
+            <div class="text-right thumbnail-price"><strong>{{this.price}} €</strong></div>
+        </a>
+<!--        <input type="button" class="btn btn-block btn-success add-to-cart-button" data-product="{{this._id}}" value="Ajouter" />-->
     </div>
-    {{/each}}
+</div>
+{{/each}}
 {{else}}
-    <div class="col-md-12">
-        <br/>
-        <h4>Aucun produit disponible ne correspond à vos critères</h4>
-        <a id="cleanSearch" href="/">Réinitialiser vos critères</a>
-    </div>
+<div class="col-md-12">
+    <br/>
+    <h4>Aucun produit disponible ne correspond à vos critères</h4>
+    <a id="cleanSearch" href="/">Réinitialiser vos critères</a>
+</div>
 {{/if}}

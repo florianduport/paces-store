@@ -5,7 +5,7 @@
         {{#block "registerMeta"}}
         <title>PACES Store</title>
         {{/block}}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width" initial-scale=1.0">
         <!-- Include Stylesheets -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
@@ -24,27 +24,28 @@
         <![endif]-->
     </head>
     <body>
-        <div id="wrap">
-            <!-- Start Header/Navbar  -->
-            {{> navbar}}
-            <!-- End Header/Navbar  -->
-
+        <!-- Start Header/Navbar  -->
+        {{> navbar}}
+        <!-- End Header/Navbar  -->
+        <section class="section">
             <!-- Start Main Content  -->
             {{{body}}}
             <!-- End Main Content -->
+        </section>
+        <section class="section">
             <!-- Start Footer -->
             {{> footer}}
             <!-- End Footer -->
+        </section>
 
 
-            <!-- Placed at the end of the document so the pages load faster -->
-            <script src="/js/libs/jquery.min.js"></script>
-            <script src="/js/libs/jquery.cookie.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-            <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
-            <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/i18n/defaults-fr_FR.min.js"></script>
-            {{#block "registerBottomScripts"}}
-            {{/block}}
-        </div>
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="/js/libs/jquery.min.js"></script>
+        <script src="/js/libs/jquery.cookie.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/i18n/defaults-fr_FR.min.js"></script>
+        {{#block "registerBottomScripts"}}
+        {{/block}}
     </body>
 </html>

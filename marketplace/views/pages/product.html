@@ -1,64 +1,74 @@
 <div class="container">
-	{{> searchbar}} 
-	<div class="row">
-            <div class="col-md-12 productThumbnail">
-            	<div class="col-md-7 productMainColumn">
-                    <h1>{{model.product.name}}</h1>
-        			<div class="col-md-7">
-	                    <img data-src="holder.js/300x200" alt="300x200" class="img-responsive" src="/img/h-6.jpg">
+    {{> searchbar}} 
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-8 productMainColumn well well-lg">
+                <h1>{{model.product.name}} dans la {{model.product.categories}}</h1>
+                <div class='col-md-12'>
+                    <div class="rating pull-right">
+                        <div class="stars starrr" data-rating="4"></div> (5 votes)
                     </div>
-                    <div class="col-md-5">
-	                    <div class="stars">
-	                    	***** (super bien noté)
-	                    </div>
-	                    <div class="sellBy">
-	                    	Vendu par JeanMich
-	                    </div>
-	                    <div class="caption">
-	                        <p>{{model.product.description}}</p>
-	                    </div>
-                    </div>
+                    <span><strong>Tags: </strong></span>
+                    <span class="label label-warning">{{model.product.categories}}</span>
+                    <span class="label label-info">{{model.product.university}}</span>
+                    <span class="label label-info">Microsoft Office</span>
+                    <span class="label label-success">Windows XP, Vista, 7</span>
                 </div>
-        		<div class="col-md-3 productMainColumn">
-        			<p class="text-center productPrice">{{model.product.price}}€</p>
-        			<input type="button" class="btn-lg btn-block btn-success add-to-cart-button" data-product="{{model.product._id}}" value="Ajouter" />
-        		</div>
-        		<div class="col-md-2 productMainColumn">
-        			<p>Paiement sécuré par CB VISA MASTERCARD</p>
-        		</div>
-	        	<div class="col-md-12">
-	        		<h2>Description détaillée</h2>
-	        		<p>
-	        			Un super cours dans lequel nous allons voir les points suivants :
-	        			<ul>
-	        				<li>Avoir du swag</li>
-	        				<li>Ecouter Kingal</li>
-	        				<li>Tinderiser à mort</li>
-	        				<li>GiantAppiser tous les mardis</li>
-	        			</ul>
-	        			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	        		</p>
-	        	</div>
+                <div class="col-md-8">
+                    <h2>Description détaillée</h2>
+                    <p>
+                        Un super cours dans lequel nous allons voir les points suivants :
+                    <ul>
+                        <li>Avoir du swag</li>
+                        <li>Ecouter Kingal</li>
+                        <li>Tinderiser à mort</li>
+                        <li>GiantAppiser tous les mardis</li>
+                    </ul>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>    
+                <div class="col-md-4">
+                    <img data-src="holder.js/300x200" alt="300x200" class="img-responsive" src="/img/h-6.jpg">
+                </div>
 
-	        	<div class="col-md-12">
-	        		<h2>Avis</h2>
-	        	</div>
-
-	        	<div class="col-md-12">
-	        		<h2>Ces contenus vous intéressent sûrement</h2>
-	        	</div>
+                <div class="col-md-12">
+                    <hr>
+                    <h2>Avis</h2>
+                </div>
+                
+                <div class="col-md-12">
+                    <hr>
+                    <h2>Ces contenus vous intéressent sûrement</h2>
+                </div>
             </div>
+            <div class="col-md-4 productMainColumn well well-lg">
+                <input type="button" class="btn-lg btn-block btn-success add-to-cart-button" data-product="{{model.product._id}}" value="Commander ({{model.product.price}}€)" />
+                <hr>
+                <center>
+                    <img src="http://www.paradislove.com/img/cms/paiement_securise.gif" class="img-responsive"/>
+                </center>
+                <hr>
+                <center>
+                    <img src="https://cdnil0.fiverrcdn.com/photos/3351070/original/fb_profile_jn6-02.jpg" class="img-responsive img-circle">
+                    <p>{{model.product.seller}}</p>
+
+                    <p>De : Bordeaux</p>
+                    <p>Je suis un mec cool, posé t'as vu</p>
+                </center>
+            </div>
+
+        </div>
     </div>
 </div>
 
 {{#content "registerTopStylesheets"}}
-    <link href="/css/product.css" rel="stylesheet">       
+<link href="/css/product.css" rel="stylesheet">       
 {{/content}}
 {{#content "registerBottomScripts"}}
-    <script src="/js/globalcart.js"></script>
-    <script src="/js/product.js"></script>
-    <script src="/js/searchbar.js"></script>
+<script src="/js/globalcart.js"></script>
+<script src="/js/product.js"></script>
+<script src="/js/searchbar.js"></script>
 {{/content}}
 {{#content "registerMeta"}}
-    <title>PACES Store - {{model.product.name}}</title>
+<title>PACES Store - {{model.product.name}}</title>
 {{/content}}
