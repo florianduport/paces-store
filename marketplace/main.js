@@ -36,9 +36,6 @@ var Main = {
                     app.set('port', configuration.port);
                     app.set('views', __dirname + '/views');
 
-                    
-
-
                     app.engine('html', HandlebarsHelper.initHandlebars(app));
                     app.set('view engine', 'html');
 

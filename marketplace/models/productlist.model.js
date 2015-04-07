@@ -44,7 +44,7 @@ var ProductListModel = {
 			universityId = req.params.universityId;
 		else if(req.cookies.position !== undefined)
 			universityId = req.cookies.position.universityId;
-		else if(req.cookies.position !== undefined)
+		else if(req.session.position !== undefined)
 			universityId = req.session.position.universityId;
 		else 
 			universityId = "all";

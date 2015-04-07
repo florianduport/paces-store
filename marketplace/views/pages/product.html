@@ -6,7 +6,7 @@
                 <h1>{{model.product.name}} dans la {{model.product.categories}}</h1>
                 <div class='col-md-12'>
                     <div class="rating pull-right">
-                        <div class="stars starrr" data-rating="4"></div> (5 votes)
+                        <div class="stars starrr pull-left" data-rating="4"></div>
                     </div>
                     <span><strong>Tags: </strong></span>
                     <span class="label label-warning">{{model.product.categories}}</span>
@@ -16,16 +16,7 @@
                 </div>
                 <div class="col-md-8">
                     <h2>Description détaillée</h2>
-                    <p>
-                        Un super cours dans lequel nous allons voir les points suivants :
-                    <ul>
-                        <li>Avoir du swag</li>
-                        <li>Ecouter Kingal</li>
-                        <li>Tinderiser à mort</li>
-                        <li>GiantAppiser tous les mardis</li>
-                    </ul>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
+                    <p>{{{model.product.description}}}</p>
                 </div>    
                 <div class="col-md-4">
                     <img data-src="holder.js/300x200" alt="300x200" class="img-responsive" src="/img/h-6.jpg">
@@ -62,12 +53,14 @@
 </div>
 
 {{#content "registerTopStylesheets"}}
-<link href="/css/product.css" rel="stylesheet">       
+<link href="/css/product.css" rel="stylesheet">  
+<link href="/css/libs/bootstrap-dialog.css" rel="stylesheet">       
 {{/content}}
 {{#content "registerBottomScripts"}}
 <script src="/js/globalcart.js"></script>
 <script src="/js/product.js"></script>
 <script src="/js/searchbar.js"></script>
+<script src="/js/libs/bootstrap-dialog.js"></script>
 {{/content}}
 {{#content "registerMeta"}}
 <title>PACES Store - {{model.product.name}}</title>
