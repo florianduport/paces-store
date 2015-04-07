@@ -3,24 +3,23 @@
     <div class="row">
         <div class="col-md-12">
             <div class="col-md-8 productMainColumn well well-lg">
-                <h1>{{model.product.name}} dans la {{model.product.categories}}</h1>
-                <div class='col-md-12'>
-                    <div class="rating pull-right">
-                        <div class="stars starrr pull-left" data-rating="4"></div>
+                <div class="col-md-9">
+                    <h1>{{model.product.name}}</h1>
+                    <div class='col-md-12'>
+                        <div class="rating">
+                            <div class="stars starrr" data-rating="4"></div>
+                        </div>
+                        <span class="label label-info">{{model.product.categories}}</span>
+                        <span class="label label-success">{{model.product.university}}</span>
                     </div>
-                    <span><strong>Tags: </strong></span>
-                    <span class="label label-warning">{{model.product.categories}}</span>
-                    <span class="label label-info">{{model.product.university}}</span>
-                    <span class="label label-info">Microsoft Office</span>
-                    <span class="label label-success">Windows XP, Vista, 7</span>
                 </div>
-                <div class="col-md-8">
-                    <h2>Description détaillée</h2>
-                    <p>{{{model.product.description}}}</p>
-                </div>    
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <img data-src="holder.js/300x200" alt="300x200" class="img-responsive" src="/img/h-6.jpg">
                 </div>
+                <div class="col-md-12">
+                    <h2>Description détaillée</h2>
+                    <p>{{{model.product.description}}}</p>
+                </div>   
 
                 <div class="col-md-12">
                     <hr>
@@ -43,6 +42,7 @@
                 <div class="col-md-12">
                     <hr>
                     <h2>Ces contenus vous intéressent sûrement</h2>
+                    {{> productListBlock}}
                 </div>
             </div>
             <div class="col-md-4 productMainColumn well well-lg">
@@ -52,13 +52,18 @@
                     <img src="http://www.paradislove.com/img/cms/paiement_securise.gif" class="img-responsive"/>
                 </center>
                 <hr>
-                <center>
-                    <img src="https://cdnil0.fiverrcdn.com/photos/3351070/original/fb_profile_jn6-02.jpg" class="img-responsive img-circle">
-                    <p>{{model.product.seller}}</p>
-
-                    <p>De : Bordeaux</p>
-                    <p>Je suis un mec cool, posé t'as vu</p>
-                </center>
+                <div class="col-md-12">
+                    <div class="col-md-3 center"></div>
+                    <div class="col-md-6 center">
+                            <img src="/img/default-profile.png" class="img-responsive img-circle center">
+                    </div>
+                    <div class="col-md-3 center"></div>
+                </div>
+                <div class="col-md-12">
+                    <p>{{model.seller.account.displayName}}</p>
+                    <p>De : {{model.seller.account.university.name}}</p>
+                    <p>{{model.seller.account.description}}</p>
+                </div>
             </div>
 
         </div>

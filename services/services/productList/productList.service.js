@@ -12,7 +12,7 @@ var ProductListService = {
     * @param done : la méthode de retour
     * @return Liste de produit / Sinon False
     */
-    getProductsByFilter : function(filter, order, done){
+    getProductsByFilter : function(filter, order, limit, done){
 
         DatabaseHelper.getDatabase(function(db){
             db.collection("Products", function(err, products){
@@ -33,8 +33,7 @@ var ProductListService = {
                         filter["_id"]["$in"] = filter["_id"]["$in"].map(function(id) { return ObjectID(id); });
                    } 
                 }
-
-                products.find(filter, { "score" : { "$meta" : "textScore"}}).sort(sortObject).toArray(function(err, products){
+                products.find(filter, { "score" : { "$meta" : "textScore"}}).limit(limit).sort(sortObject).toArray(function(err, products){
                     console.log(err);
                     if (err || !products)
                     {

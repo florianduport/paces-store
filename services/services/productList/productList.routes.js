@@ -30,7 +30,8 @@ var ProductListRoutes = {
     			Base.send(req, res, false);
     		}
             else {
-        		ProductListService.getProductsByFilter(req.body.filter, req.body.order, function(result){
+                var limit = req.body.limit !== undefined ? req.body.limit : 0;
+        		ProductListService.getProductsByFilter(req.body.filter, req.body.order, limit, function(result){
         			Base.send(req, res, result);
         		});
             }   
