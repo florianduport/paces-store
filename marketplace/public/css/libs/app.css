@@ -61,19 +61,7 @@ body {
     color: #727272;
 }
 
-.thumbnail span {
-    display: block;
-    background: #F3984D;
-    position: absolute;
-    min-width: 20px;
-    padding: 8px;
-    color: white;
-    font-size: 20px;
-    opacity: 21;
-    -webkit-border-bottom-right-radius: 4px;
-    -moz-border-radius-bottomright: 4px;
-    border-bottom-right-radius: 4px;
-}
+
 
 
 .nav-header {

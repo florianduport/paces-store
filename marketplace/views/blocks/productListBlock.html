@@ -1,17 +1,26 @@
 
 {{#if model.products}}
 {{#each model.products}}
-<div class="col-md-3">
+<div class="col-md-4">
     <div class="thumbnail">
         <a href="/product/{{this._id}}">
-            <div class="thumbnail-seller">{{this.seller}}</div>
+            <div class="thumbnail-seller small">
+                Par <strong>{{this.seller}} </strong>
+                <div class="stars stars-sm pull-right" data-rating="4">
+                    <span class="glyphicon .glyphicon-star-empty glyphicon-star"></span>
+                    <span class="glyphicon .glyphicon-star-empty glyphicon-star"></span>
+                    <span class="glyphicon .glyphicon-star-empty glyphicon-star"></span>
+                    <span class="glyphicon .glyphicon-star-empty glyphicon-star"></span>
+                    <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
+                </div></div>
             <img data-src="holder.js/300x200" alt="300x200" class="img-responsive" src="/img/h-6.jpg">
             <div class="caption">
                 <h3>{{this.truncateName}}</h3>
             </div>
+            <div class="text-left thumbnail-ue"><span class="badge badge-warning">{{this.categories}}</span><span class="badge badge-blue">{{this.university}}</span></div>
             <div class="text-right thumbnail-price"><strong>{{this.price}} €</strong></div>
         </a>
-<!--        <input type="button" class="btn btn-block btn-success add-to-cart-button" data-product="{{this._id}}" value="Ajouter" />-->
+        <!--        <input type="button" class="btn btn-block btn-success add-to-cart-button" data-product="{{this._id}}" value="Ajouter" />-->
     </div>
 </div>
 {{/each}}

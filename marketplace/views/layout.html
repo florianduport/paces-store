@@ -2,18 +2,20 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
         {{#block "registerMeta"}}
         <title>PACES Store</title>
         {{/block}}
-        <meta name="viewport" content="width=device-width" initial-scale=1.0">
+
         <!-- Include Stylesheets -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-        <link href="/css/libs/app.css" rel="stylesheet">
-        <link href="/css/libs/animate.css" rel="stylesheet">
-        <link href="/css/libs/style.css" rel="stylesheet">
-        <link href="/css/global.css" rel="stylesheet">
-        <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" rel="stylesheet">        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" type="text/css">
+        <link href="/css/libs/app.css" rel="stylesheet" type="text/css">
+        <link href="/css/libs/animate.css" rel="stylesheet" type="text/css">
+        <link href="/css/libs/style.css" rel="stylesheet" type="text/css">
+        <link href="/css/global.css" rel="stylesheet" type="text/css">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" rel="stylesheet" type="text/css">        
         {{#block "registerTopStylesheets"}}
         {{/block}}
         {{#block "registerTopScripts"}}
@@ -27,17 +29,18 @@
         <!-- Start Header/Navbar  -->
         {{> navbar}}
         <!-- End Header/Navbar  -->
-        <section class="section">
-            <!-- Start Main Content  -->
-            {{{body}}}
-            <!-- End Main Content -->
-        </section>
-        <section class="section">
-            <!-- Start Footer -->
-            {{> footer}}
-            <!-- End Footer -->
-        </section>
-
+        <div class="container">
+            <section class="section">
+                <!-- Start Main Content  -->
+                {{{body}}}
+                <!-- End Main Content -->
+            </section>
+            <section class="section">
+                <!-- Start Footer -->
+                {{> footer}}
+                <!-- End Footer -->
+            </section>
+        </div>
 
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="/js/libs/jquery.min.js"></script>
