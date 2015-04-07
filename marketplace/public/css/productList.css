@@ -7,15 +7,3 @@ body {
     font-family: "RobotoDraft",Helvetica,Arial,sans-serif;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
-.badge-green{
-    background-color: #5cb85c;
-}
-.badge-warning{
-    background-color: #fb5d35;
-}
-.badge-blue {
-    background-color: #337ab7;
-}
-.thumbnail a {
-    text-decoration: none;
-}
