@@ -27,12 +27,48 @@ var ProductModel = {
 				model.seller = seller;
 				ServiceHelper.getService('school', 'getSchoolByUrlId', {data: { universityId : model.seller.account.universityId }, method : "POST"}, function(university){
       				model.seller.account.university = university;
-      				callback(model);
+      				ProductModel._getOtherProducts(model, function(model){
+      					callback(model);
+      				});
       			});
 
 				
 			}
 		});
+	},
+
+	_getOtherProducts : function(model, callback){
+		var filter = {};
+		filter.university = ProductModel._getUniversityId(model.req);
+		filter.categories = {$in: model.product.categories};
+
+		var order = ProductModel._getOrder(model.req);
+		ServiceHelper.getService('productList', 'getProductsByFilter', {data: {filter : filter, order : order, limit : 4}, method : "POST"}, function(products){
+			if(products){
+				model.products = products;
+				callback(model);
+			}
+		});
+	},
+
+	_getUniversityId : function(req){
+		var universityId;
+
+		if(req.params.universityId !== undefined && req.params.universityId)
+			universityId = req.params.universityId;
+		else if(req.cookies.position !== undefined)
+			universityId = req.cookies.position.universityId;
+		else if(req.session.position !== undefined)
+			universityId = req.session.position.universityId;
+		else 
+			universityId = "all";
+
+		return universityId;
+	},
+
+	_getOrder : function(req){
+		var order = {order : "_id", reversed : true};
+		return order;
 	},
 };
 
