@@ -25,7 +25,7 @@ var AccountController = {
         else
         {
             model.displaySignIn(req, function(model){
-                res.render('./pages/signIn', {model: model});
+                res.render('pages/signIn', {model: model});
             }); 
         }
     },

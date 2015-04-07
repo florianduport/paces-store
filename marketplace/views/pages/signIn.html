@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="row">
+            <div class="col-md-12 ">
+            	<h1>Connectez-vous avant de poursuivre</h1>
+            	<form action="/signIn" method="post">
+            		<input type="text" name="username" placeholder="Nom d'utilisateur"/>
+            		<input type="password" name="password" placeholder="Mot de passe"/>
+            		<input type="submit" class="btn btn-success signIn" value="Se connecter" />
+            	</form>
+            </div>
+    </div>
+</div>
+
+{{#content "registerTopStylesheets"}}
+    <link href="/css/signIn.css" rel="stylesheet">       
+{{/content}}
+{{#content "registerBottomScripts"}}
+    <script src="/js/signIn.js"></script>
+    <script src="/js/shoppingcart.js"></script>
+{{/content}}
+{{#content "registerMeta"}}
+    <title>PACES Store - Connexion</title>
+{{/content}}

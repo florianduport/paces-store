@@ -1,0 +1,42 @@
+<div class="container">
+	<div class="row">
+            <div class="col-md-12 ">
+            	<h1>Entrez vos informations de paiement</h1>
+            	<div class="col-md-3 pull-left"><div id="card"></div></div>
+            	<form method="post" action="/checkout/payWithNewCard" class="pull-left">
+				    <div class="row">
+				        <div class="col-md-6 ">
+				            <input placeholder="Numéro de carte" type="text" name="number">
+				        </div>
+				        <div class="col-md-6 ">
+				            <input placeholder="Nom du titulaire" type="text" name="name">
+				        </div>
+				    </div>
+				    <div class="row ">
+				        <div class="col-md-3 ">
+				            <input placeholder="MM/AA" type="text" name="expiry">
+				        </div>
+
+				        <div class="col-md-3 ">
+				            <input placeholder="CVC" type="text" name="cvc">
+				        </div>
+
+				        <div class="col-md-6 ">
+				            <input type="submit" value="Payer" class="btn btn-success postfix">
+				        </div>
+				    </div>
+				</form>
+            </div>
+    </div>
+</div>
+{{#content "registerTopStylesheets"}}
+    <link href="/css/checkout.css" rel="stylesheet">       
+{{/content}}
+{{#content "registerBottomScripts"}}
+    <script src="/js/checkout.js"></script>
+    <script src="/js/shoppingcart.js"></script>
+    <script src="/js/libs/cards.js"></script>
+{{/content}}
+{{#content "registerMeta"}}
+    <title>PACES Store - Paiement</title>
+{{/content}}

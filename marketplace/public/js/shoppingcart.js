@@ -4,4 +4,7 @@ $(document).ready(function(){
 			window.location.reload();
 		});
 	});
+	$(".checkoutLink").click(function(){
+		window.location.href = "/checkout/";
+	});
 });

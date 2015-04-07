@@ -60,9 +60,9 @@ var CheckoutModel = {
 					            ServiceHelper.getService("payment", "payWithNewCard", {data : {
 							 		user : user,  
 							 		card : {
-							 			cardNumber : req.body.cardNumber,
-							 			cardExpirationDate : req.body.cardExpirationDateMonth+req.body.cardExpirationDateYear,
-							 			cardCvx : req.body.cardCvx
+							 			cardNumber : req.body.number.replace(/ /g, ""),
+							 			cardExpirationDate : req.body.expiry.replace(/ /g, "").replace("/", ""),
+							 			cardCvx : req.body.cvc.replace(/ /g, "")
 							 		},
 							 		sellers : sellers,
 							 		lines : lines

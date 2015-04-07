@@ -14,6 +14,7 @@
 	            	<div class="col-md-12">
 	            		Total : {{model.shoppingcart.total}}€
 	            	</div>
+	            	<input type="button" class="btn btn-success checkoutLink" value="Commander" />
             	{{else}}
 	            	<h1>Votre panier est vide</h1>
 	            	<div class="col-md-12">
@@ -28,7 +29,6 @@
     <link href="/css/shoppingcart.css" rel="stylesheet">       
 {{/content}}
 {{#content "registerBottomScripts"}}
-    <script src="/js/globalcart.js"></script>
     <script src="/js/shoppingcart.js"></script>
     <script src="/js/searchbar.js"></script>
 {{/content}}
