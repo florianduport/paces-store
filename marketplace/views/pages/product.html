@@ -59,10 +59,9 @@
                     <div class="col-md-3 center"></div>
                 </div>
                 <div class="col-md-12">
-                    <p>{{model.product.seller}}</p>
-
-                    <p>De : Bordeaux</p>
-                    <p>Je suis un mec cool, posé t'as vu</p>
+                    <p>{{model.seller.account.displayName}}</p>
+                    <p>De : {{model.seller.account.university.name}}</p>
+                    <p>{{model.seller.account.description}}</p>
                 </div>
             </div>
 
