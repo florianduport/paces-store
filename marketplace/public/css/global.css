@@ -74,3 +74,15 @@ body {
 .thumbnail:hover .stars-sm {
     display: block;
 }
+.badge-green{
+    background-color: #5cb85c;
+}
+.badge-warning{
+    background-color: #fb5d35;
+}
+.badge-blue {
+    background-color: #337ab7;
+}
+.thumbnail a {
+    text-decoration: none;
+}
