@@ -38,7 +38,7 @@
                 <div class="col-md-3">
                     <img data-src="holder.js/300x200" alt="300x200" class="img-responsive" src="/img/h-6.jpg">
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-12" id="productDescriptionFull">
                     <h2 class="title-navbar-product">A propos de ce cours</h2>
                     <p>{{{model.product.description}}}</p>
                 </div>   
@@ -67,9 +67,10 @@
                     {{> productListBlock}}
                 </div>
             </div>
-            <div class="col-md-4 productMainColumn well well-lg">
-                <input type="button" class="btn btn-lg btn-success checkout-product-button pull-left" data-product="{{model.product._id}}" value="Commander ({{model.product.price}}€)" /> 
-                <button type="button" class="btn btn-lg btn-success pull-left add-to-cart-button" data-product="{{model.product._id}}"> <i class="glyphicon glyphicon-shopping-cart"></i></button>
+            <div class="col-md-4 productMainColumn buyZone text-center well well-lg">
+                <input type="button" class="btn btn-lg btn-lg2 btn-success checkout-product-button" data-product="{{model.product._id}}" value="Commander ({{model.product.price}}€)" /> 
+                <button type="button" class="btn btn-lg btn-lg2 btn-success add-to-cart-button" data-product="{{model.product._id}}"> <i class="glyphicon glyphicon-shopping-cart"></i></button>
+                <div class="col-md-12"><p class="text-left">Commandez et recevez ce cours par email au format .pdf immédiatement !</p></div>
             </div>
             <div class="col-md-4 productMainColumn well well-lg">
                 <div class="col-md-12">
