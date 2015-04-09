@@ -19,6 +19,22 @@ $(document).ready(function () {
          }
     });
 
+    $(".element-navbar-product").click(function(){
+        if($(this).html() == $($(".element-navbar-product")[0]).html()){
+            $(document).scrollTop(0);
+        } else {
+            var index = 0;
+            var element = $(this);
+            for (var i = $(".element-navbar-product").length - 1; i >= 0; i--) {
+                if($(element).html() == $($(".element-navbar-product")[i]).html())
+                    index = i;
+            };
+            console.log(index);
+            if(index != 0)
+                $(document).scrollTop($($(".title-navbar-product")[index]).offset().top - 100);
+        }
+    });
+
     loadStars();
 
 });
