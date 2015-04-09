@@ -15,7 +15,12 @@
         <div class="collapse navbar-collapse" id="navbar">
             <div class="col-sm-6 col-md-6">
                 <form action="/search/" method="post" name="searchForm" class="searchForm form-inline" >
+
                     <div class="form-group">
+                        <input type="text" name="searchText" class="form-control" id="searchText" data-provide="typeahead" placeholder="Tout le contenu..." {{#if model.previousSearch}} value="{{model.previousSearch}}" {{/if}} data-items="4" />
+                    </div>
+                    <button id="submitSearch" type="button" class="btn btn-success"><i class="glyphicon glyphicon-search"></i></button>
+                                        <div class="form-group">
                         <select id="universitySelector" class="selectpicker show-tick" data-style="btn-primary">
                             <option value="{{model.currentSchool.universityId}}" selected>{{model.currentSchool.name}}</option>
                             {{#each model.otherSchools}}
@@ -23,10 +28,6 @@
                             {{/each}}
                         </select>
                     </div>
-                    <div class="form-group">
-                        <input type="text" name="searchText" class="input" id="searchText" data-provide="typeahead" placeholder="Tout le contenu..." {{#if model.previousSearch}} value="{{model.previousSearch}}" {{/if}} data-items="4" />
-                    </div>
-                    <button id="submitSearch" type="button" class="btn btn-success"><i class="glyphicon glyphicon-search"></i></button>
                 </form>
             </div>
             <ul class="nav navbar-nav navbar-right col-sm-3 col-md-3">

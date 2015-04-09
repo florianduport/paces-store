@@ -57,6 +57,7 @@ body {
 .thumbnail .thumbnail-seller a {
     color: #0e0e0f;
 }
+
 .thumbnail:hover .thumbnail-seller {
     height: 34px;
 }

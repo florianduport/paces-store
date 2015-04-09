@@ -1,9 +1,31 @@
-<div class="container">
+<nav class="navbar-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="element-navbar-product active vcenter pull-left">
+                        Présentation
+                    </div>
+                    <div class="element-navbar-product vcenter pull-left">
+                        Description
+                    </div>
+                    <div class="element-navbar-product vcenter pull-left">
+                        Avis
+                    </div>
+                    <div class="element-navbar-product vcenter pull-left">
+                        Autres
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container productContainer">
     <div class="row">
         <div class="col-md-12">
             <div class="col-md-8 productMainColumn well well-lg">
                 <div class="col-md-9">
-                    <h1>{{model.product.name}}</h1>
+                    <h1 class="title-navbar-product">{{model.product.name}}</h1>
                     <div class='col-md-12'>
                         <div class="rating">
                             <div class="stars starrr" data-rating="4"></div>
@@ -17,13 +39,13 @@
                     <img data-src="holder.js/300x200" alt="300x200" class="img-responsive" src="/img/h-6.jpg">
                 </div>
                 <div class="col-md-12">
-                    <h2>Description détaillée</h2>
+                    <h2 class="title-navbar-product">A propos de ce cours</h2>
                     <p>{{{model.product.description}}}</p>
                 </div>   
 
                 <div class="col-md-12">
                     <hr>
-                    <h2>Avis</h2>
+                    <h2 class="title-navbar-product">Avis</h2>
                     <div id="disqus_thread"></div>
 					<script type="text/javascript">
 					    /* * * CONFIGURATION VARIABLES * * */
@@ -41,7 +63,7 @@
                 
                 <div class="col-md-12">
                     <hr>
-                    <h2>Ces contenus vous intéressent sûrement</h2>
+                    <h2 class="title-navbar-product">Ces contenus vous intéressent sûrement</h2>
                     {{> productListBlock}}
                 </div>
             </div>
@@ -69,13 +91,11 @@
 </div>
 
 {{#content "registerTopStylesheets"}}
-<link href="/css/product.css" rel="stylesheet">  
-<link href="/css/libs/bootstrap-dialog.css" rel="stylesheet">       
+<link href="/css/product.css" rel="stylesheet">         
 {{/content}}
 {{#content "registerBottomScripts"}}
 <script src="/js/product.js"></script>
 <script src="/js/searchbar.js"></script>
-<script src="/js/libs/bootstrap-dialog.js"></script>
 {{/content}}
 {{#content "registerMeta"}}
 <title>PACES Store - {{model.product.name}}</title>

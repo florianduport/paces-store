@@ -1,4 +1,29 @@
 $(document).ready(function () {
+    
+    $(document).scroll(function(){
+         var titles = $(".title-navbar-product");
+         for (var i = titles.length - 1; i >= 0; i--) {
+             if($(titles[i]).offset().top -100 < $(".navbar-product").offset().top){
+                $($(".element-navbar-product")[i]).addClass("active");
+
+                for (var j = 0; j < i; j++) {
+                    $($(".element-navbar-product")[j]).removeClass("active");
+                };
+                break;
+             } else {
+                $($(".element-navbar-product")[i]).removeClass("active");
+             }
+         };
+         if($(".element-navbar-product.active").length == 0){
+            $($(".element-navbar-product")[0]).addClass("active");
+         }
+    });
+
+    loadStars();
+
+});
+
+var loadStars = function(){
     var __slice = [].slice;
     (function (e, t) {
         var n;
@@ -114,5 +139,4 @@ $(document).ready(function () {
     $('.starrr').on('starrr:change', function (e, value) {
         ratingsField.val(value);
     });
-
-});
+};
