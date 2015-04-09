@@ -86,3 +86,6 @@ body {
 .thumbnail a {
     text-decoration: none;
 }
+.modal-dialog{
+  z-index: 2000;
+}

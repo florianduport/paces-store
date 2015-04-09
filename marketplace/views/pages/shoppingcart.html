@@ -1,5 +1,10 @@
+{{#if model.req.body.ajax}}
+<input id="shoppingcartTotal-hidden" type="hidden" value="{{model.shoppingcart.total}}€" />
+{{#each model.shoppingcart.products}}
+	<div class="col-md-12"><div class="col-md-8">{{this.name}}</div><div class="col-md-2">{{this.price}}€</div><div class="col-md-2"><button type="button" class="btn" removeFromShoppingCart data-productid="{{this._id}}"><i class="glyphicon glyphicon-remove"></i></button></div></div>
+{{/each}}
+{{else}}
 <div class="container">
-	{{> searchbar}} 
 	<div class="row">
             <div class="col-md-12 shoppingcartContainer">
             	{{#if model.shoppingcart.products.length}}
@@ -24,6 +29,9 @@
             </div>
     </div>
 </div>
+{{/if}}
+
+
 
 {{#content "registerTopStylesheets"}}
     <link href="/css/shoppingcart.css" rel="stylesheet">       

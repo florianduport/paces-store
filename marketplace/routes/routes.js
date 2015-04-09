@@ -41,11 +41,13 @@ var Routes = {
 
 		//SHOPPING CART
 		app.get('/shoppingcart/', ShoppingCartController.initialize);
+		app.post('/shoppingcart/', ShoppingCartController.initialize);
 		app.get('/addtocart/:product', ShoppingCartController.addToShoppingCart);
 		app.get('/removefromcart/:product', ShoppingCartController.removeFromShoppingCart);
+		app.post('/productcheckout/:product', ShoppingCartController.productCheckout);
 
 		//CHECKOUT
-		app.get('/checkout/', AccountController.checkSignIn, CheckoutController.initialize);
+		app.post('/checkout/', AccountController.checkSignIn, CheckoutController.initialize);
 		app.post('/checkout/payWithNewCard', AccountController.checkSignIn, CheckoutController.payWithNewCard);
 		app.get('/checkout/wait/:orderId', AccountController.checkSignIn, CheckoutController.waitPayment);
 		app.get('/checkout/success/:orderId', AccountController.checkSignIn, CheckoutController.successPayment);

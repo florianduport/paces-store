@@ -26,15 +26,18 @@
                     <div class="form-group">
                         <input type="text" name="searchText" class="input" id="searchText" data-provide="typeahead" placeholder="Tout le contenu..." {{#if model.previousSearch}} value="{{model.previousSearch}}" {{/if}} data-items="4" />
                     </div>
-                    <button id="submitSearch" type="button" class="btn btn-success"> <i class="glyphicon glyphicon-search"></i></button>
+                    <button id="submitSearch" type="button" class="btn btn-success"><i class="glyphicon glyphicon-search"></i></button>
                 </form>
             </div>
             <ul class="nav navbar-nav navbar-right col-sm-3 col-md-3">
                 <li>
-                    <a href="#contact">Espace vendeur</a>
-                </li>
+
+                    <button id="shoppingcart-button" type="button" class="btn btn-lg pull-left"><i class="glyphicon glyphicon-shopping-cart"></i> 
+                        <span class="badge" id="cart-number-products"></span>
+                    </button>
+                </li>               
                 <li>
-                    <a class="text-alert text-muted btn-circle" href="/shoppingcart/">Mon panier (<span id="cart-number-products">0</span>)</a>
+                    <a href="#contact">Espace vendeur</a>
                 </li>
             </ul>
         </div>

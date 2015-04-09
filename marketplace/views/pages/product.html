@@ -1,5 +1,4 @@
 <div class="container">
-    {{> searchbar}} 
     <div class="row">
         <div class="col-md-12">
             <div class="col-md-8 productMainColumn well well-lg">
@@ -12,6 +11,7 @@
                         <span class="label label-info">{{model.product.categories}}</span>
                         <span class="label label-success">{{model.product.university}}</span>
                     </div>
+                    <div class="col-md-12"><i class="glyphicon glyphicon-time"></i> 30 minutes</div>
                 </div>
                 <div class="col-md-3">
                     <img data-src="holder.js/300x200" alt="300x200" class="img-responsive" src="/img/h-6.jpg">
@@ -46,12 +46,10 @@
                 </div>
             </div>
             <div class="col-md-4 productMainColumn well well-lg">
-                <input type="button" class="btn-lg btn-block btn-success add-to-cart-button" data-product="{{model.product._id}}" value="Commander ({{model.product.price}}€)" />
-                <hr>
-                <center>
-                    <img src="http://www.paradislove.com/img/cms/paiement_securise.gif" class="img-responsive"/>
-                </center>
-                <hr>
+                <input type="button" class="btn btn-lg btn-success checkout-product-button pull-left" data-product="{{model.product._id}}" value="Commander ({{model.product.price}}€)" /> 
+                <button type="button" class="btn btn-lg btn-success pull-left add-to-cart-button" data-product="{{model.product._id}}"> <i class="glyphicon glyphicon-shopping-cart"></i></button>
+            </div>
+            <div class="col-md-4 productMainColumn well well-lg">
                 <div class="col-md-12">
                     <div class="col-md-3 center"></div>
                     <div class="col-md-6 center">

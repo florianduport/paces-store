@@ -151,9 +151,29 @@ var ProductListModel = {
 				}
 				model.categories = categoriesList;
 				model.categoriesSpecifiques = categoriesSpecifiquesList;
-				callback(model);
+				ProductListModel.loadSellers(model, callback);
 
 			});
+		});
+	},
+
+	loadSellers : function(model, callback){
+		var products = model.products;
+		var sellersList = [];
+		for (var i = products.length - 1; i >= 0; i--) {
+			sellersList.push(products[i].seller);
+		};
+		ServiceHelper.getService('seller', 'getSellersByUsername', {data: {sellers : sellersList}, method : "POST"}, function(sellers){
+			if(sellers){
+				for (var i = sellers.length - 1; i >= 0; i--) {
+					for (var j = model.products.length - 1; j >= 0; j--) {
+						if(model.products[j].seller == sellers[i].username) {
+							model.products[j].sellerInfos = sellers[i].account;
+						}
+					};
+				};
+			}
+			callback(model);
 		});
 	},
 

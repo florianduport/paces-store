@@ -6,7 +6,7 @@ var ShoppingCartModel = {
 	initialize : function(req, callback){
 		this.shoppingcartIds = req.session.shoppingcart !== undefined && req.session.shoppingcart.length > 0 ? req.session.shoppingcart : [];
 		this.shoppingcart = { products : [] };
-
+		this.req = req;
 		var filter = {_id : { $in : this.shoppingcartIds}};
 		var model = this;
 		ServiceHelper.getService('productList', 'getProductsByFilter', {data: {filter : filter, order : {}}, method : "POST"}, function(products){
@@ -60,6 +60,16 @@ var ShoppingCartModel = {
 			} else {
 				callback(false);
 			}
+		}
+		else{
+			callback(false);
+		}
+	},
+	productCheckout : function(req, res, callback){
+		if(req.params !== undefined && req.params.product !== undefined && req.params.product !== ""){
+			req.session.shoppingcart = [];
+			req.session.shoppingcart.push(req.params.product);
+			callback(true);
 		}
 		else{
 			callback(false);
