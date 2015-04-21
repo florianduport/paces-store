@@ -58,7 +58,7 @@ var displayShoppingCartPopup = function(){
 		                cssClass: 'btn-success',
 		                action: function(){
 		                	var checkoutForm = $("<form action='/checkout/' method='post' id='checkout'>");
-		                    $(checkoutForm).submit();
+		                    $(checkoutForm).appendTo("body").submit();
 		                }
 		            }]
 	        	});
@@ -87,7 +87,8 @@ var checkoutButton = function(){
 			method: "POST",
 			success : function(cartContent){
 				var checkoutForm = $("<form action='/checkout/' method='post' id='checkout'>");
-                $(checkoutForm).submit();
+				$(checkoutForm).appendTo("body").submit();
+                //$(checkoutForm).submit();
 			}
 		});
 	});
