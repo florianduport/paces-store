@@ -47,7 +47,8 @@ var Routes = {
 		app.post('/productcheckout/:product', ShoppingCartController.productCheckout);
 
 		//CHECKOUT
-		app.post('/checkout/', AccountController.checkSignIn, CheckoutController.initialize);
+		app.post('/checkout/', AccountController.checkSignIn, CheckoutController.initialize);		
+		app.get('/checkout/', AccountController.checkSignIn, CheckoutController.initialize);
 		app.post('/checkout/payWithNewCard', AccountController.checkSignIn, CheckoutController.payWithNewCard);
 		app.get('/checkout/wait/:orderId', AccountController.checkSignIn, CheckoutController.waitPayment);
 		app.get('/checkout/success/:orderId', AccountController.checkSignIn, CheckoutController.successPayment);

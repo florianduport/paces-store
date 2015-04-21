@@ -20,7 +20,7 @@ var ShoppingCartModel = {
 						model.shoppingcart.total = model.shoppingcart.total+model.shoppingcart.products[i].price;
 					};
 
-					SchoolsHelper.loadSchool(model, { university : SchoolsHelper.loadUniversity(req)}, callback);
+					SchoolsHelper.loadSchool({model : model, filter : { university : SchoolsHelper.loadUniversity(req)}, callback : callback});
 				}
 			});
 	},

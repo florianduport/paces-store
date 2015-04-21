@@ -15,7 +15,11 @@ var SchoolsHelper = {
             return "All";
     },
 
-    loadSchool : function(model, filter, callback){
+    loadSchool : function(params){
+        var model = params.model;
+        var filter = params.filter !== undefined ? params.filter : { university : SchoolsHelper._getUniversityId(model.req) };
+        var callback = params.callback;
+
         ServiceHelper.getService('school', 'getSchoolByUrlId', {data: { universityId : filter.university }, method : "POST"}, function(school){
             model.universityName = school.name;
             model.currentSchool = school;
@@ -29,7 +33,22 @@ var SchoolsHelper = {
                 callback(model);
             });
         });
-    }
+    },
+
+    _getUniversityId : function(req){
+        var universityId;
+
+        if(req.params.universityId !== undefined && req.params.universityId)
+            universityId = req.params.universityId;
+        else if(req.cookies.position !== undefined)
+            universityId = req.cookies.position.universityId;
+        else if(req.session.position !== undefined)
+            universityId = req.session.position.universityId;
+        else 
+            universityId = "all";
+
+        return universityId;
+    },
 
 };
 

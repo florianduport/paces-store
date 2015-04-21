@@ -1,9 +1,16 @@
 var ServiceHelper = require('../helpers/service.helper').ServiceHelper;
 
+var SchoolsHelper = require('../helpers/schools.helper').SchoolsHelper;
+
 var CheckoutModel = {
 
 	initialize : function(req, callback){
-		callback(this);
+
+		var model = this;
+        model.req = req;
+        SchoolsHelper.loadSchool({model : model, callback : function(model){
+            callback(model);
+        }});
 	},
 
 	payWithNewCard : function(req, callback){

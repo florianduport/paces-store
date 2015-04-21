@@ -1,6 +1,8 @@
 var ServiceHelper = require('../helpers/service.helper').ServiceHelper,
 sha1 = require('sha1');
 
+var SchoolsHelper = require('../helpers/schools.helper').SchoolsHelper;
+
 var AccountModel = {
 
 	initialize : function(req, callback){
@@ -13,15 +15,19 @@ var AccountModel = {
 	},
 
     displaySignIn : function(req, callback){
-        
-        if(req.session.error)
-            this.error = req.session.error;
-        else
-            this.error = false;
-        callback(this);
+        var model = this;
+        model.req = req;
+        SchoolsHelper.loadSchool({model : model, callback : function(model){
+            if(req.session.error)
+            model.error = req.session.error;
+            else
+                model.error = false;
+            callback(model);
+        }});
     },    
 
     signIn : function(username, password, req, done){
+
 
         ServiceHelper.getService("customer", "authenticateCustomer", {data : {username : username, password : sha1(password)}, method: "POST"}, function(resp){
             if(resp === undefined || !resp || resp !== true)

@@ -3,9 +3,14 @@ var model = require('../models/checkout.model').CheckoutModel;
 var CheckoutController = {
 
 	initialize : function(req, res){
-	    model.initialize(req, function(model){
-	    	res.render("pages/checkout", {model : model});
-	    });
+		if(req.session.shoppingcart === undefined || req.session.shoppingcart.length == 0){
+			res.redirect('/');
+		} else {
+
+		    model.initialize(req, function(model){
+		    	res.render("pages/checkout", {model : model});
+		    });
+		}
 	}, 
 	payWithNewCard : function(req, res){
 		model.payWithNewCard(req, function(model){

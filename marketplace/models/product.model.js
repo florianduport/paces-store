@@ -13,7 +13,7 @@ var ProductModel = {
 				model.req = req;
 				model.callback = callback;
 				ProductModel._getSeller(model, function(model){
-					SchoolsHelper.loadSchool(model, { university : SchoolsHelper.loadUniversity(model.req)}, model.callback);
+					SchoolsHelper.loadSchool({model : model, filter : { university : SchoolsHelper.loadUniversity(model.req)}, callback : model.callback});
 				});
 			}
 		});
