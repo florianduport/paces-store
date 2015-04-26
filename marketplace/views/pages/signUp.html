@@ -1,0 +1,25 @@
+<div class="row">
+        <div class="col-md-12 ">
+            <h1 class="text-center">Créez un compte avant de poursuivre</h1>
+            <div class="col-md-3"></div>
+            <div class="col-md-4">
+                <div class="card card-container">
+                    <h2 class="text-center">Créer un compte</h2>
+                    <form action="/signIn" method="post" class="signinForm">
+                        <span id="reauth-email" class="reauth-email"></span>
+                        <input type="email" id="inputEmail" name="username" class="form-control" placeholder="Adresse Email" required autofocus>
+                        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Mot de passe" required>
+                        <input type="password" id="inputPassword" class="form-control" name="password-confirmation" placeholder="Confirmation du mot de passe" required>
+                        <button class="btn btn-lg btn-success btn-block btn-signin signIn" type="submit">Créer mon compte</button>
+                    </form> 
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="rightButtons-container">
+                    <p class="text-center">- OU -</p>
+                    <input type="button" class="btn btn-lg btn-primary btn-block btn-signin backToSignUp" value="Revenir à la connexion" />
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+</div>

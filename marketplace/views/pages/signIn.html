@@ -1,12 +1,52 @@
-<div class="container">
+<nav class="navbar-signin">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="col-md-4 element-navbar-signin active vcenter pull-left">
+                            Identification
+                        </div>
+                        <div class="col-md-4 element-navbar-signin vcenter pull-left">
+                            Informations de paiement
+                        </div>
+                        <div class="col-md-4 element-navbar-signin vcenter pull-left">
+                            Confirmation de commande
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="signInContainer container">
 	<div class="row">
             <div class="col-md-12 ">
-            	<h1>Connectez-vous avant de poursuivre</h1>
-            	<form action="/signIn" method="post">
-            		<input type="text" name="username" placeholder="Nom d'utilisateur"/>
-            		<input type="password" name="password" placeholder="Mot de passe"/>
-            		<input type="submit" class="btn btn-success signIn" value="Se connecter" />
-            	</form>
+                <h1 class="text-center">Identifiez-vous avant de poursuivre</h1>
+                <div class="col-md-3"></div>
+                <div class="col-md-4">
+                    <div class="card card-container">
+                        <h2 class="text-center">Se connecter</h2>
+                        <form action="/signIn" method="post" class="signinForm">
+                            <span id="reauth-email" class="reauth-email"></span>
+                            <input type="email" id="inputEmail" name="username" class="form-control" placeholder="Adresse Email" required autofocus>
+                            <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Mot de passe" required>
+                            <button class="btn btn-lg btn-success btn-block btn-signin signIn" type="submit">Se connecter</button>
+                        </form><!-- /form -->
+                        <a href="#" class="forgot-password">
+                            Mot de passe oublié ?
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="rightButtons-container">
+                        <p class="text-center">- OU -</p>
+                        <input type="button" class="btn btn-lg btn-primary btn-block btn-signin signUp" value="Créer un compte" />
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
             </div>
     </div>
 </div>

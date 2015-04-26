@@ -1,31 +1,44 @@
-<div class="container">
+<nav class="navbar-signin">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="col-md-4 element-navbar-signin active vcenter pull-left">
+                            Identification
+                        </div>
+                        <div class="col-md-4 element-navbar-signin active vcenter pull-left">
+                            Informations de paiement
+                        </div>
+                        <div class="col-md-4 element-navbar-signin vcenter pull-left">
+                            Confirmation de commande
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="checkoutContainer container">
 	<div class="row">
-            <div class="col-md-12 ">
-            	<h1>Entrez vos informations de paiement</h1>
-            	<div class="col-md-3 pull-left"><div id="card"></div></div>
-            	<form method="post" action="/checkout/payWithNewCard" class="pull-left">
-				    <div class="row">
-				        <div class="col-md-6 ">
-				            <input placeholder="Numéro de carte" type="text" name="number">
-				        </div>
-				        <div class="col-md-6 ">
-				            <input placeholder="Nom du titulaire" type="text" name="name">
-				        </div>
-				    </div>
-				    <div class="row ">
-				        <div class="col-md-3 ">
-				            <input placeholder="MM/AA" type="text" name="expiry">
-				        </div>
-
-				        <div class="col-md-3 ">
-				            <input placeholder="CVC" type="text" name="cvc">
-				        </div>
-
-				        <div class="col-md-6 ">
-				            <input type="submit" value="Payer" class="btn btn-success postfix">
-				        </div>
-				    </div>
-				</form>
+            <div class="col-md-12">
+                <h1 class="text-center">Entrez vos informations de paiement</h1>
+                <div class="col-md-6">
+                    <div class="card card-container">
+		            	<form method="post" class="checkoutForm" action="/checkout/payWithNewCard">
+					        <input class="form-control" placeholder="Numéro de carte" type="text" name="number">
+					        <input class="form-control pull-left halfWidth" placeholder="MM/AA" type="text" name="expiry">
+							<input class="form-control pull-left halfWidth" placeholder="CVC" type="text" name="cvc">
+					        <input class="form-control" placeholder="Nom du titulaire" type="text" name="name">
+				            <input type="submit" value="Commander" class="btn btn-lg btn-success postfix btn-pay">
+						</form>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                	<div id="card"></div>
+                </div>
             </div>
     </div>
 </div>

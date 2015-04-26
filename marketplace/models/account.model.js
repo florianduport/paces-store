@@ -24,6 +24,18 @@ var AccountModel = {
                 model.error = false;
             callback(model);
         }});
+    },     
+
+    displaySignUp : function(req, callback){
+        var model = this;
+        model.req = req;
+        SchoolsHelper.loadSchool({model : model, callback : function(model){
+            if(req.session.error)
+            model.error = req.session.error;
+            else
+                model.error = false;
+            callback(model);
+        }});
     },    
 
     signIn : function(username, password, req, done){

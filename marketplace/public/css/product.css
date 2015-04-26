@@ -32,14 +32,14 @@
     position: fixed;
     top: 0;
 }
-.container .navbar-product {
+.navbar-product .container  {
   top: 50px !important;
   position: fixed;
   z-index: 1028;
   background: linear-gradient(to bottom,#fff 0,#f8f8f8 100%);  
   -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.15),0 1px 5px rgba(0,0,0,.075);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.15),0 1px 5px rgba(0,0,0,.075);
-
+  width : 100%;
 }
 .element-navbar-product:hover {
     cursor: pointer;
@@ -56,6 +56,9 @@
 .element-navbar-product.active {
     color : #000000;
     border-bottom: green 3px solid;
+}
+.element-navbar-product-first{
+  margin-left: 100px;
 }
 .productContainer {
     margin-top: 50px;

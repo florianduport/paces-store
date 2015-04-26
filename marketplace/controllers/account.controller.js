@@ -43,6 +43,21 @@ var AccountController = {
     },
 
     /**
+    * signUp : Création de compte 
+    * @param req : requête http
+    * @param res : reponse http
+    */
+    signUp : function(req, res){
+        model.displaySignUp(req, function(model){
+            if(req.body !== undefined && req.body.ajax == "true"){
+                res.render('pages/signUp', {model: model, layout : null});
+            } else {
+                res.render('pages/signUp', {model: model});
+            }
+        });
+    },
+
+    /**
     * signOut : Déconnexion 
     * @param req : requête http
     * @param res : reponse http
