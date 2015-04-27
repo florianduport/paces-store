@@ -1,1 +1,45 @@
-<p>Paiement réussi</p>
+<nav class="navbar-signin">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="col-md-4 element-navbar-signin active vcenter pull-left">
+                            Identification
+                        </div>
+                        <div class="col-md-4 element-navbar-signin active vcenter pull-left">
+                            Informations de paiement
+                        </div>
+                        <div class="col-md-4 element-navbar-signin active vcenter pull-left">
+                            Confirmation de commande
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="checkoutContainer container">
+	<div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">Votre commande a bien été validée.</h1>
+                <div class="col-md-2"></div>
+                <div class="col-md-8 checkoutSuccess">
+                    <h3 class="text-center">Vous allez recevoir votre cours par email.</h3>
+                    <input type="button" id="goToMail" data-email="{{model.email}}" class="btn btn-lg btn-primary" value="Vérifier mes emails" />
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+    </div>
+</div>
+{{#content "registerTopStylesheets"}}
+    <link href="/css/checkout/success.css" rel="stylesheet">       
+{{/content}}
+{{#content "registerBottomScripts"}}
+    <script src="/js/checkout/success.js"></script>
+{{/content}}
+{{#content "registerMeta"}}
+    <title>PACES Store - Paiement</title>
+{{/content}}

@@ -117,6 +117,8 @@ var CheckoutModel = {
 	},
 
 	successPayment : function(req, callback){
+		var model = this;
+		model.email = req.session.user;
 		callback(this);
 	}
 };

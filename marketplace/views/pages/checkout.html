@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
-                        <div class="col-md-4 element-navbar-signin active vcenter pull-left">
+                        <div id="backToSignIn" class="col-md-4 element-navbar-signin active vcenter pull-left">
                             Identification
                         </div>
                         <div class="col-md-4 element-navbar-signin active vcenter pull-left">
@@ -25,9 +25,10 @@
 	<div class="row">
             <div class="col-md-12">
                 <h1 class="text-center">Entrez vos informations de paiement</h1>
-                <div class="col-md-6">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
                     <div class="card card-container">
-		            	<form method="post" class="checkoutForm" action="/checkout/payWithNewCard">
+		            	<form method="post" class="checkoutForm" id="checkoutForm" action="/checkout/payWithNewCard">
 					        <input class="form-control" placeholder="Numéro de carte" type="text" name="number">
 					        <input class="form-control pull-left halfWidth" placeholder="MM/AA" type="text" name="expiry">
 							<input class="form-control pull-left halfWidth" placeholder="CVC" type="text" name="cvc">
@@ -35,10 +36,13 @@
 				            <input type="submit" value="Commander" class="btn btn-lg btn-success postfix btn-pay">
 						</form>
                     </div>
+                </div>                
+                <div class="col-md-4">
+                    <div class="card-display-container">
+                        <div id="card"></div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                	<div id="card"></div>
-                </div>
+                <div class="col-md-2"></div>
             </div>
     </div>
 </div>
