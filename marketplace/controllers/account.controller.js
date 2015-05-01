@@ -47,12 +47,34 @@ var AccountController = {
     * @param req : requête http
     * @param res : reponse http
     */
-    signUp : function(req, res){
+    displaySignUp : function(req, res){
         model.displaySignUp(req, function(model){
             if(req.body !== undefined && req.body.ajax == "true"){
                 res.render('pages/signUp', {model: model, layout : null});
             } else {
                 res.render('pages/signUp', {model: model});
+            }
+        });
+    },
+
+    /**
+    * signUp : Création de compte 
+    * @param req : requête http
+    * @param res : reponse http
+    */
+    signUp : function(req, res){
+        var referer = req.get('referer');
+        if(req.body !== undefined && req.body.referer !== undefined){
+            referer = req.body.referer;
+        }
+        model.signUp(req, function(result){
+            if(!result){
+                res.render('pages/signUp', {model: {error: true, referer : req.get('referer')}});
+            } else {
+                model.signIn(req.body.username, req.body.password, req, function(){
+                    res.redirect(referer);
+                });
+                
             }
         });
     },

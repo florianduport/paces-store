@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$("input.signUp").click(function(){
 		$(".signInContainer").addClass("animated bounceOutLeft");
-		$.post("/signUp", {
+		$.post("/signUp/display", {
             ajax: true
         }, function (data) {
 

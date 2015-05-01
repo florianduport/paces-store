@@ -56,8 +56,9 @@ var Routes = {
 
 		//CUSTOMER ACCOUNT
 		app.get('/signin', AccountController.signIn);
-		app.post('/signup', AccountController.signUp);
 		app.post('/signin', AccountController.signIn);
+		app.post('/signup/display', AccountController.displaySignUp);
+		app.post('/signup', AccountController.signUp);
 		app.get('/signout', AccountController.signOut);
 		app.post('/createCustomer', AccountController.createCustomer);
 

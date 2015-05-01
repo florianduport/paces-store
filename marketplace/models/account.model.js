@@ -55,6 +55,28 @@ var AccountModel = {
 
     },
 
+    signUp : function(req, done){
+        if(req.body !== undefined && 
+            req.body.firstName !== undefined &&
+            req.body.lastName !== undefined &&
+            req.body.username !== undefined &&
+            req.body.password !== undefined &&
+            req.body.passwordConfirmation !== undefined &&
+            req.body.passwordConfirmation == req.body.password){
+
+            AccountModel.createCustomer({
+                username : req.body.username,
+                firstName : req.body.firstName,
+                lastName : req.body.lastName,
+                password : req.body.password
+            }, req, done);
+
+        } else {
+            done(false);
+        }
+
+    },
+
     createCustomer : function(form, req, done){
 
     	ServiceHelper.getService("payment", "createWallet", {data : {

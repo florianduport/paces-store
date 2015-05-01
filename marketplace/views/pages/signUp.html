@@ -1,3 +1,29 @@
+{{#if model.error}}
+<nav class="navbar-signin">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="col-md-4 element-navbar-signin active vcenter pull-left">
+                            Identification
+                        </div>
+                        <div class="col-md-4 element-navbar-signin vcenter pull-left">
+                            Informations de paiement
+                        </div>
+                        <div class="col-md-4 element-navbar-signin vcenter pull-left">
+                            Confirmation de commande
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="signInContainer container">
+{{/if}}
 <div class="row">
         <div class="col-md-12 ">
             <h1 class="text-center">Créez un compte avant de poursuivre</h1>
@@ -5,12 +31,21 @@
             <div class="col-md-4">
                 <div class="card card-container">
                     <h2 class="text-center">Créer un compte</h2>
-                    <form action="/signIn" method="post" class="signinForm">
+                    <form action="/signUp" method="post" class="signupForm">
                         <span id="reauth-email" class="reauth-email"></span>
+                        {{#if model.error}}
+                            <input type="hidden" name="referer" value="{{model.referer}}" />
+                        {{/if}}
+                        <input type="text" id="firstName" class="form-control" name="firstName" placeholder="Prénom" required>
+                        <input type="text" id="lastName" class="form-control" name="lastName" placeholder="Nom" required>
                         <input type="email" id="inputEmail" name="username" class="form-control" placeholder="Adresse Email" required autofocus>
                         <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Mot de passe" required>
-                        <input type="password" id="inputPassword" class="form-control" name="password-confirmation" placeholder="Confirmation du mot de passe" required>
+                        <input type="password" id="inputPasswordConfirmation" class="form-control" name="passwordConfirmation" placeholder="Confirmation du mot de passe" required>
+
                         <button class="btn btn-lg btn-success btn-block btn-signin signIn" type="submit">Créer mon compte</button>
+                        {{#if model.error}}
+                        <div class="alert alert-danger" role="alert"><p>Une erreur s'est produite. Merci de renseigner correctement le formulaire.</p></div>
+                        {{/if}}
                     </form> 
                 </div>
             </div>
@@ -23,3 +58,17 @@
             <div class="col-md-3"></div>
         </div>
 </div>
+{{#if model.error}}
+    </div>
+
+    {{#content "registerTopStylesheets"}}
+        <link href="/css/signIn.css" rel="stylesheet">       
+    {{/content}}
+    {{#content "registerBottomScripts"}}
+        <script src="/js/signIn.js"></script>
+        <script src="/js/shoppingcart.js"></script>
+    {{/content}}
+    {{#content "registerMeta"}}
+        <title>PACES Store - Connexion</title>
+    {{/content}}
+{{/if}}
