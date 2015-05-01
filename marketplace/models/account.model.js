@@ -1,4 +1,5 @@
 var ServiceHelper = require('../helpers/service.helper').ServiceHelper,
+MailHelper = require('../helpers/mail.helper').MailHelper,
 sha1 = require('sha1');
 
 var SchoolsHelper = require('../helpers/schools.helper').SchoolsHelper;
@@ -99,6 +100,8 @@ var AccountModel = {
 		    			walletId : paymentInfos.wallet.Id
 		    		}
 		    	}, method : "POST"}, function(response){
+
+                    MailHelper.subscribe(form);
 		    		done(response);
 		    	});
     		}
