@@ -1,7 +1,7 @@
 var ServiceHelper = require('../helpers/service.helper').ServiceHelper,
 MailHelper = require('../helpers/mail.helper').MailHelper,
 sha1 = require('sha1');
-
+var ConfigurationHelper = require('../helpers/configuration.helper').ConfigurationHelper;
 var SchoolsHelper = require('../helpers/schools.helper').SchoolsHelper;
 
 var AccountModel = {
@@ -79,36 +79,55 @@ var AccountModel = {
     },
 
     createCustomer : function(form, req, done){
+        ConfigurationHelper.getConfig({application: 'marketplace', done: function (configuration) {
+            var bannedDomains = configuration.mail.bannedDomains;
+            var domainToCheck = form.username.split("@")[1];
+            var isBannedDomain = false;
+            for (var i = bannedDomains.length - 1; i >= 0; i--) {
+                if(bannedDomains[i] == domainToCheck)
+                    isBannedDomain = true;
+            };
 
-    	ServiceHelper.getService("payment", "createWallet", {data : {
-    		infos : {
-    			username : form.username,
-    			firstName : form.firstName,
-    			lastName : form.lastName
-    		}
-    	}, method : "POST"}, function(paymentInfos){
-    		if(paymentInfos === undefined){
-    			done(false);
-    		} else {
-				ServiceHelper.getService("customer", "createCustomer", {data : {
-		    		username : form.username,
-		    		password : sha1(form.password),
-		    		firstName : form.firstName,
-		    		lastName : form.lastName,
-		    		paymentInfos : {
-		    			accountId : paymentInfos.user.Id,
-		    			walletId : paymentInfos.wallet.Id
-		    		}
-		    	}, method : "POST"}, function(response){
+            if(isBannedDomain){
+                done(false);
+            } else {
+                ServiceHelper.getService("customer", "getCustomerByUsername", {data : {
+                    username : form.username
+                }, method : "POST"}, function(response){
+                    if(response){
+                        //Customer already exist ! 
+                        done(false);
+                    } else {
+                        ServiceHelper.getService("payment", "createWallet", {data : {
+                            infos : {
+                                username : form.username,
+                                firstName : form.firstName,
+                                lastName : form.lastName
+                            }
+                        }, method : "POST"}, function(paymentInfos){
+                            if(paymentInfos === undefined){
+                                done(false);
+                            } else {
+                                ServiceHelper.getService("customer", "createCustomer", {data : {
+                                    username : form.username,
+                                    password : sha1(form.password),
+                                    firstName : form.firstName,
+                                    lastName : form.lastName,
+                                    paymentInfos : {
+                                        accountId : paymentInfos.user.Id,
+                                        walletId : paymentInfos.wallet.Id
+                                    }
+                                }, method : "POST"}, function(response){
 
-                    MailHelper.subscribe(form);
-		    		done(response);
-		    	});
-    		}
-    	});
-
-    	
-
+                                    MailHelper.subscribe(form);
+                                    done(response);
+                                });
+                            }
+                        }); 
+                    }
+                });
+            }
+        }});
     }
 };
 
