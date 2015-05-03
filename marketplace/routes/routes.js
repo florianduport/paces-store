@@ -4,7 +4,8 @@ ProductListController = require('./../controllers/productlist.controller').Produ
 ProductController = require('./../controllers/product.controller').ProductController,
 ShoppingCartController = require('./../controllers/shoppingcart.controller').ShoppingCartController,
 CheckoutController = require('./../controllers/checkout.controller').CheckoutController,
-AccountController = require('./../controllers/account.controller').AccountController
+AccountController = require('./../controllers/account.controller').AccountController,
+DownloadController = require('./../controllers/download.controller').DownloadController
 /**
 * Charge les routes de account controller
 * @class AccountRoutes
@@ -24,6 +25,7 @@ var Routes = {
     	ShoppingCartController.app = app;
     	CheckoutController.app = app;
     	AccountController.app = app;
+    	DownloadController.app = app;
 		//routes / mapping controller
 		
 		//CATALOG
@@ -53,6 +55,7 @@ var Routes = {
 		app.get('/checkout/wait/:orderId', AccountController.checkSignIn, CheckoutController.waitPayment);
 		app.get('/checkout/success/:orderId', AccountController.checkSignIn, CheckoutController.successPayment);
 
+		app.post('/download/:orderId', AccountController.checkSignIn, DownloadController.checkDownload, DownloadController.downloadOrder);
 
 		//CUSTOMER ACCOUNT
 		app.get('/signin', AccountController.signIn);
@@ -61,6 +64,8 @@ var Routes = {
 		app.post('/signup', AccountController.signUp);
 		app.get('/signout', AccountController.signOut);
 		app.post('/createCustomer', AccountController.createCustomer);
+
+
 
 		app.get('/test', PageController.test);
 		app.get('/testInc', PageController.testInc);

@@ -27,8 +27,12 @@
                 <h1 class="text-center">Votre commande a bien été validée.</h1>
                 <div class="col-md-2"></div>
                 <div class="col-md-8 checkoutSuccess">
-                    <h3 class="text-center">Vous allez recevoir votre cours par email.</h3>
-                    <input type="button" id="goToMail" data-email="{{model.email}}" class="btn btn-lg btn-primary" value="Vérifier mes emails" />
+                    <h3 class="text-center">Votre téléchargement va démarrer dans <span class="count">5</span> secondes...
+                    <!--<input type="button" id="goToMail" data-email="{{model.email}}" class="btn btn-lg btn-primary" value="Vérifier mes emails" />-->
+                    <input type="button" id="goToHomepage" class="btn btn-success btn-primary hidden" value="Retour à l'accueil" /></h3>
+                    <form method="post" action="/download/{{model.orderId}}" id="downloadForm">
+                        <input type="hidden" value=""/>
+                    </form>
                 </div>
                 <div class="col-md-2"></div>
             </div>

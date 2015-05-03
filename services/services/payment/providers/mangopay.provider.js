@@ -104,11 +104,11 @@ var Provider = {
                                             AuthorId : user.paymentInfos.accountId, 
                                             DebitedFunds: {
                                                     Currency : "EUR", 
-                                                    Amount : ""+amount
+                                                    Amount : ""+amount*100
                                             }, 
                                             Fees : {
                                                     Currency : "EUR", 
-                                                    Amount : ""+fees
+                                                    Amount : ""+fees*100
                                             }, 
                                             DebitedWalletID : user.paymentInfos.walletId, 
                                             CreditedWalletID : seller.account.paymentInfos.walletId,
@@ -118,7 +118,6 @@ var Provider = {
                                             if(!err){
                                                 console.log("%%%%%%%%%%%%%%%%%%%%%");
                                                 if(i+1 == lines.length){
-                                                    console.log("WIN !!");
                                                     callback(true);
                                                 } else {
                                                     payEachLine(i+1, user, card, lines);

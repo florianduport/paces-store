@@ -65,6 +65,17 @@ var ShoppingCartModel = {
 			callback(false);
 		}
 	},
+	removeAllFromShoppingCart : function(req, res, callback){
+		console.log("REMOVE ALL FROM SHOPPINGCART");
+		if(req.session !== undefined  && req.session.shoppingcart !== undefined && req.session.shoppingcart.length > 0){
+			console.log("REMOVE ALL FROM SHOPPINGCART");
+			req.session.shoppingcart = [];
+			res.cookie("cart-count", 0);
+			callback(true);
+		} else {
+			callback(false);
+		}
+	},
 	productCheckout : function(req, res, callback){
 		if(req.params !== undefined && req.params.product !== undefined && req.params.product !== ""){
 			req.session.shoppingcart = [];

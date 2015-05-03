@@ -86,6 +86,7 @@ var CheckoutModel = {
 								 			order.linesConfirmed = 0;
 
 								 		order.linesConfirmed = order.linesConfirmed +1;
+								 		order.downloadCount = 0;
 
 								 		if(order.linesConfirmed == lines.length) {
 								 			order.orderConfirmed = true;
@@ -119,6 +120,7 @@ var CheckoutModel = {
 	successPayment : function(req, callback){
 		var model = this;
 		model.email = req.session.user;
+		model.orderId = req.params.orderId;
 		callback(this);
 	}
 };
