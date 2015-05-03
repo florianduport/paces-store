@@ -38,12 +38,54 @@
 					        <input class="form-control pull-left halfWidth" placeholder="MM/AA" type="text" name="expiry">
 							<input class="form-control pull-left halfWidth" placeholder="CVC" type="text" name="cvc">
 					        <input class="form-control" placeholder="Nom du titulaire" type="text" name="name">
-				            <input type="submit" value="Commander" class="btn btn-lg btn-success postfix btn-pay">
+				            <input type="submit" value="Commander ({{model.shoppingcart.total}}€)" class="btn btn-lg btn-success postfix btn-pay">
 						</form>
                     </div>
                 </div>
                 <div class="col-md-2"></div>
             </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div> 
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong><i class="glyphicon glyphicon-shopping-cart"></i> Résumé de ma commande</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <td><strong>Produit</strong></td>
+                                    <td class="text-center"><strong>Prix</strong></td>
+                                    <td class="text-center"><strong>Quantité</strong></td>
+                                    <td class="text-right"><strong>Total</strong></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- foreach ($order->lineItems as $line) or some such thing here -->
+                                {{#each model.shoppingcart.products}}                                
+                                <tr>
+                                    <td>{{this.name}}</td>
+                                    <td class="text-center">{{this.price}}€</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-right">{{this.price}}€</td>
+                                </tr>
+                                {{/each}}
+                                <tr>
+                                    <td class="no-line"></td>
+                                    <td class="no-line"></td>
+                                    <td class="no-line text-center"><strong>Total</strong></td>
+                                    <td class="no-line text-right">{{model.shoppingcart.total}}€</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div> 
     </div>
 </div>
 {{#content "registerTopStylesheets"}}

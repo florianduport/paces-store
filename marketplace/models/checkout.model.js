@@ -6,11 +6,33 @@ var CheckoutModel = {
 
 	initialize : function(req, callback){
 
-		var model = this;
+		/*var model = this;
         model.req = req;
         SchoolsHelper.loadSchool({model : model, callback : function(model){
             callback(model);
-        }});
+        }});*/
+
+		this.shoppingcartIds = req.session.shoppingcart !== undefined && req.session.shoppingcart.length > 0 ? req.session.shoppingcart : [];
+		this.shoppingcart = { products : [] };
+		this.req = req;
+		var filter = {_id : { $in : this.shoppingcartIds}};
+		var model = this;
+		ServiceHelper.getService('productList', 'getProductsByFilter', {data: {filter : filter, order : {}}, method : "POST"}, function(products){
+				if(!products){
+					callback(model);
+				}
+				else {	
+					model.shoppingcart.products = products
+					model.shoppingcart.total = 0;
+					for (var i = model.shoppingcart.products.length - 1; i >= 0; i--) {
+						model.shoppingcart.total = model.shoppingcart.total+model.shoppingcart.products[i].price;
+					};
+
+			        SchoolsHelper.loadSchool({model : model, callback : function(model){
+			            callback(model);
+			        }});
+				}
+			});
 	},
 
 	payWithNewCard : function(req, callback){
