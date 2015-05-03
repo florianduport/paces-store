@@ -64,7 +64,7 @@ var Routes = {
 		app.post('/signup', AccountController.signUp);
 		app.get('/signout', AccountController.signOut);
 		app.post('/createCustomer', AccountController.createCustomer);
-
+		app.post('/geoloc', PageController.getGeolocZone);
 
 
 		app.get('/test', PageController.test);

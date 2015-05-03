@@ -1,13 +1,5 @@
 $(document).ready(function(){
-	$("#universitySelector").change(function(){
-		var currentPosition = JSON.parse($.cookie("position").replace("j:", ""));
-		currentPosition.universityId = $("#universitySelector").val();
-
-		var currentPositionString = "j:"+JSON.stringify(currentPosition);
-		$.cookie("position", currentPositionString);
-		window.location.reload();
-	});
-
+	//$("#universitySelector").change(function(){
 	$("#submitSearch").click(function(){
 		//input keywords
 		if($("input[name=searchText]")[0] !== undefined){

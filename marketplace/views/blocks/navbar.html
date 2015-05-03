@@ -20,12 +20,7 @@
             </div>
             <button id="submitSearch" type="button" class="btn btn-success"><i class="glyphicon glyphicon-search"></i></button>
                                 <div class="form-group">
-                <select id="universitySelector" class="selectpicker show-tick" data-style="btn-primary">
-                    <option value="{{model.currentSchool.universityId}}" selected>{{model.currentSchool.name}}</option>
-                    {{#each model.otherSchools}}
-                    <option value="{{this.universityId}}">{{this.name}} </option>
-                    {{/each}}
-                </select>
+                <span id="geolocZone"></span>
             </div>
         </form>
     </div>

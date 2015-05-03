@@ -85,7 +85,7 @@ var Provider = {
                                   CreditedUserId : user.paymentInfos.accountId,    
                                   DebitedFunds: {            
                                         Currency: "EUR",
-                                        Amount: ""+amount
+                                        Amount: ""+amount*100
                                   },
                                   Fees: {
                                         Currency: "EUR",
@@ -97,9 +97,13 @@ var Provider = {
                                  
                                 }, function(err, payin, res){
                                     if(err){
+                                        console.log("DEBUG ERROR 1");
+                                        console.log(err);
                                         callback(false);
                                     } else {
                                         //TRANSFER
+                                        console.log("CALL TRANSFER");
+                                        console.log(amount*100);
                                         mango.wallet.transfer({
                                             AuthorId : user.paymentInfos.accountId, 
                                             DebitedFunds: {
@@ -126,6 +130,7 @@ var Provider = {
                                                 console.log("error transfer");
                                                 console.log(user.paymentInfos.accountId);
                                                 console.log(err);
+                                                console.log("DEBUG ERROR 2");
                                                 callback(false);
                                             }
                                         });
@@ -135,6 +140,8 @@ var Provider = {
                                 console.log("ERROR CREATING CARD");
                                 console.log(err);
                                 console.log(card.cardExpirationDate);
+
+                                console.log("DEBUG ERROR 3");
                                 callback(false);
                             }
                         }); 

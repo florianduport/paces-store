@@ -1,0 +1,6 @@
+<select id="universitySelector" class="selectpicker show-tick" data-style="btn-primary">
+	<option value="{{model.school.universityId}}" selected>{{model.school.name}}</option>
+	{{#each model.otherSchools}}
+		<option value="{{this.universityId}}">{{this.name}} </option>
+	{{/each}}
+</select>

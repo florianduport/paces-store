@@ -34,9 +34,10 @@ var PageModel = {
 		this.position = req.session.position;
 		var model = this;
 		this.loadPosition(req, this, function(model){
-							console.log("universityId");
 			if(model.position !== undefined && model.position.universityId === undefined)
 			{
+				console.log("here");
+				console.log(model.position);
 				ServiceHelper.getService('school', 'getSchools', {data: {}, method : "POST"}, function(schools){
 					
 					if(!schools){
@@ -49,6 +50,7 @@ var PageModel = {
 							}
 							model.position.universityId = model.school.universityId;
 							console.log(model.position.universityId);
+
 							callback(model);
 						});
 					}
@@ -81,6 +83,11 @@ var PageModel = {
 		}
 
 		model.school = schools[schoolIndex];
+		model.otherSchools = []
+		for (var i = schools.length - 1; i >= 0; i--) {
+			if(i != schoolIndex)
+				model.otherSchools.push(schools[i]);
+		};
 		callback(model);
 	},
 
@@ -127,6 +134,32 @@ var PageModel = {
 				callback(model);
 			});
 		}
+	},
+
+	getGeolocZone : function(req, callback){
+
+		var model = this;
+		model.position = req.session.position;
+		PageModel.loadPosition(req, this, function(model){
+			ServiceHelper.getService('school', 'getSchools', {data: {}, method : "POST"}, function(schools){
+						
+				if(!schools){
+					callback(false);
+				}
+				else {
+					PageModel.loadSchool(req, schools, model, function(model){
+						if(model.position.city === undefined || model.position.city === ""){
+							model.position.city = model.school.city;
+						}
+						model.position.universityId = model.school.universityId;
+						console.log(model.position.universityId);
+						callback(model);
+					});
+					
+				}
+			});
+		});
+
 	},
 
 	test : function(req, callback){

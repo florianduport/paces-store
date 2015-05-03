@@ -27,6 +27,14 @@ var PageController = {
 	    });
 	},
 
+    getGeolocZone : function(req, res){
+	    model.getGeolocZone(req, function(model){
+	    	res.cookie("position", model.position);
+	    	req.session.position = model.position;
+	    	res.render('blocks/geolocZone', {model: model, layout: null});
+	    });        
+    },
+
 	test : function(req, res){
 		/*var options = {
 		    Host: 'api.sandbox.mangopay.com',
