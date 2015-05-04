@@ -1,5 +1,5 @@
 var ServiceHelper = require('../helpers/service.helper').ServiceHelper;
-
+var MailHelper = require('../helpers/mail.helper').MailHelper;
 var SchoolsHelper = require('../helpers/schools.helper').SchoolsHelper;
 
 var CheckoutModel = {
@@ -116,6 +116,10 @@ var CheckoutModel = {
 								 		console.log(order.linesConfirmed);
 								 		console.log(order.orderConfirmed);
 								 		ServiceHelper.getService('order', 'updateOrder', {data: {order : createdOrder}, method : "POST"}, function(orderModified){ 
+											MailHelper.orderConfirm({
+												email : req.session.user,
+												orderId : order["_id"]
+											});
 											callback(model);
 								 		});
 						 			}

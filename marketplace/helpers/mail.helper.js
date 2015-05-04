@@ -98,7 +98,43 @@ var MailHelper = {
              
              return true;
         });
-    },
+    },	
+
+    orderConfirm : function(infos){
+		ConfigurationHelper.getConfig({application: 'marketplace', done: function (configuration) {
+
+			var mandrill_client = new mandrill.Mandrill(configuration.mail.mandrill.key);
+			var template_name = "mail-de-confirmation";
+			var template_content = [{
+			        "name": "EMAIL",
+			        "content": infos.email
+			    }];
+			var message = {
+			    "html": "<p>Example HTML content</p>",
+			    "text": "Bienvenue !",
+			    "subject": "Merci pour votre commande",
+			    "from_email": "noreply@paces-store.fr",
+			    "from_name": "Paces-Store",
+			    "to": [{
+			            "email": infos.email,
+			            "type": "to"
+			        }],
+		        "global_merge_vars" :  
+				[{
+			        "name": "ORDERID",
+			        "content": infos.orderId
+			    }]
+			};
+			var async = false;
+			var ip_pool = "Main Pool";
+			mandrill_client.messages.sendTemplate({"template_name": template_name, "template_content": template_content, "message": message, "async": async, "ip_pool": ip_pool, "send_at": Date.now}, function(result) {
+				//NOTHING TO DO
+			}, function(e) {
+			    console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
+			});
+		}});
+
+	},
 
     contactUs : function(infos){
 		ConfigurationHelper.getConfig({application: 'marketplace', done: function (configuration) {
