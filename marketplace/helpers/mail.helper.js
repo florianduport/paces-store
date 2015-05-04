@@ -98,6 +98,77 @@ var MailHelper = {
              
              return true;
         });
+    },
+
+    contactUs : function(infos){
+		ConfigurationHelper.getConfig({application: 'marketplace', done: function (configuration) {
+
+			var mandrill_client = new mandrill.Mandrill(configuration.mail.mandrill.key);
+			var template_name = "mail-de-contact";
+			var template_content = 
+				[{
+			        "name": "USERNAME",
+			        "content": infos.username
+			    },
+			    {
+			        "name": "EMAIL",
+			        "content": infos.email
+			    },
+			    {
+			    	"name": "SUBJECTMESSAGE",
+			        "content": infos.subject
+			    },
+			    {
+			    	"name": "MESSAGE",
+			        "content": infos.message
+			    }];
+			var message = {
+			    "html": "<p>Example HTML content</p>",
+			    "text": "Bienvenue !",
+			    "subject": "Formulaire de contact Paces-Store",
+			    "from_email": "noreply@paces-store.fr",
+			    "from_name": "Paces-Store",
+			    "to": [{
+			            "email": "florianduport@gmail.com",
+			            "name": "Florian Duport",
+			            "type": "to"
+			        },{
+			            "email": "paxeld@gmail.com",
+			            "name": "Pierre-Axel Domicile",
+			            "type": "to"
+			        },{
+			            "email": "admingrospigeon@gmail.com ",
+			            "name": "Big Pigeon",
+			            "type": "to"
+			        }],
+			    "global_merge_vars" :  
+				[{
+			        "name": "USERNAME",
+			        "content": infos.username
+			    },
+			    {
+			        "name": "USEREMAIL",
+			        "content": infos.email
+			    },
+			    {
+			    	"name": "SUBJECTMESSAGE",
+			        "content": infos.subject
+			    },
+			    {
+			    	"name": "MESSAGE",
+			        "content": infos.message
+			    }]
+			};
+			var async = false;
+			var ip_pool = "Main Pool";
+
+
+			mandrill_client.messages.sendTemplate({"template_name": template_name, "template_content": template_content, "message": message, "async": async, "ip_pool": ip_pool, "send_at": Date.now}, function(result) {
+				//NOTHING TO DO
+			}, function(e) {
+			    console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
+			});
+		}});    	
     }
 
 

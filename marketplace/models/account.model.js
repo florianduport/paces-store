@@ -18,6 +18,10 @@ var AccountModel = {
     displaySignIn : function(req, callback){
         var model = this;
         model.req = req;
+        model.displayCheckoutSteps = false;
+        if(req.get('referer') !== undefined && req.get('referer').indexOf("checkout") > -1){
+            model.displayCheckoutSteps = true;
+        }
         SchoolsHelper.loadSchool({model : model, callback : function(model){
             if(req.session.error)
             model.error = req.session.error;
@@ -30,6 +34,7 @@ var AccountModel = {
     displaySignUp : function(req, callback){
         var model = this;
         model.req = req;
+        
         SchoolsHelper.loadSchool({model : model, callback : function(model){
             if(req.session.error)
             model.error = req.session.error;

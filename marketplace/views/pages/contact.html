@@ -1,0 +1,58 @@
+<div class="container">
+	<br/><br/><br/>
+	<div class="row">
+      <div class="col-md-6 col-md-offset-3">
+      	{{#if model.formSuccess}}
+      	<div class="alert alert-success" role="alert"><p>Votre message a bien été envoyé. Nous vous répondrons dans les plus bref délais.</p></div>
+      	{{/if}}
+        <div class="well well-sm">
+
+			<form class="form-horizontal" action="/contact" method="post">
+			<input type="hidden" name="email" value="{{model.email}}"/>
+			<fieldset>
+			<legend class="text-center">Contactez Paces-Store</legend>
+
+			<!-- Name input-->
+			<div class="form-group">
+			  <label class="col-md-3 control-label" for="name">Nom</label>
+			  <div class="col-md-9">
+			    <input id="name" name="username" type="text" placeholder="Votre nom complet" class="form-control" required>
+			  </div>
+			</div>
+
+			<!-- Email input-->
+			<div class="form-group">
+			  <label class="col-md-3 control-label" for="email">Objet du message</label>
+			  <div class="col-md-9">
+			    <input id="email" name="subject" type="text" placeholder="Objet du message" class="form-control" required>
+			  </div>
+			</div>
+
+			<!-- Message body -->
+			<div class="form-group">
+			  <label class="col-md-3 control-label" for="message">Votre message</label>
+			  <div class="col-md-9">
+			    <textarea class="form-control" id="message" name="message" placeholder="Entrez votre message ici..." rows="5" required></textarea>
+			  </div>
+			</div>
+
+			<!-- Form actions -->
+			<div class="form-group">
+			  <div class="col-md-12 text-right">
+			    <button type="submit" class="btn btn-primary btn-lg">Envoyer</button>
+			  </div>
+			</div>
+			</fieldset>
+			</form>
+        </div>
+      </div>
+	</div>
+</div>
+
+{{#content "registerTopStylesheets"}}      
+{{/content}}
+{{#content "registerBottomScripts"}}
+{{/content}}
+{{#content "registerMeta"}}
+    <title>PACES Store - Contact</title>
+{{/content}}

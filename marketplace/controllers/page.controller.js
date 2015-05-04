@@ -35,6 +35,18 @@ var PageController = {
 	    });        
     },
 
+    displayContact : function(req, res){
+    	model.displayContact(req, function(model){
+    		res.render('pages/contact', {model: model});
+    	});
+    },
+
+    contactUs : function(req, res){
+    	model.contactUs(req, function(model){
+    		res.render('pages/contact', {model: model});
+    	});
+    },
+
 	test : function(req, res){
 		/*var options = {
 		    Host: 'api.sandbox.mangopay.com',

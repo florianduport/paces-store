@@ -67,6 +67,9 @@ var Routes = {
 		app.post('/geoloc', PageController.getGeolocZone);
 
 
+		app.get('/contact', AccountController.checkSignIn, PageController.displayContact);
+		app.post('/contact', AccountController.checkSignIn, PageController.contactUs);
+
 		app.get('/test', PageController.test);
 		app.get('/testInc', PageController.testInc);
 

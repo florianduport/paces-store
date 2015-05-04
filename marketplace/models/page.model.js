@@ -1,7 +1,8 @@
 var Geocoder = require('node-geocoder').getGeocoder("openstreetmap", "http", {});
 var IpGeocoder = require('node-geocoder').getGeocoder("freegeoip", "http", {});
 var Geolib = require('geolib');
-ServiceHelper = require('../helpers/service.helper').ServiceHelper;
+var ServiceHelper = require('../helpers/service.helper').ServiceHelper;
+var MailHelper = require('../helpers/mail.helper').MailHelper;
 
 var PageModel = {
 
@@ -160,6 +161,19 @@ var PageModel = {
 			});
 		});
 
+	},
+
+	displayContact : function(req, callback){
+		this.email = req.session.user;
+		callback(this);
+	},
+
+	contactUs : function(req, callback){
+		this.email = req.session.user;
+		var model = this;
+		MailHelper.contactUs(req.body);
+		model.formSuccess = true;
+		callback(model);
 	},
 
 	test : function(req, callback){
