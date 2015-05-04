@@ -11,7 +11,7 @@ var LocalConfig = {
 	database : {
 		address : "mongodb://paces-store:Answer&&Pigeon2010@94.23.203.174:27017/paces-store"
 	},
-	addressBasePath : "http://localhost",
+	addressBasePath : "http://ns303010.ip-94-23-203.eu",
 	hmacEnabled : false
 	
 };
