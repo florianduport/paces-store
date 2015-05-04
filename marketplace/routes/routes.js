@@ -69,6 +69,7 @@ var Routes = {
 
 		app.get('/contact', AccountController.checkSignIn, PageController.displayContact);
 		app.post('/contact', AccountController.checkSignIn, PageController.contactUs);
+		app.get('/about', PageController.displayAbout);
 
 		app.get('/test', PageController.test);
 		app.get('/testInc', PageController.testInc);

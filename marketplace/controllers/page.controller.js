@@ -47,6 +47,10 @@ var PageController = {
     	});
     },
 
+    displayAbout : function(req, res){
+    	res.render('pages/about', {});
+    },
+
 	test : function(req, res){
 		/*var options = {
 		    Host: 'api.sandbox.mangopay.com',
