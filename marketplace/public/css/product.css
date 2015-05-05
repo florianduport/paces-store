@@ -32,7 +32,7 @@
     position: fixed;
     top: 0;
 }
-.navbar-product .container  {
+.navbar-product  {
   top: 50px !important;
   position: fixed;
   z-index: 1028;
