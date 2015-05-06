@@ -87,7 +87,7 @@ var checkoutButton = function(){
 			method: "POST",
 			success : function(cartContent){
 				var cartCount = $.cookie("cart-count") !== undefined ? parseInt($.cookie("cart-count")) : 0;
-				$.cookie("cart-count", cartCount+1, {path : "/"});
+				$.cookie("cart-count", 1, {path : "/"});
 				reloadCartCount();
 				var checkoutForm = $("<form action='/checkout/' method='post' id='checkout'>");
 				$(checkoutForm).appendTo("body").submit();

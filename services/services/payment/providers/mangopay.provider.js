@@ -70,7 +70,7 @@ var Provider = {
                         };
                         amount = lines[i].amount;
 
-                        var fees = configuration.fees*amount;
+                        var fees = Math.round(configuration.fees*amount);
 
                         mango.card.create({
                           UserId: user.paymentInfos.accountId,
