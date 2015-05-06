@@ -92,6 +92,27 @@ var OrderService = {
         catch(err){
             done(false);
         }
+    },
+
+    incrementDownloadCount : function(orderId, done){
+        try{
+            DatabaseHelper.getDatabase(function(db){
+                db.collection("Orders", function(err, Orders){
+                    //password should be sent with sha1 encryption
+                    Orders.findOne({ _id : ObjectID(orderId)}, function(err, orderFound){
+
+                        orderFound.downloadCount = orderFound.downloadCount === undefined ? 0 : orderFound.downloadCount+1
+
+                        Orders.save(orderFound, {w:1}, function(){
+                            done(true);
+                        });
+                    });
+                });
+            });
+        }
+        catch(err){
+            done(false);
+        }        
     }
 
 };

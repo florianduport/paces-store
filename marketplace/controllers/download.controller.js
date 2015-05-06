@@ -14,7 +14,7 @@ var DownloadController = {
 	    	} else {
 	    		console.log("Check download failed");
 	    		res.status(404);
-	    		res.render('pages/error');
+	    		res.render('pages/checkout/downloadError');
 	    	}
 	    });
 	},

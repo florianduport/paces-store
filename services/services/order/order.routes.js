@@ -59,6 +59,19 @@ var OrderRoutes = {
             });
         });
 
+        app.post(configuration.routes.order.incrementDownloadCount, HmacHelper.verifyRequest, function(req, res){
+            //check parameters
+            if(req.body === undefined || !req.body || req.body.orderId === undefined){
+                LoggerService.logError("services", "Wrong increment download count parameters", {order : req.body.order !== undefined ? req.body.order : ""});
+                console.log("wrong parameters for incrementDownloadCount");
+                Base.send(req, res, false);
+            }
+    
+            OrderService.incrementDownloadCount(req.body.orderId, function(result){
+                Base.send(req, res, result);
+            });
+        });
+
     }
     
 };

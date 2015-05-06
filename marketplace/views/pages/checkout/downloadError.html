@@ -1,0 +1,47 @@
+<nav class="navbar-signin">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="col-md-4 element-navbar-signin active vcenter pull-left">
+                            Identification
+                        </div>
+                        <div class="col-md-4 element-navbar-signin active vcenter pull-left">
+                            Informations de paiement
+                        </div>
+                        <div class="col-md-4 element-navbar-signin vcenter pull-left">
+                            Confirmation de commande
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="checkoutContainer container">
+	<div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">Une erreur s'est produite durant votre téléchargement.</h1>
+                <div class="col-md-2"></div>
+                <div class="col-md-8 checkoutSuccess">
+                    <h3 class="text-center">Vous avez probablement télécharger ce produit trop de fois. Merci de nous contacter si le problème persiste.
+                    	<br/><br/>Vous allez être redirigé vers la page d'accueil dans <span class="count">5</span> secondes...
+                    <!--<input type="button" id="goToMail" data-email="{{model.email}}" class="btn btn-lg btn-primary" value="Vérifier mes emails" />-->
+                    <br/><input type="button" id="goToHomepage" class="btn btn-success btn-primary" value="Retour à l'accueil" /></h3>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+    </div>
+</div>
+{{#content "registerTopStylesheets"}}
+    <link href="/css/checkout/error.css" rel="stylesheet">       
+{{/content}}
+{{#content "registerBottomScripts"}}
+    <script src="/js/checkout/error.js"></script>
+{{/content}}
+{{#content "registerMeta"}}
+    <title>PACES Store - Paiement - Erreur</title>
+{{/content}}

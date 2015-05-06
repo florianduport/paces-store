@@ -12,7 +12,8 @@ var DownloadModel = {
 		if(req.params !== undefined && req.params.orderId !== undefined){
 
 			ServiceHelper.getService('order', 'getOrderById', {data: {orderId : req.params.orderId}, method : "POST"}, function(order){
-				if(order === undefined || order.downloadCount === undefined || order.products === undefined || order.products.length < 1 || order.downloadCount > 3){
+
+				if(order === undefined || order.downloadCount === undefined || order.products === undefined || order.products.length < 1 || order.downloadCount > 2){
 					console.log("failed");
 					callback(false);
 				} else {
@@ -76,6 +77,9 @@ var DownloadModel = {
 			for(var i in files) {
 				archive.append(fs.createReadStream(files[i]), { name: p.basename(files[i]) });
 			}
+			ServiceHelper.getService('order', 'incrementDownloadCount', {data: {orderId : req.params.orderId}, method : "POST"}, function(){
+				
+			});
 			ShoppingCartModel.removeAllFromShoppingCart(req, res, function(){
 				callback(archive);
 			});

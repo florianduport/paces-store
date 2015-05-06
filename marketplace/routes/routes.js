@@ -56,6 +56,7 @@ var Routes = {
 		app.get('/checkout/success/:orderId', AccountController.checkSignIn, CheckoutController.successPayment);
 
 		app.post('/download/:orderId', AccountController.checkSignIn, DownloadController.checkDownload, DownloadController.downloadOrder);
+		app.get('/download/:orderId', AccountController.checkSignIn, DownloadController.checkDownload, DownloadController.downloadOrder);
 
 		//CUSTOMER ACCOUNT
 		app.get('/signin', AccountController.signIn);
