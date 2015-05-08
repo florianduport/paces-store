@@ -1,0 +1,85 @@
+/* 0 */
+{
+    "_id" : ObjectId("5468c94bb0937f4e48af3a43"),
+    "name" : "Produit de test",
+    "description" : "Un super cours dans lequel nous allons voir les points suivants : <ul> <li>Avoir du swag</li> <li>Ecouter Kingal</li> <li>Tinderiser à mort</li> <li>GiantAppiser tous les mardis</li> </ul> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "price" : 20,
+    "university" : "bordeaux",
+    "categories" : [ 
+        "UE2"
+    ],
+    "seller" : "florianduport@gmail.com",
+    "data" : {
+        "sellCount" : 2,
+        "alertCount" : 0
+    }
+}
+
+/* 1 */
+{
+    "_id" : ObjectId("546ba977b0937f4e48af3a44"),
+    "name" : "Produit de test 2",
+    "description" : "Un super cours dans lequel nous allons voir les points suivants : <ul> <li>Avoir du swag</li> <li>Ecouter Kingal</li> <li>Tinderiser à mort</li> <li>GiantAppiser tous les mardis</li> </ul> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "price" : 30,
+    "university" : "paris",
+    "categories" : [ 
+        "UE2"
+    ],
+    "seller" : "florianduport@gmail.com",
+    "data" : {
+        "sellCount" : 2,
+        "alertCount" : 0
+    }
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("548f5e5ab0937f4e48af3a57"),
+    "name" : "Produit récent moyen cher",
+    "description" : "Un super cours dans lequel nous allons voir les points suivants : <ul> <li>Avoir du swag</li> <li>Ecouter Kingal</li> <li>Tinderiser à mort</li> <li>GiantAppiser tous les mardis</li> </ul> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "price" : 29,
+    "university" : "bordeaux",
+    "categories" : [ 
+        "UE2", 
+        "UE1"
+    ],
+    "seller" : "florianduport@gmail.com",
+    "data" : {
+        "sellCount" : 2,
+        "alertCount" : 0
+    }
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("548f5ad5b0937f4e48af3a56"),
+    "name" : "Produit de test UE1",
+    "description" : "Un super cours dans lequel nous allons voir les points suivants : <ul> <li>Avoir du swag</li> <li>Ecouter Kingal</li> <li>Tinderiser à mort</li> <li>GiantAppiser tous les mardis</li> </ul> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "price" : 100,
+    "university" : "bordeaux",
+    "categories" : [ 
+        "UE1"
+    ],
+    "seller" : "florianduport@gmail.com",
+    "data" : {
+        "sellCount" : 2,
+        "alertCount" : 0
+    }
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("548f549bb0937f4e48af3a55"),
+    "name" : "Produit de test 3 (+ cher)",
+    "description" : "Un super cours dans lequel nous allons voir les points suivants : <ul> <li>Avoir du swag</li> <li>Ecouter Kingal</li> <li>Tinderiser à mort</li> <li>GiantAppiser tous les mardis</li> </ul> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "price" : 60,
+    "university" : "bordeaux",
+    "categories" : [ 
+        "UE2"
+    ],
+    "seller" : "florianduport@gmail.com",
+    "data" : {
+        "sellCount" : 2,
+        "alertCount" : 0
+    }
+}

@@ -1,0 +1,101 @@
+/* 0 */
+{
+    "_id" : ObjectId("548767e4b0937f4e48af3a4a"),
+    "shortName" : "UE1",
+    "name" : "UE 1",
+    "description" : "Atomes, Biomolécules, Génome, Bioénergétique et Métabolisme",
+    "order" : 0
+}
+
+/* 1 */
+{
+    "_id" : ObjectId("548767fdb0937f4e48af3a4b"),
+    "shortName" : "UE2",
+    "name" : "UE 2",
+    "description" : "La cellule et les Tissus",
+    "order" : 1
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("54876812b0937f4e48af3a4c"),
+    "shortName" : "UE3.A",
+    "name" : "UE 3.1",
+    "description" : "Organisation des appareils et systèmes : Aspects fonctionnels",
+    "order" : 2
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("54876822b0937f4e48af3a4d"),
+    "shortName" : "UE3.B",
+    "name" : "UE 3.2",
+    "description" : "Organisation des appareils et systèmes : Base physique d'exploration",
+    "order" : 3
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("54876835b0937f4e48af3a4e"),
+    "shortName" : "UE4",
+    "name" : "UE 4",
+    "description" : "Évaluation des méthodes d’analyse appliquées aux Sciences de la vie et de la santé",
+    "order" : 4
+}
+
+/* 5 */
+{
+    "_id" : ObjectId("54876858b0937f4e48af3a4f"),
+    "shortName" : "UE5",
+    "name" : "UE 5",
+    "description" : "Organisation des appareils et systèmes : aspects morphologiques et fonctionnels",
+    "order" : 5
+}
+
+/* 6 */
+{
+    "_id" : ObjectId("548768a4b0937f4e48af3a50"),
+    "shortName" : "UE6",
+    "name" : "UE 6",
+    "description" : "Initiation à la connaissance du médicament",
+    "order" : 6
+}
+
+/* 7 */
+{
+    "_id" : ObjectId("54876924b0937f4e48af3a54"),
+    "shortName" : "UES.M",
+    "name" : "UE",
+    "description" : "SPÉCIFIQUE de Médecine, Maïeutique et Masso-kinésithérapie",
+    "order" : 10,
+    "isSpecific" : true
+}
+
+/* 8 */
+{
+    "_id" : ObjectId("548768f2b0937f4e48af3a52"),
+    "shortName" : "UES.O",
+    "name" : "UE",
+    "description" : " SPÉCIFIQUE d’Odontologie",
+    "order" : 8,
+    "isSpecific" : true
+}
+
+/* 9 */
+{
+    "_id" : ObjectId("54876914b0937f4e48af3a53"),
+    "shortName" : "UES.P",
+    "name" : "UE",
+    "description" : "SPÉCIFIQUE de Pharmacie",
+    "order" : 9,
+    "isSpecific" : true
+}
+
+/* 10 */
+{
+    "_id" : ObjectId("548768b1b0937f4e48af3a51"),
+    "shortName" : "UE7",
+    "name" : "UE 7",
+    "description" : "Santé, Société, Humanité",
+    "order" : 7
+}

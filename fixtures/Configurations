@@ -1,0 +1,94 @@
+/* 0 */
+{
+    "_id" : ObjectId("5468b56cb0937f4e48af3a42"),
+    "application" : "services",
+    "port" : 55056,
+    "addressBasePath" : "http://localhost",
+    "routes" : {
+        "logger" : {
+            "getLogs" : "/logger/getLogs"
+        },
+        "customer" : {
+            "authenticateCustomer" : "/customer/authenticate",
+            "getCustomerByUsername" : "/customer/getByUsername",
+            "createCustomer" : "/customer/create",
+            "updateCustomer" : "/customer/update"
+        },
+        "seller" : {
+            "authenticateSeller" : "/seller/authenticate",
+            "getSellerByUsername" : "/seller/getByUsername",
+            "getSellersByUsername" : "/seller/getSellersByUsername",
+            "createSeller" : "/seller/create",
+            "updateSeller" : "/seller/update"
+        },
+        "product" : {
+            "getProductById" : "/product/getProductById",
+            "createProduct" : "/product/createProduct",
+            "updateProduct" : "/product/updateProduct",
+            "deleteProduct" : "/product/deleteProduct"
+        },
+        "productList" : {
+            "getProductsByFilter" : "/productlist/getProductsByFilter"
+        },
+        "school" : {
+            "getSchools" : "/school/getSchools",
+            "getSchoolByUrlId" : "/school/getSchoolByUrlId"
+        },
+        "category" : {
+            "getCategories" : "/category/getCategories"
+        },
+        "payment" : {
+            "createWallet" : "/payment/createWallet",
+            "createCard" : "/payment/createCard",
+            "getUsers" : "/payment/getUsers",
+            "payWithNewCard" : "/payment/payWithNewCard",
+            "getCards" : "/payment/getCards"
+        },
+        "order" : {
+            "createOrder" : "/order/createOrder",
+            "getOrderById" : "/order/getOrderById",
+            "updateOrder" : "/order/updateOrder",
+            "incrementDownloadCount" : "/order/incrementDownloadCount"
+        }
+    },
+    "debugEnabled" : true,
+    "hmacEnabled" : false
+}
+
+/* 1 */
+{
+    "_id" : ObjectId("5468abc6b0937f4e48af3a41"),
+    "application" : "marketplace",
+    "addressBasePath" : "http://localhost",
+    "port" : 55055,
+    "mangopay" : {
+        "username" : "testmangopay",
+        "password" : "LHqc2AGrMC3bA3nrVLm8EAXVWoUVvndSktH8JmKt9nN49D9on5",
+        "production" : false
+    },
+    "mail" : {
+        "mailchimp" : {
+            "key" : "a506dbd594ec50cb2fc899e16a564ef9-us10"
+        },
+        "mandrill" : {
+            "key" : "T36MyG4u9KpKIv-OkbTqpw"
+        },
+        "bannedDomains" : [ 
+            "yopmail.com", 
+            "yopmail.fr", 
+            "yopmail.net", 
+            "cool.fr.nf", 
+            "jetable.fr.nf", 
+            "nospam.ze.tc", 
+            "nomail.xl.cx", 
+            "mega.zik.dj", 
+            "speed.1s.fr", 
+            "courriel.fr.nf", 
+            "moncourrier.fr.nf", 
+            "monemail.fr.nf", 
+            "monmail.fr.nf", 
+            "test.fr"
+        ]
+    },
+    "fees" : 0.3
+}

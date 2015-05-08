@@ -1,0 +1,19 @@
+/* 0 */
+{
+    "_id" : ObjectId("5471f043b0937f4e48af3a48"),
+    "universityId" : "bordeaux",
+    "city" : "Bordeaux",
+    "latitude" : "44.837789",
+    "longitude" : "-0.579180",
+    "name" : "Université Bordeaux Segalen"
+}
+
+/* 1 */
+{
+    "_id" : ObjectId("5471f060b0937f4e48af3a49"),
+    "universityId" : "paris",
+    "city" : "Paris",
+    "latitude" : "48.856614",
+    "longitude" : "2.352222",
+    "name" : "Université Paris Descartes"
+}

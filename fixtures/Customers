@@ -1,0 +1,81 @@
+/* 0 */
+{
+    "_id" : ObjectId("54707890b0937f4e48af3a45"),
+    "username" : "test@paces-store.fr",
+    "password" : "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3",
+    "account" : {
+        "firstName" : "John",
+        "lastName" : "Doe"
+    }
+}
+
+/* 1 */
+{
+    "_id" : ObjectId("5495b6a26a979fbc0ebb03ba"),
+    "username" : "test2@paces-store.fr",
+    "password" : "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3",
+    "account" : {
+        "firstName" : "test",
+        "lastName" : "test"
+    }
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("54969168147daa341cbfbc26"),
+    "username" : "test3@paces-store.fr",
+    "password" : "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3",
+    "account" : {
+        "firstName" : "test",
+        "lastName" : "test",
+        "paymentInfos" : {
+            "accountId" : "5020664",
+            "walletId" : "5020665"
+        }
+    }
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("5543fd61c7585a3231e63260"),
+    "username" : "florianduport@gmail.com",
+    "password" : "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3",
+    "account" : {
+        "firstName" : "Florian",
+        "lastName" : "Duport",
+        "paymentInfos" : {
+            "accountId" : "6618143",
+            "walletId" : "6618144"
+        }
+    }
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("5549177e9e23931e1313ba6d"),
+    "username" : "adrien.dhuicq@gmail.com",
+    "password" : "191065911a0f8bdf073df9847a5a06aa584afac4",
+    "account" : {
+        "firstName" : "Adrien",
+        "lastName" : "Dhuicq",
+        "paymentInfos" : {
+            "accountId" : "6661696",
+            "walletId" : "6661697"
+        }
+    }
+}
+
+/* 5 */
+{
+    "_id" : ObjectId("554918279e23931e1313ba6f"),
+    "username" : "admingrospigeon@gmail.com",
+    "password" : "191065911a0f8bdf073df9847a5a06aa584afac4",
+    "account" : {
+        "firstName" : "Adrien",
+        "lastName" : "Dhuicq",
+        "paymentInfos" : {
+            "accountId" : "6661712",
+            "walletId" : "6661713"
+        }
+    }
+}

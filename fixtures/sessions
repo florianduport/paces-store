@@ -1,0 +1,349 @@
+/* 0 */
+{
+    "_id" : "kwqjy7m53DrRX0wsbvYOQ9dDF27wIg_X",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591993599,\"expires\":\"2015-06-04T19:13:30.080Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":\"48.856614\",\"longitude\":\"2.352222\",\"city\":\"Paris\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"paris\"},\"shoppingcart\":[\"548f5ad5b0937f4e48af3a56\"],\"error\":false,\"user\":\"test3@paces-store.fr\"}",
+    "expires" : ISODate("2015-06-04T19:13:30.080Z")
+}
+
+/* 1 */
+{
+    "_id" : "mvTYlRE8IyWnrJhQ5dYS_I1DlxtMxyYT",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591771912,\"expires\":\"2015-05-09T15:40:22.364Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"paris\"},\"shoppingcart\":[\"548f5ad5b0937f4e48af3a56\"],\"error\":false,\"user\":\"test3@paces-store.fr\"}",
+    "expires" : ISODate("2015-05-09T15:40:22.364Z")
+}
+
+/* 2 */
+{
+    "_id" : "YqrrzZf7bfrvmxB3w12RuVNwZDWfgxYk",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591999293,\"expires\":\"2015-05-21T17:48:04.806Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":\"48.856614\",\"longitude\":\"2.352222\",\"city\":\"Paris\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"},\"shoppingcart\":[\"548f5ad5b0937f4e48af3a56\"],\"error\":false,\"user\":\"test3@paces-store.fr\"}",
+    "expires" : ISODate("2015-05-21T17:48:04.806Z")
+}
+
+/* 3 */
+{
+    "_id" : "mKl7DWuAAWvcpHq6U-_oKU1hL9OncqjI",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591992377,\"expires\":\"2015-05-09T15:47:15.417Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"},\"shoppingcart\":[\"548f5ad5b0937f4e48af3a56\"]}",
+    "expires" : ISODate("2015-05-09T15:47:15.417Z")
+}
+
+/* 4 */
+{
+    "_id" : "GhykvrwnL4DnH5retE4cUWmLaayV7b93",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591869543,\"expires\":\"2015-05-09T15:49:13.891Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"},\"shoppingcart\":[\"548f5ad5b0937f4e48af3a56\"]}",
+    "expires" : ISODate("2015-05-09T15:49:13.891Z")
+}
+
+/* 5 */
+{
+    "_id" : "LEXc9P0_Pj1Jkw5iTNuZZvaYHz34g0xb",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591985412,\"expires\":\"2015-06-01T22:32:24.202Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"},\"shoppingcart\":[\"548f549bb0937f4e48af3a55\",\"548f5e5ab0937f4e48af3a57\"],\"error\":false,\"user\":\"florianduport@gmail.com\"}",
+    "expires" : ISODate("2015-06-01T22:32:24.202Z")
+}
+
+/* 6 */
+{
+    "_id" : "UajoULsndxcNO8ZpeNEv6Or-MD0Zdtcc",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591623490,\"expires\":\"2015-05-21T17:52:09.880Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"},\"shoppingcart\":[\"548f5ad5b0937f4e48af3a56\"]}",
+    "expires" : ISODate("2015-05-21T17:52:09.880Z")
+}
+
+/* 7 */
+{
+    "_id" : "U1E8gplc6KVQjsI4df3J2i_SFXXs23No",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591396728,\"expires\":\"2015-05-21T17:45:37.574Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"},\"shoppingcart\":[\"548f549bb0937f4e48af3a55\"],\"error\":false,\"user\":\"test3@paces-store.fr\"}",
+    "expires" : ISODate("2015-05-21T17:45:37.574Z")
+}
+
+/* 8 */
+{
+    "_id" : "HrUQSVi9wlwYO6NSjEkSYPXq2N2K_39H",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591868921,\"expires\":\"2015-06-04T19:22:17.057Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":\"48.856614\",\"longitude\":\"2.352222\",\"city\":\"Paris\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"paris\"},\"shoppingcart\":[\"548f5ad5b0937f4e48af3a56\"],\"error\":false,\"user\":\"test3@paces-store.fr\"}",
+    "expires" : ISODate("2015-06-04T19:22:17.057Z")
+}
+
+/* 9 */
+{
+    "_id" : "3cIRABFLeWyi2BPPbnQWXIGWGNQXd-IO",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591997692,\"expires\":\"2015-05-26T16:44:20.047Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":\"48.856614\",\"longitude\":\"2.352222\",\"city\":\"Paris\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"},\"shoppingcart\":[\"548f5ad5b0937f4e48af3a56\"]}",
+    "expires" : ISODate("2015-05-26T16:44:20.047Z")
+}
+
+/* 10 */
+{
+    "_id" : "Yy6WhbUd0b9vk1bysUC5xZPBCvAaFXgl",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591993984,\"expires\":\"2015-05-21T18:10:11.461Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"},\"shoppingcart\":[\"548f5ad5b0937f4e48af3a56\"],\"error\":false,\"user\":\"test3@paces-store.fr\"}",
+    "expires" : ISODate("2015-05-21T18:10:11.461Z")
+}
+
+/* 11 */
+{
+    "_id" : "3Z7nOyAZIsil0bFmfhmzARGyUq1pTdGj",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591964959,\"expires\":\"2015-05-21T18:14:02.272Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"},\"shoppingcart\":[\"548f5ad5b0937f4e48af3a56\"],\"error\":false,\"user\":\"test3@paces-store.fr\"}",
+    "expires" : ISODate("2015-05-21T18:14:02.272Z")
+}
+
+/* 12 */
+{
+    "_id" : "-Nk-vOv41Sgnr5OlzR-HSbbCkyz9UORr",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591983466,\"expires\":\"2015-05-21T18:15:24.624Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"},\"shoppingcart\":[\"548f5ad5b0937f4e48af3a56\"]}",
+    "expires" : ISODate("2015-05-21T18:15:24.624Z")
+}
+
+/* 13 */
+{
+    "_id" : "0FX2wai1JWSp1MQUnyHveJqSp6YKLK33",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2589057782,\"expires\":\"2015-05-26T20:15:03.466Z\",\"httpOnly\":true,\"path\":\"/\"}}",
+    "expires" : ISODate("2015-05-26T20:15:03.466Z")
+}
+
+/* 14 */
+{
+    "_id" : "HNF46y_Ery7wvyc65OjR9PW7lBf5Zcq6",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591988332,\"expires\":\"2015-05-21T18:19:26.153Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"},\"shoppingcart\":[\"548f5ad5b0937f4e48af3a56\"],\"error\":false,\"user\":\"test3@paces-store.fr\"}",
+    "expires" : ISODate("2015-05-21T18:19:26.153Z")
+}
+
+/* 15 */
+{
+    "_id" : "0yiQ5qTnoygE-PNC3hN-RNThpOdJ1X66",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591922578,\"expires\":\"2015-05-21T18:21:06.044Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"},\"error\":false,\"user\":\"test3@paces-store.fr\",\"shoppingcart\":[\"548f5ad5b0937f4e48af3a56\"]}",
+    "expires" : ISODate("2015-05-21T18:21:06.044Z")
+}
+
+/* 16 */
+{
+    "_id" : "S7Z9eFjhymdl6WWen8KCSaq2-E9PPi7o",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591977147,\"expires\":\"2015-05-21T18:22:35.523Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"},\"error\":false,\"user\":\"test3@paces-store.fr\"}",
+    "expires" : ISODate("2015-05-21T18:22:35.523Z")
+}
+
+/* 17 */
+{
+    "_id" : "CYOd6d0dB4ckaBcfeMWn-7jM2lQ5GkQ5",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591915658,\"expires\":\"2015-05-21T18:31:07.650Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"},\"shoppingcart\":[\"548f5ad5b0937f4e48af3a56\"],\"error\":false,\"user\":\"test3@paces-store.fr\"}",
+    "expires" : ISODate("2015-05-21T18:31:07.650Z")
+}
+
+/* 18 */
+{
+    "_id" : "zJtX_UG29Z0ddk8ZjzYwFNm2RlWJKRgQ",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591936647,\"expires\":\"2015-05-21T18:33:02.506Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":\"48.856614\",\"longitude\":\"2.352222\",\"city\":\"Paris\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"paris\"}}",
+    "expires" : ISODate("2015-05-21T18:33:02.506Z")
+}
+
+/* 19 */
+{
+    "_id" : "cy8RPnaxK3k6hWAaC75QU7tKc6H5KHJo",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591848078,\"expires\":\"2015-06-04T19:53:58.109Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"},\"shoppingcart\":[],\"error\":false,\"user\":\"test3@paces-store.fr\"}",
+    "expires" : ISODate("2015-06-04T19:53:58.109Z")
+}
+
+/* 20 */
+{
+    "_id" : "TEICDrq5ZQ8HO3_45Yirxpm2HJktgJJD",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591726045,\"expires\":\"2015-05-26T18:11:30.546Z\",\"httpOnly\":true,\"path\":\"/\"},\"error\":false,\"user\":\"test3@paces-store.fr\",\"position\":{\"latitude\":\"48.856614\",\"longitude\":\"2.352222\",\"city\":\"Paris\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"},\"shoppingcart\":[\"548f5ad5b0937f4e48af3a56\"]}",
+    "expires" : ISODate("2015-05-26T18:11:30.546Z")
+}
+
+/* 21 */
+{
+    "_id" : "_Kz0uM8zd_Ml98VmU-u08A_yLAb59kQT",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591912601,\"expires\":\"2015-06-02T17:05:57.424Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"\"},\"shoppingcart\":[],\"error\":false,\"user\":\"florianduport@gmail.com\"}",
+    "expires" : ISODate("2015-06-02T17:05:57.424Z")
+}
+
+/* 22 */
+{
+    "_id" : "_KunaGhX_8oQ7C7chkXfQy5CzGAPcVKY",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591953394,\"expires\":\"2015-06-02T17:07:23.277Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"\"}}",
+    "expires" : ISODate("2015-06-02T17:07:23.277Z")
+}
+
+/* 23 */
+{
+    "_id" : "i3a7neR2qA5Ii00J7wRhRxw4z4GU2KRa",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591928353,\"expires\":\"2015-06-02T17:07:53.806Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"\"}}",
+    "expires" : ISODate("2015-06-02T17:07:53.806Z")
+}
+
+/* 24 */
+{
+    "_id" : "MKipfZnwUOAOYlknyIGD01-4mY2y9Let",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591874240,\"expires\":\"2015-06-02T17:11:44.653Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"}}",
+    "expires" : ISODate("2015-06-02T17:11:44.653Z")
+}
+
+/* 25 */
+{
+    "_id" : "7qqvC7GWk64eoYDBZy_FAX30lS10oR4M",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591985860,\"expires\":\"2015-06-03T20:15:16.662Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"},\"shoppingcart\":[],\"error\":false,\"user\":\"florianduport@gmail.com\"}",
+    "expires" : ISODate("2015-06-03T20:15:16.662Z")
+}
+
+/* 26 */
+{
+    "_id" : "2PyPohegjPDH69Djj-yu1iM2aC5chaS_",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591911360,\"expires\":\"2015-06-03T21:39:45.128Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"},\"shoppingcart\":[\"548f5e5ab0937f4e48af3a57\"],\"error\":false,\"user\":\"florianduport@gmail.com\"}",
+    "expires" : ISODate("2015-06-03T21:39:45.128Z")
+}
+
+/* 27 */
+{
+    "_id" : "UXYYN8Id09XhGDTbZV6k3EJA5_9Xu0x4",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591892265,\"expires\":\"2015-06-03T16:36:13.678Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":53.348,\"longitude\":-6.26,\"city\":\"Paris\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"paris\"}}",
+    "expires" : ISODate("2015-06-03T16:36:13.678Z")
+}
+
+/* 28 */
+{
+    "_id" : "yC_lYwV1VyGwprQXGHp21NB_2htkZiMD",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591890531,\"expires\":\"2015-06-03T16:36:12.791Z\",\"httpOnly\":true,\"path\":\"/\"}}",
+    "expires" : ISODate("2015-06-03T16:36:12.791Z")
+}
+
+/* 29 */
+{
+    "_id" : "k3-C8pIHSCYmMwqbVKXiY65_cyX3fT_-",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591890455,\"expires\":\"2015-06-03T16:36:12.790Z\",\"httpOnly\":true,\"path\":\"/\"}}",
+    "expires" : ISODate("2015-06-03T16:36:12.790Z")
+}
+
+/* 30 */
+{
+    "_id" : "x-RreREQW9cJBVWan9vQV6WD4gJKTmIb",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591890207,\"expires\":\"2015-06-03T16:36:12.790Z\",\"httpOnly\":true,\"path\":\"/\"}}",
+    "expires" : ISODate("2015-06-03T16:36:12.790Z")
+}
+
+/* 31 */
+{
+    "_id" : "F22bs7q9vXGGkjUnS4FNxVXSVv7m8WTt",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591890204,\"expires\":\"2015-06-03T16:36:12.789Z\",\"httpOnly\":true,\"path\":\"/\"}}",
+    "expires" : ISODate("2015-06-03T16:36:12.789Z")
+}
+
+/* 32 */
+{
+    "_id" : "FdG-09PSJBFJ6Xly89xB6A_Ie9gKHM07",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591888742,\"expires\":\"2015-06-03T16:36:12.789Z\",\"httpOnly\":true,\"path\":\"/\"}}",
+    "expires" : ISODate("2015-06-03T16:36:12.789Z")
+}
+
+/* 33 */
+{
+    "_id" : "rwXBQBmFJQxXGK7jAWBAITu3PVCYGpi0",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591888724,\"expires\":\"2015-06-03T16:36:12.790Z\",\"httpOnly\":true,\"path\":\"/\"}}",
+    "expires" : ISODate("2015-06-03T16:36:12.790Z")
+}
+
+/* 34 */
+{
+    "_id" : "9ItR9weC3lS2VvIbdqYgO9QHqvVvO3VD",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591888197,\"expires\":\"2015-06-03T16:36:12.789Z\",\"httpOnly\":true,\"path\":\"/\"}}",
+    "expires" : ISODate("2015-06-03T16:36:12.789Z")
+}
+
+/* 35 */
+{
+    "_id" : "WIB2oU1KizIrXsL1MReRpEE2PxMemYDC",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591882265,\"expires\":\"2015-06-03T16:36:12.790Z\",\"httpOnly\":true,\"path\":\"/\"}}",
+    "expires" : ISODate("2015-06-03T16:36:12.790Z")
+}
+
+/* 36 */
+{
+    "_id" : "_zKywax-CFWOwW_iDZhAxGAmyAsauvGi",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591990752,\"expires\":\"2015-06-03T16:38:20.133Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":\"48.856614\",\"longitude\":\"2.352222\",\"city\":\"Paris\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"paris\"}}",
+    "expires" : ISODate("2015-06-03T16:38:20.133Z")
+}
+
+/* 37 */
+{
+    "_id" : "nlBqS5n8Xc2wLJ0XKVAlMUdtx33hGsEV",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2591805477,\"expires\":\"2015-06-03T16:40:11.895Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":48.86,\"longitude\":2.35,\"city\":\"Paris\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"paris\"}}",
+    "expires" : ISODate("2015-06-03T16:40:11.895Z")
+}
+
+/* 38 */
+{
+    "_id" : "cpZ4RaIpLwK-GshEKEQBpb-dnHFkjXBt",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2590870853,\"expires\":\"2015-06-03T16:41:46.312Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":\"48.856614\",\"longitude\":\"2.352222\",\"city\":\"Paris\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"paris\"}}",
+    "expires" : ISODate("2015-06-03T16:41:46.312Z")
+}
+
+/* 39 */
+{
+    "_id" : "vKgDoXb6Q1_T2bG0hQVRyrFpfSfhE_qC",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2590519183,\"expires\":\"2015-06-03T16:54:34.175Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.883,\"longitude\":-0.65,\"city\":\"Eysines\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"}}",
+    "expires" : ISODate("2015-06-03T16:54:34.175Z")
+}
+
+/* 40 */
+{
+    "_id" : "6luJQKiO9Rw3de-6N9AMXDh1LNfRVhq3",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2588461217,\"expires\":\"2015-06-03T16:41:46.430Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":\"48.856614\",\"longitude\":\"2.352222\",\"city\":\"Paris\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"paris\"}}",
+    "expires" : ISODate("2015-06-03T16:41:46.430Z")
+}
+
+/* 41 */
+{
+    "_id" : "aEW1M-9YBFgiUNNTpQDPNCflSYda30qE",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2587007211,\"expires\":\"2015-06-03T16:46:11.277Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":44.872,\"longitude\":-0.68,\"city\":\"Le Haillan\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"},\"shoppingcart\":[\"548f5ad5b0937f4e48af3a56\"]}",
+    "expires" : ISODate("2015-06-03T16:46:11.277Z")
+}
+
+/* 42 */
+{
+    "_id" : "mlu9HF4_uKJwrv4iJiM9-9dbl_sTaMSv",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2586363732,\"expires\":\"2015-06-03T16:41:46.320Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":\"48.856614\",\"longitude\":\"2.352222\",\"city\":\"Paris\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"paris\"}}",
+    "expires" : ISODate("2015-06-03T16:41:46.320Z")
+}
+
+/* 43 */
+{
+    "_id" : "dr-X9-ouLY3U19u51zsvpEIXkSIZLwRy",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2586198185,\"expires\":\"2015-06-03T16:39:38.970Z\",\"httpOnly\":true,\"path\":\"/\"}}",
+    "expires" : ISODate("2015-06-03T16:39:38.970Z")
+}
+
+/* 44 */
+{
+    "_id" : "H2VevBWO3UGewnozhvP1SSjhoCGQdvgW",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2586197846,\"expires\":\"2015-06-03T16:40:06.053Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":37.386,\"longitude\":-122.084,\"city\":\"Mountain View\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"paris\"}}",
+    "expires" : ISODate("2015-06-03T16:40:06.053Z")
+}
+
+/* 45 */
+{
+    "_id" : "wro6PHAbZ7Axq-f2auwnlxqbOhkUoEvy",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2586130307,\"expires\":\"2015-06-03T16:39:39.918Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":42.375,\"longitude\":-71.106,\"city\":\"Cambridge\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"bordeaux\"}}",
+    "expires" : ISODate("2015-06-03T16:39:39.918Z")
+}
+
+/* 46 */
+{
+    "_id" : "UlEvxys79DW4uuDS4xyD4Aj8mnuTVQev",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2586069243,\"expires\":\"2015-06-03T16:41:46.244Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":\"48.856614\",\"longitude\":\"2.352222\",\"city\":\"Paris\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"paris\"}}",
+    "expires" : ISODate("2015-06-03T16:41:46.244Z")
+}
+
+/* 47 */
+{
+    "_id" : "TFpa1aDMpQidwcKsJuiBrntFfcM9lKrw",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2585700378,\"expires\":\"2015-06-03T16:39:40.163Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":48.86,\"longitude\":2.35,\"city\":\"Paris\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"paris\"}}",
+    "expires" : ISODate("2015-06-03T16:39:40.163Z")
+}
+
+/* 48 */
+{
+    "_id" : "ujIYLte1hjYy-old8XsIZRhBIBL9CEIT",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2585820617,\"expires\":\"2015-06-03T16:41:46.195Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":\"48.856614\",\"longitude\":\"2.352222\",\"city\":\"Paris\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"paris\"}}",
+    "expires" : ISODate("2015-06-03T16:41:46.195Z")
+}
+
+/* 49 */
+{
+    "_id" : "u1IAmAFULQxyWjhmetZLUQqvSux-4OSS",
+    "session" : "{\"cookie\":{\"originalMaxAge\":2585337691,\"expires\":\"2015-06-03T16:39:39.665Z\",\"httpOnly\":true,\"path\":\"/\"},\"position\":{\"latitude\":32.783,\"longitude\":-96.807,\"city\":\"Dallas\",\"isNew\":false,\"isAlreadyCalculated\":false,\"universityId\":\"paris\"}}",
+    "expires" : ISODate("2015-06-03T16:39:39.665Z")
+}

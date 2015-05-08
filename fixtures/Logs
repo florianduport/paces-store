@@ -1,0 +1,588 @@
+/* 0 */
+{
+    "_id" : ObjectId("546a538839ce342c0f5e951f"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Error 404 : NOT FOUND",
+    "params" : {
+        "url" : "/product/getProductById",
+        "date" : ISODate("2014-11-17T19:59:04.260Z")
+    },
+    "errorObject" : null
+}
+
+/* 1 */
+{
+    "_id" : ObjectId("546a53b339ce342c0f5e9520"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Error 404 : NOT FOUND",
+    "params" : {
+        "url" : "/product/getProductById",
+        "date" : ISODate("2014-11-17T19:59:47.445Z")
+    },
+    "errorObject" : null
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("546a53bd39ce342c0f5e9521"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Error 404 : NOT FOUND",
+    "params" : {
+        "url" : "/product/getProductById",
+        "date" : ISODate("2014-11-17T19:59:57.363Z")
+    },
+    "errorObject" : null
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("546a53c339ce342c0f5e9522"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Error 404 : NOT FOUND",
+    "params" : {
+        "url" : "/product/getProductById",
+        "date" : ISODate("2014-11-17T20:00:03.731Z")
+    },
+    "errorObject" : null
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("546a53e939ce342c0f5e9523"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Error 404 : NOT FOUND",
+    "params" : {
+        "url" : "/product/getProductById",
+        "date" : ISODate("2014-11-17T20:00:41.155Z")
+    },
+    "errorObject" : null
+}
+
+/* 5 */
+{
+    "_id" : ObjectId("546a54058a91477c0f8748a9"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Error 404 : NOT FOUND",
+    "params" : {
+        "url" : "/product/getProductById",
+        "date" : ISODate("2014-11-17T20:01:09.773Z")
+    },
+    "errorObject" : null
+}
+
+/* 6 */
+{
+    "_id" : ObjectId("546a54078a91477c0f8748aa"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Error 404 : NOT FOUND",
+    "params" : {
+        "url" : "/product/getProductById",
+        "date" : ISODate("2014-11-17T20:01:11.653Z")
+    },
+    "errorObject" : null
+}
+
+/* 7 */
+{
+    "_id" : ObjectId("546a54088a91477c0f8748ab"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Error 404 : NOT FOUND",
+    "params" : {
+        "url" : "/product/getProductById",
+        "date" : ISODate("2014-11-17T20:01:12.531Z")
+    },
+    "errorObject" : null
+}
+
+/* 8 */
+{
+    "_id" : ObjectId("546a540d28e2308b0fe29e91"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Error 404 : NOT FOUND",
+    "params" : {
+        "url" : "/product/getProductById",
+        "date" : ISODate("2014-11-17T20:01:17.953Z")
+    },
+    "errorObject" : null
+}
+
+/* 9 */
+{
+    "_id" : ObjectId("546a541dfef3589d0f9ee0df"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Error 404 : NOT FOUND",
+    "params" : {
+        "url" : "/product/getProductById",
+        "date" : ISODate("2014-11-17T20:01:33.116Z")
+    },
+    "errorObject" : null
+}
+
+/* 10 */
+{
+    "_id" : ObjectId("546ba6e5b195b35415053a56"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Error 404 : NOT FOUND",
+    "params" : {
+        "url" : "/",
+        "date" : ISODate("2014-11-18T20:07:01.043Z")
+    },
+    "errorObject" : null
+}
+
+/* 11 */
+{
+    "_id" : ObjectId("546ba7d91c44fec4135300ba"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Error 404 : NOT FOUND",
+    "params" : {
+        "url" : "/",
+        "date" : ISODate("2014-11-18T20:11:05.553Z")
+    },
+    "errorObject" : null
+}
+
+/* 12 */
+{
+    "_id" : ObjectId("546ba7e71c44fec4135300bb"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Error 404 : NOT FOUND",
+    "params" : {
+        "url" : "/productList/getProductByFilter",
+        "date" : ISODate("2014-11-18T20:11:19.070Z")
+    },
+    "errorObject" : null
+}
+
+/* 13 */
+{
+    "_id" : ObjectId("546ba8271c44fec4135300bc"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1416341543676
+}
+
+/* 14 */
+{
+    "_id" : ObjectId("546ba8991c44fec4135300bd"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1416341657741
+}
+
+/* 15 */
+{
+    "_id" : ObjectId("546ba96c1c44fec4135300be"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1416341868010
+}
+
+/* 16 */
+{
+    "_id" : ObjectId("546ba98c99c28c381fcaa207"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1416341900231
+}
+
+/* 17 */
+{
+    "_id" : ObjectId("546ba9c00c682cf41d2245db"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1416341952095
+}
+
+/* 18 */
+{
+    "_id" : ObjectId("546bac4b5596913c03dc3cad"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1416342603201
+}
+
+/* 19 */
+{
+    "_id" : ObjectId("546bad5d998d4780160e88e3"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1416342877413
+}
+
+/* 20 */
+{
+    "_id" : ObjectId("546bada08874fdf41c93ed28"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1416342944225
+}
+
+/* 21 */
+{
+    "_id" : ObjectId("546bade88874fdf41c93ed29"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1416343016391
+}
+
+/* 22 */
+{
+    "_id" : ObjectId("546badf0827fb0480df97b95"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1416343024765
+}
+
+/* 23 */
+{
+    "_id" : ObjectId("546bae4a6a9d04fc1f9b28a4"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1416343114473
+}
+
+/* 24 */
+{
+    "_id" : ObjectId("546baf6d18a5a9a006fcbe10"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1416343405762
+}
+
+/* 25 */
+{
+    "_id" : ObjectId("546bb1b007b6f9f41aef47de"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1416343984494
+}
+
+/* 26 */
+{
+    "_id" : ObjectId("546bb1b907b6f9f41aef47df"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1416343993343
+}
+
+/* 27 */
+{
+    "_id" : ObjectId("546bb1d7ba2107e0192c9532"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1416344023330
+}
+
+/* 28 */
+{
+    "_id" : ObjectId("546bb4399be62d38122fba83"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1416344633258
+}
+
+/* 29 */
+{
+    "_id" : ObjectId("546bb46da9cd0b801dcd7b6c"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1416344685224
+}
+
+/* 30 */
+{
+    "_id" : ObjectId("546bb473dadd97a80de09b50"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1416344691563
+}
+
+/* 31 */
+{
+    "_id" : ObjectId("546bb4acc678af5802105493"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1416344748330
+}
+
+/* 32 */
+{
+    "_id" : ObjectId("546e4f8bf2111a981ebf53e2"),
+    "application" : "dashboard",
+    "type" : "error",
+    "message" : "error on service call",
+    "params" : {
+        "filter" : {
+            "city" : "Bordeaux"
+        },
+        "order" : "price"
+    },
+    "errorObject" : null
+}
+
+/* 33 */
+{
+    "_id" : ObjectId("54876a77ccb3627012be96f5"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Error 404 : NOT FOUND",
+    "params" : {
+        "url" : "/category/getCategories",
+        "date" : ISODate("2014-12-09T21:32:39.553Z")
+    },
+    "errorObject" : null
+}
+
+/* 34 */
+{
+    "_id" : ObjectId("54876aa09a7ffb7b127681dc"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Error 404 : NOT FOUND",
+    "params" : {
+        "url" : "/category/getCategories",
+        "date" : ISODate("2014-12-09T21:33:20.615Z")
+    },
+    "errorObject" : null
+}
+
+/* 35 */
+{
+    "_id" : ObjectId("54876abf17102f9312508f56"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Error 404 : NOT FOUND",
+    "params" : {
+        "url" : "/category/getCategories",
+        "date" : ISODate("2014-12-09T21:33:51.807Z")
+    },
+    "errorObject" : null
+}
+
+/* 36 */
+{
+    "_id" : ObjectId("54876accf886d59e12ff7b45"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Error 404 : NOT FOUND",
+    "params" : {
+        "url" : "/category/getCategories",
+        "date" : ISODate("2014-12-09T21:34:04.522Z")
+    },
+    "errorObject" : null
+}
+
+/* 37 */
+{
+    "_id" : ObjectId("548f61617eb0be1f1a2267d3"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get school by url id parameters",
+    "params" : {},
+    "date" : 1418682721948
+}
+
+/* 38 */
+{
+    "_id" : ObjectId("54909ea73c38032c151a65aa"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1418763943239
+}
+
+/* 39 */
+{
+    "_id" : ObjectId("54909eb13c38032c151a65ab"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1418763953254
+}
+
+/* 40 */
+{
+    "_id" : ObjectId("54909fab9f9fb387158da1c7"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1418764203590
+}
+
+/* 41 */
+{
+    "_id" : ObjectId("54909fb762397b9315cacdf0"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong get product list parameters",
+    "params" : {},
+    "date" : 1418764215986
+}
+
+/* 42 */
+{
+    "_id" : ObjectId("5495e344d7ef604417fd8063"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong payment create wallet parameters",
+    "params" : {
+        "infos" : ""
+    },
+    "date" : 1419109188384
+}
+
+/* 43 */
+{
+    "_id" : ObjectId("5495e3bebc52f414194a8577"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong payment create wallet parameters",
+    "params" : {
+        "infos" : ""
+    },
+    "date" : 1419109310255
+}
+
+/* 44 */
+{
+    "_id" : ObjectId("5495e3ff85c18ef4080051ed"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong payment create wallet parameters",
+    "params" : {
+        "infos" : ""
+    },
+    "date" : 1419109375434
+}
+
+/* 45 */
+{
+    "_id" : ObjectId("5495e41cd1ba78a4140af5c7"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Wrong payment create wallet parameters",
+    "params" : {
+        "infos" : ""
+    },
+    "date" : 1419109404296
+}
+
+/* 46 */
+{
+    "_id" : ObjectId("5495fc5aaf0e891c1b11112a"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Error 404 : NOT FOUND",
+    "params" : {
+        "url" : "/seller/getByUsername",
+        "date" : ISODate("2014-12-20T22:46:50.232Z")
+    },
+    "errorObject" : null
+}
+
+/* 47 */
+{
+    "_id" : ObjectId("5495fc9f58bb67841b7673bc"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Error 404 : NOT FOUND",
+    "params" : {
+        "url" : "/seller/getByUsername",
+        "date" : ISODate("2014-12-20T22:47:59.541Z")
+    },
+    "errorObject" : null
+}
+
+/* 48 */
+{
+    "_id" : ObjectId("5495fca058bb67841b7673bd"),
+    "application" : "dashboard",
+    "type" : "error",
+    "message" : "error on service call",
+    "params" : {
+        "user" : {
+            "firstName" : "test",
+            "lastName" : "test",
+            "paymentInfos" : {
+                "accountId" : "5009340",
+                "walletId" : "5009341"
+            }
+        },
+        "card" : {
+            "cardNumber" : "4012888888881881",
+            "cardExpirationDate" : "12/16",
+            "cardCvx" : "000"
+        },
+        "seller" : false,
+        "amount" : 29
+    },
+    "errorObject" : null
+}
+
+/* 49 */
+{
+    "_id" : ObjectId("5496b9c03fe5bf64182a8435"),
+    "application" : "services",
+    "type" : "error",
+    "message" : "Error 404 : NOT FOUND",
+    "params" : {
+        "url" : "/order/createOrder",
+        "date" : ISODate("2014-12-21T12:14:56.011Z")
+    },
+    "errorObject" : null
+}
