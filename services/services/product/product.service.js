@@ -71,6 +71,51 @@ var ProductService = {
                 }});
             });
         });
+    },
+
+    rateProduct : function(productId, rateValue, done){
+        DatabaseHelper.getDatabase(function(db){
+            db.collection("Products", function(err, products){
+                if (err || !products)
+                {
+                    return done(false);
+                } 
+                products.findOne({ _id: ObjectID(productId) }, function(err, product){
+                    if (err || !product)
+                    {
+                        return done(false);
+                    }
+                    //secure data
+                    if(product.rating === undefined){
+                        product.rating = { value : 0, count : 0 };
+                    } else if(product.rating.value === undefined){
+                        product.rating.value = 0;
+                    } else if(product.rating.roundValue === undefined){
+                        product.rating.roundValue = 0;
+                    } else if(product.rating.count === undefined){
+                        product.rating.count = 0;
+                    }
+
+                    if(product.rating.count == 0){
+                        product.rating.count = 1;
+                        product.rating["value"] = rateValue;
+                    } else {
+                        var ratingsTotal = product.rating["value"] * product.rating.count;
+
+                        ratingsTotal = parseInt(parseInt(ratingsTotal) + parseInt(rateValue));
+
+                        product.rating.count = product.rating.count + 1;
+                        product.rating.value = ratingsTotal / product.rating.count;
+                        product.rating.roundValue = Math.round(ratingsTotal / product.rating.count);
+
+                    }
+
+                    products.save(product, {w:1}, function(){
+                        done(true);
+                    });
+                });
+            });
+        });      
     }
 };
 

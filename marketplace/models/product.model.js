@@ -85,6 +85,18 @@ var ProductModel = {
 		var order = {order : "_id", reversed : true};
 		return order;
 	},
+
+	rateProduct : function(req, callback){
+		if(req.body === undefined && req.body.rateValue === undefined
+			&& req.params.product !== undefined){
+			callback(false);
+		}
+		var rateValue = req.body.rateValue;
+
+		ServiceHelper.getService('product', 'rateProduct', {data: {"productId" : req.params.product, "rateValue" : rateValue}, method : "POST"}, function(result){
+			callback(result);
+		});
+	}
 };
 
 module.exports.ProductModel = ProductModel;

@@ -41,6 +41,9 @@ var Routes = {
 		app.post('/list/', PageController.initializeGeoloc, ProductListController.initializeFilter);
 		app.get('/product/:product', PageController.initializeGeoloc, ProductController.initialize);
 
+		//RATING
+		app.post('/rateProduct/:product', ProductController.rateProduct);
+
 		//SHOPPING CART
 		app.get('/shoppingcart/', ShoppingCartController.initialize);
 		app.post('/shoppingcart/', ShoppingCartController.initialize);
@@ -56,7 +59,7 @@ var Routes = {
 		app.get('/checkout/success/:orderId', AccountController.checkSignIn, CheckoutController.successPayment);
 
 		app.post('/download/:orderId', AccountController.checkSignIn, DownloadController.checkDownload, DownloadController.downloadOrder);
-		app.get('/download/:orderId', AccountController.checkSignIn, DownloadController.checkDownload, DownloadController.downloadOrder);
+		app.get('/download/:orderId', AccountController.checkSignIn, DownloadController.checkDownload, DownloadController.getDownloadOrder);
 
 		//CUSTOMER ACCOUNT
 		app.get('/signin', AccountController.signIn);
@@ -64,6 +67,10 @@ var Routes = {
 		app.post('/signup/display', AccountController.displaySignUp);
 		app.post('/signup', AccountController.signUp);
 		app.get('/signout', AccountController.signOut);
+		app.get('/changePassword/:userId/:token', AccountController.displayChangePassword);
+		app.post('/changePassword', AccountController.changePassword);
+		app.get('/forgottenPassword', AccountController.displayForgottenPassword);
+		app.post('/forgottenPassword', AccountController.forgottenPassword);
 		app.post('/createCustomer', AccountController.createCustomer);
 		app.post('/geoloc', PageController.getGeolocZone);
 

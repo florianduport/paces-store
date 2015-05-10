@@ -12,8 +12,8 @@ var LocalConfig = {
 		address : "mongodb://paces-store:Answer&&Pigeon2010@94.23.203.174:27017/paces-store"
 	},
 
-	addressBasePath : "http://giantapp.fr",
-	
+	addressBasePath : "http://localhost",
+
 	hmacEnabled : false
 	
 };

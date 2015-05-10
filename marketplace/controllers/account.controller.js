@@ -113,7 +113,36 @@ var AccountController = {
     			}
     		});
     	}
-    }
+    },
+
+    displayForgottenPassword : function(req, res){
+        model.displayForgottenPassword(req, function(model){
+            res.render('pages/forgottenPassword', {model: model});
+        });
+    },
+
+    forgottenPassword : function(req, res){
+        model.forgottenPassword(req, function(model){
+            res.render('pages/forgottenPassword', {model: model});
+        });
+    },
+
+    displayChangePassword : function(req, res){
+        model.displayChangePassword(req, function(model){
+            if(!model){
+                res.status(404);
+                res.render('pages/error');
+            } else {
+                res.render('pages/changePassword', {model: model});
+            }
+        });
+    },
+
+    changePassword : function(req, res){
+        model.changePassword(req, function(model){
+            res.redirect('/');
+        });
+    },
 
 };
 

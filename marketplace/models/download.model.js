@@ -84,10 +84,12 @@ var DownloadModel = {
 				callback(archive);
 			});
 		});
+	},
 
-
-
-			
+	getDownloadOrder : function(req, callback){
+		var model = this;
+		model.orderId = req.params.orderId;
+		callback(model);
 	}
 };
 

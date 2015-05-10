@@ -35,6 +35,17 @@ var DownloadController = {
 			archive.finalize();
 
 		});
+	},
+
+	getDownloadOrder : function(req, res){
+		if(req.params === undefined || req.params.orderId === undefined){
+			res.status(404);
+    		res.render('pages/checkout/downloadError');
+		}
+
+		model.getDownloadOrder(req, function(model){
+			res.render('pages/checkout/success', {model : model});
+		});
 	}
 
 };

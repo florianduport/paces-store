@@ -133,7 +133,104 @@ var AccountModel = {
                 });
             }
         }});
+    },
+
+    displayForgottenPassword : function(req, callback){
+        var model = this;
+        callback(model);
+    },
+
+    forgottenPassword : function(req, callback){
+        var model = this;
+        model.isPostForm = true;
+
+
+        //check if customer exists
+        if(req.body.username !== undefined){
+            console.log(req.body.username);
+           ServiceHelper.getService("customer", "getFullCustomerByUsername", {data : {
+                    username : req.body.username
+                }, method : "POST"}, function(user){
+                if(user){
+                   //create token : 
+                   var token = Math.floor((Math.random() * 1000000) + 1);
+                   var userId = user["_id"];
+                   console.log(userId);
+                   //attach token to user (with lifetime)
+                    ServiceHelper.getService("customer", "createForgottenPasswordToken", {data : {
+                        username : req.body.username,
+                        token : token
+                    }, method : "POST"}, function(response){ 
+                        if(response){
+
+                            var changePasswordLink = "/changePassword/"+userId+"/"+token;
+
+                            //sends email
+                            MailHelper.changePasswordEmail({
+                                email : req.body.username,
+                                changePasswordLink : changePasswordLink
+                            });
+
+
+                            callback(model);
+
+                        }
+                    });
+                }
+            }); 
+        } else {
+            callback(false);
+        }
+    },
+
+    displayChangePassword : function(req, callback){
+        var model = this;
+        if(req.params.userId !== undefined && req.params.token !== undefined){
+
+            //check if token is valid
+            ServiceHelper.getService("customer", "getCustomerById", {data : {
+                userId : req.params.userId
+            }, method : "POST"}, function(customer){ 
+
+                if(customer === undefined || !customer || 
+                    customer.changePasswordToken === undefined || !customer.changePasswordToken){
+                    console.log("here");
+                    callback(false);
+                } else {
+                    var nowTimestamp = new Date();
+                    var expirationDate = new Date(customer.changePasswordToken.expirationDate * 1000);
+                    if(nowTimestamp < expirationDate && customer.changePasswordToken.token == req.params.token) {
+                        model.username = customer.username;
+                        callback(model);
+                    } else {
+                        callback(false);
+                    }
+                }
+
+            });
+        } else {
+            callback(false);
+        }
+    },
+
+    changePassword : function(req, callback){
+        var model = this;
+        if(req.body.newPassword !== undefined){
+            
+            //check if token is valid
+            ServiceHelper.getService("customer", "changePassword", {data : {
+                username : req.body.username,
+                newPassword : req.body.newPassword
+            }, method : "POST"}, function(result){ 
+
+                callback(true);
+
+            });
+        } else {
+            callback(false);
+        }
     }
+
 };
 
 module.exports.AccountModel = AccountModel;
