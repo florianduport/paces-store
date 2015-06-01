@@ -5,6 +5,7 @@ ProductController = require('./../controllers/product.controller').ProductContro
 ShoppingCartController = require('./../controllers/shoppingcart.controller').ShoppingCartController,
 CheckoutController = require('./../controllers/checkout.controller').CheckoutController,
 AccountController = require('./../controllers/account.controller').AccountController,
+SellerController = require('./../controllers/seller.controller').SellerController,
 DownloadController = require('./../controllers/download.controller').DownloadController
 /**
 * Charge les routes de account controller
@@ -25,6 +26,7 @@ var Routes = {
     	ShoppingCartController.app = app;
     	CheckoutController.app = app;
     	AccountController.app = app;
+    	SellerController.app = app;
     	DownloadController.app = app;
 		//routes / mapping controller
 		
@@ -78,6 +80,19 @@ var Routes = {
 		app.get('/contact', AccountController.checkSignIn, PageController.displayContact);
 		app.post('/contact', AccountController.checkSignIn, PageController.contactUs);
 		app.get('/about', PageController.displayAbout);
+
+		//SELLER SPACE
+		app.get('/seller', SellerController.checkSignIn, SellerController.displaySellerHome);
+		app.get('/seller/signin', SellerController.signIn);
+		app.post('/seller/signin', SellerController.signIn);
+		app.post('/seller/signup/display', SellerController.displaySignUp);
+		app.post('/seller/signup', SellerController.signUp);
+		app.get('/seller/signout', SellerController.signOut);
+		app.get('/seller/changePassword/:userId/:token', SellerController.displayChangePassword);
+		app.post('/seller/changePassword', SellerController.changePassword);
+		app.get('/seller/forgottenPassword', SellerController.displayForgottenPassword);
+		app.post('/seller/forgottenPassword', SellerController.forgottenPassword);
+		app.post('/seller/createSeller', SellerController.createCustomer);
 
 		app.get('/test', PageController.test);
 		app.get('/testInc', PageController.testInc);

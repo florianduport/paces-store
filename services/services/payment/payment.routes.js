@@ -40,6 +40,17 @@ var PaymentRoutes = {
             });
         });
 
+        app.post(configuration.routes.payment.getWalletInfos, HmacHelper.verifyRequest, function(req, res){
+            //check parameters
+            if(req.body === undefined || !req.body || req.body.paymentInfos === undefined || !req.body.paymentInfos){
+                console.log("wrong parameters for wallet infos");
+                Base.send(req, res, false);
+            }
+            PaymentService.getWalletInfos(req.body.paymentInfos, function(result){
+                Base.send(req, res, result);
+            });
+        });
+
         app.post(configuration.routes.payment.payWithNewCard, HmacHelper.verifyRequest, function(req, res){
             //check parameters
             if(req.body === undefined || !req.body || req.body.card === undefined || req.body.user === undefined || req.body.sellers === undefined || req.body.lines === undefined){

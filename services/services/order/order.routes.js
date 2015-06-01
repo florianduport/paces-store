@@ -20,18 +20,30 @@ var OrderRoutes = {
 
     	// authenticate customer : /customer/authenticateCustomer
     
-    	app.post(configuration.routes.order.getOrderById, HmacHelper.verifyRequest, function(req, res){
-    		//check parameters
+        app.post(configuration.routes.order.getOrderById, HmacHelper.verifyRequest, function(req, res){
+            //check parameters
             if(req.body === undefined || !req.body || req.body.orderId === undefined){
-    			LoggerService.logError("services", "Wrong payment create wallet parameters", {orderId : req.body.orderId !== undefined ? req.body.orderId : ""});
+                LoggerService.logError("services", "Wrong payment create wallet parameters", {orderId : req.body.orderId !== undefined ? req.body.orderId : ""});
                 console.log("wrong parameters for getOrderById");
-    			Base.send(req, res, false);
-    		}
+                Base.send(req, res, false);
+            }
     
-    		OrderService.getOrderById(req.body.orderId, function(result){
-    			Base.send(req, res, result);
-    		});
-    	});
+            OrderService.getOrderById(req.body.orderId, function(result){
+                Base.send(req, res, result);
+            });
+        });     
+
+        app.post(configuration.routes.order.getCountBySeller, function(req, res){
+            //check parameters
+            if(req.body === undefined || !req.body || req.body.seller === undefined){
+                LoggerService.logError("services", "Wrong get count by id parameters", {seller : req.body.seller !== undefined ? req.body.orderId : ""});
+                console.log("wrong parameters for getCountBySeller");
+                Base.send(req, res, false);
+            }
+            OrderService.getCountBySeller(req.body.seller, function(result){
+                Base.send(req, res, result);
+            });
+        });
 
         app.post(configuration.routes.order.createOrder, HmacHelper.verifyRequest, function(req, res){
             //check parameters

@@ -1,16 +1,13 @@
-var model = require('../models/account.model').AccountModel;
+var model = require('../models/seller.model').SellerModel;
 
-var AccountController = {
+var SellerController = {
 
-	initialize : function(req, res){
-	    model.initialize(req, function(model){
-	    	/*if(!model)
-	    		res.redirect(301, '/'+req.params.appId+'/error');
-	    	else
-	        	res.render(model.type+'/pages/articles', {model: model});*/
-	    });
-	},
-	
+    displaySellerHome : function(req, res){
+        model.displaySellerHome(req, function(model){
+            res.render('pages/seller/home', {model: model});
+        }); 
+    },
+
     /**
     * checkSignIn : Vérifie si l'utilisateur est connecté
     * @param req : requête http
@@ -18,14 +15,15 @@ var AccountController = {
     * @param next : méthode de callback
     */
     checkSignIn : function(req, res, next){
-        if(req.session.user !== undefined)
+        
+        if(req.session.seller !== undefined)
         {
             next();
         }
         else
         {
             model.displaySignIn(req, function(model){
-                res.render('pages/account/signIn', {model: model});
+                res.render('pages/seller/signIn', {model: model});
             }); 
         }
     },
@@ -50,9 +48,9 @@ var AccountController = {
     displaySignUp : function(req, res){
         model.displaySignUp(req, function(model){
             if(req.body !== undefined && req.body.ajax == "true"){
-                res.render('pages/account/signUp', {model: model, layout : null});
+                res.render('pages/seller/signUp', {model: model, layout : null});
             } else {
-                res.render('pages/account/signUp', {model: model});
+                res.render('pages/seller/signUp', {model: model});
             }
         });
     },
@@ -69,7 +67,7 @@ var AccountController = {
         }
         model.signUp(req, function(result){
             if(!result){
-                res.render('pages/account/signUp', {model: {error: true, referer : req.get('referer')}});
+                res.render('pages/seller/signUp', {model: {error: true, referer : req.get('referer')}});
             } else {
                 model.signIn(req.body.username, req.body.password, req, function(){
                     res.redirect(referer);
@@ -85,12 +83,12 @@ var AccountController = {
     * @param res : reponse http
     */
     signOut : function(req, res){
-        req.session.user = undefined;
+        req.session.seller = undefined;
         res.redirect('/');
     },
 
     createCustomer : function(req, res){
-    	if(req.session.user === undefined && 
+    	if(req.session.seller === undefined && 
     		req.body.username !== undefined && 
     		req.body.password !== undefined &&
     		req.body.firstName !== undefined &&
@@ -117,13 +115,13 @@ var AccountController = {
 
     displayForgottenPassword : function(req, res){
         model.displayForgottenPassword(req, function(model){
-            res.render('pages/account/forgottenPassword', {model: model});
+            res.render('pages/seller/forgottenPassword', {model: model});
         });
     },
 
     forgottenPassword : function(req, res){
         model.forgottenPassword(req, function(model){
-            res.render('pages/account/orgottenPassword', {model: model});
+            res.render('pages/seller/forgottenPassword', {model: model});
         });
     },
 
@@ -133,7 +131,7 @@ var AccountController = {
                 res.status(404);
                 res.render('pages/error');
             } else {
-                res.render('pages/account/changePassword', {model: model});
+                res.render('pages/seller/changePassword', {model: model});
             }
         });
     },
@@ -146,5 +144,5 @@ var AccountController = {
 
 };
 
-module.exports.AccountController = AccountController;
+module.exports.SellerController = SellerController;
 
