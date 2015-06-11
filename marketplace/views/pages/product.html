@@ -24,7 +24,15 @@
                     <h1 class="title-navbar-product">{{model.product.name}}</h1>
                     <div class='col-md-12'>
                         <div class="rating">
-                            <div class="stars starrr" data-rating="4"></div>
+                            {{#if model.product.rating}}
+                                {{#if model.product.rating.roundValue}}
+                                    <div class="stars starrr" data-rating="{{model.product.rating.roundValue}}"></div>
+                                {{else}}
+                                    <div class="stars starrr" data-rating="0"></div>
+                                {{/if}}
+                            {{else}}
+                                <div class="stars starrr" data-rating="0"></div>
+                            {{/if}}
                         </div>
                         <span class="label label-info">{{model.product.categories}}</span>
                         <span class="label label-success">{{model.product.university}}</span>

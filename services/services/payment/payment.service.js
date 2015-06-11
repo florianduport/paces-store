@@ -39,6 +39,10 @@ var PaymentService = {
         
     },
 
+    getWalletInfos : function(paymentInfos, done){
+        PaymentService.Provider.getWalletInfos(paymentInfos, done);
+    },
+
     getUsers : function(done){
         PaymentService.Provider.getUsers(done);
     },

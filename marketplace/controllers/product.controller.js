@@ -6,6 +6,12 @@ var ProductController = {
 	    model.initialize(req, function(model){
 	    	res.render('pages/product', {model: model});
 	    });
+	},
+
+	rateProduct : function(req, res){
+		model.rateProduct(req, function(result){
+	    	res.send(result);
+	    });
 	}
 
 };

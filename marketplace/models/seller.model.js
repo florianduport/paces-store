@@ -4,7 +4,30 @@ sha1 = require('sha1');
 var ConfigurationHelper = require('../helpers/configuration.helper').ConfigurationHelper;
 var SchoolsHelper = require('../helpers/schools.helper').SchoolsHelper;
 
-var AccountModel = {
+var SellerModel = {
+
+    displaySellerHome : function(req, callback){
+        var model = this;
+        ServiceHelper.getService("seller", "getSellerByUsername", {data : { username : req.session.seller }, method : "POST"}, function(seller){
+
+            model.seller = seller;
+                
+            ServiceHelper.getService("order", "getCountBySeller", {data : { seller : req.session.seller }, method : "POST"}, function(result){
+                if(!result)
+                    model.seller.sellCount = 0;
+                else
+                    model.seller.sellCount = result.count;
+
+                ServiceHelper.getService("payment", "getWalletInfos", {data : { paymentInfos : model.seller.account.paymentInfos }, method : "POST"}, function(walletInfos){
+                    if(walletInfos)
+                       model.seller.sellBalance = walletInfos[0].Balance.Amount;
+                    callback(model);
+                });
+
+            });
+
+        });
+    },
 
 	initialize : function(req, callback){
 
@@ -22,13 +45,7 @@ var AccountModel = {
         if(req.get('referer') !== undefined && req.get('referer').indexOf("checkout") > -1){
             model.displayCheckoutSteps = true;
         }
-        SchoolsHelper.loadSchool({model : model, callback : function(model){
-            if(req.session.error)
-            model.error = req.session.error;
-            else
-                model.error = false;
-            callback(model);
-        }});
+        callback(model);
     },     
 
     displaySignUp : function(req, callback){
@@ -47,14 +64,14 @@ var AccountModel = {
     signIn : function(username, password, req, done){
 
 
-        ServiceHelper.getService("customer", "authenticateCustomer", {data : {username : username, password : sha1(password)}, method: "POST"}, function(resp){
+        ServiceHelper.getService("seller", "authenticateSeller", {data : {username : username, password : sha1(password)}, method: "POST"}, function(resp){
             if(resp === undefined || !resp || resp !== true)
             {
                 req.session.error = true;
                 return done(false);
             }
             req.session.error = false;
-            req.session.user = username;
+            req.session.seller = username;
 
             return done(true);
         });
@@ -70,7 +87,7 @@ var AccountModel = {
             req.body.passwordConfirmation !== undefined &&
             req.body.passwordConfirmation == req.body.password){
 
-            AccountModel.createCustomer({
+            AccountModel.createseller({
                 username : req.body.username,
                 firstName : req.body.firstName,
                 lastName : req.body.lastName,
@@ -83,7 +100,7 @@ var AccountModel = {
 
     },
 
-    createCustomer : function(form, req, done){
+    createseller : function(form, req, done){
         ConfigurationHelper.getConfig({application: 'marketplace', done: function (configuration) {
             var bannedDomains = configuration.mail.bannedDomains;
             var domainToCheck = form.username.split("@")[1];
@@ -96,11 +113,11 @@ var AccountModel = {
             if(isBannedDomain){
                 done(false);
             } else {
-                ServiceHelper.getService("customer", "getCustomerByUsername", {data : {
+                ServiceHelper.getService("seller", "getSellerByUsername", {data : {
                     username : form.username
                 }, method : "POST"}, function(response){
                     if(response){
-                        //Customer already exist ! 
+                        //seller already exist ! 
                         done(false);
                     } else {
                         ServiceHelper.getService("payment", "createWallet", {data : {
@@ -113,7 +130,7 @@ var AccountModel = {
                             if(paymentInfos === undefined){
                                 done(false);
                             } else {
-                                ServiceHelper.getService("customer", "createCustomer", {data : {
+                                ServiceHelper.getService("seller", "createSeller", {data : {
                                     username : form.username,
                                     password : sha1(form.password),
                                     firstName : form.firstName,
@@ -145,10 +162,10 @@ var AccountModel = {
         model.isPostForm = true;
 
 
-        //check if customer exists
+        //check if seller exists
         if(req.body.username !== undefined){
             console.log(req.body.username);
-           ServiceHelper.getService("customer", "getFullCustomerByUsername", {data : {
+           ServiceHelper.getService("seller", "getFullSellerByUsername", {data : {
                     username : req.body.username
                 }, method : "POST"}, function(user){
                 if(user){
@@ -157,7 +174,7 @@ var AccountModel = {
                    var userId = user["_id"];
                    console.log(userId);
                    //attach token to user (with lifetime)
-                    ServiceHelper.getService("customer", "createForgottenPasswordToken", {data : {
+                    ServiceHelper.getService("seller", "createForgottenPasswordToken", {data : {
                         username : req.body.username,
                         token : token
                     }, method : "POST"}, function(response){ 
@@ -188,19 +205,19 @@ var AccountModel = {
         if(req.params.userId !== undefined && req.params.token !== undefined){
 
             //check if token is valid
-            ServiceHelper.getService("customer", "getCustomerById", {data : {
+            ServiceHelper.getService("seller", "getSellerById", {data : {
                 userId : req.params.userId
-            }, method : "POST"}, function(customer){ 
+            }, method : "POST"}, function(seller){ 
 
-                if(customer === undefined || !customer || 
-                    customer.changePasswordToken === undefined || !customer.changePasswordToken){
+                if(seller === undefined || !seller || 
+                    seller.changePasswordToken === undefined || !seller.changePasswordToken){
                     console.log("here");
                     callback(false);
                 } else {
                     var nowTimestamp = new Date();
-                    var expirationDate = new Date(customer.changePasswordToken.expirationDate * 1000);
-                    if(nowTimestamp < expirationDate && customer.changePasswordToken.token == req.params.token) {
-                        model.username = customer.username;
+                    var expirationDate = new Date(seller.changePasswordToken.expirationDate * 1000);
+                    if(nowTimestamp < expirationDate && seller.changePasswordToken.token == req.params.token) {
+                        model.username = seller.username;
                         callback(model);
                     } else {
                         callback(false);
@@ -218,7 +235,7 @@ var AccountModel = {
         if(req.body.newPassword !== undefined){
             
             //check if token is valid
-            ServiceHelper.getService("customer", "changePassword", {data : {
+            ServiceHelper.getService("seller", "changePassword", {data : {
                 username : req.body.username,
                 newPassword : req.body.newPassword
             }, method : "POST"}, function(result){ 
@@ -233,4 +250,4 @@ var AccountModel = {
 
 };
 
-module.exports.AccountModel = AccountModel;
+module.exports.SellerModel = SellerModel;

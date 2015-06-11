@@ -86,6 +86,24 @@ var ProductRoutes = {
             }
         });
 
+        app.post(configuration.routes.product.rateProduct, HmacHelper.verifyRequest, function(req, res){
+
+            //check parameters
+            if(req.body === undefined || !req.body ||
+                req.body.productId === undefined || !req.body.productId || 
+                req.body.rateValue === undefined || !req.body.rateValue ){
+                LoggerService.logError("services", "Wrong rate product parameters", {});
+                Base.send(req, res, false);
+            }
+            else {
+                ProductService.rateProduct(req.body.productId,
+                                            req.body.rateValue,
+                                             function(result){
+                    Base.send(req, res, result);
+                });
+            }
+        });
+
         /*
         app.post(configuration.routes.product.createProduct, HmacHelper.verifyRequest, function(req, res){
 

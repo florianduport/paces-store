@@ -55,6 +55,17 @@ var Provider = {
         });
     },
 
+    getWalletInfos : function(walletInfos, done){
+        ConfigurationHelper.getConfig({application : 'marketplace', done : function(configuration){
+                var mango = require('mangopay')(configuration.mangopay);
+                /*mango.user.list(function(err,users){
+                    done(users); 
+                });*/
+                mango.user.wallets({UserId : walletInfos.accountId}, function(err, data){done(data);});
+            }
+        });
+    },
+
     payWithNewCard : function(user, card, sellers, lines, callback){
         ConfigurationHelper.getConfig({application : 'marketplace', done : function(configuration){
                 var mango = require('mangopay')(configuration.mangopay);

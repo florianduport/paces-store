@@ -13,7 +13,6 @@ var LocalConfig = {
 	},
 
 	addressBasePath : "http://localhost",
-	
 	hmacEnabled : false
 	
 };

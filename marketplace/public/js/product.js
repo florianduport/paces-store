@@ -154,6 +154,45 @@ var loadStars = function(){
         applyFilter();
     });
     $('.starrr').on('starrr:change', function (e, value) {
-        ratingsField.val(value);
+
+        if(!window.localStorage.getItem("rating"+$(".checkout-product-button").data('product')))
+        {
+            $.post("/rateProduct/" + $(".checkout-product-button").data('product'), {
+                rateValue: value,
+                ajax: true
+            }, function (result) {
+                if(result){
+                    window.localStorage.setItem("rating"+$(".checkout-product-button").data('product'), 1);
+                }
+                BootstrapDialog.show({
+                    title : "Merci !",
+                    type : BootstrapDialog.TYPE_SUCCESS,
+                    message : "Votre note a bien été prise en compte",
+                    buttons: [
+                    {
+                        label: 'Continuer',
+                        cssClass: 'btn-success',
+                        action: function(dialogItself){
+                            dialogItself.close();
+                        }
+                    }]
+                });
+            });
+        } else {
+            BootstrapDialog.show({
+                    title : "Attention",
+                    type : BootstrapDialog.TYPE_SUCCESS,
+                    message : "Vous avez déjà voté pour ce produit.",
+                    buttons: [
+                    {
+                        label: 'Continuer',
+                        cssClass: 'btn-success',
+                        action: function(dialogItself){
+                            dialogItself.close();
+                        }
+                    }]
+                });
+        }
+
     });
 };

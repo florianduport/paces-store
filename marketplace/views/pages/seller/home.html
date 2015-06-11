@@ -1,0 +1,51 @@
+<div class="navbar-seller container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="element-navbar-seller-first element-navbar-seller active vcenter pull-left">
+                Accueil vendeur
+            </div>
+            <div class="element-navbar-seller vcenter pull-left">
+                Mes produits
+            </div>
+            <div class="element-navbar-seller vcenter pull-left">
+                Mon compte
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid sellerContainer">
+    <div class="row">
+        <div class="col-md-12">
+        	<div class="col-md-8 sellerMainColumn well well-lg">
+        		<h3>Bienvenue sur votre espace vendeur {{model.seller.account.displayName}}</h3>
+        		<table>
+        			<tbody>
+        				<tr>
+        					<td>Ventes réalisées : </td>
+        					<td>{{model.seller.sellCount}}</td>
+        				</tr>
+        				<tr>
+        					<td>Solde de votre compte : </td>
+        					<td>{{model.seller.sellBalance}} €</td>
+        				</tr>
+        			</tbody>
+        		</table>
+
+        		<a href="/seller/products">Gérer mes produits</a>
+        		<br/>
+        		<a href="/seller/account">Gérer mon compte</a>
+        	</div>
+        </div>
+    </div>
+</div>
+
+{{#content "registerTopStylesheets"}}
+<link href="/css/seller.css" rel="stylesheet">         
+{{/content}}
+{{#content "registerBottomScripts"}}
+<script src="/js/seller.js"></script>
+<script src="/js/searchbar.js"></script>
+{{/content}}
+{{#content "registerMeta"}}
+<title>PACES Store - Espace vendeur</title>
+{{/content}}

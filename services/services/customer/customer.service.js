@@ -1,5 +1,6 @@
 var DatabaseHelper = require('../../helpers/database.helper').DatabaseHelper,
 sha1 = require('sha1');
+var ObjectID = require('mongodb').ObjectID;
 /**
  * Service Customer
  * @class CustomerService
@@ -54,6 +55,58 @@ var CustomerService = {
                     }
     
                     return done(user.account); 
+                });
+            });
+        });   
+    },
+    
+    /**
+    * getCustomer : Récupère les informations de l'utilisateur
+    * @param username : le nom d'utilisateur'
+    * @param done : la méthode de retour
+    * @return objet contenant les informations de l'utilisateur
+    */
+    getFullCustomerByUsername : function(username, done){
+        DatabaseHelper.getDatabase(function(db){
+            db.collection("Customers", function(err, customers){
+                if (err || !customers)
+                {
+                    return done(false);
+                } 
+                //password should be sent with sha1 encryption
+                customers.findOne({ username: username}, function(err, user){
+                    if (err || !user)
+                    {
+                        return done(false);
+                    }
+    
+                    return done(user); 
+                });
+            });
+        });   
+    },
+    
+    /**
+    * getCustomer : Récupère les informations de l'utilisateur
+    * @param username : le nom d'utilisateur'
+    * @param done : la méthode de retour
+    * @return objet contenant les informations de l'utilisateur
+    */
+    getCustomerById : function(userId, done){
+        DatabaseHelper.getDatabase(function(db){
+            db.collection("Customers", function(err, customers){
+                if (err || !customers)
+                {
+                    return done(false);
+                } 
+                //password should be sent with sha1 encryption
+                customers.findOne({ _id: ObjectID(userId)}, function(err, user){
+                    if (err || !user)
+                    {
+                        return done(false);
+                    }
+    
+                    return done(user); 
                 });
             });
         });   
@@ -170,6 +223,56 @@ var CustomerService = {
                 });
             });
         });   
+    },
+
+    createForgottenPasswordToken : function(email, token, done){
+        DatabaseHelper.getDatabase(function(db){
+            db.collection("Customers", function(err, customers){
+                if (err || !customers)
+                {
+                    done(false);
+                } 
+                //password should be sent with sha1 encryption
+                customers.findOne({ username: email}, function(err, user){
+                    if (err || !user)
+                    {
+                        done(false);
+                    }
+                    var expirationDate = Math.round(new Date().getTime() / 1000);
+                    expirationDate += 3600; 
+                    user.changePasswordToken = {
+                        expirationDate : expirationDate,
+                        token : token
+                    }
+                    customers.save(user, {w:1}, function(){
+                        done(true);
+                    });
+                });
+            });
+        }); 
+    },
+
+    changePassword : function(email, newPassword, done){
+        DatabaseHelper.getDatabase(function(db){
+            db.collection("Customers", function(err, customers){
+                if (err || !customers)
+                {
+                    done(false);
+                } 
+                //password should be sent with sha1 encryption
+                customers.findOne({ username: email}, function(err, user){
+                    if (err || !user)
+                    {
+                        done(false);
+                    }
+                    user.password = sha1(newPassword);
+                    user.changePasswordToken = undefined;
+                    customers.save(user, {w:1}, function(){
+                        done(true);
+                    });
+                });
+            });
+        });         
     }
 };
 

@@ -27,6 +27,34 @@ var OrderService = {
                 });
             });
         });   
+    },    
+
+    getCountBySeller : function(seller, done){
+        DatabaseHelper.getDatabase(function(db){
+            db.collection("Orders", function(err, orders){
+                if (err || !orders)
+                {
+                    done(false);
+                }
+
+                var criteria = {};
+                criteria["$elemMatch"] = {
+                    seller: seller
+                }
+
+                //password should be sent with sha1 encryption
+                orders.find({ products : criteria }).count(function(err, orders){
+                    if (err || !orders)
+                    {
+                        done(false);
+                    }
+                    done({
+                        seller : seller,
+                        count : orders
+                    }); 
+                });
+            });
+        });   
     },
 
     createOrder : function(products, user, done){

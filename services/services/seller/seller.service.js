@@ -31,6 +31,32 @@ var SellerService = {
             });
         });
     },
+
+    /**
+    * getCustomer : Récupère les informations de l'utilisateur
+    * @param username : le nom d'utilisateur'
+    * @param done : la méthode de retour
+    * @return objet contenant les informations de l'utilisateur
+    */
+    getSellerById : function(userId, done){
+        DatabaseHelper.getDatabase(function(db){
+            db.collection("Sellers", function(err, sellers){
+                if (err || !sellers)
+                {
+                    return done(false);
+                } 
+                //password should be sent with sha1 encryption
+                sellers.findOne({ _id: ObjectID(userId)}, function(err, user){
+                    if (err || !user)
+                    {
+                        return done(false);
+                    }
+    
+                    return done(user); 
+                });
+            });
+        });   
+    },
     
     /**
     * getSeller : Récupère les informations de l'utilisateur
@@ -39,6 +65,32 @@ var SellerService = {
     * @return objet contenant les informations de l'utilisateur
     */  
     getSellerByUsername : function(username, done){
+        DatabaseHelper.getDatabase(function(db){
+            db.collection("Sellers", function(err, sellers){
+                if (err || !sellers)
+                {
+                    return done(false);
+                } 
+                //password should be sent with sha1 encryption
+                sellers.findOne({ username: username}, function(err, user){
+                    if (err || !user)
+                    {
+                        return done(false);
+                    }
+    
+                    return done(user); 
+                });
+            });
+        });   
+    }, 
+
+    /**
+    * getCustomer : Récupère les informations de l'utilisateur
+    * @param username : le nom d'utilisateur'
+    * @param done : la méthode de retour
+    * @return objet contenant les informations de l'utilisateur
+    */
+    getFullSellerByUsername : function(username, done){
         DatabaseHelper.getDatabase(function(db){
             db.collection("Sellers", function(err, sellers){
                 if (err || !sellers)
@@ -190,6 +242,56 @@ var SellerService = {
                 });
             });
         });   
+    },
+
+    createForgottenPasswordToken : function(email, token, done){
+        DatabaseHelper.getDatabase(function(db){
+            db.collection("Sellers", function(err, sellers){
+                if (err || !sellers)
+                {
+                    done(false);
+                } 
+                //password should be sent with sha1 encryption
+                sellers.findOne({ username: email}, function(err, user){
+                    if (err || !user)
+                    {
+                        done(false);
+                    }
+                    var expirationDate = Math.round(new Date().getTime() / 1000);
+                    expirationDate += 3600; 
+                    user.changePasswordToken = {
+                        expirationDate : expirationDate,
+                        token : token
+                    }
+                    sellers.save(user, {w:1}, function(){
+                        done(true);
+                    });
+                });
+            });
+        }); 
+    },
+
+    changePassword : function(email, newPassword, done){
+        DatabaseHelper.getDatabase(function(db){
+            db.collection("Sellers", function(err, sellers){
+                if (err || !sellers)
+                {
+                    done(false);
+                } 
+                //password should be sent with sha1 encryption
+                sellers.findOne({ username: email}, function(err, user){
+                    if (err || !user)
+                    {
+                        done(false);
+                    }
+                    user.password = sha1(newPassword);
+                    user.changePasswordToken = undefined;
+                    sellers.save(user, {w:1}, function(){
+                        done(true);
+                    });
+                });
+            });
+        });         
     }
 };
 
