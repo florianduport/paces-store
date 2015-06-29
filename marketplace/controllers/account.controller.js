@@ -142,7 +142,7 @@ var AccountController = {
         model.changePassword(req, function(model){
             res.redirect('/');
         });
-    },
+    }
 
 };
 

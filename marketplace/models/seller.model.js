@@ -246,6 +246,59 @@ var SellerModel = {
         } else {
             callback(false);
         }
+    },
+
+    displayProducts : function(req, callback){
+        var filter = {
+            seller : req.session.seller
+        };
+        var model = this;
+        ServiceHelper.getService('productList', 'getProductsByFilter', {data: {filter : filter, order : {}}, method : "POST"}, function(products){
+            
+            ServiceHelper.getService("seller", "getSellerByUsername", {data : { username : req.session.seller } }, function(seller){
+
+                model.products = products;
+                for (var i = model.products.length - 1; i >= 0; i--) {
+                    model.products[i].sellerInfos = seller.account;
+                };
+                callback(model);
+            });
+        });
+    },
+
+    editProduct : function(req, callback){
+        var model = this;
+        ServiceHelper.getService('product', 'getProductById', {data: {"productId" : req.params.product}, method : "POST"}, function(product){
+            model.product = product;
+            SellerModel._loadProductFormInfos(model, function(model){
+                callback(model);
+            });
+        });
+    },
+
+    addProduct : function(req, callback){
+        this.product = {};
+        SellerModel._loadProductFormInfos(this, function(model){
+            callback(model);
+        });
+    },
+
+    _loadProductFormInfos : function(model, callback){
+
+        ServiceHelper.getService('school', 'getSchools', {data: {}, method : "POST"}, function(schools){
+            model.schools = schools;
+            for (var i = model.schools.length - 1; i >= 0; i--) {
+                model.schools[i].selected = model.product.university == model.schools[i].universityId;
+            };
+            ServiceHelper.getService('category', 'getCategories', {data: {}, method : "POST"}, function(categories){
+                model.categories = categories;
+                for (var i = model.categories.length - 1; i >= 0; i--) {
+                    model.categories[i].selected= model.product.categories !== undefined && model.product.categories.indexOf(model.categories[i].shortName) > -1;
+                };
+                callback(model);
+            });
+
+        });
     }
 
 };

@@ -1,0 +1,44 @@
+<div class="navbar-seller container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+			<form method="POST" action="/seller/submitProduct">
+				<input type="hidden" name="_id" value="{{model.product._id}}"/>
+				<label for="name">Nom du produit</label>
+				<input type="text" name="name" value="{{model.product.name}}" class="form-control"/>
+				<label for="description">Description</label>
+				<textarea name="description" class="form-control">{{model.product.description}}</textarea>
+				<label for="price">Prix</label>
+				<input type="text" name="price" value="{{model.product.price}}" class="form-control"/>
+				<label for="university">Université</label>
+				<select name="university">
+					{{#each model.schools}}
+						{{#if this.selected}}
+						<option value="{{this.universityId}}" selected="selected">{{this.name}}</option>
+						{{else}}
+						<option value="{{this.universityId}}">{{this.name}}</option>
+						{{/if}}
+					{{/each}}
+				</select>	
+				<label for="categories">Catégories</label>
+				<select name="categories">
+					{{#each model.categories}}
+						{{#if this.selected}}
+						<option value="{{this.shortName}}" selected="selected">{{this.name}}</option>
+						{{else}}
+						<option value="{{this.shortName}}">{{this.name}}</option>
+						{{/if}}
+					{{/each}}
+				</select>
+				<label for="document">Document pdf</label>
+				{{#if model.product.name}}
+				<input type="button" name="displayFileUpload" value="Changer le contenu"/>
+				<input type="file" name="document" accept=".pdf" class="hidden"/>
+				{{else}}
+				<input type="file" name="document" accept=".pdf"/>
+				{{/if}}
+				<input type="submit" value="Enregistrer" class="btn btn-success"/>
+				<input type="button" value="Annuler" class="btn btn-default"/>
+			</form>
+		</div>
+	</div>
+</div>

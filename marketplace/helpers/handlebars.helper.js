@@ -33,12 +33,12 @@ var HandlebarsHelper = {
 
 
     	handlebars.handlebars.registerHelper('contains', function (v1, operator, v2, options) {
-    		console.log("index of !");
-    		console.log(v2);
             return v1.indexOf(v2) > -1 ? options.fn(this) : options.inverse(this);
         });
         
     	handlebars.handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+            console.log(v1);
+            console.log(v2);
             switch (operator) {
                 case '==':
                     return (v1 == v2) ? options.fn(this) : options.inverse(this);

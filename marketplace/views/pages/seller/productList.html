@@ -1,0 +1,43 @@
+<div class="navbar-seller container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="element-navbar-seller-first element-navbar-seller  vcenter pull-left">
+                Accueil vendeur
+            </div>
+            <div class="element-navbar-seller vcenter active pull-left">
+                Mes produits
+            </div>
+            <div class="element-navbar-seller vcenter pull-left">
+                Mon compte
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- End Left Sidebar  -->
+        <!-- Start Right Section  -->
+        <div class="col-md-9 col-sm-8">
+            <div class="row">
+                <a href="/seller/addnewproduct">Ajouter un nouveau produit</a>
+                <div class="productList">
+                    {{> sellerProductListBlock}}
+                </div>
+            </div>
+            <!--<p><button type="submit" class="btn btn-large btn-block btn-blue" data-original-title=""> Load More</button></p>-->
+        </div>
+    </div>
+    <!-- End Right Section  -->
+</div>
+
+{{#content "registerTopStylesheets"}}
+    <link href="/css/productList.css" rel="stylesheet"> 
+    <link href="/css/seller.css" rel="stylesheet">        
+{{/content}}
+{{#content "registerBottomScripts"}}
+    <script src="/js/seller.js"></script>
+    <script src="/js/libs/animate.js"></script>
+    <script src="/js/productList.js"></script>
+    <script src="/js/searchbar.js"></script>
+{{/content}}
+{{#content "registerMeta"}}
+<title>PACES Store - {{model.currentSchool.name}}</title>
+{{/content}}

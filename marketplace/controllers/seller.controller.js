@@ -142,6 +142,29 @@ var SellerController = {
         });
     },
 
+    displayProducts : function(req, res){
+        model.displayProducts(req, function(model){
+            if(!model){
+                res.status(404);
+                res.render('pages/error');
+            } else {
+                res.render('pages/seller/productList', {model: model});
+            }
+        });
+    },
+
+    editProduct : function(req, res){
+        model.editProduct(req, function(model){
+            res.render('pages/seller/productForm', {model: model});
+        });
+    },
+
+    addProduct : function(req, res){
+        model.addProduct(req, function(model){
+            res.render('pages/seller/productForm', {model: model});
+        });
+    }
+
 };
 
 module.exports.SellerController = SellerController;
