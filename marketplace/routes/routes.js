@@ -96,6 +96,7 @@ var Routes = {
 		app.get('/seller/products', SellerController.displayProducts);
 		app.get('/seller/product/:product', SellerController.editProduct);
 		app.get('/seller/addnewproduct', SellerController.addProduct);
+		app.post('/seller/saveProduct', SellerController.saveProduct);
 
 		app.get('/test', PageController.test);
 		app.get('/testInc', PageController.testInc);

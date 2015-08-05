@@ -163,6 +163,12 @@ var SellerController = {
         model.addProduct(req, function(model){
             res.render('pages/seller/productForm', {model: model});
         });
+    },
+
+    saveProduct : function(req, res){
+        model.saveProduct(req, function(model){
+            res.redirect('/seller/products');
+        });
     }
 
 };

@@ -104,7 +104,6 @@ var OrderService = {
         try{
             DatabaseHelper.getDatabase(function(db){
                 db.collection("Orders", function(err, Orders){
-                    //password should be sent with sha1 encryption
                     Orders.findOne({ _id : ObjectID(order._id)}, function(err, orderFound){
 
                         var updatedOrder = order;

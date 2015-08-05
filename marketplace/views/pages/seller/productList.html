@@ -15,11 +15,49 @@
     <div class="row">
         <!-- End Left Sidebar  -->
         <!-- Start Right Section  -->
-        <div class="col-md-9 col-sm-8">
+        <div class="col-md-12 col-sm-8">
             <div class="row">
-                <a href="/seller/addnewproduct">Ajouter un nouveau produit</a>
                 <div class="productList">
-                    {{> sellerProductListBlock}}
+                    <br/>
+                    <div class="col-md-12">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <button class="btn btn-default pull-right">
+                                <a href="/seller/addnewproduct" >Ajouter un nouveau produit</a>
+                            </button>
+                            {{#if model.products}}
+                                <table class="table table-bordred table-striped">
+                                    <thead>
+                                        <th>Nom du produit</th>
+                                        <th>Prix</th>
+                                        <th>Categories</th>
+                                        <th>Université</th>
+                                        <th>Actions</th>
+                                    </thead>
+                                    <tbody>
+                                        {{#each model.products}}
+                                            <tr>
+                                                <td>{{this.name}}</td>
+                                                <td>{{this.price}} €</td>
+                                                <td>{{this.categories}}</td>
+                                                <td>{{this.university}}</td>
+                                                <td><button class="btn btn-default"><a href="/seller/product/{{this._id}}" ><i class="glyphicon glyphicon-edit"></i></a></button></td>
+                                            </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                                
+                            {{else}}
+                                <div class="col-md-12">
+                                    <br/>
+                                    <h4>Vous n'avez pas encore créé de produit</h4>
+                                </div>
+                            {{/if}}
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                    
+
                 </div>
             </div>
             <!--<p><button type="submit" class="btn btn-large btn-block btn-blue" data-original-title=""> Load More</button></p>-->
@@ -39,5 +77,5 @@
     <script src="/js/searchbar.js"></script>
 {{/content}}
 {{#content "registerMeta"}}
-<title>PACES Store - {{model.currentSchool.name}}</title>
+<title>PACES Store - Liste de mes produits</title>
 {{/content}}

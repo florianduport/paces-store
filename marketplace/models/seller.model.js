@@ -1,5 +1,6 @@
 var ServiceHelper = require('../helpers/service.helper').ServiceHelper,
 MailHelper = require('../helpers/mail.helper').MailHelper,
+fs = require('fs'),
 sha1 = require('sha1');
 var ConfigurationHelper = require('../helpers/configuration.helper').ConfigurationHelper;
 var SchoolsHelper = require('../helpers/schools.helper').SchoolsHelper;
@@ -271,6 +272,24 @@ var SellerModel = {
         ServiceHelper.getService('product', 'getProductById', {data: {"productId" : req.params.product}, method : "POST"}, function(product){
             model.product = product;
             SellerModel._loadProductFormInfos(model, function(model){
+
+                var parentFolder = ""; 
+                for(var j = 0; j < 5; j++){ 
+                    parentFolder += __dirname.split('/')[j]+"/"; 
+                }
+                
+                var files = [];
+
+                var folder = parentFolder+"files/products/"+model.product["_id"]+"/";
+                var filenames = fs.readdirSync(folder);
+                for (var k = filenames.length - 1; k >= 0; k--) {
+                    files.push(filenames[k]);
+                };
+
+                if(files.length > -1){
+                    model.product.file = files[0];
+                }
+
                 callback(model);
             });
         });
@@ -299,6 +318,34 @@ var SellerModel = {
             });
 
         });
+    },
+
+    saveProduct : function(req, callback){
+
+        var product = { 
+            name : req.body.name,
+            price : req.body.price,
+            description : req.body.description,
+            university : req.body.university,
+            categories : [req.body.categories],
+        }
+
+        if(req.body["_id"] !== undefined && req.body["_id"] !== ""){
+
+            product.id = req.body["_id"];
+
+            ServiceHelper.getService('product', 'updateProduct', { data: product, method : "POST"}, function(result){
+
+                callback(result);
+            });
+        } else {
+
+            product.seller = req.session.seller;
+
+            ServiceHelper.getService('product', 'createProduct', { data: product, method : "POST"}, function(result){
+                callback(result);
+            });
+        }
     }
 
 };

@@ -30,11 +30,12 @@ var ProductService = {
         }); 
     },
 
-    createProduct : function(name, description, price, city, seller, done){
+    createProduct : function(name, description, price, university, categories, seller, done){
         DatabaseHelper.getDatabase(function(db){
             db.collection("Products", function(err, products){
                 if (err || !products)
                 {
+                    console.log("no products !!!!");
                     return done(false);
                 } 
 
@@ -42,20 +43,27 @@ var ProductService = {
                     name : name,
                     description : description,
                     price : price,
-                    city : city,
+                    university : university,
+                    categories : categories,
                     seller : seller,
+                    rating : {
+                        value : 0,
+                        count : 0
+                    },
                     data : {
                         sellCount : 0,
                         alertCount : 0
                     }
                 }
 
-                products.insert(productObject, { w: 0 });
+                products.insert(productObject, { w: 0 }, function(){
+                    return done(true);
+                });
             });
         });
     },
 
-    updateProduct : function(id, name, description, price, city, done){
+    updateProduct : function(id, name, description, price, university, categories, done){
         DatabaseHelper.getDatabase(function(db){
             db.collection("Products", function(err, products){
                 if (err || !products)
@@ -63,12 +71,23 @@ var ProductService = {
                     return done(false);
                 } 
 
-                collection.update({ _id: ObjectID(id)}, {$set:{
-                        name : name,
-                        description : description,
-                        price : price,
-                        city : city
-                }});
+                products.findOne({ _id: ObjectID(id) }, function(err, product){
+                    if (err || !product)
+                    {
+                        return done(false);
+                    }
+
+                    var updatedProduct = product;
+                    updatedProduct.name = name;
+                    updatedProduct.description = description;
+                    updatedProduct.price = price;
+                    updatedProduct.university = university;
+                    updatedProduct.categories = categories;
+
+                    products.save(updatedProduct, {w:1}, function(){
+                        done(true);
+                    }); 
+                });
             });
         });
     },

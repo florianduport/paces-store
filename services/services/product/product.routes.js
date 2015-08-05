@@ -43,7 +43,8 @@ var ProductRoutes = {
                 req.body.name === undefined || !req.body.name ||
                 req.body.description === undefined || !req.body.description ||
                 req.body.price === undefined || !req.body.price ||
-                req.body.city === undefined || !req.body.city ||
+                req.body.university === undefined || !req.body.university ||
+                req.body.categories === undefined || !req.body.categories ||
                 req.body.seller === undefined || !req.body.seller){
                 LoggerService.logError("services", "Wrong create product parameters", {});
                 Base.send(req, res, false);
@@ -52,7 +53,8 @@ var ProductRoutes = {
                 ProductService.createProduct(req.body.name, 
                                             req.body.description, 
                                             req.body.price,
-                                            req.body.city,
+                                            req.body.university,
+                                            req.body.categories,
                                             req.body.seller,
                                              function(result){
                     Base.send(req, res, result);
@@ -70,16 +72,19 @@ var ProductRoutes = {
                 req.body.name === undefined || !req.body.name ||
                 req.body.description === undefined || !req.body.description ||
                 req.body.price === undefined || !req.body.price ||
-                req.body.city === undefined || !req.body.city){
+                req.body.university === undefined || !req.body.university||
+                req.body.categories === undefined || !req.body.categories){
                 LoggerService.logError("services", "Wrong update product parameters", {});
                 Base.send(req, res, false);
             }
             else {
+
                 ProductService.updateProduct(req.body.id,
                                             req.body.name, 
                                             req.body.description, 
                                             req.body.price,
-                                            req.body.city,
+                                            req.body.university,
+                                            req.body.categories,
                                              function(result){
                     Base.send(req, res, result);
                 });
