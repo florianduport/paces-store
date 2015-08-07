@@ -49,6 +49,14 @@ var PaymentService = {
 
     payWithNewCard : function(user, card, sellers, lines, done){
         PaymentService.Provider.payWithNewCard(user, card, sellers, lines, done);
+    },
+
+    registerBankAccount : function(bankAccountInfos, done){
+        PaymentService.Provider.registerBankAccount(bankAccountInfos, done);
+    },
+
+    withdrawMoney : function(withdrawOrder, done){
+        PaymentService.Provider.withdrawMoney(withdrawOrder, done);
     }
 
 };

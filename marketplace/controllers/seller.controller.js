@@ -171,9 +171,21 @@ var SellerController = {
         });
     },
 
+    displayEditAccount : function(req, res){
+        model.displayEditAccount(req, function(model){
+            res.render('pages/seller/account', {model : model, layout : 'pages/seller/layout'});
+        });
+    },
+
     editAccount : function(req, res){
         model.editAccount(req, function(model){
-            res.render('pages/seller/account', {model : model, layout : 'pages/seller/layout'});
+            res.redirect('/seller');
+        });
+    },
+
+    withdrawMoney : function(req, res){
+        model.withdrawMoney(req, function(model){
+            res.render('pages/seller/withdrawMoney', {model : model, layout : 'pages/seller/layout'});
         });
     }
 

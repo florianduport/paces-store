@@ -204,15 +204,22 @@ var SellerService = {
                         if(data.password !== undefined)
                             updatedUser.password = sha1(data.password);
                         
+                        updatedUser.account.displayName = data.displayName;
                         updatedUser.account.firstName = data.firstName;
                         updatedUser.account.lastName = data.lastName;
-                        updatedUser.account.address.invoice = data.invoiceAddress;
+                        updatedUser.account.universityId = data.universityId;
+                        updatedUser.account.description = data.description;
+                        updatedUser.account.address = data.address;
+                        /*updatedUser.account.address.invoice = data.invoiceAddress;
                         updatedUser.account.address.shipping = data.shippingAddress;
-                        updatedUser.account.phoneNumber = data.phoneNumber !== undefined ? data.phoneNumber : "";
+                        updatedUser.account.phoneNumber = data.phoneNumber !== undefined ? data.phoneNumber : "";*/
+                        updatedUser.account.paymentInfos.iban = data.paymentInfos.iban !== undefined ? data.paymentInfos.iban : "";
+                        updatedUser.account.paymentInfos.bic = data.paymentInfos.bic !== undefined ? data.paymentInfos.bic : "";
+                        updatedUser.account.paymentInfos.bankId = data.paymentInfos.bankId !== undefined ? data.paymentInfos.bankId : "";
                         
-                        SellerHelper.save(updatedUser, function(){
+                        Sellers.save(updatedUser, {w:1}, function(){
                             done(true);
-                        });
+                        }); 
                     });
                 });
             });

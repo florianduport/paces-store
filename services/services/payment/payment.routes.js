@@ -21,17 +21,29 @@ var PaymentRoutes = {
     	// authenticate customer : /customer/authenticateCustomer
     
     	app.post(configuration.routes.payment.createWallet, HmacHelper.verifyRequest, function(req, res){
-    		//check parameters
+            //check parameters
             if(req.body === undefined || !req.body || req.body.infos === undefined || !req.body.infos){
-    			LoggerService.logError("services", "Wrong payment create wallet parameters", {infos : req.body.infos !== undefined ? req.body.infos : ""});
+                LoggerService.logError("services", "Wrong payment create wallet parameters", {infos : req.body.infos !== undefined ? req.body.infos : ""});
                 console.log("wrong parameters for wallet creation");
-    			Base.send(req, res, false);
-    		}
+                Base.send(req, res, false);
+            }
     
-    		PaymentService.createWallet(req.body.infos, function(result){
-    			Base.send(req, res, result);
-    		});
-    	});
+            PaymentService.createWallet(req.body.infos, function(result){
+                Base.send(req, res, result);
+            });
+        });
+
+        app.post(configuration.routes.payment.registerBankAccount, HmacHelper.verifyRequest, function(req, res){
+            //check parameters
+            if(req.body === undefined || !req.body){
+                LoggerService.logError("services", "Wrong payment register bank account parameters", {infos : req.body !== undefined ? req.body : ""});
+                Base.send(req, res, false);
+            }
+    
+            PaymentService.registerBankAccount(req.body, function(result){
+                Base.send(req, res, result);
+            });
+        });
 
         app.post(configuration.routes.payment.getUsers, HmacHelper.verifyRequest, function(req, res){
             
@@ -64,6 +76,18 @@ var PaymentRoutes = {
             });
         });
 
+
+        app.post(configuration.routes.payment.withdrawMoney, HmacHelper.verifyRequest, function(req, res){
+            //check parameters
+            if(req.body === undefined || !req.body){
+                LoggerService.logError("services", "Wrong withdrawMoney parameters", {});
+                Base.send(req, res, false);
+            }
+
+            PaymentService.withdrawMoney(req.body, function(result){
+                Base.send(req, res, result);
+            });
+        });
     }
     
 };

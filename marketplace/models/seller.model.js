@@ -348,12 +348,75 @@ var SellerModel = {
         }
     },
 
-    editAccount : function(req, callback){
+    displayEditAccount : function(req, callback){
         var model = this;
         ServiceHelper.getService("seller", "getSellerByUsername", {data : { username : req.session.seller } }, function(seller){
             model.seller = seller;
-            callback(model);
+            ServiceHelper.getService('school', 'getSchools', {data: {}, method : "POST"}, function(schools){
+                model.schools = schools;
+                for (var i = model.schools.length - 1; i >= 0; i--) {
+                    model.schools[i].selected = (model.schools[i].universityId == model.seller.account.universityId);
+                };
+                callback(model);
+            });
         });
+    },
+
+    editAccount : function(req, callback){
+        var model = this;
+        ServiceHelper.getService("seller", "getSellerByUsername", {data : { username : req.session.seller } }, function(seller){
+
+            var updatedSeller = seller;
+            updatedSeller.account.displayName = req.body["displayName"];
+            updatedSeller.account.firstName = req.body["firstName"];
+            updatedSeller.account.lastName = req.body["lastName"];
+            updatedSeller.account["description"] = req.body["description"];
+            updatedSeller.account.universityId = req.body["university"];
+            updatedSeller.account.address = req.body["address"];
+            updatedSeller.account.paymentInfos.iban = req.body["iban"];
+            updatedSeller.account.paymentInfos.bic = req.body["bic"];
+
+            var bankAccountInfos = {
+                ownerName : updatedSeller.account.firstName + " " +updatedSeller.account.lastName,
+                user : updatedSeller.account.paymentInfos.accountId,
+                ownerAddress : updatedSeller.account.address,
+                iban : updatedSeller.account.paymentInfos.iban,
+                bic : updatedSeller.account.paymentInfos.bic
+            };
+            ServiceHelper.getService("payment", "registerBankAccount", {data : { infos : bankAccountInfos } }, function(bankAccount){
+                updatedSeller.account.paymentInfos.bankId = bankAccount.Id;
+                ServiceHelper.getService("seller", "updateSeller", {data : updatedSeller }, function(seller){
+                    callback(model);
+                });
+            });
+
+        });
+    },
+
+    withdrawMoney : function(req, callback){
+        var model = this;
+        ServiceHelper.getService("seller", "getSellerByUsername", {data : { username : req.session.seller } }, function(seller){
+            var withdrawOrder = {
+                AuthorId : seller.account.paymentInfos.accountId,
+                DebitedWalletId : seller.account.paymentInfos.walletId,
+                BankAccountId : seller.account.paymentInfos.bankId,
+                BIC : seller.account.paymentInfos.bic
+            };
+
+            ServiceHelper.getService("payment", "getWalletInfos", {data : { paymentInfos : seller.account.paymentInfos }, method : "POST"}, function(walletInfos){
+                withdrawOrder.DebitedFunds = {
+                    Amount : walletInfos[0].Balance.Amount
+                }
+                
+
+                ServiceHelper.getService("payment", "withdrawMoney", {data : withdrawOrder }, function(withdrawResult){
+                    model.withdrawResult = withdrawResult;
+                    callback(model);
+                });
+            });
+
+        });
+
     }
 
 };

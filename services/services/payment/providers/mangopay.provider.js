@@ -168,6 +168,56 @@ var Provider = {
 
     payByCard : function(){
         
+    },
+
+    registerBankAccount : function(bankAccountInfos, done){
+        ConfigurationHelper.getConfig({application : 'marketplace', done : function(configuration){
+                var mango = require('mangopay')(configuration.mangopay);
+
+
+                mango.bank.create({
+                    OwnerName: bankAccountInfos.infos.ownerName,
+                    UserId: bankAccountInfos.infos.user,
+                    Type: "IBAN",
+                    OwnerAddress: bankAccountInfos.infos.ownerAddress,
+                    IBAN: bankAccountInfos.infos.iban,
+                    BIC: bankAccountInfos.infos.bic
+                }, function(err, bankAccount, res){
+                    if(err){
+                        done(false);
+                    }
+                    console.log(bankAccount);
+                    done(bankAccount);
+                });
+            }   
+        });
+    },
+
+    withdrawMoney : function(withdrawOrder, done){
+        
+
+        ConfigurationHelper.getConfig({application : 'marketplace', done : function(configuration){
+                var mango = require('mangopay')(configuration.mangopay);
+
+
+                var completeWithdrawOrder = withdrawOrder;
+                completeWithdrawOrder.DebitedFunds.Currency = "EUR";
+                var feesAmount = Math.round(completeWithdrawOrder.DebitedFunds.Amount * configuration.fees);
+                completeWithdrawOrder.Fees = {
+                    Currency : "EUR",
+                    Amount : ""+feesAmount+""
+                };
+
+                mango.bank.wire(completeWithdrawOrder, function(err, withdrawResult, res){
+                    if(err){
+                        console.log(err);
+                        done(false);
+                    }
+                    done(withdrawResult);
+                });
+            }   
+        });
+
     }
 
 };
