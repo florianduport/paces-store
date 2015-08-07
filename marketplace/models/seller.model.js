@@ -22,7 +22,12 @@ var SellerModel = {
                 ServiceHelper.getService("payment", "getWalletInfos", {data : { paymentInfos : model.seller.account.paymentInfos }, method : "POST"}, function(walletInfos){
                     if(walletInfos)
                        model.seller.sellBalance = walletInfos[0].Balance.Amount;
-                    callback(model);
+
+                    ConfigurationHelper.getConfig({application : 'marketplace', done : function(configuration){
+                        model.withdrawEnabled = configuration.minWithdrawAmount < model.seller.sellBalance;
+                        callback(model);
+                    }});
+
                 });
 
             });
@@ -395,6 +400,9 @@ var SellerModel = {
 
     withdrawMoney : function(req, callback){
         var model = this;
+
+
+
         ServiceHelper.getService("seller", "getSellerByUsername", {data : { username : req.session.seller } }, function(seller){
             var withdrawOrder = {
                 AuthorId : seller.account.paymentInfos.accountId,
@@ -408,11 +416,20 @@ var SellerModel = {
                     Amount : walletInfos[0].Balance.Amount
                 }
                 
-
-                ServiceHelper.getService("payment", "withdrawMoney", {data : withdrawOrder }, function(withdrawResult){
-                    model.withdrawResult = withdrawResult;
-                    callback(model);
-                });
+                ConfigurationHelper.getConfig({application : 'marketplace', done : function(configuration){
+                    if(configuration.minWithdrawAmount > walletInfos[0].Balance.Amount){
+                        model.withdrawResult = false;
+                        callback(model);
+                    }
+                    else
+                    {
+                        ServiceHelper.getService("payment", "withdrawMoney", {data : withdrawOrder }, function(withdrawResult){
+                            model.withdrawResult = withdrawResult;
+                            callback(model);
+                        });
+                    }
+                }});
+                
             });
 
         });

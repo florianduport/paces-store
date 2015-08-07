@@ -21,9 +21,11 @@
                     <td>Solde de votre compte : </td>
                     <td>{{model.seller.sellBalance}} €</td>
                 </tr>
+                {{#if model.withdrawEnabled}}
                 <tr>
                     <td><a href="/seller/withdrawMoney">Transférer mon solde sur mon compte</a></td>
                 </tr>
+                {{/if}}
             </tbody>
         </table>
     </div>

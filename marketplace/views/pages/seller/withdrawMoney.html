@@ -1,7 +1,13 @@
 <div class="col-md-8">
     <div class="col-md-12 sellerMainColumn well well-lg">
+    	{{#if model.withdrawResult}}
     	<h3>Votre demande de transfert a bien été prise en compte</h3>
         <p>Nous faisons tout notre possible pour traiter cette demande dans les plus brefs délais.</p>
         <p><a href="/seller">Retour à l'accueil vendeur</a></p>
+        {{else}}
+        <h3>Votre demande de transfert n'a pas pu aboutir</h3>
+        <p>Vérifier le solde de votre compte vendeur.</p>
+        <p><a href="/seller">Retour à l'accueil vendeur</a></p>
+        {{/if}}
     </div>
 </div>
