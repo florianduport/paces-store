@@ -1,69 +1,39 @@
-<div class="navbar-seller container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="element-navbar-seller-first element-navbar-seller  vcenter pull-left">
-                Accueil vendeur
-            </div>
-            <div class="element-navbar-seller vcenter active pull-left">
-                Mes produits
-            </div>
-            <div class="element-navbar-seller vcenter pull-left">
-                Mon compte
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <!-- End Left Sidebar  -->
-        <!-- Start Right Section  -->
-        <div class="col-md-12 col-sm-8">
-            <div class="row">
-                <div class="productList">
-                    <br/>
-                    <div class="col-md-12">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8">
-                            <button class="btn btn-default pull-right">
-                                <a href="/seller/addnewproduct" >Ajouter un nouveau produit</a>
-                            </button>
-                            {{#if model.products}}
-                                <table class="table table-bordred table-striped">
-                                    <thead>
-                                        <th>Nom du produit</th>
-                                        <th>Prix</th>
-                                        <th>Categories</th>
-                                        <th>Université</th>
-                                        <th>Actions</th>
-                                    </thead>
-                                    <tbody>
-                                        {{#each model.products}}
-                                            <tr>
-                                                <td>{{this.name}}</td>
-                                                <td>{{this.price}} €</td>
-                                                <td>{{this.categories}}</td>
-                                                <td>{{this.university}}</td>
-                                                <td><button class="btn btn-default"><a href="/seller/product/{{this._id}}" ><i class="glyphicon glyphicon-edit"></i></a></button></td>
-                                            </tr>
-                                        {{/each}}
-                                    </tbody>
-                                </table>
-                                
-                            {{else}}
-                                <div class="col-md-12">
-                                    <br/>
-                                    <h4>Vous n'avez pas encore créé de produit</h4>
-                                </div>
-                            {{/if}}
-                        </div>
-                        <div class="col-md-2"></div>
-                    </div>
-                    
 
-                </div>
+<!-- End Left Sidebar  -->
+<!-- Start Right Section  -->
+<div class="col-md-8 col-sm-8 well well-lg">
+        <h3>Gérer mes produits</h3>
+        <button class="btn btn-default pull-right">
+            <a href="/seller/addnewproduct" >Ajouter un nouveau produit</a>
+        </button>
+        {{#if model.products}}
+            <table class="table table-bordred table-striped">
+                <thead>
+                    <th>Nom du produit</th>
+                    <th>Prix</th>
+                    <th>Categories</th>
+                    <th>Université</th>
+                    <th>Actions</th>
+                </thead>
+                <tbody>
+                    {{#each model.products}}
+                        <tr>
+                            <td>{{this.name}}</td>
+                            <td>{{this.price}} €</td>
+                            <td>{{this.categories}}</td>
+                            <td>{{this.university}}</td>
+                            <td><button class="btn btn-default"><a href="/seller/product/{{this._id}}" ><i class="glyphicon glyphicon-edit"></i></a></button></td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            
+        {{else}}
+            <div class="col-md-12">
+                <br/>
+                <h4>Vous n'avez pas encore créé de produit</h4>
             </div>
-            <!--<p><button type="submit" class="btn btn-large btn-block btn-blue" data-original-title=""> Load More</button></p>-->
-        </div>
-    </div>
-    <!-- End Right Section  -->
+        {{/if}}
 </div>
 
 {{#content "registerTopStylesheets"}}

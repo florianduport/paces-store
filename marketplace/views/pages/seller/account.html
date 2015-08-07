@@ -1,0 +1,61 @@
+<form method="POST" id="productForm" class="col-md-8 col-sm-8 well well-lg" action="/seller/saveProduct">		
+		<h3>Modifier mes informations personnelles</h3>
+	<input type="button" value="Annuler" class="btn btn-default pull-right" />
+	<input type="submit" value="Enregistrer" class="btn btn-success pull-right" />
+	<br/>
+	<br/>
+	<div class="col-md-6">
+		<input type="hidden" name="_id" value="{{model.seller._id}}"/>
+		<label for="name">Nom du compte</label>
+		<input type="text" name="name" value="{{model.seller.account.displayName}}" class="form-control" required/>
+		
+		<label for="description">Description</label>
+		<textarea name="description" class="form-control" required>{{model.seller.account.description}}</textarea>
+		
+	</div>
+	<div class="col-md-6">
+		<label for="document">Document pdf</label>
+
+		<div class="upload-drop-zone" id="drop-zone">
+			<input type="file" name="files[]" id="js-upload-files" class="hidden" />
+			{{#if model.product.file}}
+	            <p data-filename="{{model.product.file}}">{{model.product.file}}</p>
+			{{else}}
+				<p data-filename="Déposez votre fichier .pdf ici">Déposez votre fichier .pdf ici</p>
+			{{/if}}
+          	</div>
+	</div>
+</form>
+{{#content "registerTopStylesheets"}}
+    <link href="/css/seller.css" rel="stylesheet">      
+{{/content}}
+{{#content "registerBottomScripts"}}
+    <script src="/js/seller.js"></script>
+    <script src="/js/libs/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace( 'description', {
+	    	language: 'fr',
+	    	customConfig: '',
+	    	toolbarGroups : [
+				{ name: 'document',	   groups: [ 'mode', 'document', 'doctools' ] },
+				{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
+				{ name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
+				{ name: 'forms' },
+				{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+				{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+				{ name: 'links' },
+				{ name: 'insert' },
+				{ name: 'styles' },
+				{ name: 'colors' },
+				{ name: 'tools' },
+				{ name: 'others' },
+				{ name: 'about' }
+			],
+			removeButtons : 'Cut,Copy,Paste,Undo,Redo,Anchor,Underline,Strike,Subscript,Superscript',
+			removeDialogTabs : 'link:advanced'
+		});
+    </script>
+{{/content}}
+{{#content "registerMeta"}}
+<title>PACES Store - Editer un produit</title>
+{{/content}}

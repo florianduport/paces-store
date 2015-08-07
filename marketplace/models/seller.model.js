@@ -346,6 +346,14 @@ var SellerModel = {
                 callback(result);
             });
         }
+    },
+
+    editAccount : function(req, callback){
+        var model = this;
+        ServiceHelper.getService("seller", "getSellerByUsername", {data : { username : req.session.seller } }, function(seller){
+            model.seller = seller;
+            callback(model);
+        });
     }
 
 };

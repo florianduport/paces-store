@@ -34,7 +34,7 @@ var DatabaseHelper = {
                 DatabaseHelper._openNewConnection(ToExecute);
             } else {
                 DatabaseHelper.DatabaseInstance = db;
-                ToExecute(DatabaseInstance);
+                ToExecute(DatabaseHelper.DatabaseInstance);
             }
         });
     }

@@ -13,7 +13,8 @@ var HandlebarsHelper = {
         	defaultLayout: 'layout',
         	extname: '.html', 
         	partialsDir: [
-				__dirname + '/../views/blocks/'
+                __dirname + '/../views/blocks/',
+                __dirname + '/../views/pages/seller/blocks/'
 			]
 		});
 

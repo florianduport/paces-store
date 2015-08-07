@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <link rel="icon" href="/img/paces-store.ico" />
+        {{#block "registerMeta"}}
+        <title>PACES Store</title>
+        {{/block}}
+
+
+        <!-- Include Stylesheets -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" type="text/css">
+        <link href="/css/libs/app.css" rel="stylesheet" type="text/css">
+        <link href="/css/libs/animate.css" rel="stylesheet" type="text/css">
+        <link href="/css/libs/style.css" rel="stylesheet" type="text/css">
+        <link href="/css/global.css" rel="stylesheet" type="text/css">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" rel="stylesheet" type="text/css">    
+        <link href="/css/libs/bootstrap-dialog.css" rel="stylesheet">    
+        {{#block "registerTopStylesheets"}}
+        {{/block}}
+        {{#block "registerTopScripts"}}
+        {{/block}}
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body> 
+        <!-- Start Header/Navbar  -->
+        {{> sellerNavbar}}
+        <!-- End Header/Navbar  -->
+        <main>
+            <section class="section">
+                <!-- Start Main Content  -->
+                <div class="container-fluid ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{> sellerSidebar}}
+                            {{{body}}}
+                        </div>
+                    </div>
+                </div>
+                <!-- End Main Content -->
+            </section>
+        </main>
+        <!-- Start Footer -->
+        {{> footer}}
+        <!-- End Footer -->
+
+
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="/js/libs/jquery.min.js"></script>
+        <script src="/js/libs/jquery.cookie.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/i18n/defaults-fr_FR.min.js"></script>
+        <script src="/js/libs/bootstrap-dialog.js"></script>
+        {{#block "registerBottomScripts"}}
+        {{/block}}
+        <script src="/js/globalcart.js"></script>
+        <script src="/js/geoloc.js"></script>
+    </body>
+</html>

@@ -4,7 +4,7 @@ var SellerController = {
 
     displaySellerHome : function(req, res){
         model.displaySellerHome(req, function(model){
-            res.render('pages/seller/home', {model: model});
+            res.render('pages/seller/home', {model: model, layout : 'pages/seller/layout'});
         }); 
     },
 
@@ -148,26 +148,32 @@ var SellerController = {
                 res.status(404);
                 res.render('pages/error');
             } else {
-                res.render('pages/seller/productList', {model: model});
+                res.render('pages/seller/productList', {model: model, layout : 'pages/seller/layout'});
             }
         });
     },
 
     editProduct : function(req, res){
         model.editProduct(req, function(model){
-            res.render('pages/seller/productForm', {model: model});
+            res.render('pages/seller/productForm', {model: model, layout : 'pages/seller/layout'});
         });
     },
 
     addProduct : function(req, res){
         model.addProduct(req, function(model){
-            res.render('pages/seller/productForm', {model: model});
+            res.render('pages/seller/productForm', {model: model, layout : 'pages/seller/layout'});
         });
     },
 
     saveProduct : function(req, res){
         model.saveProduct(req, function(model){
             res.redirect('/seller/products');
+        });
+    },
+
+    editAccount : function(req, res){
+        model.editAccount(req, function(model){
+            res.render('pages/seller/account', {model : model, layout : 'pages/seller/layout'});
         });
     }
 

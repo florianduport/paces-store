@@ -1,82 +1,62 @@
-<div class="navbar-seller container-fluid">    
-	<div class="row">
-        <div class="col-md-12">
-            <div class="element-navbar-seller-first element-navbar-seller  vcenter pull-left">
-                Accueil vendeur
-            </div>
-            <div class="element-navbar-seller vcenter active pull-left">
-                Mes produits
-            </div>
-            <div class="element-navbar-seller vcenter pull-left">
-                Mon compte
-            </div>
-        </div>
-    </div>
-    <div class="row">
+<form method="POST" id="productForm" class="col-md-8 col-sm-8 well well-lg" action="/seller/saveProduct">		
+	{{#if model.product._id}}
+		<h3>Modifier un produit</h3>
+	{{else}}
+		<h3>Ajouter un produit</h3>
+	{{/if}}
+	<input type="button" value="Annuler" class="btn btn-default pull-right" />
+	<input type="submit" value="Enregistrer" class="btn btn-success pull-right" />
+	<br/>
+	<br/>
+	<div class="col-md-6">
+		<input type="hidden" name="_id" value="{{model.product._id}}"/>
+		<label for="name">Nom du produit</label>
+		<input type="text" name="name" value="{{model.product.name}}" class="form-control" required/>
+		<label for="price">Prix</label>
+		<input name="price" type="number" min="1" max="25" value="{{model.product.price}}" class="form-control" step="0.5" required/>
+		<label for="description">Description</label>
+		<textarea name="description" class="form-control" required>{{model.product.description}}</textarea>
+		<br/>
+		<label for="university">Université</label>
+		
+		<br/>
+		<select name="university" class="selectpicker show-tick" data-style="btn-default">
+			{{#each model.schools}}
+				{{#if this.selected}}
+				<option value="{{this.universityId}}" selected="selected">{{this.name}}</option>
+				{{else}}
+				<option value="{{this.universityId}}">{{this.name}}</option>
+				{{/if}}
+			{{/each}}
+		</select>	
+		<br/>
+		<label for="categories">Catégorie</label>
+		<br/>
+		<select name="categories" class="selectpicker show-tick" data-style="btn-default">
+			{{#each model.categories}}
+				{{#if this.selected}}
+				<option value="{{this.shortName}}" selected="selected">{{this.name}}</option>
+				{{else}}
+				<option value="{{this.shortName}}">{{this.name}}</option>
+				{{/if}}
+			{{/each}}
+		</select>
 
-		<form method="POST" id="productForm" action="/seller/saveProduct">
-	    	<div class="col-md-12">
-				<div class="col-md-2"></div>
-				<div class="col-md-8">
-					<input type="button" value="Annuler" class="btn btn-default pull-right" />
-					<input type="submit" value="Enregistrer" class="btn btn-success pull-right" />
-					<br/>
-					<br/>
-					<div class="col-md-6">
-						<input type="hidden" name="_id" value="{{model.product._id}}"/>
-						<label for="name">Nom du produit</label>
-						<input type="text" name="name" value="{{model.product.name}}" class="form-control" required/>
-						<label for="price">Prix</label>
-						<input name="price" type="number" min="1" max="25" value="{{model.product.price}}" class="form-control" step="0.5" required/>
-						<label for="description">Description</label>
-						<textarea name="description" class="form-control" required>{{model.product.description}}</textarea>
-						<br/>
-						<label for="university">Université</label>
-						
-						<br/>
-						<select name="university" class="selectpicker show-tick" data-style="btn-default">
-							{{#each model.schools}}
-								{{#if this.selected}}
-								<option value="{{this.universityId}}" selected="selected">{{this.name}}</option>
-								{{else}}
-								<option value="{{this.universityId}}">{{this.name}}</option>
-								{{/if}}
-							{{/each}}
-						</select>	
-						<br/>
-						<label for="categories">Catégorie</label>
-						<br/>
-						<select name="categories" class="selectpicker show-tick" data-style="btn-default">
-							{{#each model.categories}}
-								{{#if this.selected}}
-								<option value="{{this.shortName}}" selected="selected">{{this.name}}</option>
-								{{else}}
-								<option value="{{this.shortName}}">{{this.name}}</option>
-								{{/if}}
-							{{/each}}
-						</select>
-
-        				<br/><br/><br/><br/><br/><br/><br/>
-					</div>
-					<div class="col-md-6">
-						<label for="document">Document pdf</label>
-
-						<div class="upload-drop-zone" id="drop-zone">
-							<input type="file" name="files[]" id="js-upload-files" class="hidden" />
-							{{#if model.product.file}}
-					            <p data-filename="{{model.product.file}}">{{model.product.file}}</p>
-							{{else}}
-								<p data-filename="Déposez votre fichier .pdf ici">Déposez votre fichier .pdf ici</p>
-							{{/if}}
-				          	</div>
-					</div>
-				</div>
-				<div class="col-md-2"></div>
-
-	    	</div>
-		</form>
+		<br/><br/><br/><br/><br/><br/><br/>
 	</div>
-</div>
+	<div class="col-md-6">
+		<label for="document">Document pdf</label>
+
+		<div class="upload-drop-zone" id="drop-zone">
+			<input type="file" name="files[]" id="js-upload-files" class="hidden" />
+			{{#if model.product.file}}
+	            <p data-filename="{{model.product.file}}">{{model.product.file}}</p>
+			{{else}}
+				<p data-filename="Déposez votre fichier .pdf ici">Déposez votre fichier .pdf ici</p>
+			{{/if}}
+          	</div>
+	</div>
+</form>
 {{#content "registerTopStylesheets"}}
     <link href="/css/seller.css" rel="stylesheet">      
 {{/content}}
