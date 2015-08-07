@@ -1,29 +1,39 @@
 <form method="POST" id="productForm" class="col-md-8 col-sm-8 well well-lg" action="/seller/saveProduct">		
+	<div class="col-md-12">
 		<h3>Modifier mes informations personnelles</h3>
-	<input type="button" value="Annuler" class="btn btn-default pull-right" />
-	<input type="submit" value="Enregistrer" class="btn btn-success pull-right" />
-	<br/>
-	<br/>
-	<div class="col-md-6">
-		<input type="hidden" name="_id" value="{{model.seller._id}}"/>
-		<label for="name">Nom du compte</label>
-		<input type="text" name="name" value="{{model.seller.account.displayName}}" class="form-control" required/>
-		
-		<label for="description">Description</label>
-		<textarea name="description" class="form-control" required>{{model.seller.account.description}}</textarea>
-		
-	</div>
-	<div class="col-md-6">
-		<label for="document">Document pdf</label>
+		<input type="button" value="Annuler" class="btn btn-default pull-right" />
+		<input type="submit" value="Enregistrer" class="btn btn-success pull-right" />
+		<br/>
+		<br/>
+		<div class="col-md-6">
+			<input type="hidden" name="_id" value="{{model.seller._id}}"/>
+			<label for="name">Nom du compte</label>
+			<input type="text" name="name" value="{{model.seller.account.displayName}}" class="form-control" required/>
+			
+			<label for="description">Description</label>
+			<p>Parlez de vous et de votre parcours. Donnez aux étudiants l'envie d'être comme vous !</p>
+			<textarea name="description" class="form-control" required>{{model.seller.account.description}}</textarea>
+			
+		</div>
+		<div class="col-md-6">
+			<label for="document">Photo de profil</label>
 
-		<div class="upload-drop-zone" id="drop-zone">
-			<input type="file" name="files[]" id="js-upload-files" class="hidden" />
-			{{#if model.product.file}}
-	            <p data-filename="{{model.product.file}}">{{model.product.file}}</p>
-			{{else}}
-				<p data-filename="Déposez votre fichier .pdf ici">Déposez votre fichier .pdf ici</p>
-			{{/if}}
-          	</div>
+			<div class="upload-drop-zone" id="drop-zone">
+				<input type="file" name="files[]" id="js-upload-files" class="hidden" />
+				{{#if model.product.file}}
+		            <p data-filename="{{model.product.file}}">{{model.product.file}}</p>
+				{{else}}
+					<p data-filename="Déposez votre fichier .pdf ici">Déposez votre nouvelle image ici</p>
+				{{/if}}
+	          	</div>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<h3>Modifier mes informations bancaire</h3>
+		<div class="col-md-6">
+			<label for="iban">IBAN</label>
+			<input type="text" name="name" value="{{model.seller.account.displayName}}" class="form-control" required/>
+		</div>
 	</div>
 </form>
 {{#content "registerTopStylesheets"}}
