@@ -1,38 +1,34 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header col-sm-3 col-md-3">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand text-uppercase" href="/">PACES STORE</a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar">
-            <div class="col-sm-6 col-md-6">
-                <form action="/search/" method="post" name="searchForm" class="searchForm form-inline" >
-                    <div class="form-group">
-                        <input type="text" name="searchText" class="form-control" id="searchText" data-provide="typeahead" placeholder="Tout le contenu..." {{#if model.previousSearch}} value="{{model.previousSearch}}" {{/if}} data-items="4" />
-                    </div>
-                    <button id="submitSearch" type="button" class="btn btn-success"><i class="glyphicon glyphicon-search"></i></button>
-                    <div class="form-group">
-                        <span id="geolocZone"></span>
-                    </div>
-                </form>
+        <div class="row">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header col-sm-3 col-md-3">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand text-uppercase" href="/">PACES STORE</a>
             </div>
-            <ul class="nav navbar-nav navbar-right col-sm-3 col-md-3">
-                <li>
-                    <button id="shoppingcart-button" type="button" class="btn pull-left"><i class="glyphicon glyphicon-shopping-cart"></i> 
-                        <span class="badge" id="cart-number-products"></span>
-                    </button>
-                </li>               
-                <li>
-                    <a id="seller-button" href="/seller" class="btn btn-warning">Espace vendeur</a>
-                </li>
-            </ul>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="col-sm-9 col-md-9">
+                <div class="collapse navbar-collapse" id="navbar">
+                    <form action="/search/" method="post" name="searchForm" class="searchForm form-inline col-md-9" >
+                        <div class="form-group-sm">
+                            <input type="text" name="searchText" class="form-control" id="searchText" data-provide="typeahead" placeholder="Tout le contenu..." {{#if model.previousSearch}} value="{{model.previousSearch}}" {{/if}} data-items="4" />
+                                   <button id="submitSearch" type="button" class="btn btn-success"><i class="glyphicon glyphicon-search"></i></button>
+                            <span id="geolocZone"></span>
+                        </div>
+                    </form>
+                    <div class="form-group-sm col-md-3">
+                        <button id="shoppingcart-button" type="button" class="btn pull-left"><i class="glyphicon glyphicon-shopping-cart"></i> 
+                            <span class="badge" id="cart-number-products"></span>
+                        </button>
+                        <a id="seller-button" href="/seller" class="btn btn-warning">Espace vendeur</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </nav>

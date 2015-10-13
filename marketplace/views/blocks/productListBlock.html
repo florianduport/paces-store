@@ -1,7 +1,7 @@
 {{#if model.products}}
 {{#each model.products}}
-<div class="col-lg-3 col-md-4 col-sm-6">
-    <div class="thumbnail">
+<div class="col-lg-3 col-md-4 col-sm-4 col-xs-8">
+    <div class="thumbnail center-block">
         <a href="/product/{{this._id}}">
             <div class="thumbnail-seller small">
                 Par <strong>{{this.sellerInfos.displayName}}</strong>
@@ -30,3 +30,4 @@
     <a id="cleanSearch" href="/">Réinitialiser vos critères</a>
 </div>
 {{/if}}
+<div class="clearfix"></div>

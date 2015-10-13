@@ -33,7 +33,7 @@
     top: 0;
 }
 .navbar-product  {
-  top: 50px !important;
+  top: 45px !important;
   position: fixed;
   z-index: 1028;
   background: linear-gradient(to bottom,#fff 0,#f8f8f8 100%);  
@@ -61,7 +61,7 @@
   margin-left: 100px;
 }
 .productContainer {
-    margin-top: 50px;
+    margin-top: 35px;
 }
 .productContainer h2 {
     color: #c1c1c1;
