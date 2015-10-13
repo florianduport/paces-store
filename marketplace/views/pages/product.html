@@ -36,7 +36,7 @@
                     <span class="label label-info">{{model.product.categories}}</span>
                     <span class="label label-success">{{model.product.university}}</span>
                 </div>
-                <div class="col-md-12"><i class="glyphicon glyphicon-time"></i> 30 minutes</div>
+                <div class="col-md-12"><i class="glyphicon glyphicon-time"></i> Durée moyenne : {{model.product.time}} minutes</div>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-4">
                 <img data-src="holder.js/300x200" alt="300x200" class="img-responsive center-block" src="/img/h-6.jpg">
@@ -63,9 +63,10 @@
             <img src="/img/default-profile.png" class="img-responsive img-circle center-block">
             <div class="clearfix"></div>
             <div class="col-md-12">
-                <p>{{model.seller.account.displayName}}</p>
+                <p class="text-center">{{model.seller.account.displayName}} <small>( {{model.seller.sellCount}} ventes )</small></p>
                 <p>De : {{model.seller.account.university.name}}</p>
                 <div>{{{model.seller.account.description}}}</div>
+
             </div>
             <div class="col-md-12">
                 <h2 class="title-navbar-product">Avis</h2>

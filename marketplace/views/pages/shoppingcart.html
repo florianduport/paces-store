@@ -1,32 +1,33 @@
 {{#if model.req.body.ajax}}
 <input id="shoppingcartTotal-hidden" type="hidden" value="{{model.shoppingcart.total}}€" />
 {{#each model.shoppingcart.products}}
-	<div class="col-md-12"><div class="col-md-8">{{this.name}}</div><div class="col-md-2">{{this.price}}€</div><div class="col-md-2"><button type="button" class="btn" removeFromShoppingCart data-productid="{{this._id}}"><i class="glyphicon glyphicon-remove"></i></button></div></div>
+<div class="col-md-12"><div class="col-md-8">{{this.name}}</div><div class="col-md-2">{{this.price}}€</div><div class="col-md-2"><button type="button" class="btn btn-sm btn-danger" removeFromShoppingCart data-productid="{{this._id}}"><i class="glyphicon glyphicon-trash"></i></button></div>
+</div>
 {{/each}}
 {{else}}
 <div class="container">
-	<div class="row">
-            <div class="col-md-12 shoppingcartContainer">
-            	{{#if model.shoppingcart.products.length}}
-            		<h1>Mon panier</h1>
-	            	<h3>{{model.shoppingcart.products.length}} produits</h3>
-	            	{{#each model.shoppingcart.products}}
-	            		<div class="col-md-12">
-	            			<div class="col-md-2">{{this.name}}</div>
-	            			<div class="col-md-1"><input type="button" removeFromShoppingCart data-productid="{{this._id}}" value="-" /></div> 
-	            		</div>
-	            	{{/each}}
-	            	<div class="col-md-12">
-	            		Total : {{model.shoppingcart.total}}€
-	            	</div>
-	            	<input type="button" class="btn btn-success checkoutLink" value="Commander" />
-            	{{else}}
-	            	<h1>Votre panier est vide</h1>
-	            	<div class="col-md-12">
-	            		<a href="/">Retour à l'accueil</a>
-	            	</div>
-            	{{/if}}
+    <div class="row">
+        <div class="col-md-12 shoppingcartContainer">
+            {{#if model.shoppingcart.products.length}}
+            <h1>Mon panier</h1>
+            <h3>{{model.shoppingcart.products.length}} produits</h3>
+            {{#each model.shoppingcart.products}}
+            <div class="col-md-12">
+                <div class="col-md-2">{{this.name}}</div>
+                <div class="col-md-1"><input type="button" removeFromShoppingCart data-productid="{{this._id}}" value="-" /></div> 
             </div>
+            {{/each}}
+            <div class="col-md-12">
+                Total : {{model.shoppingcart.total}}€
+            </div>
+            <input type="button" class="btn btn-success checkoutLink" value="Commander" />
+            {{else}}
+            <h1>Votre panier est vide</h1>
+            <div class="col-md-12">
+                <a href="/">Retour à l'accueil</a>
+            </div>
+            {{/if}}
+        </div>
     </div>
 </div>
 {{/if}}
@@ -34,12 +35,12 @@
 
 
 {{#content "registerTopStylesheets"}}
-    <link href="/css/shoppingcart.css" rel="stylesheet">       
+<link href="/css/shoppingcart.css" rel="stylesheet">       
 {{/content}}
 {{#content "registerBottomScripts"}}
-    <script src="/js/shoppingcart.js"></script>
-    <script src="/js/searchbar.js"></script>
+<script src="/js/shoppingcart.js"></script>
+<script src="/js/searchbar.js"></script>
 {{/content}}
 {{#content "registerMeta"}}
-    <title>PACES Store - Mon panier</title>
+<title>PACES Store - Mon panier</title>
 {{/content}}

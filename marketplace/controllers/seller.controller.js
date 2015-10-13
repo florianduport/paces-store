@@ -187,8 +187,12 @@ var SellerController = {
         model.withdrawMoney(req, function(model){
             res.render('pages/seller/withdrawMoney', {model : model, layout : 'pages/seller/layout'});
         });
+    },
+    wallet : function(req, res){
+        model.wallet(req, function(model){
+            res.render('pages/seller/wallet', {model : model, layout : 'pages/seller/layout'});
+        });
     }
-
 };
 
 module.exports.SellerController = SellerController;

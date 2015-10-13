@@ -224,23 +224,21 @@ body {
 
 .footer {
     text-align: center;
-    padding: 19px 14px;
-    margin-top: 70px;
     border-top: 1px solid #CAC3C3;
     background-color: white;
 }
 .footer p {
-    margin-bottom: 0;
     color: #777;
-    padding: 11px;
+    margin: 10px 0;
     font-size: 12px;
 }
 .footer-links {
     margin: 10px 0;
+    font-size: 12px;
 }
 .footer-links li {
     display: inline;
-    padding: 0 2px;
+
 }
 .footer-links li:first-child {
     padding-left: 0;

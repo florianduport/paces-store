@@ -1,50 +1,50 @@
 
 <!-- End Left Sidebar  -->
 <!-- Start Right Section  -->
-<div class="col-md-8 col-sm-8 well well-lg">
-        <h3>Gérer mes produits</h3>
-        <button class="btn btn-default pull-right">
-            <a href="/seller/addnewproduct" >Ajouter un nouveau produit</a>
-        </button>
-        {{#if model.products}}
-            <table class="table table-bordred table-striped">
-                <thead>
-                    <th>Nom du produit</th>
-                    <th>Prix</th>
-                    <th>Categories</th>
-                    <th>Université</th>
-                    <th>Actions</th>
-                </thead>
-                <tbody>
-                    {{#each model.products}}
-                        <tr>
-                            <td>{{this.name}}</td>
-                            <td>{{this.price}} €</td>
-                            <td>{{this.categories}}</td>
-                            <td>{{this.university}}</td>
-                            <td><button class="btn btn-default"><a href="/seller/product/{{this._id}}" ><i class="glyphicon glyphicon-edit"></i></a></button></td>
-                        </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-            
-        {{else}}
-            <div class="col-md-12">
-                <br/>
-                <h4>Vous n'avez pas encore créé de produit</h4>
-            </div>
-        {{/if}}
+<div class="col-md-9 col-sm-12 well well-lg">
+    <h3>Gérer mes produits</h3>
+    <a class="btn btn-success pull-right" href="/seller/addnewproduct" >Ajouter un nouveau produit</a>
+    {{#if model.products}}
+    <table class="table table-bordred table-striped">
+        <thead>
+        <th>Nom du produit</th>
+        <th>Nb de ventes</th>
+        <th>Prix</th>
+        <th>Categories</th>
+        <th>Université</th>
+        <th>Actions</th>
+        </thead>
+        <tbody>
+            {{#each model.products}}
+            <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.data.sellCount}}</td>
+                <td>{{this.price}} €</td>
+                <td>{{this.categories}}</td>
+                <td>{{this.university}}</td>
+                <td><a class="btn btn-primary" href="/seller/product/{{this._id}}" ><i class="glyphicon glyphicon-edit"></i></a> <a class="btn btn-warning" href="/seller/product/{{this._id}}" ><i class="glyphicon glyphicon-pause"></i></a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    {{else}}
+    <div class="col-md-12">
+        <br/>
+        <h4>Vous n'avez pas encore créé de produit</h4>
+    </div>
+    {{/if}}
 </div>
 
 {{#content "registerTopStylesheets"}}
-    <link href="/css/productList.css" rel="stylesheet"> 
-    <link href="/css/seller.css" rel="stylesheet">        
+<link href="/css/productList.css" rel="stylesheet"> 
+<link href="/css/seller.css" rel="stylesheet">        
 {{/content}}
 {{#content "registerBottomScripts"}}
-    <script src="/js/seller.js"></script>
-    <script src="/js/libs/animate.js"></script>
-    <script src="/js/productList.js"></script>
-    <script src="/js/searchbar.js"></script>
+<script src="/js/seller.js"></script>
+<script src="/js/libs/animate.js"></script>
+<script src="/js/productList.js"></script>
+<script src="/js/searchbar.js"></script>
 {{/content}}
 {{#content "registerMeta"}}
 <title>PACES Store - Liste de mes produits</title>

@@ -100,7 +100,7 @@ var Routes = {
 		app.get('/seller/account', SellerController.displayEditAccount);
 		app.post('/seller/account', SellerController.editAccount);
 		app.get('/seller/withdrawMoney', SellerController.withdrawMoney);
-
+                app.get('/seller/wallet', SellerController.wallet);
 		app.get('/test', PageController.test);
 		app.get('/testInc', PageController.testInc);
 

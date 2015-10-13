@@ -17,7 +17,7 @@ var ShoppingCartModel = {
 					model.shoppingcart.products = products
 					model.shoppingcart.total = 0;
 					for (var i = model.shoppingcart.products.length - 1; i >= 0; i--) {
-						model.shoppingcart.total = model.shoppingcart.total+model.shoppingcart.products[i].price;
+						model.shoppingcart.total = parseInt(model.shoppingcart.total)+parseInt(model.shoppingcart.products[i].price);
 					};
 
 					SchoolsHelper.loadSchool({model : model, filter : { university : SchoolsHelper.loadUniversity(req)}, callback : callback});
