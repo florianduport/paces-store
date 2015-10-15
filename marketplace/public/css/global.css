@@ -22,6 +22,12 @@ body {
     line-height: 20px;
     text-decoration: none;
 }
+.thumbnail .caption {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
 main{
     height: auto !important;
     margin: 0 auto -41px;

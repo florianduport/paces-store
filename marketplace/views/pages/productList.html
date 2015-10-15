@@ -1,11 +1,11 @@
 <div class="container-fluid">
     <!-- Start Left Sidebar  -->
     <div class="row">
-        <div class="col-md-12 well homepageDescription"> 
-            <div class="col-md-2"><img src="/img/logo-big.png" class="img-responsive"/> </div>
-            <div class="col-md-10">
-                <h1>Une phrase choc et des mots clés</h1>
-                <p>Et d'autres mots clés aussi</p>
+        <div class="col-md-12 col-sm-12 col-xs-12 well homepageDescription"> 
+            <div class="col-md-2 col-sm-4 col-xs-12"><img src="/img/logo-big.png" class="img-responsive center-block"/> </div>
+            <div class="col-md-10 col-sm-8 col-xs-12">
+                <h1 class="text-center">Le premier site dédié à la réussite de la PACES</h1>
+                <p class="text-center">Créé en 2012 par un étudiant ayant réussi sa PACES et devenu tuteur au tutorat durant deux années consécutives, Réussir ma PACES.fr est avant tout un site par et pour les étudiants. Soutenu par plusieurs universités, associations étudiantes et organismes de renoms, le site est devenu une valeur sûre, et compte 50 000 visiteurs par mois.</p>
             </div>
         </div>
     </div>
@@ -14,8 +14,8 @@
         <!-- End Left Sidebar  -->
         <!-- Start Right Section  -->
         <div class="col-md-9 col-sm-8">
-            <div class="row">
-                <div class="col-md-12">
+            <div class="row well">
+                <div class="col-md-12 well-sm">
                     {{#if model.req.body.keywords}}
                     <h4 class='categories-names search-names pull-left'>Resultats de votre recherche "{{model.req.body.keywords}}"</h4>
                     {{else}}
@@ -27,8 +27,7 @@
                         <option data-icon="glyphicon-sort-by-attributes-alt" value="priceUp" {{#ifCond model.req.body '!==' undefined}}{{#ifCond model.req.body.sort '!==' undefined}}{{#ifCond model.req.body.sort '===' "priceUp"}}selected{{/ifCond}}{{/ifCond}}{{/ifCond}}> Prix décroissant</option>
                     </select>
                 </div>
-            </div>
-            <div class="row">
+                <div class="clearfix"></div>
                 <div class="productList">
                     {{> productListBlock}}
                 </div>

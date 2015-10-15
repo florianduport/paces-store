@@ -1,13 +1,11 @@
 .card-container.card {
-    width: 350px;
-    padding: 40px 40px;
+
 }
 .signInContainer {
-	margin-top: 25px;
+    margin-top: 25px;
 }
 .signInContainer .btn {
     font-weight: 700;
-    height: 36px;
     -moz-user-select: none;
     -webkit-user-select: none;
     user-select: none;
@@ -15,7 +13,7 @@
 }
 
 .navbar-signin {
-  top: 50px !important;
+  top: 45px !important;
   position: fixed;
   z-index: 1028;
   background: linear-gradient(to bottom,#fff 0,#f8f8f8 100%);  
@@ -31,8 +29,6 @@
     background-color: #F7F7F7;
     /* just in case there no content*/
     padding: 20px 25px 30px;
-    margin: 0 auto 25px;
-    margin-top: 25px;
     /* shadows and rounded borders */
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
@@ -121,15 +117,12 @@
 
 .rightButtons-container{
 	margin: auto;
-  	padding: 40px;
-  	padding-top : 170px;
   	text-align: center;
-  	width: 350px;
 }
 
 
 .navbar-signin {
-  top: 50px !important;
+  top: 45px !important;
   position: fixed;
   z-index: 1028;
   background: linear-gradient(to bottom,#fff 0,#f8f8f8 100%);  
@@ -155,4 +148,47 @@
 }
 .element-navbar-signin-first{
   margin-left: 100px;
+}
+.social-login-btn {
+  margin: 5px;
+  width: 20%;
+  font-size: 250%;
+  padding: 0;
+}
+
+
+.social-google {
+  background-color: #da573b;
+  border-color: #be5238;
+}
+.social-google:hover{
+  background-color: #be5238;
+  border-color: #9b4631;
+}
+
+.social-twitter {
+  background-color: #1daee3;
+  border-color: #3997ba;
+}
+.social-twitter:hover {
+  background-color: #3997ba;
+  border-color: #347b95;
+}
+
+.social-facebook {
+  background-color: #4c699e;
+  border-color: #47618d;
+}
+.social-facebook:hover {
+  background-color: #47618d;
+  border-color: #3c5173;
+}
+
+.social-linkedin {
+  background-color: #4875B4;
+  border-color: #466b99;
+}
+.social-linkedin:hover {
+  background-color: #466b99;
+  border-color: #3b5a7c;
 }

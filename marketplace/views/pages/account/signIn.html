@@ -1,5 +1,5 @@
 <nav class="navbar-signin">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
@@ -23,43 +23,52 @@
         </div>
     </div>
 </nav>
-<div class="signInContainer container">
-	<div class="row">
-            <div class="col-md-12 ">
-                <h1 class="text-center">Identifiez-vous avant de poursuivre</h1>
-                <div class="col-md-3"></div>
-                <div class="col-md-4">
-                    <div class="card card-container">
-                        <h2 class="text-center">Se connecter</h2>
-                        <form action="/signIn" method="post" class="signinForm">
-                            <span id="reauth-email" class="reauth-email"></span>
-                            <input type="email" id="inputEmail" name="username" class="form-control" placeholder="Adresse Email" required autofocus>
-                            <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Mot de passe" required>
-                            <button class="btn btn-lg btn-success btn-block btn-signin signIn" type="submit">Se connecter</button>
-                        </form><!-- /form -->
-                        <a href="/forgottenPassword" class="forgot-password">
-                            Mot de passe oublié ?
-                        </a>
-                    </div>
+<div class="clearfix"></div>
+<div class="signInContainer container-fluid">
+    <div class="row">
+        <div class="col-md-12 ">
+            <h1 class="text-center">Identifiez-vous avant de poursuivre</h1>
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <div class="card card-container">
+                    <h2 class="text-center">Se connecter</h2>
+                    <form action="/signIn" method="post" class="signinForm">
+                        <span id="reauth-email" class="reauth-email"></span>
+                        <input type="email" id="inputEmail" name="username" class="form-control" placeholder="Adresse Email" required autofocus>
+                        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Mot de passe" required>
+                        <button class="btn btn-lg btn-success btn-block btn-signin signIn" type="submit">Se connecter</button>
+                    </form><!-- /form -->
+                    <a href="/forgottenPassword" class="forgot-password">
+                        Mot de passe oublié ?
+                    </a>
                 </div>
-                <div class="col-md-2">
-                    <div class="rightButtons-container">
-                        <p class="text-center">- OU -</p>
-                        <input type="button" class="btn btn-lg btn-primary btn-block btn-signin signUp" data-link="/signUp/display" value="Créer un compte" />
-                    </div>
-                </div>
-                <div class="col-md-3"></div>
             </div>
+            <div class="col-md-4">
+                <div class="rightButtons-container card">
+                    <h2 class="text-center">Créer votre profil</h2>
+                    <p>
+                        <a class="btn btn-primary social-login-btn social-facebook" href="/auth/facebook"><i class="fa fa-facebook"></i></a>
+                        <a class="btn btn-primary social-login-btn social-twitter" href="/auth/twitter"><i class="fa fa-twitter"></i></a>
+                    </p>
+                    <p>
+                        <a class="btn btn-primary social-login-btn social-linkedin" href="/auth/linkedin"><i class="fa fa-linkedin"></i></a>
+                        <a class="btn btn-primary social-login-btn social-google" href="/auth/google"><i class="fa fa-google-plus"></i></a>
+                    </p>
+                    <p class="text-center">- OU - </p>
+                    <input type="button" class="btn btn-lg btn-primary btn-block btn-signin signUp" data-link="/signUp/display" value="Créer un compte" />
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 {{#content "registerTopStylesheets"}}
-    <link href="/css/signIn.css" rel="stylesheet">       
+<link href="/css/signIn.css" rel="stylesheet">       
 {{/content}}
 {{#content "registerBottomScripts"}}
-    <script src="/js/signIn.js"></script>
-    <script src="/js/shoppingcart.js"></script>
+<script src="/js/signIn.js"></script>
+<script src="/js/shoppingcart.js"></script>
 {{/content}}
 {{#content "registerMeta"}}
-    <title>PACES Store - Connexion</title>
+<title>PACES Store - Connexion</title>
 {{/content}}
