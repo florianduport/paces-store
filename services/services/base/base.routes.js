@@ -14,8 +14,8 @@ var BaseRoutes = {
 	send : function(req, res, data){
 		ConfigurationHelper.getConfig({application : 'services', attribute : "debugEnabled", done : function(debugEnabled){
 			if(debugEnabled !== null && debugEnabled){
-				console.log(req.url+" :");
-				console.log(data);
+				//console.log(req.url+" :");
+				//console.log(data);
 			}
 			if(typeof(data) === "object")
 				res.json(data);

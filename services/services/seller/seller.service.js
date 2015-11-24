@@ -19,14 +19,14 @@ var SellerService = {
                 if (err || !sellers)
                 {
                     return done(false);
-                } 
+                }
                 //password should be sent with sha1 encryption
                 sellers.findOne({ username: username, password: password }, function(err, user){
                     if (err || !user)
                     {
                         return done(false);
-                    }    
-                    return done(true); 
+                    }
+                    return done(true);
                 });
             });
         });
@@ -44,45 +44,45 @@ var SellerService = {
                 if (err || !sellers)
                 {
                     return done(false);
-                } 
+                }
                 //password should be sent with sha1 encryption
                 sellers.findOne({ _id: ObjectID(userId)}, function(err, user){
                     if (err || !user)
                     {
                         return done(false);
                     }
-    
-                    return done(user); 
+
+                    return done(user);
                 });
             });
-        });   
+        });
     },
-    
+
     /**
     * getSeller : Récupère les informations de l'utilisateur
     * @param username : le nom d'utilisateur'
     * @param done : la méthode de retour
     * @return objet contenant les informations de l'utilisateur
-    */  
+    */
     getSellerByUsername : function(username, done){
         DatabaseHelper.getDatabase(function(db){
             db.collection("Sellers", function(err, sellers){
                 if (err || !sellers)
                 {
                     return done(false);
-                } 
+                }
                 //password should be sent with sha1 encryption
                 sellers.findOne({ username: username}, function(err, user){
                     if (err || !user)
                     {
                         return done(false);
                     }
-    
-                    return done(user); 
+
+                    return done(user);
                 });
             });
-        });   
-    }, 
+        });
+    },
 
     /**
     * getCustomer : Récupère les informations de l'utilisateur
@@ -96,46 +96,46 @@ var SellerService = {
                 if (err || !sellers)
                 {
                     return done(false);
-                } 
+                }
                 //password should be sent with sha1 encryption
                 sellers.findOne({ username: username}, function(err, user){
                     if (err || !user)
                     {
                         return done(false);
                     }
-    
-                    return done(user); 
+
+                    return done(user);
                 });
             });
-        });   
+        });
     },
-    
+
     /**
     * getSeller : Récupère les informations de l'utilisateur
     * @param username : le nom d'utilisateur'
     * @param done : la méthode de retour
     * @return objet contenant les informations de l'utilisateur
-    */  
+    */
     getSellersByUsername : function(sellersParam, done){
         DatabaseHelper.getDatabase(function(db){
             db.collection("Sellers", function(err, sellers){
                 if (err || !sellers)
                 {
                     return done(false);
-                } 
+                }
                 //password should be sent with sha1 encryption
                 sellers.find({username : { $in : sellersParam}}).toArray(function(err, sellersFound){
                     if (err || !sellersFound)
                     {
-                        console.log("===== NO SELLERS FOUND IN ");
-                        console.log(sellers);
+                        //console.log("===== NO SELLERS FOUND IN ");
+                        //console.log(sellers);
                         done(false);
                     }
-    
-                    done(sellersFound); 
+
+                    done(sellersFound);
                 });
             });
-        });   
+        });
     },
 
     /**
@@ -152,7 +152,7 @@ var SellerService = {
         try{
             DatabaseHelper.getDatabase(function(db){
 
-                if(username == "" || 
+                if(username == "" ||
                     password == "" ||
                     confirmedPassword == ""||
                     password != confirmedPassword ||
@@ -176,14 +176,14 @@ var SellerService = {
                         done(true);
                     }
                     else
-                      done(false);  
+                      done(false);
                 });
             });
         }
         catch(err){
             done(false);
         }
-        
+
     },
     /**
     * updateSeller : Modifie les informations de l'utilisateur
@@ -200,10 +200,10 @@ var SellerService = {
                     Sellers.findOne({ username: username}, function(err, user){
 
                         var updatedUser = user;
-                        
+
                         if(data.password !== undefined)
                             updatedUser.password = sha1(data.password);
-                        
+
                         updatedUser.account.displayName = data.displayName;
                         updatedUser.account.firstName = data.firstName;
                         updatedUser.account.lastName = data.lastName;
@@ -216,10 +216,10 @@ var SellerService = {
                         updatedUser.account.paymentInfos.iban = data.paymentInfos.iban !== undefined ? data.paymentInfos.iban : "";
                         updatedUser.account.paymentInfos.bic = data.paymentInfos.bic !== undefined ? data.paymentInfos.bic : "";
                         updatedUser.account.paymentInfos.bankId = data.paymentInfos.bankId !== undefined ? data.paymentInfos.bankId : "";
-                        
+
                         Sellers.save(updatedUser, {w:1}, function(){
                             done(true);
-                        }); 
+                        });
                     });
                 });
             });
@@ -227,9 +227,9 @@ var SellerService = {
         catch(err){
             done(false);
         }
-        
+
     },
-    
+
     /**
     * getSeller : Récupère les 100 derniers utilisateurs
     * @param done : la méthode de retour
@@ -244,11 +244,11 @@ var SellerService = {
                     {
                         return done(false);
                     }
-                    
-                    return done(Sellers); 
+
+                    return done(Sellers);
                 });
             });
-        });   
+        });
     },
 
     createForgottenPasswordToken : function(email, token, done){
@@ -257,7 +257,7 @@ var SellerService = {
                 if (err || !sellers)
                 {
                     done(false);
-                } 
+                }
                 //password should be sent with sha1 encryption
                 sellers.findOne({ username: email}, function(err, user){
                     if (err || !user)
@@ -265,7 +265,7 @@ var SellerService = {
                         done(false);
                     }
                     var expirationDate = Math.round(new Date().getTime() / 1000);
-                    expirationDate += 3600; 
+                    expirationDate += 3600;
                     user.changePasswordToken = {
                         expirationDate : expirationDate,
                         token : token
@@ -275,7 +275,7 @@ var SellerService = {
                     });
                 });
             });
-        }); 
+        });
     },
 
     changePassword : function(email, newPassword, done){
@@ -284,7 +284,7 @@ var SellerService = {
                 if (err || !sellers)
                 {
                     done(false);
-                } 
+                }
                 //password should be sent with sha1 encryption
                 sellers.findOne({ username: email}, function(err, user){
                     if (err || !user)
@@ -298,7 +298,7 @@ var SellerService = {
                     });
                 });
             });
-        });         
+        });
     }
 };
 

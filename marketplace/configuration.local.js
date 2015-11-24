@@ -1,6 +1,6 @@
 /**
  * Surcharge de la configuration en BDD
- * @class LocalConfig 
+ * @class LocalConfig
  */
 var LocalConfig = {
 
@@ -13,8 +13,10 @@ var LocalConfig = {
 	},
 
 	addressBasePath : "http://localhost",
-	hmacEnabled : false
-	
+	hmacEnabled : false,
+	debugEnabled: false,
+	parentFolder : "/home/florian/paces-store/marketplace/"
+
 };
 
 module.exports.LocalConfig = LocalConfig;

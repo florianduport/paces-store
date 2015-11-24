@@ -10,7 +10,7 @@ var express = require('express'),
 
 /**
  * Classe principale - Keep it simple in here
- * @class Main 
+ * @class Main
  */
 var Main = {
     /**
@@ -41,7 +41,7 @@ var Main = {
 
                     app.use(express.static(path.join(__dirname, 'public')));
 
-                    app.use(bodyParser());
+                    app.use(bodyParser({ keepExtensions: true, uploadDir: __dirname+"/files/tmp" }));
 
                     Routes.loadRoutes(app, configuration);
 

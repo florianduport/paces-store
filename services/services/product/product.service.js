@@ -18,16 +18,16 @@ var ProductService = {
                 if (err || !products)
                 {
                     return done(false);
-                } 
+                }
                 products.findOne({ _id: ObjectID(productId) }, function(err, product){
                     if (err || !product)
                     {
                         return done(false);
-                    }    
-                    return done(product); 
+                    }
+                    return done(product);
                 });
             });
-        }); 
+        });
     },
 
     createProduct : function(name, description, price, university, categories, time, seller, done){
@@ -35,9 +35,9 @@ var ProductService = {
             db.collection("Products", function(err, products){
                 if (err || !products)
                 {
-                    console.log("no products !!!!");
+                    //console.log("no products !!!!");
                     return done(false);
-                } 
+                }
 
                 var productObject = {
                     name : name,
@@ -57,8 +57,9 @@ var ProductService = {
                     }
                 }
 
-                products.insert(productObject, { w: 0 }, function(){
-                    return done(true);
+                products.insert(productObject, { w: 0 }, function(err, result){
+                  console.log(productObject);
+                    return done(productObject["_id"]);
                 });
             });
         });
@@ -70,7 +71,7 @@ var ProductService = {
                 if (err || !products)
                 {
                     return done(false);
-                } 
+                }
 
                 products.findOne({ _id: ObjectID(id) }, function(err, product){
                     if (err || !product)
@@ -85,10 +86,10 @@ var ProductService = {
                     updatedProduct.university = university;
                     updatedProduct.categories = categories;
                     updatedProduct.time = time;
-                    
-                    products.save(updatedProduct, {w:1}, function(){
-                        done(true);
-                    }); 
+
+                    products.save(updatedProduct, {w:1}, function(err, result){
+                        done(id);
+                    });
                 });
             });
         });
@@ -100,7 +101,7 @@ var ProductService = {
                 if (err || !products)
                 {
                     return done(false);
-                } 
+                }
                 products.findOne({ _id: ObjectID(productId) }, function(err, product){
                     if (err || !product)
                     {
@@ -136,7 +137,7 @@ var ProductService = {
                     });
                 });
             });
-        });      
+        });
     }
 };
 

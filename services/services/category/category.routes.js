@@ -19,9 +19,9 @@ var CategoryRoutes = {
     loadRoutes : function(app, configuration){
 
         // get Categorys list
-    
+
         app.post(configuration.routes.category.getCategories, HmacHelper.verifyRequest, function(req, res){
-            console.log("here");
+            //console.log("here");
             //check parameters
             if( req.body === undefined || !req.body){
                 LoggerService.logError("services", "Wrong get Categories parameters", {});
@@ -31,11 +31,11 @@ var CategoryRoutes = {
                 CategoryService.getCategories(function(result){
                     Base.send(req, res, result);
                 });
-            }   
-        });   
-    	
+            }
+        });
+
     }
-    
+
 };
 
 module.exports.CategoryRoutes = CategoryRoutes;

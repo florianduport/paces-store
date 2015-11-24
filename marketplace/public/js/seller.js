@@ -5,7 +5,7 @@ $(document).ready(function(){
     // UPLOAD CLASS DEFINITION
     // ======================
 
-    var dropZone = document.getElementById('drop-zone');
+    /*var dropZone = document.getElementById('drop-zone');
     var uploadForm = document.getElementById('productForm');
 
     var startUpload = function(files) {
@@ -38,6 +38,6 @@ $(document).ready(function(){
         this.className = 'upload-drop-zone';
         $("#drop-zone p").html($("#drop-zone p").data("filename"));
         return false;
-    }
+    }*/
 
 });

@@ -37,10 +37,10 @@ var PageModel = {
 		this.loadPosition(req, this, function(model){
 			if(model.position !== undefined && model.position.universityId === undefined)
 			{
-				console.log("here");
-				console.log(model.position);
+				//console.log("here");
+				//console.log(model.position);
 				ServiceHelper.getService('school', 'getSchools', {data: {}, method : "POST"}, function(schools){
-					
+
 					if(!schools){
 						callback(false);
 					}
@@ -50,7 +50,7 @@ var PageModel = {
 								model.position.city = model.school.city;
 							}
 							model.position.universityId = model.school.universityId;
-							console.log(model.position.universityId);
+							//console.log(model.position.universityId);
 
 							callback(model);
 						});
@@ -62,7 +62,7 @@ var PageModel = {
 				callback(model);
 			}
 		});
-		
+
 	},
 
 	loadSchool : function(req, schools, model, callback){
@@ -107,11 +107,11 @@ var PageModel = {
     					model.position.longitude = req.cookies.position.longitude;
     					model.position.isAlreadyCalculated = true;
     				}
-    				callback(model);	
+    				callback(model);
 				});
 			} else {
 				model.position = req.cookies.position;
-				callback(model);	
+				callback(model);
 			}
 		} else {
 			//Sinon on géolocalise par l'IP
@@ -143,7 +143,7 @@ var PageModel = {
 		model.position = req.session.position;
 		PageModel.loadPosition(req, this, function(model){
 			ServiceHelper.getService('school', 'getSchools', {data: {}, method : "POST"}, function(schools){
-						
+
 				if(!schools){
 					callback(false);
 				}
@@ -153,10 +153,10 @@ var PageModel = {
 							model.position.city = model.school.city;
 						}
 						model.position.universityId = model.school.universityId;
-						console.log(model.position.universityId);
+						//console.log(model.position.universityId);
 						callback(model);
 					});
-					
+
 				}
 			});
 		});
@@ -185,7 +185,7 @@ var PageModel = {
 	},
 
 	testInc : function(i, callback){
-		console.log(i);
+		//console.log(i);
 		callback(this);
 	}
 };

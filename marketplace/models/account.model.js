@@ -29,12 +29,12 @@ var AccountModel = {
                 model.error = false;
             callback(model);
         }});
-    },     
+    },
 
     displaySignUp : function(req, callback){
         var model = this;
         model.req = req;
-        
+
         SchoolsHelper.loadSchool({model : model, callback : function(model){
             if(req.session.error)
             model.error = req.session.error;
@@ -42,7 +42,7 @@ var AccountModel = {
                 model.error = false;
             callback(model);
         }});
-    },    
+    },
 
     signIn : function(username, password, req, done){
 
@@ -62,7 +62,7 @@ var AccountModel = {
     },
 
     signUp : function(req, done){
-        if(req.body !== undefined && 
+        if(req.body !== undefined &&
             req.body.firstName !== undefined &&
             req.body.lastName !== undefined &&
             req.body.username !== undefined &&
@@ -100,7 +100,7 @@ var AccountModel = {
                     username : form.username
                 }, method : "POST"}, function(response){
                     if(response){
-                        //Customer already exist ! 
+                        //Customer already exist !
                         done(false);
                     } else {
                         ServiceHelper.getService("payment", "createWallet", {data : {
@@ -128,7 +128,7 @@ var AccountModel = {
                                     done(response);
                                 });
                             }
-                        }); 
+                        });
                     }
                 });
             }
@@ -147,20 +147,20 @@ var AccountModel = {
 
         //check if customer exists
         if(req.body.username !== undefined){
-            console.log(req.body.username);
+            //console.log(req.body.username);
            ServiceHelper.getService("customer", "getFullCustomerByUsername", {data : {
                     username : req.body.username
                 }, method : "POST"}, function(user){
                 if(user){
-                   //create token : 
+                   //create token :
                    var token = Math.floor((Math.random() * 1000000) + 1);
                    var userId = user["_id"];
-                   console.log(userId);
+                   //console.log(userId);
                    //attach token to user (with lifetime)
                     ServiceHelper.getService("customer", "createForgottenPasswordToken", {data : {
                         username : req.body.username,
                         token : token
-                    }, method : "POST"}, function(response){ 
+                    }, method : "POST"}, function(response){
                         if(response){
 
                             var changePasswordLink = "/changePassword/"+userId+"/"+token;
@@ -177,7 +177,7 @@ var AccountModel = {
                         }
                     });
                 }
-            }); 
+            });
         } else {
             callback(false);
         }
@@ -190,11 +190,11 @@ var AccountModel = {
             //check if token is valid
             ServiceHelper.getService("customer", "getCustomerById", {data : {
                 userId : req.params.userId
-            }, method : "POST"}, function(customer){ 
+            }, method : "POST"}, function(customer){
 
-                if(customer === undefined || !customer || 
+                if(customer === undefined || !customer ||
                     customer.changePasswordToken === undefined || !customer.changePasswordToken){
-                    console.log("here");
+                    //console.log("here");
                     callback(false);
                 } else {
                     var nowTimestamp = new Date();
@@ -216,12 +216,12 @@ var AccountModel = {
     changePassword : function(req, callback){
         var model = this;
         if(req.body.newPassword !== undefined){
-            
+
             //check if token is valid
             ServiceHelper.getService("customer", "changePassword", {data : {
                 username : req.body.username,
                 newPassword : req.body.newPassword
-            }, method : "POST"}, function(result){ 
+            }, method : "POST"}, function(result){
 
                 callback(true);
 

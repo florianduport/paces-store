@@ -1,4 +1,4 @@
-<form method="POST" id="productForm" class="col-md-8 col-sm-8 well well-lg" action="/seller/saveProduct">		
+<form method="POST" id="productForm" enctype="multipart/form-data" class="col-md-8 col-sm-8 well well-lg" action="/seller/saveProduct">
     {{#if model.product._id}}
     <h3>Modifier un produit</h3>
     {{else}}
@@ -37,7 +37,7 @@
             <option value="{{this.universityId}}">{{this.name}}</option>
             {{/if}}
             {{/each}}
-        </select>	
+        </select>
         <div class="clearfix"></div>
         <label for="categories" class="center-block">Catégorie</label>
         <select name="categories" class="selectpicker show-tick center-block" data-style="btn-default form-control">
@@ -52,19 +52,17 @@
     </div>
     <div class="col-md-4">
         <label for="document">Document pdf</label>
-
-        <div class="upload-drop-zone" id="drop-zone">
-            <input type="file" name="files[]" id="js-upload-files" class="hidden" />
-            {{#if model.product.file}}
-            <p data-filename="{{model.product.file}}">{{model.product.file}}</p>
-            {{else}}
-            <p data-filename="Déposez votre fichier .pdf ici">Déposez votre fichier .pdf ici</p>
-            {{/if}}
-        </div>
+        {{#if model.product.file}}
+        <p data-filename="{{model.product.file}}">{{model.product.file}}</p>
+        <input type="file" name="productFile" accept="application/pdf" />
+        {{else}}
+        <p data-filename="Déposez votre fichier .pdf ici">Déposez votre fichier .pdf ici</p>
+        <input type="file" required name="productFile" accept="application/pdf" />
+        {{/if}}
     </div>
 </form>
 {{#content "registerTopStylesheets"}}
-<link href="/css/seller.css" rel="stylesheet">      
+<link href="/css/seller.css" rel="stylesheet">
 {{/content}}
 {{#content "registerBottomScripts"}}
 <script src="/js/seller.js"></script>

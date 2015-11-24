@@ -6,7 +6,8 @@ ShoppingCartController = require('./../controllers/shoppingcart.controller').Sho
 CheckoutController = require('./../controllers/checkout.controller').CheckoutController,
 AccountController = require('./../controllers/account.controller').AccountController,
 SellerController = require('./../controllers/seller.controller').SellerController,
-DownloadController = require('./../controllers/download.controller').DownloadController
+DownloadController = require('./../controllers/download.controller').DownloadController,
+multipart = require('connect-multiparty')();
 /**
 * Charge les routes de account controller
 * @class AccountRoutes
@@ -29,14 +30,14 @@ var Routes = {
     	SellerController.app = app;
     	DownloadController.app = app;
 		//routes / mapping controller
-		
+
 		//CATALOG
 		//app.get('/', PageController.initializeGeoloc, HomepageController.initialize);
 		app.get('/', PageController.initializeGeoloc, ProductListController.initializeFilter);
-		
+
 		app.post('/search/', PageController.initializeGeoloc, ProductListController.initializeFilter);
 		app.get('/search/', PageController.initializeGeoloc, function(req, res){ res.redirect('/'); });
-		
+
 		app.get('/list/:universityId', PageController.initializeGeoloc, ProductListController.initialize);
 		app.get('/list/', PageController.initializeGeoloc, ProductListController.initialize);
 		app.post('/list/:universityId', PageController.initializeGeoloc, ProductListController.initializeFilter);
@@ -54,7 +55,7 @@ var Routes = {
 		app.post('/productcheckout/:product', ShoppingCartController.productCheckout);
 
 		//CHECKOUT
-		app.post('/checkout/', AccountController.checkSignIn, CheckoutController.initialize);		
+		app.post('/checkout/', AccountController.checkSignIn, CheckoutController.initialize);
 		app.get('/checkout/', AccountController.checkSignIn, CheckoutController.initialize);
 		app.post('/checkout/payWithNewCard', AccountController.checkSignIn, CheckoutController.payWithNewCard);
 		app.get('/checkout/wait/:orderId', AccountController.checkSignIn, CheckoutController.waitPayment);
@@ -96,7 +97,7 @@ var Routes = {
 		app.get('/seller/products', SellerController.displayProducts);
 		app.get('/seller/product/:product', SellerController.editProduct);
 		app.get('/seller/addnewproduct', SellerController.addProduct);
-		app.post('/seller/saveProduct', SellerController.saveProduct);
+		app.post('/seller/saveProduct', multipart, SellerController.saveProduct);
 		app.get('/seller/account', SellerController.displayEditAccount);
 		app.post('/seller/account', SellerController.editAccount);
 		app.get('/seller/withdrawMoney', SellerController.withdrawMoney);

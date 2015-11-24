@@ -117,7 +117,7 @@ var SellerModel = {
                             username: form.username
                         }, method: "POST"}, function (response) {
                         if (response) {
-                            //seller already exist ! 
+                            //seller already exist !
                             done(false);
                         } else {
                             ServiceHelper.getService("payment", "createWallet", {data: {
@@ -162,15 +162,15 @@ var SellerModel = {
 
         //check if seller exists
         if (req.body.username !== undefined) {
-            console.log(req.body.username);
+            //console.log(req.body.username);
             ServiceHelper.getService("seller", "getFullSellerByUsername", {data: {
                     username: req.body.username
                 }, method: "POST"}, function (user) {
                 if (user) {
-                    //create token : 
+                    //create token :
                     var token = Math.floor((Math.random() * 1000000) + 1);
                     var userId = user["_id"];
-                    console.log(userId);
+                    //console.log(userId);
                     //attach token to user (with lifetime)
                     ServiceHelper.getService("seller", "createForgottenPasswordToken", {data: {
                             username: req.body.username,
@@ -208,7 +208,7 @@ var SellerModel = {
 
                 if (seller === undefined || !seller ||
                         seller.changePasswordToken === undefined || !seller.changePasswordToken) {
-                    console.log("here");
+                    //console.log("here");
                     callback(false);
                 } else {
                     var nowTimestamp = new Date();
@@ -272,16 +272,23 @@ var SellerModel = {
 
                         var files = [];
 
-                        var folder = config.parentFolder + "files/products/" + model.product["_id"] + "/";
-                        var filenames = fs.readdirSync(folder);
-                        for (var k = filenames.length - 1; k >= 0; k--) {
-                            files.push(filenames[k]);
-                        }
-                        ;
+                        //var folder = config.parentFolder + "files/products/" + model.product["_id"] + "/";
 
-                        if (files.length > -1) {
-                            model.product.file = files[0];
+                        try{
+                          var folder = __dirname+"/../files/products/" + model.product["_id"] + "/";
+                          var filenames = fs.readdirSync(folder);
+                          for (var k = filenames.length - 1; k >= 0; k--) {
+                              files.push(filenames[k]);
+                          }
+                          ;
+
+                          if (files.length > -1) {
+                              model.product.file = files[0];
+                          }
+                        } catch(err){
+                          console.log("file not found for product");
                         }
+
 
                         callback(model);
                     });
@@ -323,21 +330,52 @@ var SellerModel = {
             categories: [req.body.categories],
             time: [req.body.time]
         }
+        var file = req.files !== undefined && req.files.productFile !== undefined ? req.files.productFile : undefined;
+        console.log(req.files);
+        var saveFile = function(callback, productId){
+          console.log(productId);
+          if(file !== undefined){
+            //fs.unlink(__dirname+"/../files/products/"+productId+"/", function (err) {
+              try{
+                fs.readFile(file.path, function (err, data) {
+                  if(err)
+                    console.log(err);
+                  var newPath = __dirname+"/../files/products/"+productId+"/"+file.name;
+                  if (!fs.existsSync(__dirname+"/../files/products/"+productId+"/")){
+                      fs.mkdirSync(__dirname+"/../files/products/"+productId+"/");
+                  }
+                  fs.writeFile(newPath, data, function (err) {
+                    console.log('writefile');
+                    if(err)
+                      console.log(err);
+                    callback(true);
+                  });
+                });
+              } catch(err){
+                console.log(err);
+                console.log('err');
+                callback(false);
+              }
+            //});
+
+          } else {
+            callback(true);
+          }
+        }
 
         if (req.body["_id"] !== undefined && req.body["_id"] !== "") {
 
             product.id = req.body["_id"];
 
-            ServiceHelper.getService('product', 'updateProduct', {data: product, method: "POST"}, function (result) {
-
-                callback(result);
+            ServiceHelper.getService('product', 'updateProduct', {data: product, method: "POST"}, function (productId) {
+              saveFile(callback, productId);
             });
         } else {
 
             product.seller = req.session.seller;
 
-            ServiceHelper.getService('product', 'createProduct', {data: product, method: "POST"}, function (result) {
-                callback(result);
+            ServiceHelper.getService('product', 'createProduct', {data: product, method: "POST"}, function (productId) {
+                saveFile(callback, productId);
             });
         }
     },
