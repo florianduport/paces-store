@@ -68,29 +68,28 @@ main{
     margin-top: 3px;
 }
 .thumbnail-seller {
-    height: 0px;
+    /*height: 0px;*/
 }
 .thumbnail .thumbnail-seller a {
     color: #0e0e0f;
 }
 
 .thumbnail:hover .thumbnail-seller {
-    height: 34px;
+    /*height: 34px;*/
 }
 .thumbnail-ue {
-    height: 34px;
+    /*height: 34px;*/
 }
 .thumbnail:hover .thumbnail-ue {
-    height: 0px;
-    line-height: 0px;
+    /*height: 0px;*/
+    /*line-height: 0px;*/
 }
 .stars-sm{
     font-size: 12px;
-    display: none;
 }
-.thumbnail:hover .stars-sm {
+/*.thumbnail:hover .stars-sm {
     display: block;
-}
+}*/
 .badge-green{
     background-color: #5cb85c;
 }
