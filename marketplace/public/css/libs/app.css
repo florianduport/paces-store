@@ -48,7 +48,9 @@ body {
     -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
-
+.thumbnail:hover {
+    border: 1px solid #66afe9;
+}
 .thumbnail h3 {
     font-size: 17px;
     margin: 0px;

@@ -18,76 +18,78 @@
 </div>
 <div class="container-fluid productContainer">
     <div class="row">
-        <div class="col-md-9 productMainColumn well well-lg">
-            <div class="col-md-10 col-sm-8 col-xs-8">
-                <h1 class="title-navbar-product">{{model.product.name}}</h1>
-                <div class='col-md-12 col-sm-12 col-xs-12'>
-                    <div class="rating">
-                        {{#if model.product.rating}}
-                        {{#if model.product.rating.roundValue}}
-                        <div class="stars starrr" data-rating="{{model.product.rating.roundValue}}"></div>
-                        {{else}}
-                        <div class="stars starrr" data-rating="0"></div>
-                        {{/if}}
-                        {{else}}
-                        <div class="stars starrr" data-rating="0"></div>
-                        {{/if}}
+        <div class="col-md-9">
+            <div class="productMainColumn well well-lg">
+                <div class="col-md-10 col-sm-8 col-xs-8">
+                    <h1 class="title-navbar-product">{{model.product.name}}</h1>
+                    <div class='col-md-12 col-sm-12 col-xs-12'>
+                        <div class="rating">
+                            {{#if model.product.rating}}
+                            {{#if model.product.rating.roundValue}}
+                            <div class="stars starrr" data-rating="{{model.product.rating.roundValue}}"></div>
+                            {{else}}
+                            <div class="stars starrr" data-rating="0"></div>
+                            {{/if}}
+                            {{else}}
+                            <div class="stars starrr" data-rating="0"></div>
+                            {{/if}}
+                        </div>
+                        <span class="label label-info">{{model.product.categories}}</span>
+                        <span class="label label-success">{{model.product.university}}</span>
                     </div>
-                    <span class="label label-info">{{model.product.categories}}</span>
-                    <span class="label label-success">{{model.product.university}}</span>
+                    <div class="col-md-12 col-sm-12 col-xs-12"><i class="glyphicon glyphicon-time"></i> Durée moyenne : {{model.product.time}} minutes</div>
                 </div>
-                <div class="col-md-12 col-sm-12 col-xs-12"><i class="glyphicon glyphicon-time"></i> Durée moyenne : {{model.product.time}} minutes</div>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-4">
-                <img data-src="holder.js/300x200" alt="300x200" class="img-responsive center-block" src="/img/h-6.jpg">
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-md-12 text-center center-block">
-                <hr/>
-                <input type="button" class="btn btn-lg btn-lg2 btn-success checkout-product-button" data-product="{{model.product._id}}" value="Commander ({{model.product.price}}€)" /> 
-                <button type="button" class="btn btn-lg btn-lg2 btn-success add-to-cart-button" data-product="{{model.product._id}}"> <i class="glyphicon glyphicon-shopping-cart"></i></button>
-                <p>Commandez et recevez ce cours par email au format .pdf immédiatement !</p>
-            </div>
-            <div class="col-md-12" id="productDescriptionFull">
-                <h2 class="title-navbar-product">A propos de ce cours</h2>
-                <p>{{{model.product.description}}}</p>
-            </div>   
-            <div class="clearfix"></div>
-            <div class="col-md-12">
-                <h2 class="title-navbar-product">Ces contenus vous intéressent sûrement</h2>
-                {{> productListBlock}}
-            </div>
-        </div>
-        <div class="col-md-3 productMainColumn well well-lg">
-
-            <img src="/img/default-profile.png" class="img-responsive img-circle center-block">
-            <div class="clearfix"></div>
-            <div class="col-md-12">
-                <p class="text-center">{{model.seller.account.displayName}} <small>( {{model.seller.sellCount}} ventes )</small></p>
-                <p>De : {{model.seller.account.university.name}}</p>
-                <div>{{{model.seller.account.description}}}</div>
-
-            </div>
-            <div class="col-md-12">
-                <h2 class="title-navbar-product">Avis</h2>
-                <div id="disqus_thread"></div>
-                <script type="text/javascript">
-                    /* * * CONFIGURATION VARIABLES * * */
-                    var disqus_shortname = 'pacesstore';
-
-                    /* * * DON'T EDIT BELOW THIS LINE * * */
-                    (function () {
-                        var dsq = document.createElement('script');
-                        dsq.type = 'text/javascript';
-                        dsq.async = true;
-                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                    })();
-                </script>
-                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+                <div class="col-md-2 col-sm-4 col-xs-4">
+                    <img data-src="holder.js/300x200" alt="300x200" class="img-responsive center-block" src="/img/h-6.jpg">
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 text-center center-block">
+                    <hr/>
+                    <input type="button" class="btn btn-lg btn-lg2 btn-success checkout-product-button" data-product="{{model.product._id}}" value="Commander ({{model.product.price}}€)" /> 
+                    <button type="button" class="btn btn-lg btn-lg2 btn-success add-to-cart-button" data-product="{{model.product._id}}"> <i class="glyphicon glyphicon-shopping-cart"></i></button>
+                    <p>Commandez et recevez ce cours par email au format .pdf immédiatement !</p>
+                </div>
+                <div class="col-md-12" id="productDescriptionFull">
+                    <h2 class="title-navbar-product">A propos de ce cours</h2>
+                    <p>{{{model.product.description}}}</p>
+                </div>   
+                <div class="clearfix"></div>
+                <div class="col-md-12">
+                    <h2 class="title-navbar-product">Ces contenus vous intéressent sûrement</h2>
+                    {{> productListBlock}}
+                </div>
             </div>
         </div>
+        <div class="col-md-3">
+            <div class="productMainColumn well well-lg">
+                <img src="/img/default-profile.png" class="img-responsive img-circle center-block">
+                <div class="clearfix"></div>
+                <div class="col-md-12">
+                    <p class="text-center">{{model.seller.account.displayName}} <small>( {{model.seller.sellCount}} ventes )</small></p>
+                    <p>De : {{model.seller.account.university.name}}</p>
+                    <div>{{{model.seller.account.description}}}</div>
 
+                </div>
+                <div class="col-md-12">
+                    <h2 class="title-navbar-product">Avis</h2>
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        /* * * CONFIGURATION VARIABLES * * */
+                        var disqus_shortname = 'pacesstore';
+
+                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                        (function () {
+                            var dsq = document.createElement('script');
+                            dsq.type = 'text/javascript';
+                            dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>
