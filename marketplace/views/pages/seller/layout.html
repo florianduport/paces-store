@@ -32,20 +32,18 @@
         <!-- Start Header/Navbar  -->
         {{> sellerNavbar}}
         <!-- End Header/Navbar  -->
-        <main>
-            <section class="section">
-                <!-- Start Main Content  -->
-                <div class="container-fluid ">
-                    <div class="row">
-                        <div class="col-md-12">
-                            {{> sellerSidebar}}
-                            {{{body}}}
-                        </div>
+        <section class="section">
+            <!-- Start Main Content  -->
+            <div class="container-fluid ">
+                <div class="row">
+                    <div class="col-md-12">
+                        {{> sellerSidebar}}
+                        {{{body}}}
                     </div>
                 </div>
-                <!-- End Main Content -->
-            </section>
-        </main>
+            </div>
+            <!-- End Main Content -->
+        </section>
         <div class="clearfix"></div>
         <!-- Start Footer -->
         {{> footer}}

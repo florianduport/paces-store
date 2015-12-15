@@ -14,8 +14,7 @@
         <!-- End Left Sidebar  -->
         <!-- Start Right Section  -->
         <div class="col-md-9 col-sm-8">
-            <div class="well">
-                <div class="col-md-12 well-sm">
+                <div class="col-md-12 well well-sm">
                     {{#if model.req.body.keywords}}
                     <h4 class='categories-names search-names pull-left'>Resultats de votre recherche "{{model.req.body.keywords}}"</h4>
                     {{else}}
@@ -28,11 +27,10 @@
                         <option data-icon="glyphicon-sort-by-attributes-alt" value="priceUp" {{#ifCond model.req.body '!==' undefined}}{{#ifCond model.req.body.sort '!==' undefined}}{{#ifCond model.req.body.sort '===' "priceUp"}}selected{{/ifCond}}{{/ifCond}}{{/ifCond}}> Prix décroissant</option>
                     </select>
                 </div>
-                <div class="clearfix"></div>
+                <!--<div class="clearfix"></div>-->
                 <div class="productList">
                     {{> productListBlock}}
                 </div>
-            </div>
             <!--<p><button type="submit" class="btn btn-large btn-block btn-blue" data-original-title=""> Load More</button></p>-->
         </div>
     </div>
