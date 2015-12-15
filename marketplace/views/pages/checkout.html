@@ -33,10 +33,10 @@
         <div class="col-md-4">
             <div class="card card-container">
                 <form method="post" class="checkoutForm" id="checkoutForm" action="/checkout/payWithNewCard">
-                    <input class="form-control" placeholder="Numéro de carte" type="text" name="number">
-                    <input class="form-control pull-left halfWidth" placeholder="MM/AA" type="text" name="expiry">
-                    <input class="form-control pull-left halfWidth" placeholder="CVC" type="text" name="cvc">
-                    <input class="form-control" placeholder="Nom du titulaire" type="text" name="name">
+                    <input required maxlength="20" class="form-control" placeholder="Numéro de carte" type="text" name="number">
+                    <input required maxlength="7" class="form-control pull-left halfWidth" placeholder="MM/AA" type="text" name="expiry">
+                    <input required maxlength="3" class="form-control pull-left halfWidth" placeholder="CVC" type="text" name="cvc">
+                    <input required class="form-control" placeholder="Nom du titulaire" type="text" name="name">
                     <input type="submit" value="Commander ({{model.shoppingcart.total}}€)" class="btn btn-lg btn-success postfix btn-pay">
                 </form>
             </div>

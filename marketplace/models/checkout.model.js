@@ -21,13 +21,12 @@ var CheckoutModel = {
                 callback(model);
             }
             else {
-                model.shoppingcart.products = products
+                model.shoppingcart.products = products;
                 model.shoppingcart.total = 0;
                 for (var i = model.shoppingcart.products.length - 1; i >= 0; i--) {
-                    model.shoppingcart.total = parseInt(model.shoppingcart.total) + parseInt(model.shoppingcart.products[i].price);
+                    model.shoppingcart.total = parseFloat(model.shoppingcart.total) + parseFloat(model.shoppingcart.products[i].price);
                 }
-                ;
-
+                
                 SchoolsHelper.loadSchool({model: model, callback: function (model) {
                         callback(model);
                     }});

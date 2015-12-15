@@ -31,8 +31,9 @@ var DownloadController = {
 
 		model.downloadOrder(req, res, archive, function(archive){
 
-
+                    if(archive){
 			archive.finalize();
+                    }
 
 		});
 	},

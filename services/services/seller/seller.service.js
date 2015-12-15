@@ -14,16 +14,22 @@ var SellerService = {
     * @return True : si l'utilisateur existe. Sinon False.
     */
     authenticateSeller : function(username, password, done){
+        
         DatabaseHelper.getDatabase(function(db){
             db.collection("Sellers", function(err, sellers){
                 if (err || !sellers)
                 {
+                    console.log("suce moi 1 fois")
                     return done(false);
                 }
                 //password should be sent with sha1 encryption
                 sellers.findOne({ username: username, password: password }, function(err, user){
                     if (err || !user)
                     {
+                        console.log("suce moi 2 fois")
+                        console.log(username)
+                        console.log(password)
+                        console.log(user)
                         return done(false);
                     }
                     return done(true);
@@ -148,36 +154,43 @@ var SellerService = {
     * @param done : la méthode de retour
     * @return le résultat de l'operation True / False
     */
-    createSeller : function(username, password, confirmedPassword, firstName, lastName, done){
+    createSeller : function(username, password, firstName, lastName, paymentInfos, done){
         try{
             DatabaseHelper.getDatabase(function(db){
 
                 if(username == "" ||
                     password == "" ||
-                    confirmedPassword == ""||
-                    password != confirmedPassword ||
                     firstName == "" ||
                     lastName == ""){
+                    console.log(username+" "+password+" "+confirmedPassword+" "+firstName+" "+lastName)
                     done(false);
+                } else {
+                    var sellerObject = {
+                        username : username,
+                        password : sha1(password),
+                        account : {
+                            firstName : firstName,
+                            lastName : lastName,
+                            paymentInfos : paymentInfos
+                        }
+                    };
+
+                    db.collection("Sellers", function(err, sellers){
+                        if(!err && sellers !== undefined){
+                            sellers.insert(sellerObject, { w: 0 });
+                            done(true);
+                        }
+                        else {
+
+                        console.log("mange mes couilles 2");
+                        console.log(sellers);
+                        
+                          done(false);
+                        }
+                    });
                 }
 
-                var sellerObject = {
-                    ussername : username,
-                    password : sha1(password),
-                    account : {
-                        firstName : firstName,
-                        lastName : lastName
-                    }
-                };
-
-                db.collection("Sellers", function(err, sellers){
-                    if(!err && sellers !== undefined && !sellers){
-                        sellers.insert(sellerObject, { w: 0 });
-                        done(true);
-                    }
-                    else
-                      done(false);
-                });
+                
             });
         }
         catch(err){

@@ -85,14 +85,18 @@ var SellerModel = {
                 req.body.username !== undefined &&
                 req.body.password !== undefined &&
                 req.body.passwordConfirmation !== undefined &&
-                req.body.passwordConfirmation == req.body.password) {
+                req.body.passwordConfirmation === req.body.password) {
 
-            AccountModel.createseller({
+            SellerModel.createseller({
                 username: req.body.username,
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 password: req.body.password
-            }, req, done);
+            }, req, function(){
+                
+                SellerModel.signIn(req.body.username, req.body.password, req, done);
+                
+            });
 
         } else {
             done(false);
@@ -132,7 +136,7 @@ var SellerModel = {
                                 } else {
                                     ServiceHelper.getService("seller", "createSeller", {data: {
                                             username: form.username,
-                                            password: sha1(form.password),
+                                            password: form.password,
                                             firstName: form.firstName,
                                             lastName: form.lastName,
                                             paymentInfos: {

@@ -13,13 +13,19 @@ var CheckoutController = {
 		}
 	}, 
 	payWithNewCard : function(req, res){
-		model.payWithNewCard(req, function(model){
-			if(!model){
-				res.render('pages/checkout/error', {model: model});
-			} else {
-				res.redirect('/checkout/wait/'+model.orderId);
-			}
-		});
+            
+                if(req.params.number && req.params.expiry && req.params.cvc && req.params.name){
+
+                    model.payWithNewCard(req, function(model){
+                            if(!model){
+                                    res.render('pages/checkout/error', {model: model});
+                            } else {
+                                    res.redirect('/checkout/wait/'+model.orderId);
+                            }
+                    });
+                } else {
+                    res.redirect('/checkout');
+                }
 	},
 
 	waitPayment : function(req, res){

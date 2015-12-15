@@ -84,3 +84,6 @@
     color : #c1c1c1;
     padding: 10px;
 }
+.sellerImg{
+    max-height: 100px;
+}

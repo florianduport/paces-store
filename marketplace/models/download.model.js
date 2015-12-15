@@ -39,16 +39,20 @@ var DownloadModel = {
 			for(var j = 0; j < 5; j++){ 
 				parentFolder += __dirname.split('/')[j]+"/"; 
 			}
-			
-			var files = [];
-
-			for (var i = order.products.length - 1; i >= 0; i--) {
+			try{
+                            for (var i = order.products.length - 1; i >= 0; i--) {
 				var folder = parentFolder+"files/products/"+order.products[i]["_id"]+"/";
 				var filenames = fs.readdirSync(folder);
 				for (var k = filenames.length - 1; k >= 0; k--) {
 					files.push(folder+filenames[k]);
 				};
-			}
+                            }
+                        } catch(e){
+                            callback(false);
+                        }
+			var files = [];
+
+			
 			//on stream closed we can end the request
 			res.on('close', function() {
 				console.log('Archive wrote %d bytes', archive.pointer());
