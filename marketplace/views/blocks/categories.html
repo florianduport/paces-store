@@ -2,31 +2,33 @@
     <div class="list-group categories-products">
         <input type="hidden" name="categoriesSelected" value="[]" />
 
-        <h4 class="list-group-item">Matières</h4>
-        {{#each model.categories}}
-        <div class="list-group-item">
-            <label for="categorie_{{this.category.shortName}}">
-                <h5>
-                    <input type="checkbox" name="categorie_{{this.category.shortName}}" class="categories-products" id="categorie_{{this.category.shortName}}" data-type="category" filter-element data-name="{{this.category.shortName}}" {{this.isChecked}}/>
+        <h4 class="list-group-item list-group-item-first" data-toggle="collapse" data-target="#matieres-cat">Matières </h4>
+        <div id="matieres-cat" class="collapsed collapse in">
+            {{#each model.categories}}
+            <div class="list-group-item">
+                <input type="checkbox" name="categorie_{{this.category.shortName}}" class="categories-products pull-right" id="categorie_{{this.category.shortName}}" data-type="category" filter-element data-name="{{this.category.shortName}}" />
+                <label for="categorie_{{this.category.shortName}}">
                     <span class="category-name">{{this.category.name}}</span>
-                    <span class="badge {{#if this.count}}badge-green{{/if}} pull-right">{{this.count}}</span>
+                    <span class="badge {{#if this.count}}badge-green{{/if}}">{{this.count}}</span>
+                    
                     <span class="small center-block">{{this.category.description}}</span>
-                </h5>
-            </label>
+                </label>
+            </div>
+            {{/each}}
         </div>
-        {{/each}}
-        <h4 class="list-group-item">Spécifiques</h4>
-        {{#each model.categoriesSpecifiques}}
-        <div class="list-group-item">
-            <label for="categorie_{{this.category.shortName}}">
-                <h5>
-                    <input type="checkbox" name="categorie_{{this.category.shortName}}" class="categories-products" id="categorie_{{this.category.shortName}}" data-type="category" filter-element data-name="{{this.category.shortName}}" value="0" /> 
+        <h4 class="list-group-item" data-toggle="collapse" data-target="#matieres-spe-cat">Spécifiques</h4>
+        <div id="matieres-spe-cat" class="collapsed collapse in">
+            {{#each model.categoriesSpecifiques}}
+            <div class="list-group-item">
+                <input type="checkbox" name="categorie_{{this.category.shortName}}" class="categories-products pull-right" id="categorie_{{this.category.shortName}}" data-type="category" filter-element data-name="{{this.category.shortName}}" /> 
+                <label for="categorie_{{this.category.shortName}}">
                     <span class="category-name">{{this.category.name}}</span>
-                    <span class="badge {{#if this.count}}badge-green{{/if}} pull-right">{{this.count}}</span>
+                    <span class="badge {{#if this.count}}badge-green{{/if}}">{{this.count}}</span>
+                    
                     <span class="small center-block">{{this.category.description}}</span>
-                </h5>
-            </label>
+                </label>
+            </div>
+            {{/each}}
         </div>
-        {{/each}}
     </div>
 </div>

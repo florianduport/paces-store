@@ -1,12 +1,13 @@
 <div class="container-fluid">
     <!-- Start Left Sidebar  -->
     <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12 well homepageDescription"> 
-            <div class="col-md-2 col-sm-4 col-xs-12"><img src="/img/logo-big.png" class="img-responsive center-block"/> </div>
-            <div class="col-md-10 col-sm-8 col-xs-12">
+        <div class="col-md-12 col-sm-12 col-xs-12 well homepageDescription">
+            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12"><img src="/img/logo-big.png" class="img-responsive center-block"/> </div>
+            <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12">
                 <h1 class="text-center">Le premier site dédié à la réussite de la PACES</h1>
-                <p class="text-center">Créé en 2012 par un étudiant ayant réussi sa PACES et devenu tuteur au tutorat durant deux années consécutives, Réussir ma PACES.fr est avant tout un site par et pour les étudiants. Soutenu par plusieurs universités, associations étudiantes et organismes de renoms, le site est devenu une valeur sûre, et compte 50 000 visiteurs par mois.</p>
+                <hr/>
             </div>
+            <p class="text-center col-lg-10 col-lg-offset-2 col-xs-12 col-md-9 col-md-offset-3 col-sm-12">Créé en 2012 par un étudiant ayant réussi sa PACES et devenu tuteur au tutorat durant deux années consécutives, Réussir ma PACES.fr est avant tout un site par et pour les étudiants. Soutenu par plusieurs universités, associations étudiantes et organismes de renoms, le site est devenu une valeur sûre, et compte 50 000 visiteurs par mois.</p>
         </div>
     </div>
     <div class="row">
@@ -14,23 +15,23 @@
         <!-- End Left Sidebar  -->
         <!-- Start Right Section  -->
         <div class="col-md-9 col-sm-8">
-                <div class="col-md-12 well well-sm">
-                    {{#if model.req.body.keywords}}
-                    <h4 class='categories-names search-names pull-left'>Resultats de votre recherche "{{model.req.body.keywords}}"</h4>
-                    {{else}}
-                    <h4 class='categories-names pull-left'>Toutes les fiches</h4>
-                    {{/if}}
-                    
-                    <select filter-element-change="filter-element-change" data-type="sort" id="tri" name="tri" class="selectpicker pull-right" data-header="Selectionner un tri">
-                        <option data-icon="glyphicon-star" value="dateDown" {{#ifCond model.req.body '!==' undefined}}{{#ifCond model.req.body.sort '!==' undefined}}{{#ifCond model.req.body.sort '===' "dateDown"}}selected{{/ifCond}}{{/ifCond}}{{/ifCond}}> Les plus récents</option>
-                        <option data-icon="glyphicon-sort-by-attributes" value="priceDown" {{#ifCond model.req.body '!==' undefined}}{{#ifCond model.req.body.sort '!==' undefined}}{{#ifCond model.req.body.sort '===' "priceDown"}}selected{{/ifCond}}{{/ifCond}}{{/ifCond}}> Prix croissant</option>
-                        <option data-icon="glyphicon-sort-by-attributes-alt" value="priceUp" {{#ifCond model.req.body '!==' undefined}}{{#ifCond model.req.body.sort '!==' undefined}}{{#ifCond model.req.body.sort '===' "priceUp"}}selected{{/ifCond}}{{/ifCond}}{{/ifCond}}> Prix décroissant</option>
-                    </select>
-                </div>
-                <!--<div class="clearfix"></div>-->
-                <div class="productList">
-                    {{> productListBlock}}
-                </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 filters-top">
+                {{#if model.req.body.keywords}}
+                <h4 class='categories-names search-names pull-left'>Resultats de votre recherche "{{model.req.body.keywords}}"</h4>
+                {{else}}
+                <h4 class='categories-names pull-left'>Toutes les fiches</h4>
+                {{/if}}
+
+                <select filter-element-change="filter-element-change" data-type="sort" id="tri" name="tri" class="selectpicker pull-right" data-header="Selectionner un tri">
+                    <option data-icon="glyphicon-star" value="dateDown" {{#ifCond model.req.body '!==' undefined}}{{#ifCond model.req.body.sort '!==' undefined}}{{#ifCond model.req.body.sort '===' "dateDown"}}selected{{/ifCond}}{{/ifCond}}{{/ifCond}}> Les plus récents</option>
+                    <option data-icon="glyphicon-sort-by-attributes" value="priceDown" {{#ifCond model.req.body '!==' undefined}}{{#ifCond model.req.body.sort '!==' undefined}}{{#ifCond model.req.body.sort '===' "priceDown"}}selected{{/ifCond}}{{/ifCond}}{{/ifCond}}> Prix croissant</option>
+                    <option data-icon="glyphicon-sort-by-attributes-alt" value="priceUp" {{#ifCond model.req.body '!==' undefined}}{{#ifCond model.req.body.sort '!==' undefined}}{{#ifCond model.req.body.sort '===' "priceUp"}}selected{{/ifCond}}{{/ifCond}}{{/ifCond}}> Prix décroissant</option>
+                </select>
+            </div>
+            <div class="clearfix"></div>
+            <div class="productList">
+                {{> productListBlock}}
+            </div>
             <!--<p><button type="submit" class="btn btn-large btn-block btn-blue" data-original-title=""> Load More</button></p>-->
         </div>
     </div>
@@ -38,12 +39,12 @@
 </div>
 
 {{#content "registerTopStylesheets"}}
-<link href="/css/productList.css" rel="stylesheet">       
+<link href="/css/productList.css" rel="stylesheet" type="text/css">       
 {{/content}}
 {{#content "registerBottomScripts"}}
-    <script src="/js/libs/animate.js"></script>
-    <script src="/js/productList.js"></script>
-    <script src="/js/searchbar.js"></script>
+<script src="/js/libs/animate.js"></script>
+<script src="/js/productList.js"></script>
+<script src="/js/searchbar.js"></script>
 {{/content}}
 {{#content "registerMeta"}}
 <title>PACES Store - {{model.currentSchool.name}}</title>
