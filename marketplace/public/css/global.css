@@ -44,19 +44,7 @@ body {
 .btn.active span.glyphicon {				
     opacity: 1;				
 }
-.thumbnail-price{
-    color: #00b22d;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 20px;
-    text-decoration: none;
-}
-.thumbnail .caption {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding-left: 0px;
-    padding-right: 0px;
-}
+
 main{
     height: auto !important;
     margin: 0 auto -41px;
@@ -138,4 +126,9 @@ main{
     border-radius: 0 !important;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+}
+.title-list{
+    background: #333333;
+    color: white;
+    font-weight: 400;
 }

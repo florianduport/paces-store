@@ -66,8 +66,9 @@
     color: #c1c1c1;
     border-top: 2px solid;
     border-color: rgba(0,39,59,.08);
-    padding-top: 13px;
+    padding: 8px;
     font-size: 1.5em;
+    background: #333333 none repeat scroll 0 0;
 }
 #productDescriptionFull{
     text-align: justify;
@@ -84,5 +85,5 @@
     padding: 10px;
 }
 .sellerImg{
-    max-height: 100px;
+    max-height: 130px;
 }

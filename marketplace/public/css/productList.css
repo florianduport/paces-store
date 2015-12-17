@@ -21,10 +21,14 @@ body {
     margin-top: 20px;
 }
 .filters-top {
-    background: linear-gradient(to bottom,#fff 0,#f8f8f8 100%);
-    margin-bottom: 10px;
+    background: #333333 none repeat scroll 0 0;
     border: 1px solid #dddddd;
+    color: white;
+    font-weight: 600 !important;
     margin-bottom: -1px;
+}
+.filters-top > h4 {
+    font-weight: 400 !important;
 }
 .filters-top > .bootstrap-select {
     margin-top: 2px;

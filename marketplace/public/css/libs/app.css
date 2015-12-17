@@ -39,10 +39,10 @@ body {
     padding: 4px;
     background-color: white;
     line-height: 20px;
-    border: 1px solid #ddd;
-    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    border: 1px solid #808080;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
     -webkit-transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
@@ -54,14 +54,26 @@ body {
 .thumbnail h3 {
     font-size: 17px;
     margin: 0px;
+    font-weight: 400;
 }
 .thumbnail p {
     font-size: 11px;
     color: #727272;
 }
-
-
-
+.thumbnail-price{
+    color: #00b22d;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 20px;
+    text-decoration: none;
+}
+.thumbnail .caption {
+    background: #333333 none repeat scroll 0 0;
+    color: white;
+    margin-bottom: 5px;
+    margin-top: 0;
+    padding: 5px;
+}
 
 .nav-header {
     display: block;
