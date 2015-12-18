@@ -14,7 +14,12 @@
 <div class="container-fluid productContainer">
     <div class="row">
         <div class="productMainColumn well well-lg">
-            <div class="col-md-8 col-sm-8 col-xs-12">
+            <div class="col-md-3 col-sm-4 col-xs-12">
+                <!--<img data-src="holder.js/300x200" alt="300x200" class="img-responsive center-block" src="/img/h-6.jpg">-->
+                <img src="/img/default-profile.png" class="sellerImg img-responsive img-circle center-block">
+                <p class="text-center">{{model.seller.account.displayName}} <small>( {{model.seller.sellCount}} ventes )</small></p>
+            </div>
+            <div class="col-md-9 col-sm-8 col-xs-12">
                 <div class='col-md-12 col-sm-12 col-xs-12'>
                     <h1 class="title-navbar-product">{{model.product.name}} </br><span class="label label-info">{{model.product.categories}}</span> <span class="label label-info">{{model.product.university}}</span></h1>
                 </div>
@@ -33,11 +38,6 @@
 
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12"><i class="glyphicon glyphicon-time"></i> Durée moyenne : {{model.product.time}} minutes</div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-12">
-                <!--<img data-src="holder.js/300x200" alt="300x200" class="img-responsive center-block" src="/img/h-6.jpg">-->
-                <img src="/img/default-profile.png" class="sellerImg img-responsive img-circle center-block">
-                <p class="text-center">{{model.seller.account.displayName}} <small>( {{model.seller.sellCount}} ventes )</small></p>
             </div>
             <div class="clearfix"></div>
 
