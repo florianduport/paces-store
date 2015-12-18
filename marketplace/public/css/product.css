@@ -34,6 +34,7 @@
 }
 .navbar-product  {
     z-index: 1029;
+    top: 40px;
     background: linear-gradient(to bottom,#fff 0,#f8f8f8 100%);  
     -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.55),0 1px 2px rgba(0,0,0,.25);
     box-shadow: inset 0 1px 0 rgba(255,255,255,.55),0 1px 2px rgba(0,0,0,.25);
@@ -60,7 +61,7 @@
 
 }
 .productContainer {
-
+    margin-top: 45px
 }
 .productContainer h2 {
     background: #333333 none repeat scroll 0 0;

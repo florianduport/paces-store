@@ -62,7 +62,7 @@ $(document).ready(function () {
 
     $("*[filter-element-change]").change(handleFilter);
     $("*[filter-element]").click(handleFilter);
-    if ($("input[name^=categorie_]:checked").length > 0 && $("#searchText").val() == "") {
+    if ($("input[name^=categorie_]:checked").length > 0 && $("#searchText").val() === "") {
         handleFilter();
     }
 
