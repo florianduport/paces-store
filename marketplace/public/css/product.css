@@ -63,12 +63,11 @@
     margin-top: 25px;
 }
 .productContainer h2 {
-    color: #c1c1c1;
-    border-top: 2px solid;
-    border-color: rgba(0,39,59,.08);
-    padding: 8px;
-    font-size: 1.5em;
     background: #333333 none repeat scroll 0 0;
+    color: white;
+    font-size: 1.5em;
+    font-weight: 400;
+    padding: 8px;
 }
 #productDescriptionFull{
     text-align: justify;

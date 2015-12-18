@@ -6,12 +6,16 @@
         <div id="matieres-cat" class="collapsed collapse in hidden-xs">
             {{#each model.categories}}
             <div class="list-group-item">
-                <input type="checkbox" name="categorie_{{this.category.shortName}}" class="categories-products pull-right" id="categorie_{{this.category.shortName}}" data-type="category" filter-element data-name="{{this.category.shortName}}" />
-                <label for="categorie_{{this.category.shortName}}">
-                    <span class="category-name">{{this.category.name}}</span>
-                    <span class="badge {{#if this.count}}badge-green{{/if}}">{{this.count}}</span>
-                    <span class="small center-block">{{this.category.description}}</span>
-                </label>
+                <div class="row">
+                    <label for="categorie_{{this.category.shortName}}" class="col-md-10 col-sm-10 col-xs-10">
+                        <span class="category-name">{{this.category.name}}</span>
+                        <span class="small center-block">{{this.category.description}}</span>
+                    </label>
+                    <div class="col-md-2 col-sm-2 col-xs-2">
+                        <span class="badge {{#if this.count}}badge-green{{/if}} center-block">{{this.count}}</span>
+                        <input type="checkbox" name="categorie_{{this.category.shortName}}" class="categories-products hidden" id="categorie_{{this.category.shortName}}" data-type="category" filter-element data-name="{{this.category.shortName}}" /> 
+                    </div>
+                </div>
             </div>
             {{/each}}
         </div>
@@ -19,12 +23,16 @@
         <div id="matieres-spe-cat" class="collapsed collapse in">
             {{#each model.categoriesSpecifiques}}
             <div class="list-group-item">
-                <input type="checkbox" name="categorie_{{this.category.shortName}}" class="categories-products pull-right" id="categorie_{{this.category.shortName}}" data-type="category" filter-element data-name="{{this.category.shortName}}" /> 
-                <label for="categorie_{{this.category.shortName}}">
-                    <span class="category-name">{{this.category.name}}</span>
-                    <span class="badge {{#if this.count}}badge-green{{/if}}">{{this.count}}</span>
-                    <span class="small center-block">{{this.category.description}}</span>
-                </label>
+                <div class="row">
+                    <label for="categorie_{{this.category.shortName}}" class="col-md-10 col-sm-10 col-xs-10">
+                        <span class="category-name">{{this.category.name}}</span>
+                        <span class="center-block">{{this.category.description}}</span>
+                    </label>
+                    <div class="col-md-2 col-sm-2 col-xs-2">
+                        <span class="badge {{#if this.count}}badge-green{{/if}} center-block">{{this.count}}</span>
+                        <input type="checkbox" name="categorie_{{this.category.shortName}}" class="categories-products hidden" id="categorie_{{this.category.shortName}}" data-type="category" filter-element data-name="{{this.category.shortName}}" /> 
+                    </div>
+                </div>
             </div>
             {{/each}}
         </div>

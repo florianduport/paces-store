@@ -21,12 +21,10 @@ body {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
 
 }
-.list-group-item:hover {
+div#matieres-cat * {
     cursor: pointer !important;
 }
-.list-group-item > label:hover{
-    cursor: pointer !important;
-}
+
 .category-name {
     width: 100%;
     font-size: 15px;
