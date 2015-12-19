@@ -132,6 +132,7 @@ main{
     background: #333333;
     color: white;
     font-weight: 400;
+    cursor: pointer;
 }
 .navbar-brand {
     padding: 0px 0px 0px 15px ;
