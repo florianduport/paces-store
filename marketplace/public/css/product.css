@@ -46,16 +46,17 @@
     cursor: pointer;
 }
 .element-navbar-product {
-    height: 40px;
+    height: 45px;
     vertical-align: middle;
     color : #c1c1c1;
-    padding-top: 10px;
+    padding-top: 12px;
     padding-left: 5px;
     padding-right: 5px;
+    font-size: 14px;
 }
 .element-navbar-product.active {
     color : #000000;
-    border-bottom: green 3px solid;
+    border-bottom: #43ac6a 3px solid;
 }
 .element-navbar-product-first{
 

@@ -4,7 +4,7 @@
             Présentation <i class="fa fa-user-md"></i>
         </div>
         <div class="element-navbar-product vcenter col-md-4 col-xs-4 col-sm-4 col-xs-4 text-center">
-            Description <i class="fa fa-folder-open"></i>
+            Description <i class="fa fa-list-ul"></i>
         </div>
         <div class="element-navbar-product vcenter col-md-4 col-sm-4 col-xs-4 text-center">
             Avis <i class="fa fa-heart"></i>
@@ -13,31 +13,41 @@
 </div>
 <div class="container-fluid productContainer">
     <div class="row">
-        <div class="productMainColumn well well-lg">
+        <div class="productMainColumn">
             <div class="col-md-3 col-sm-4 col-xs-12">
-                <!--<img data-src="holder.js/300x200" alt="300x200" class="img-responsive center-block" src="/img/h-6.jpg">-->
-                <img src="/img/default-profile.png" class="sellerImg img-responsive img-circle center-block">
-                <p class="text-center">{{model.seller.account.displayName}} <small>( {{model.seller.sellCount}} ventes )</small></p>
+                <div class="productSeller well well-lg">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <!--<img data-src="holder.js/300x200" alt="300x200" class="img-responsive center-block" src="/img/h-6.jpg">-->
+                            <img src="/img/default-profile.png" class="sellerImg img-responsive img-circle center-block">
+                            <p class="text-center">{{model.seller.account.displayName}} <small>( {{model.seller.sellCount}} ventes )</small></p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-9 col-sm-8 col-xs-12">
-                <div class='col-md-12 col-sm-12 col-xs-12'>
-                    <h1 class="title-navbar-product">{{model.product.name}} </br><span class="label label-info">{{model.product.categories}}</span> <span class="label label-info">{{model.product.university}}</span></h1>
-                </div>
-                <div class='col-md-12 col-sm-12 col-xs-12'>
-                    <div class="rating">
-                        {{#if model.product.rating}}
-                        {{#if model.product.rating.roundValue}}
-                        <div class="stars starrr" data-rating="{{model.product.rating.roundValue}}"></div>
-                        {{else}}
-                        <div class="stars starrr" data-rating="0"></div>
-                        {{/if}}
-                        {{else}}
-                        <div class="stars starrr" data-rating="0"></div>
-                        {{/if}}
+                <div class="productIntroduction well well-lg">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <h1 class="title-navbar-product">{{model.product.name}}</h1>
+                            <h3><span class="label label-danger">{{model.product.categories}}</span> <span class="label label-info">{{model.product.university}}</span></h3>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="rating">
+                                {{#if model.product.rating}}
+                                {{#if model.product.rating.roundValue}}
+                                <div class="stars starrr" data-rating="{{model.product.rating.roundValue}}"></div>
+                                {{else}}
+                                <div class="stars starrr" data-rating="0"></div>
+                                {{/if}}
+                                {{else}}
+                                <div class="stars starrr" data-rating="0"></div>
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12"><i class="glyphicon glyphicon-time"></i> Durée moyenne : {{model.product.time}} minutes</div>
                     </div>
-
                 </div>
-                <div class="col-md-12 col-sm-12 col-xs-12"><i class="glyphicon glyphicon-time"></i> Durée moyenne : {{model.product.time}} minutes</div>
             </div>
             <div class="clearfix"></div>
 
@@ -49,10 +59,13 @@
 
             <div class="productMainColumn well well-lg">
                 <div class="row">
-                    <div class="col-md-12 text-center center-block">
-                        <input type="button" class="btn btn-lg btn-lg2 btn-success checkout-product-button" data-product="{{model.product._id}}" value="Commander ({{model.product.price}}€)" /> 
-                        <button type="button" class="btn btn-lg btn-lg2 btn-success add-to-cart-button" data-product="{{model.product._id}}"> <i class="glyphicon glyphicon-shopping-cart"></i></button>
-                        <br/><br/><p><i class="glyphicon glyphicon-download-alt"></i> Commandez et recevez ce cours au format .pdf immédiatement !</p>
+                    <div class="col-md-12 center-block">
+                        <h2><i class="fa fa-suitcase"></i> Commander le produit</h2>
+                        <div class="text-center">
+                            <input type="button" class="btn btn-lg btn-lg2 btn-success checkout-product-button" data-product="{{model.product._id}}" value="Commander ({{model.product.price}}€)" /> 
+                            <button type="button" class="btn btn-lg btn-lg2 btn-success add-to-cart-button" data-product="{{model.product._id}}"> <i class="glyphicon glyphicon-shopping-cart"></i></button>
+                            <br/><br/><p><i class="glyphicon glyphicon-download-alt"></i> Commandez et recevez ce cours au format .pdf immédiatement !</p>
+                        </div>
                     </div>
                     <div class="col-md-12 col-lg-12" id="productDescriptionFull">
                         <h2 class="title-navbar-product"><i class="fa fa-list-ul"></i> A propos de ce cours</h2>
@@ -60,14 +73,20 @@
                         <h2 class="title-navbar-product"><i class="fa fa-heart"></i> Avis sur {{model.product.name}} </h2>
                         <div id="disqus_thread"></div>
                     </div>   
+                    <div class="col-md-12 center-block">
+                        <h2><i class="fa fa-suitcase"></i> Commander le produit</h2>
+                        <div class="text-center">
+                            <input type="button" class="btn btn-lg btn-lg2 btn-success checkout-product-button" data-product="{{model.product._id}}" value="Commander ({{model.product.price}}€)" /> 
+                            <button type="button" class="btn btn-lg btn-lg2 btn-success add-to-cart-button" data-product="{{model.product._id}}"> <i class="glyphicon glyphicon-shopping-cart"></i></button>
+                            <br/><br/><p><i class="glyphicon glyphicon-download-alt"></i> Commandez et recevez ce cours au format .pdf immédiatement !</p>
+                        </div>
+                    </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="">
-                            <h2 class="title-navbar-product">Ces contenus vous intéressent sûrement</h2>
-                            {{> productListBlock}}
-                        </div>
+                        <h2 class="title-navbar-product"><i class="fa fa-magic"></i> Ces contenus vous intéressent sûrement</h2>
+                        {{> productListBlock}}
                     </div>
                 </div>
             </div>

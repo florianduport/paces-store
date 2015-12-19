@@ -80,7 +80,7 @@ $(document).ready(function () {
             for (var val in arrActiveUE) {
 //                console.log(arrActiveUE[val]);
                 $('i[id="toggle_cat_' + arrActiveUE[val] + '"]').removeClass('fa-toggle-off');
-                $('i[id="toggle_cat_' + arrActiveUE[val] + '"]').addClass('fa-toggle-on');
+                $('i[id="toggle_cat_' + arrActiveUE[val] + '"]').addClass('fa-toggle-on toggle-active');
             }
         }
     }
@@ -88,7 +88,7 @@ $(document).ready(function () {
     toggleCategories();
 
     $(".categories-products *").click(function () {
-        $('#matieres-cat .fa-2x').removeClass('fa-toggle-on');
+        $('#matieres-cat .fa-2x').removeClass('fa-toggle-on toggle-active');
         $('#matieres-cat .fa-2x').addClass('fa-toggle-off');
         toggleCategories();
     });

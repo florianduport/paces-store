@@ -24,7 +24,9 @@ body {
 div#matieres-cat * {
     cursor: pointer !important;
 }
-
+.btn {
+    cursor: pointer !important;
+}
 .category-name {
     width: 100%;
     font-size: 15px;
@@ -32,6 +34,9 @@ div#matieres-cat * {
     margin-top: 10.5px;
     font-weight: 300;
     line-height: 1.1;
+}
+.toggle-active {
+    color: #fb5d35;
 }
 .list-group-item-first {
     margin-top: 0px !important;

@@ -1,38 +1,41 @@
 $(document).ready(function () {
-    
-    $(document).scroll(function(){
-         var titles = $(".title-navbar-product");
-         for (var i = titles.length - 1; i >= 0; i--) {
-             console.log($(titles[i]).offset().top -100);
-             if($(titles[i]).offset().top -100 < $(".navbar-product").offset().top){
+
+    $(document).scroll(function () {
+        var titles = $(".title-navbar-product");
+        for (var i = titles.length - 1; i >= 0; i--) {
+            console.log($(titles[i]).offset().top - 100);
+            if ($(titles[i]).offset().top - 100 < $(".navbar-product").offset().top) {
                 $($(".element-navbar-product")[i]).addClass("active");
 
                 for (var j = 0; j < i; j++) {
                     $($(".element-navbar-product")[j]).removeClass("active");
-                };
+                }
+                ;
                 break;
-             } else {
+            } else {
                 $($(".element-navbar-product")[i]).removeClass("active");
-             }
-         };
-         if($(".element-navbar-product.active").length == 0){
+            }
+        }
+        ;
+        if ($(".element-navbar-product.active").length == 0) {
             $($(".element-navbar-product")[0]).addClass("active");
-         }
+        }
     });
 
-    $(".element-navbar-product").click(function(){
-        if($(this).html() == $($(".element-navbar-product")[0]).html()){
-            $(document).scrollTop(0);
+    $(".element-navbar-product").click(function () {
+        if ($(this).html() == $($(".element-navbar-product")[0]).html()) {
+            $("html, body").animate({scrollTop: 0});
         } else {
             var index = 0;
             var element = $(this);
             for (var i = $(".element-navbar-product").length - 1; i >= 0; i--) {
-                if($(element).html() == $($(".element-navbar-product")[i]).html())
+                if ($(element).html() == $($(".element-navbar-product")[i]).html())
                     index = i;
-            };
+            }
+            ;
             console.log(index);
-            if(index != 0)
-                $(document).scrollTop($($(".title-navbar-product")[index]).offset().top - 100);
+            if (index != 0)
+                $("html, body").animate({scrollTop: "" + $($(".title-navbar-product")[index]).offset().top - 100 + ""});
         }
     });
 
@@ -40,7 +43,7 @@ $(document).ready(function () {
 
 });
 
-var loadStars = function(){
+var loadStars = function () {
     var __slice = [].slice;
     (function (e, t) {
         var n;
@@ -155,43 +158,43 @@ var loadStars = function(){
     });
     $('.starrr').on('starrr:change', function (e, value) {
 
-        if(!window.localStorage.getItem("rating"+$(".checkout-product-button").data('product')))
+        if (!window.localStorage.getItem("rating" + $(".checkout-product-button").data('product')))
         {
             $.post("/rateProduct/" + $(".checkout-product-button").data('product'), {
                 rateValue: value,
                 ajax: true
             }, function (result) {
-                if(result){
-                    window.localStorage.setItem("rating"+$(".checkout-product-button").data('product'), 1);
+                if (result) {
+                    window.localStorage.setItem("rating" + $(".checkout-product-button").data('product'), 1);
                 }
                 BootstrapDialog.show({
-                    title : "Merci !",
-                    type : BootstrapDialog.TYPE_SUCCESS,
-                    message : "Votre note a bien été prise en compte",
+                    title: "Merci !",
+                    type: BootstrapDialog.TYPE_SUCCESS,
+                    message: "Votre note a bien été prise en compte",
                     buttons: [
-                    {
-                        label: 'Continuer',
-                        cssClass: 'btn-success',
-                        action: function(dialogItself){
-                            dialogItself.close();
-                        }
-                    }]
+                        {
+                            label: 'Continuer',
+                            cssClass: 'btn-success',
+                            action: function (dialogItself) {
+                                dialogItself.close();
+                            }
+                        }]
                 });
             });
         } else {
             BootstrapDialog.show({
-                    title : "Attention",
-                    type : BootstrapDialog.TYPE_SUCCESS,
-                    message : "Vous avez déjà voté pour ce produit.",
-                    buttons: [
+                title: "Attention",
+                type: BootstrapDialog.TYPE_SUCCESS,
+                message: "Vous avez déjà voté pour ce produit.",
+                buttons: [
                     {
                         label: 'Continuer',
                         cssClass: 'btn-success',
-                        action: function(dialogItself){
+                        action: function (dialogItself) {
                             dialogItself.close();
                         }
                     }]
-                });
+            });
         }
 
     });
