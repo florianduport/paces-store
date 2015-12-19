@@ -29,7 +29,7 @@
                 <div class="productIntroduction well well-lg">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
-                            <h1 class="title-navbar-product">{{model.product.name}}</h1>
+                            <h1 class="title-navbar-product">{{model.product.name}} <span class="small">- {{model.product.price}}€</span></h1>
                             <h3><span class="label label-danger">{{model.product.categories}}</span> <span class="label label-info">{{model.product.university}}</span></h3>
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -62,8 +62,8 @@
                     <div class="col-md-12 center-block">
                         <h2><i class="fa fa-suitcase"></i> Commander le produit</h2>
                         <div class="text-center">
-                            <input type="button" class="btn btn-lg btn-lg2 btn-success checkout-product-button" data-product="{{model.product._id}}" value="Commander ({{model.product.price}}€)" /> 
-                            <button type="button" class="btn btn-lg btn-lg2 btn-success add-to-cart-button" data-product="{{model.product._id}}"> <i class="glyphicon glyphicon-shopping-cart"></i></button>
+                            <button type="button" class="btn btn-lg btn-success checkout-product-button" data-product="{{model.product._id}}">Télécharger ce contenu <i class="glyphicon glyphicon-download-alt"></i></button> 
+                            <button type="button" class="btn btn-lg btn-default add-to-cart-button" data-product="{{model.product._id}}"> <i class="glyphicon glyphicon-shopping-cart"></i></button>
                             <br/><br/><p><i class="glyphicon glyphicon-download-alt"></i> Commandez et recevez ce cours au format .pdf immédiatement !</p>
                         </div>
                     </div>
@@ -76,8 +76,8 @@
                     <div class="col-md-12 center-block">
                         <h2><i class="fa fa-suitcase"></i> Commander le produit</h2>
                         <div class="text-center">
-                            <input type="button" class="btn btn-lg btn-lg2 btn-success checkout-product-button" data-product="{{model.product._id}}" value="Commander ({{model.product.price}}€)" /> 
-                            <button type="button" class="btn btn-lg btn-lg2 btn-success add-to-cart-button" data-product="{{model.product._id}}"> <i class="glyphicon glyphicon-shopping-cart"></i></button>
+                            <button type="button" class="btn btn-lg btn-success checkout-product-button" data-product="{{model.product._id}}">Télécharger ce contenu <i class="glyphicon glyphicon-download-alt"></i></button> 
+                            <button type="button" class="btn btn-lg btn-default add-to-cart-button" data-product="{{model.product._id}}"> <i class="glyphicon glyphicon-shopping-cart"></i></button>
                             <br/><br/><p><i class="glyphicon glyphicon-download-alt"></i> Commandez et recevez ce cours au format .pdf immédiatement !</p>
                         </div>
                     </div>
