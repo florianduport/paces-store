@@ -38,9 +38,9 @@ $(document).ready(function () {
                             name += $(this).html();
                             i++;
                         });
-                if (!$(".categories-names").hasClass("search-names")) {
-                    $(".categories-names").html(name + ' ');
-                }
+//                if (!$(".categories-names").hasClass("search-names")) {
+//                    $(".categories-names").html(name + ' ');
+//                }
                 loadAddToCartButtons();
                 animationPlayed = true;
             }
@@ -48,7 +48,7 @@ $(document).ready(function () {
     };
 
     var handleFilter = function () {
-        if ($(this).data("type") == "category") {
+        if ($(this).data("type") === "category") {
             var categories = $("input[name^=categorie_]:checked");
             $("input[name=categoriesSelected]").val("[");
             for (var i = categories.length - 1; i >= 0; i--) {
@@ -96,15 +96,20 @@ $(document).ready(function () {
 //    $('.thumbnail').hover( function(){
 //        $(this).find('.thumbnail-seller').addClass('animated slideInUp');
 //    });
-
-
-    /* $(".categories-products").click(function () {
-     var name = "";
-     $("input[filter-element]:checked + name").each(
-     function (element) {
-     name += $(this).html();
-     
-     });
-     $(".categories-names").html(name);
-     });*/
+    function getNameCategories() {
+        if ($("i").hasClass("fa-toggle-on")) {
+        var name = "Les fiches pour ";
+            $(".categories-products i.fa-toggle-on").each(
+                    function (element) {
+                        name += $(this).attr('id').replace("toggle_cat_", "") + " ";
+                    });
+            $(".categories-names").html(name);
+        } else {
+            $(".categories-names").html("Toutes les fiches");
+        }
+    }
+    getNameCategories();
+    $(".categories-products").click(function () {
+        getNameCategories();
+    });
 });

@@ -22,11 +22,11 @@
         <div class="col-md-9 col-sm-8">
             <div class="col-md-12 col-sm-12 col-xs-12 filters-top">
 
-                {{#if model.req.body.keywords}}
-                <h4 class='categories-names search-names pull-left'>Resultats de votre recherche "{{model.req.body.keywords}}"</h4>
-                {{else}}
-                <h4 class='categories-names pull-left'>Toutes les fiches</h4>
-                {{/if}}
+                <!--{{#if model.req.body.keywords}}-->
+                <!--<h4 class="categories-names search-names pull-left">Résultats de votre recherche "{{model.req.body.keywords}}"</h4>-->
+                <!--{{else}}-->
+                <h4 class="categories-names pull-left">Toutes les fiches</h4>
+                <!--{{/if}}-->
 
                 <select filter-element-change="filter-element-change" data-type="sort" id="tri" data-width="auto" name="tri" class="selectpicker pull-right" data-style="btn-primary">
                     <option data-icon="glyphicon-calendar" value="dateDown" {{#ifCond model.req.body '!==' undefined}}{{#ifCond model.req.body.sort '!==' undefined}}{{#ifCond model.req.body.sort '===' "dateDown"}}selected{{/ifCond}}{{/ifCond}}{{/ifCond}}> Plus récents</option>
