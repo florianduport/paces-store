@@ -114,6 +114,9 @@ main{
 .badge-blue {
     background-color: #337ab7;
 }
+.badge-cart {
+    background-color: #43ac6a !important;
+}
 .thumbnail a {
     text-decoration: none;
 }
@@ -129,4 +132,10 @@ main{
     background: #333333;
     color: white;
     font-weight: 400;
+}
+.navbar-brand {
+    padding: 0px 0px 0px 15px ;
+}
+.bootstrap-dialog.type-success .modal-header {
+    background: #333333 none repeat scroll 0 0 !important;
 }
