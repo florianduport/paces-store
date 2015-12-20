@@ -10,7 +10,7 @@ var AccountController = {
 	        	res.render(model.type+'/pages/articles', {model: model});*/
 	    });
 	},
-	
+
     /**
     * checkSignIn : Vérifie si l'utilisateur est connecté
     * @param req : requête http
@@ -20,18 +20,19 @@ var AccountController = {
     checkSignIn : function(req, res, next){
         if(req.session.user !== undefined)
         {
+						console.log("neeext")
             next();
         }
         else
         {
             model.displaySignIn(req, function(model){
                 res.render('pages/account/signIn', {model: model});
-            }); 
+            });
         }
     },
 
     /**
-    * signIn : Connexion 
+    * signIn : Connexion
     * @param req : requête http
     * @param res : reponse http
     */
@@ -43,7 +44,7 @@ var AccountController = {
     },
 
     /**
-    * signUp : Création de compte 
+    * signUp : Création de compte
     * @param req : requête http
     * @param res : reponse http
     */
@@ -58,7 +59,7 @@ var AccountController = {
     },
 
     /**
-    * signUp : Création de compte 
+    * signUp : Création de compte
     * @param req : requête http
     * @param res : reponse http
     */
@@ -74,13 +75,13 @@ var AccountController = {
                 model.signIn(req.body.username, req.body.password, req, function(){
                     res.redirect(referer);
                 });
-                
+
             }
         });
     },
 
     /**
-    * signOut : Déconnexion 
+    * signOut : Déconnexion
     * @param req : requête http
     * @param res : reponse http
     */
@@ -90,8 +91,8 @@ var AccountController = {
     },
 
     createCustomer : function(req, res){
-    	if(req.session.user === undefined && 
-    		req.body.username !== undefined && 
+    	if(req.session.user === undefined &&
+    		req.body.username !== undefined &&
     		req.body.password !== undefined &&
     		req.body.firstName !== undefined &&
     		req.body.lastName !== undefined){
@@ -147,4 +148,3 @@ var AccountController = {
 };
 
 module.exports.AccountController = AccountController;
-

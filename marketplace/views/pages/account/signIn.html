@@ -28,7 +28,7 @@
                 <div class="col-md-6 col-md-offset-3 ">
                     <div class="card card-container">
                         <h2 class="text-center">Se connecter</h2>
-                        <form action="/seller/signIn" method="post" class="signinForm">
+                        <form action="/signIn" method="post" class="signinForm">
                             <span id="reauth-email" class="reauth-email"></span>
                             <input type="email" id="inputEmail" name="username" class="form-control" placeholder="Adresse Email" required autofocus>
                             <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Mot de passe" required>
@@ -50,7 +50,7 @@
 </div>
 
 {{#content "registerTopStylesheets"}}
-    <link href="/css/signIn.css" rel="stylesheet">       
+    <link href="/css/signIn.css" rel="stylesheet">
 {{/content}}
 {{#content "registerBottomScripts"}}
     <script src="/js/signIn.js"></script>
