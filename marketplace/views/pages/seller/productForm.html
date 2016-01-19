@@ -29,7 +29,7 @@
         </select>
         <div class="clearfix"></div>
         <label for="university" class="center-block">Université</label>
-        <select name="university" class="selectpicker show-tick center-block" data-style="btn-default form-control">
+        <select name="university" class="selectpicker show-tick center-block" data-style="btn-blue form-control">
             {{#each model.schools}}
             {{#if this.selected}}
             <option value="{{this.universityId}}" selected="selected">{{this.name}}</option>
@@ -40,7 +40,7 @@
         </select>
         <div class="clearfix"></div>
         <label for="categories" class="center-block">Catégorie</label>
-        <select name="categories" class="selectpicker show-tick center-block" data-style="btn-default form-control">
+        <select name="categories" class="selectpicker show-tick center-block" data-style="btn-blue form-control">
             {{#each model.categories}}
             {{#if this.selected}}
             <option value="{{this.shortName}}" selected="selected">{{this.name}}</option>

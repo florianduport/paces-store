@@ -1,17 +1,5 @@
-/* Enjoi Stylesheet  */
-
-/* -------------------------------------------------- 
-   Table of Contents
------------------------------------------------------
-:: Shared Styles
-:: Page Name 1
-:: Page Name 2
-*/
-
-
 
 @import url(http://fonts.googleapis.com/css?family=Roboto);
-
 
 
 body {
@@ -23,8 +11,6 @@ body {
     background-color: #DDDDDD;
 }
 
-
-
 .box1 {
     display: inline-block;
     width: 15em;
@@ -32,7 +18,6 @@ body {
     background: #eee;
     margin: .5em 1em .5em 0;
 }
-
 
 .thumbnail {
     display: block;
@@ -85,8 +70,6 @@ body {
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
     text-transform: uppercase;
 }
-
-
 
 
 .btn-blue {
@@ -223,12 +206,7 @@ body {
 }
 
 
-.carousel-inner > .item > img {
-    display: block;
-    line-height: 1;
-    height: 225px;
-    width: 600px;
-}
+
 
 /* Footer
 -------------------------------------------------- */
@@ -259,48 +237,9 @@ body {
     font-size:12px;
 }
 
-.arrow_box {
-    background-color:rgb(133,188,109);
-    -moz-box-shadow:0px 1px 1px rgba(255,255,255,0.2) ,inset 0px 2px 15px rgba(64,102,47,0.75);
-    -webkit-box-shadow:0px 1px 1px rgba(255,255,255,0.2) ,inset 0px 2px 15px rgba(64,102,47,0.75);
-    box-shadow:0px 1px 1px rgba(255,255,255,0.2) ,inset 0px 2px 15px rgba(64,102,47,0.75);
-    -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#33ffffff,Positive=true)";
-    filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#33ffffff,Positive=true);
-    padding: 21px;
-    position: relative;
-    border: 4px solid #A2C890;
-    max-width: 600px;
-    margin: 23px auto 20px;
-}
 
 
 
-.carousel {
-    position: relative;
-    margin-bottom: 0px;
-    line-height: 1;
-}
 
-
-.carousel-control {
-    position: absolute;
-    top: 40%;
-    left: 15px;
-    width: 40px;
-    height: 40px;
-    margin-top: -20px;
-    font-size: 60px;
-    font-weight: 100;
-    line-height: 30px;
-    color: #ffffff;
-    text-align: center;
-    background: #F3984D;
-    border: 3px solid #ffffff;
-    -webkit-border-radius: 23px;
-    -moz-border-radius: 23px;
-    border-radius: 23px;
-    opacity: 0.7;
-    filter: alpha(opacity=50);
-}
 
 

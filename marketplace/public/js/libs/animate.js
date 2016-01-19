@@ -22,7 +22,6 @@ $(document).ready(function () {
 //tous les éléments à animer sont à ajouter ici
 //cf classes d'animations de ANIMATE.CSS
 var animationArray = [
-    {selector: ".homepageDescription", animation: "fadeInUp", outerHeight: 50, timeout: 0, count: 1},
     {selector: ".productMainColumn", animation: "fadeInUp", outerHeight: 50, timeout: 0, count: 1},
 ];
 

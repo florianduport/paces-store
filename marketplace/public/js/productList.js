@@ -75,41 +75,30 @@ $(document).ready(function () {
     }
 
     function toggleCategories() {
+
         var arrActiveUE = JSON.parse($('#categoriesSelected').val());
         if (arrActiveUE.length > 0) {
+            var name = "Les contenus pour ";
+            var i = 0;
             for (var val in arrActiveUE) {
+                if (i !== 0) {
+                    name += ", ";
+                }
 //                console.log(arrActiveUE[val]);
-                $('i[id="toggle_cat_' + arrActiveUE[val] + '"]').removeClass('fa-toggle-off');
-                $('i[id="toggle_cat_' + arrActiveUE[val] + '"]').addClass('fa-toggle-on toggle-active');
+                name += arrActiveUE[val];
+                $('#toggle_cat_' + arrActiveUE[val]).addClass('bg-grey toggle-on');
+                i++;
             }
+            $(".categories-names").html(name);
+        } else {
+            $(".categories-names").html("Tout le contenu");
         }
     }
-
     toggleCategories();
 
-    $(".categories-products *").click(function () {
-        $('#matieres-cat .fa-2x').removeClass('fa-toggle-on toggle-active');
-        $('#matieres-cat .fa-2x').addClass('fa-toggle-off');
+    $(".list-group-item").click(function (e) {
+        $(this).removeClass('bg-grey toggle-on');
         toggleCategories();
     });
 
-//    $('.thumbnail').hover( function(){
-//        $(this).find('.thumbnail-seller').addClass('animated slideInUp');
-//    });
-    function getNameCategories() {
-        if ($("i").hasClass("fa-toggle-on")) {
-        var name = "Les fiches pour ";
-            $(".categories-products i.fa-toggle-on").each(
-                    function (element) {
-                        name += $(this).attr('id').replace("toggle_cat_", "") + " ";
-                    });
-            $(".categories-names").html(name);
-        } else {
-            $(".categories-names").html("Toutes les fiches");
-        }
-    }
-    getNameCategories();
-    $(".categories-products").click(function () {
-        getNameCategories();
-    });
 });
