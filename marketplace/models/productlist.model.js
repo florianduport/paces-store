@@ -101,7 +101,9 @@ var ProductListModel = {
 				callback(false);
 			else {
 				model.products = products;
-				ProductListModel.loadCategories(model, filter, callback);
+				ProductListModel.loadCategories(model, filter, function(model){
+                                    ProductListModel.loadSellers(model, callback);
+                                });
 			}
 
 		});	
@@ -151,7 +153,8 @@ var ProductListModel = {
 				}
 				model.categories = categoriesList;
 				model.categoriesSpecifiques = categoriesSpecifiquesList;
-				ProductListModel.loadSellers(model, callback);
+				//ProductListModel.loadSellers(model, callback);
+                                callback(model);
 
 			});
 		});

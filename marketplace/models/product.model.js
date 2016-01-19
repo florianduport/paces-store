@@ -1,20 +1,27 @@
 var ServiceHelper = require('../helpers/service.helper').ServiceHelper;
 var SchoolsHelper = require('../helpers/schools.helper').SchoolsHelper;
+var ProductListModel = require('./productlist.model').ProductListModel;
 
 var ProductModel = {
     initialize: function (req, callback) {
-        ServiceHelper.getService('product', 'getProductById', {data: {"productId": req.params.product}, method: "POST"}, function (product) {
-            if (!product)
-                callback(false);
-            else {
-                this.product = product;
-                var model = this;
-                model.req = req;
-                model.callback = callback;
-                ProductModel._getSeller(model, function (model) {
-                    SchoolsHelper.loadSchool({model: model, filter: {university: SchoolsHelper.loadUniversity(model.req)}, callback: model.callback});
-                });
-            }
+        var model = this;
+        model.req = req;
+        ProductListModel.loadCategories(model, {}, function(modelLIst){
+            ServiceHelper.getService('product', 'getProductById', {data: {"productId": req.params.product}, method: "POST"}, function (product) {
+                if (!product)
+                    callback(false);
+                else {
+                    this.product = product;
+                    var model = this;
+                    model.req = req;
+                    model.categories = modelLIst.categories;
+                    model.categoriesSpecifiques = modelLIst.categoriesSpecifiques;
+                    model.callback = callback;
+                    ProductModel._getSeller(model, function (model) {
+                        SchoolsHelper.loadSchool({model: model, filter: {university: SchoolsHelper.loadUniversity(model.req)}, callback: model.callback});
+                    });
+                }
+            });
         });
     },
     _getSeller: function (model, callback) {
@@ -101,6 +108,39 @@ var ProductModel = {
             callback(result);
         });
     }
+    /*loadCategories : function(model, filter, callback){
+            ServiceHelper.getService('category', 'getCategories', {data: {}, method : "POST"}, function(categories){
+                    var categoriesList = [];
+                    var categoriesSpecifiquesList = [];
+
+                    var categoriesFilterList = "[";
+                    for (var i = categories.length - 1; i >= 0; i--) {
+                            categoriesFilterList +=  (i == categories.length - 1 ? "" : ",")+"\""+(categories[i].shortName)+"\"";
+                    };
+                    categoriesFilterList += "]";
+
+                    var order = {order : "price", reversed : true};
+
+                    var filter = ProductListModel._getFilter(model.req);
+                    filter.categories = undefined;
+
+                    ServiceHelper.getService('productList', 'getProductsByFilter', {data: {filter : filter, order : order}, method : "POST"}, function(products){
+
+                            if(categories.length > 0){
+                                    for (var i = 0; i < categories.length; i++) {
+                                            if(categories[i].isSpecific !== undefined && categories[i].isSpecific == true)
+                                                    categoriesSpecifiquesList.push(ProductListModel._getCategorieObject(model,categories[i], products));
+                                            else
+                                                    categoriesList.push(ProductListModel._getCategorieObject(model,categories[i], products));
+                                    };
+                            }
+                            model.categories = categoriesList;
+                            model.categoriesSpecifiques = categoriesSpecifiquesList;
+                            ProductListModel.loadSellers(model, callback);
+
+                    });
+            });
+    }*/
 };
 
 module.exports.ProductModel = ProductModel;
