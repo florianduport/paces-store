@@ -93,7 +93,6 @@ var Routes = {
 		app.post('/seller/changePassword', SellerController.changePassword);
 		app.get('/seller/forgottenPassword', SellerController.displayForgottenPassword);
 		app.post('/seller/forgottenPassword', SellerController.forgottenPassword);
-		app.post('/seller/createSeller', SellerController.createCustomer);
 		app.get('/seller/products', SellerController.displayProducts);
 		app.get('/seller/product/:product', SellerController.editProduct);
 		app.get('/seller/addnewproduct', SellerController.addProduct);

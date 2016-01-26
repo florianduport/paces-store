@@ -19,17 +19,17 @@ var SellerService = {
             db.collection("Sellers", function(err, sellers){
                 if (err || !sellers)
                 {
-                    console.log("suce moi 1 fois")
+//                    console.log("suce moi 1 fois")
                     return done(false);
                 }
                 //password should be sent with sha1 encryption
                 sellers.findOne({ username: username, password: password }, function(err, user){
                     if (err || !user)
                     {
-                        console.log("suce moi 2 fois")
-                        console.log(username)
-                        console.log(password)
-                        console.log(user)
+//                        console.log("suce moi 2 fois")
+//                        console.log(username)
+//                        console.log(password)
+//                        console.log(user)
                         return done(false);
                     }
                     return done(true);
@@ -154,21 +154,24 @@ var SellerService = {
     * @param done : la méthode de retour
     * @return le résultat de l'operation True / False
     */
-    createSeller : function(username, password, firstName, lastName, paymentInfos, done){
+    createSeller : function(displayName, username, password, firstName, lastName, paymentInfos, done){
         try{
             DatabaseHelper.getDatabase(function(db){
 
-                if(username == "" ||
+                if(displayName == "" ||
+                    username == "" ||
                     password == "" ||
                     firstName == "" ||
                     lastName == ""){
-                    console.log(username+" "+password+" "+confirmedPassword+" "+firstName+" "+lastName)
+//                    console.log(username+" "+password+" "+confirmedPassword+" "+firstName+" "+lastName)
                     done(false);
                 } else {
                     var sellerObject = {
+                        
                         username : username,
                         password : sha1(password),
-                        account : {
+                        account : { 
+                            displayName : displayName,
                             firstName : firstName,
                             lastName : lastName,
                             paymentInfos : paymentInfos
@@ -182,8 +185,8 @@ var SellerService = {
                         }
                         else {
 
-                        console.log("mange mes couilles 2");
-                        console.log(sellers);
+//                        console.log("mange mes couilles 2");
+//                        console.log(sellers);
                         
                           done(false);
                         }

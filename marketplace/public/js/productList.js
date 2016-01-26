@@ -6,28 +6,33 @@ $(document).ready(function () {
         var jsonPosition = JSON.parse($.cookie("position").substring(2));
 
 
-        $(".productList").addClass("animated bounceOutLeft");
+        $(".thumbnail").addClass("animated fadeOut");
         var animationPlayed = false;
+        var michelPlayer = false;
         $.post("/list/" + jsonPosition.universityId, {
             categories: $("input[name=categoriesSelected]").val(),
             keywords: $("#searchText").val(),
             sort: $("*[data-type=sort] option:selected").val(),
             ajax: true
         }, function (data) {
-
-            $(".productList").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function () {
+            $(".thumbnail").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function () {
                 playAnimation(data);
+                console.log('micheloo');
+                michelPlayer = true;
             });
             //in case there's no animation end
-            setTimeout(function () {
-                playAnimation(data);
-            }, 2000);
+            if (michelPlayer === true) {
+                setTimeout(function () {
+                    console.log('michel');
+                    playAnimation(data);
+                }, 2000);
+            }
         });
 
         var playAnimation = function (data) {
             if (!animationPlayed) {
-                $(".productList").removeClass("animated bounceOutLeft");
-                $(".productList").addClass("animated bounceInRight");
+                $(".thumbnail").removeClass("animated fadeOut");
+                $(".thumbnail").addClass("animated fadeIn");
                 $(".productList").html(data);
                 var name = "";
                 var i = 0;

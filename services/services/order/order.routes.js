@@ -45,6 +45,18 @@ var OrderRoutes = {
             });
         });
 
+        app.post(configuration.routes.order.getOrdersBySeller, function(req, res){
+            //check parameters
+            if(req.body === undefined || !req.body || req.body.seller === undefined){
+                LoggerService.logError("services", "Wrong get orders by id parameters", {seller : req.body.seller !== undefined ? req.body.orderId : ""});
+                console.log("wrong parameters for getOrdersBySeller");
+                Base.send(req, res, false);
+            }
+            OrderService.getOrdersBySeller(req.body.seller, function(result){
+                Base.send(req, res, result);
+            });
+        });
+
         app.post(configuration.routes.order.createOrder, HmacHelper.verifyRequest, function(req, res){
             //check parameters
             if(req.body === undefined || !req.body || req.body.products === undefined || req.body.user === undefined){

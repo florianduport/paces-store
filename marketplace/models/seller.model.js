@@ -18,14 +18,19 @@ var SellerModel = {
                 else
                     model.seller.sellCount = result.count;
 
-                ServiceHelper.getService("payment", "getWalletInfos", {data: {paymentInfos: model.seller.account.paymentInfos}, method: "POST"}, function (walletInfos) {
-                    if (walletInfos)
-                        model.seller.sellBalance = walletInfos[0].Balance.Amount;
+                ServiceHelper.getService("order", "getOrdersBySeller", {data: {seller: req.session.seller}, method: "POST"}, function (result) {
+                    model.seller.orders = result;
 
-                    ConfigurationHelper.getConfig({application: 'marketplace', done: function (configuration) {
-                            model.withdrawEnabled = configuration.minWithdrawAmount < model.seller.sellBalance;
-                            callback(model);
-                        }});
+                    ServiceHelper.getService("payment", "getWalletInfos", {data: {paymentInfos: model.seller.account.paymentInfos}, method: "POST"}, function (walletInfos) {
+                        if (walletInfos)
+                            model.seller.sellBalance = walletInfos[0].Balance.Amount;
+
+                        ConfigurationHelper.getConfig({application: 'marketplace', done: function (configuration) {
+                                model.withdrawEnabled = configuration.minWithdrawAmount < model.seller.sellBalance;
+                                callback(model);
+                            }});
+
+                    });
 
                 });
 
@@ -80,6 +85,7 @@ var SellerModel = {
     },
     signUp: function (req, done) {
         if (req.body !== undefined &&
+                req.body.displayName !== undefined &&
                 req.body.firstName !== undefined &&
                 req.body.lastName !== undefined &&
                 req.body.username !== undefined &&
@@ -89,13 +95,16 @@ var SellerModel = {
 
             SellerModel.createseller({
                 username: req.body.username,
+                displayName: req.body.displayName,
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 password: req.body.password
-            }, req, function(){
-                
-                SellerModel.signIn(req.body.username, req.body.password, req, done);
-                
+            }, req, function (response) {
+                if (!response) {
+                    done(false);
+                } else {
+                    SellerModel.signIn(req.body.username, req.body.password, req, done);
+                }
             });
 
         } else {
@@ -112,18 +121,25 @@ var SellerModel = {
                     if (bannedDomains[i] == domainToCheck)
                         isBannedDomain = true;
                 }
-                ;
+
 
                 if (isBannedDomain) {
+                    console.log('mange mes mains 1');
                     done(false);
                 } else {
+
+                    console.log('mange mes mains 2');
                     ServiceHelper.getService("seller", "getSellerByUsername", {data: {
                             username: form.username
                         }, method: "POST"}, function (response) {
                         if (response) {
                             //seller already exist !
+
+                            console.log('mange mes mains 4');
                             done(false);
                         } else {
+
+                            console.log('mange mes mains 5');
                             ServiceHelper.getService("payment", "createWallet", {data: {
                                     infos: {
                                         username: form.username,
@@ -137,6 +153,7 @@ var SellerModel = {
                                     ServiceHelper.getService("seller", "createSeller", {data: {
                                             username: form.username,
                                             password: form.password,
+                                            displayName: form.displayName,
                                             firstName: form.firstName,
                                             lastName: form.lastName,
                                             paymentInfos: {
@@ -278,19 +295,19 @@ var SellerModel = {
 
                         //var folder = config.parentFolder + "files/products/" + model.product["_id"] + "/";
 
-                        try{
-                          var folder = __dirname+"/../files/products/" + model.product["_id"] + "/";
-                          var filenames = fs.readdirSync(folder);
-                          for (var k = filenames.length - 1; k >= 0; k--) {
-                              files.push(filenames[k]);
-                          }
-                          ;
+                        try {
+                            var folder = __dirname + "/../files/products/" + model.product["_id"] + "/";
+                            var filenames = fs.readdirSync(folder);
+                            for (var k = filenames.length - 1; k >= 0; k--) {
+                                files.push(filenames[k]);
+                            }
+                            ;
 
-                          if (files.length > -1) {
-                              model.product.file = files[0];
-                          }
-                        } catch(err){
-                          console.log("file not found for product");
+                            if (files.length > -1) {
+                                model.product.file = files[0];
+                            }
+                        } catch (err) {
+                            console.log("file not found for product");
                         }
 
 
@@ -336,35 +353,35 @@ var SellerModel = {
         }
         var file = req.files !== undefined && req.files.productFile !== undefined ? req.files.productFile : undefined;
         console.log(req.files);
-        var saveFile = function(callback, productId){
-          console.log(productId);
-          if(file !== undefined){
-            //fs.unlink(__dirname+"/../files/products/"+productId+"/", function (err) {
-              try{
-                fs.readFile(file.path, function (err, data) {
-                  if(err)
+        var saveFile = function (callback, productId) {
+            console.log(productId);
+            if (file !== undefined) {
+                //fs.unlink(__dirname+"/../files/products/"+productId+"/", function (err) {
+                try {
+                    fs.readFile(file.path, function (err, data) {
+                        if (err)
+                            console.log(err);
+                        var newPath = __dirname + "/../files/products/" + productId + "/" + file.name;
+                        if (!fs.existsSync(__dirname + "/../files/products/" + productId + "/")) {
+                            fs.mkdirSync(__dirname + "/../files/products/" + productId + "/");
+                        }
+                        fs.writeFile(newPath, data, function (err) {
+                            console.log('writefile');
+                            if (err)
+                                console.log(err);
+                            callback(true);
+                        });
+                    });
+                } catch (err) {
                     console.log(err);
-                  var newPath = __dirname+"/../files/products/"+productId+"/"+file.name;
-                  if (!fs.existsSync(__dirname+"/../files/products/"+productId+"/")){
-                      fs.mkdirSync(__dirname+"/../files/products/"+productId+"/");
-                  }
-                  fs.writeFile(newPath, data, function (err) {
-                    console.log('writefile');
-                    if(err)
-                      console.log(err);
-                    callback(true);
-                  });
-                });
-              } catch(err){
-                console.log(err);
-                console.log('err');
-                callback(false);
-              }
-            //});
+                    console.log('err');
+                    callback(false);
+                }
+                //});
 
-          } else {
-            callback(true);
-          }
+            } else {
+                callback(true);
+            }
         }
 
         if (req.body["_id"] !== undefined && req.body["_id"] !== "") {
@@ -372,7 +389,7 @@ var SellerModel = {
             product.id = req.body["_id"];
 
             ServiceHelper.getService('product', 'updateProduct', {data: product, method: "POST"}, function (productId) {
-              saveFile(callback, productId);
+                saveFile(callback, productId);
             });
         } else {
 
