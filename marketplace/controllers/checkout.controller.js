@@ -16,7 +16,6 @@ var CheckoutController = {
   },
   payWithNewCard: function(req, res) {
     if (req.body.number && req.body.expiry && req.body.cvc && req.body.name) {
-
       model.payWithNewCard(req, function(model) {
         if (!model) {
           res.render('pages/checkout/error', {

@@ -1,20 +1,19 @@
 var model = require('../models/homepage.model').HomepageModel,
-html = require('express-handlebars'),
-promise = require('promise');
+  html = require('express-handlebars'),
+  promise = require('promise');
 var HomepageController = {
 
-	initialize : function(req, res){
+  initialize: function(req, res) {
 
-		HomepageController.app;
+    HomepageController.app;
 
-	    model.initialize(req, res, function(model){
-	    	res.render('pages/homepage', {
-	    		model: model
-	    	});
-	    });
-	}
+    model.initialize(req, res, function(model) {
+      res.render('pages/homepage', {
+        model: model
+      });
+    });
+  }
 
 };
 
 module.exports.HomepageController = HomepageController;
-
