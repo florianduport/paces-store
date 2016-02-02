@@ -49,8 +49,9 @@ var AccountController = {
    */
   displaySignUp: function(req, res) {
     model.displaySignUp(req, function(model) {
-      if (req.body !== undefined && req.body.ajax == "true") {
-        res.render('pages/account/signUp', {
+      if (req.body !== undefined && req.body.ajax === "true") {
+          model.isNotAjax = false;
+          res.render('pages/account/signUp', {
           model: model,
           layout: null
         });

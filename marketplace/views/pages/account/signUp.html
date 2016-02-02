@@ -1,4 +1,5 @@
-{{#if model.error}}
+{{#if model.error }}
+{{#if model.isNotAjax }}
 <nav class="navbar-signin">
     <div class="container">
         <div class="row">
@@ -23,6 +24,7 @@
     </div>
 </nav>
 <div class="signInContainer container">
+    {{/if}}
     {{/if}}
     <div class="row">
         <div class="col-md-12 ">
@@ -58,10 +60,11 @@
         </div>
     </div>
     {{#if model.error}}
+    {{#if model.isNotAjax }}
 </div>
 
 {{#content "registerTopStylesheets"}}
-<link href="/css/signIn.css" rel="stylesheet">       
+<link href="/css/signIn.css" rel="stylesheet" />       
 {{/content}}
 {{#content "registerBottomScripts"}}
 <script src="/js/signIn.js"></script>
@@ -70,4 +73,5 @@
 {{#content "registerMeta"}}
 <title>PACES Store - Connexion</title>
 {{/content}}
+{{/if}}
 {{/if}}
