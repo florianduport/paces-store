@@ -136,11 +136,25 @@ main{
 .title-list{
     background: #333333;
     color: white;
-    font-weight: 400;
+    font-weight: 300;
     cursor: pointer;
 }
 .navbar{
 
+}
+.badge-warning {
+    background-color: #ff9226;
+}
+.btn-warning{
+    background-color: #ff9226;
+}
+.btn-success {
+    background: rgba(0, 0, 0, 0) linear-gradient(#35c350, #03b525) repeat scroll 0 0;
+    border: 1px solid #00b22d;
+    font-weight: 700;
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    font-size: 20px;
 }
 #carouselHome {
     margin-bottom: 20px;
