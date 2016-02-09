@@ -1,9 +1,13 @@
 html { height: 100% }
+
 body {
     height: 100%;
     font-family: "Roboto",Helvetica,Arial,sans-serif;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     padding-top: 60px;
+}
+h4, .h4 {
+    font-size: 14px;
 }
 .categories-products > div > label {
     width: 100%;   
@@ -98,7 +102,7 @@ main{
     /*height: 34px;*/
 }
 .thumbnail-ue {
-    /*height: 34px;*/
+    color: #ff9226;
 }
 .thumbnail:hover .thumbnail-ue {
     /*height: 0px;*/
@@ -111,17 +115,18 @@ main{
     display: block;
 }*/
 .badge-green{
-    background-color: #5cb85c;
+    background-color: #00b22d;
+    min-width: 28px;
 }
 .badge-warning{
-    background-color: #fb5d35;
+    background-color: #ff9226;
+    min-width: 28px;
 }
 .badge-blue {
     background-color: #337ab7;
+    min-width: 28px;
 }
-.badge-cart {
-    background-color: #43ac6a !important;
-}
+
 .thumbnail a {
     text-decoration: none;
 }

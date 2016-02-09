@@ -12,7 +12,7 @@
                         <span class="small center-block">{{this.category.description}}</span>
                     </label>
                     <label class="col-md-2 col-sm-3 col-xs-2" for="categorie_{{this.category.shortName}}">
-                        <span class="badge {{#if this.count}}badge-green{{/if}} center-block">{{this.count}}</span>
+                        <span class="badge {{#if this.count}}badge-green{{else}} badge-blue {{/if}} center-block">{{this.count}}</span>
                         <input type="checkbox" name="categorie_{{this.category.shortName}}" class="categories-products hidden" id="categorie_{{this.category.shortName}}" data-type="category" filter-element data-name="{{this.category.shortName}}"  /> 
                     </label>
                 </div>

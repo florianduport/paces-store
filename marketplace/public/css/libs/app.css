@@ -24,6 +24,7 @@ body {
     padding: 4px;
     background-color: white;
     line-height: 20px;
+    font-size: 13px;
     border: 1px solid #dddddd;
     -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
@@ -37,7 +38,7 @@ body {
     border: 1px solid #66afe9;
 }
 .thumbnail h3 {
-    font-size: 17px;
+    font-size: 13px;
     margin: 0px;
     font-weight: 400;
 }
