@@ -62,7 +62,8 @@
 
 }
 .productContainer {
-    margin-top: 45px
+    margin-top: 45px;
+    background-color: #fff;
 }
 .productContainer h2 {
     background: #333333 none repeat scroll 0 0;
