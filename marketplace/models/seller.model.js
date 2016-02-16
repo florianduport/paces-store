@@ -506,48 +506,19 @@ var SellerModel = {
     });
   },
   editAccount: function(req, callback) {
+    
     var model = this;
+    
     ServiceHelper.getService("seller", "getSellerByUsername", {
       data: {
         username: req.session.seller
       }
     }, function(seller) {
 
-
-
-    var file = req.files !== undefined && req.files.pictureFile !== undefined ? req.files.pictureFile : undefined;
-
-
+      var file = req.files !== undefined && req.files.pictureFile !== undefined ? req.files.pictureFile : undefined;
+      console.log(file);
       var updatedSeller = seller;
-      if (file !== undefined) {
-        try {
-          fs.readFile(file.path, function(err, data) {
-            if (err)
-              console.log(err);
-            var newPath = __dirname + "/../public/img/sellers/" + seller["_id"] + "/" + file.name;
-            if (!fs.existsSync(__dirname + "/../public/img/sellers/" + seller["_id"] + "/")) {
-              fs.mkdirSync(__dirname + "/../public/img/sellers/" + seller["_id"] + "/");
-            }
-            fs.writeFile(newPath, data, function(err) {
-              if (err)
-                console.log(err);
-              
-              updatedSeller.account.picture = "/img/sellers/"+seller["_id"]+"/"+file.name;
-              
-              editAccountInternal();
-            });
-          });
-        } catch (err) {
-          callback(false);
-        }
-
-      } else {
-        updatedSeller.account.picture = seller.account.picture;
-        editAccountInternal();
-      } 
-
-      console.log("YOOOO");
-      console.log(updatedSeller.account.picture);
+      
       
       var editAccountInternal = function(){
         updatedSeller.account.displayName = req.body["displayName"];
@@ -578,6 +549,38 @@ var SellerModel = {
           });
         });
       }
+      
+      if (file !== undefined && file.name !== '') {
+        try {
+          fs.readFile(file.path, function(err, data) {
+            if (err)
+              console.log(err);
+            var newPath = __dirname + "/../public/img/sellers/" + seller["_id"] + "/" + file.name;
+            if (!fs.existsSync(__dirname + "/../public/img/sellers/" + seller["_id"] + "/")) {
+              fs.mkdirSync(__dirname + "/../public/img/sellers/" + seller["_id"] + "/");
+            }
+            fs.writeFile(newPath, data, function(err) {
+              if (err)
+                console.log(err);
+              
+              updatedSeller.account.picture = "/img/sellers/"+seller["_id"]+"/"+file.name;
+              
+              editAccountInternal();
+            });
+          });
+        } catch (err) {
+          callback(false);
+        }
+
+      } else {
+        updatedSeller.account.picture = seller.account.picture;
+        editAccountInternal();
+      } 
+
+      console.log("YOOOO");
+      console.log(updatedSeller.account.picture);
+      
+      
       
       
 

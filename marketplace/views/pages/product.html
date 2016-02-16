@@ -19,7 +19,11 @@
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <!--<img data-src="holder.js/300x200" alt="300x200" class="img-responsive center-block" src="/img/h-6.jpg">-->
+                            {{#if model.seller.account.picture}}
+                            <img src="{{model.seller.account.picture}}" class="sellerImg img-responsive img-circle center-block">
+                            {{else}}
                             <img src="/img/default-profile.png" class="sellerImg img-responsive img-circle center-block">
+                            {{/if}}
                             <p class="text-center">{{model.seller.account.displayName}} <small>( {{model.seller.sellCount}} ventes )</small></p>
                         </div>
                     </div>
