@@ -92,6 +92,7 @@ main{
     border-bottom: 1px solid #dddddd;
     margin-bottom: 10px;
     padding: 5px;
+    min-height: 50px;
 }
 .shoppingcartNameProduct {
     font-weight: 400;
