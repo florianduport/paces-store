@@ -52,6 +52,7 @@ var displayShoppingCartPopup = function () {
                     title: "<i class='glyphicon glyphicon-shopping-cart'></i> Votre panier",
                     type: BootstrapDialog.TYPE_SUCCESS,
                     message: cartContent,
+                    nl2br: false,
                     buttons: [
                         {
                             label: 'Commander (' + $(cartContentDom).find("#shoppingcartTotal-hidden").val() + ')',
