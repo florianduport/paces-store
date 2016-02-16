@@ -150,7 +150,9 @@ var SellerModel = {
             isBannedDomain = true;
         }
 
-
+        if(form.pictureFile === undefined){
+          form.pictureFile = "/img/default-profile.png";
+        }
         if (isBannedDomain) {
           console.log('mange mes mains 1');
           done(false);
@@ -191,6 +193,7 @@ var SellerModel = {
                       displayName: form.displayName,
                       firstName: form.firstName,
                       lastName: form.lastName,
+                      picture: form.pictureFile,
                       paymentInfos: {
                         accountId: paymentInfos.user.Id,
                         walletId: paymentInfos.wallet.Id
@@ -422,7 +425,7 @@ var SellerModel = {
       time: [req.body.time]
     }
     var file = req.files !== undefined && req.files.productFile !== undefined ? req.files.productFile : undefined;
-    console.log(req.files);
+
     var saveFile = function(callback, productId) {
       console.log(productId);
       if (file !== undefined) {
@@ -484,6 +487,12 @@ var SellerModel = {
       }
     }, function(seller) {
       model.seller = seller;
+      
+      
+      if(seller.account.picture !== undefined){
+        seller.account.pictureName = seller.account.picture.split('/')[seller.account.picture.split('/').length-1];
+      }
+      
       ServiceHelper.getService('school', 'getSchools', {
         data: {},
         method: "POST"
@@ -504,35 +513,73 @@ var SellerModel = {
       }
     }, function(seller) {
 
-      var updatedSeller = seller;
-      updatedSeller.account.displayName = req.body["displayName"];
-      updatedSeller.account.firstName = req.body["firstName"];
-      updatedSeller.account.lastName = req.body["lastName"];
-      updatedSeller.account["description"] = req.body["description"];
-      updatedSeller.account.universityId = req.body["university"];
-      updatedSeller.account.address = req.body["address"];
-      updatedSeller.account.paymentInfos.iban = req.body["iban"];
-      updatedSeller.account.paymentInfos.bic = req.body["bic"];
 
-      var bankAccountInfos = {
-        ownerName: updatedSeller.account.firstName + " " + updatedSeller.account.lastName,
-        user: updatedSeller.account.paymentInfos.accountId,
-        ownerAddress: updatedSeller.account.address,
-        iban: updatedSeller.account.paymentInfos.iban,
-        bic: updatedSeller.account.paymentInfos.bic
-      };
-      ServiceHelper.getService("payment", "registerBankAccount", {
-        data: {
-          infos: bankAccountInfos
+
+    var file = req.files !== undefined && req.files.pictureFile !== undefined ? req.files.pictureFile : undefined;
+
+
+      var updatedSeller = seller;
+      if (file !== undefined) {
+        try {
+          fs.readFile(file.path, function(err, data) {
+            if (err)
+              console.log(err);
+            var newPath = __dirname + "/../public/img/sellers/" + seller["_id"] + "/" + file.name;
+            if (!fs.existsSync(__dirname + "/../public/img/sellers/" + seller["_id"] + "/")) {
+              fs.mkdirSync(__dirname + "/../public/img/sellers/" + seller["_id"] + "/");
+            }
+            fs.writeFile(newPath, data, function(err) {
+              if (err)
+                console.log(err);
+              
+              updatedSeller.account.picture = "/img/sellers/"+seller["_id"]+"/"+file.name;
+              
+              editAccountInternal();
+            });
+          });
+        } catch (err) {
+          callback(false);
         }
-      }, function(bankAccount) {
-        updatedSeller.account.paymentInfos.bankId = bankAccount.Id;
-        ServiceHelper.getService("seller", "updateSeller", {
-          data: updatedSeller
-        }, function(seller) {
-          callback(model);
+
+      } else {
+        updatedSeller.account.picture = seller.account.picture;
+        editAccountInternal();
+      } 
+
+      console.log("YOOOO");
+      console.log(updatedSeller.account.picture);
+      
+      var editAccountInternal = function(){
+        updatedSeller.account.displayName = req.body["displayName"];
+        updatedSeller.account.firstName = req.body["firstName"];
+        updatedSeller.account.lastName = req.body["lastName"];
+        updatedSeller.account["description"] = req.body["description"];
+        updatedSeller.account.universityId = req.body["university"];
+        updatedSeller.account.address = req.body["address"];
+        updatedSeller.account.paymentInfos.iban = req.body["iban"];
+        updatedSeller.account.paymentInfos.bic = req.body["bic"];
+        var bankAccountInfos = {
+          ownerName: updatedSeller.account.firstName + " " + updatedSeller.account.lastName,
+          user: updatedSeller.account.paymentInfos.accountId,
+          ownerAddress: updatedSeller.account.address,
+          iban: updatedSeller.account.paymentInfos.iban,
+          bic: updatedSeller.account.paymentInfos.bic
+        };
+        ServiceHelper.getService("payment", "registerBankAccount", {
+          data: {
+            infos: bankAccountInfos
+          }
+        }, function(bankAccount) {
+          updatedSeller.account.paymentInfos.bankId = bankAccount.Id;
+          ServiceHelper.getService("seller", "updateSeller", {
+            data: updatedSeller
+          }, function(seller) {
+            callback(model);
+          });
         });
-      });
+      }
+      
+      
 
     });
   },

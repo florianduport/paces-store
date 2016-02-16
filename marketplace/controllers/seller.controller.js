@@ -3,6 +3,7 @@ var model = require('../models/seller.model').SellerModel;
 var SellerController = {
   displaySellerHome: function(req, res) {
     model.displaySellerHome(req, function(model) {
+      console.log(model.seller);
       res.render('pages/seller/home', {
         model: model,
         layout: 'pages/seller/layout'

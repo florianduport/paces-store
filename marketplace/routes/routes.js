@@ -100,7 +100,7 @@ var Routes = {
     app.get('/seller/addnewproduct', SellerController.addProduct);
     app.post('/seller/saveProduct', multipart, SellerController.saveProduct);
     app.get('/seller/account', SellerController.displayEditAccount);
-    app.post('/seller/account', SellerController.editAccount);
+    app.post('/seller/account', multipart, SellerController.editAccount);
     app.get('/seller/withdrawMoney', SellerController.withdrawMoney);
     app.get('/seller/wallet', SellerController.wallet);
     app.get('/test', PageController.test);

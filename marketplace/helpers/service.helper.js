@@ -21,6 +21,8 @@ var ServiceHelper = {
     ConfigurationHelper.getConfig({
       application: "services",
       done: function(config) {
+        config.addressBasePath = "https://paces-store2-jewelz.c9users.io";
+        config.port = 8080;
         if (config["routes"][serviceName] !== undefined && config["routes"][serviceName][method] !== undefined) {
 
           if (config.hmacEnabled)

@@ -1,4 +1,4 @@
-<form method="POST" id="productForm" class="col-md-8 col-sm-8 well well-lg" action="/seller/account">		
+<form method="POST" id="productForm" enctype="multipart/form-data" class="col-md-8 col-sm-8 well well-lg" action="/seller/account">		
 	<div class="col-md-12">
 		<h3>Modifier mes informations personnelles</h3>
 		<input type="button" value="Annuler" class="btn btn-default pull-right" />
@@ -34,17 +34,15 @@
 			</select>
 		</div>
 		<div class="col-md-6">
-			<label for="document">Photo de profil</label>
-
-			<div class="upload-drop-zone" id="drop-zone">
-				<input type="file" name="files[]" id="js-upload-files" class="hidden" />
-				{{#if model.product.file}}
-		            <p data-filename="{{model.product.file}}">{{model.product.file}}</p>
-				{{else}}
-					<p data-filename="Déposez votre fichier .pdf ici">Déposez votre nouvelle image ici</p>
-				{{/if}}
-	          	</div>
-		</div>
+	        <label for="document">Photo de profil</label>
+	        {{#if model.seller.account.picture}}
+	        <p data-filename="{{model.product.account.pictureName}}">{{model.seller.account.pictureName}}</p>
+	        <input type="file" name="pictureFile" accept="image/*" />
+	        {{else}}
+	        <p data-filename="Déposez votre image ici">Déposez votre image ici</p>
+	        <input type="file" required name="pictureFile" accept="image/*" />
+	        {{/if}}
+    	</div>
 	</div>
 	<div class="col-md-12">
 		<br/><br/>
