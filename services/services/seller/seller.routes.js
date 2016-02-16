@@ -66,11 +66,12 @@ var SellerRoutes = {
         req.body.username === undefined || !req.body.username ||
         req.body.password === undefined || !req.body.password ||
         req.body.firstName === undefined || !req.body.firstName ||
+        req.body.picture === undefined || !req.body.picture ||
         req.body.lastName === undefined || !req.body.lastName) {
         LoggerService.logError("services", "Wrong create Seller parameters", {});
         Base.send(req, res, false);
       }
-      SellerService.createSeller(req.body.displayName, req.body.username, req.body.password, req.body.firstName, req.body.lastName, req.body.paymentInfos, function(result) {
+      SellerService.createSeller(req.body.displayName, req.body.username, req.body.password, req.body.firstName, req.body.lastName, req.body.picture, req.body.paymentInfos, function(result) {
         Base.send(req, res, result);
       });
     });
