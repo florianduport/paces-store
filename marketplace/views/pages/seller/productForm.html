@@ -5,19 +5,19 @@
     <h3>Ajouter un produit</h3>
     {{/if}}
     <div class="clearfix"></div>
-    <div class="col-md-12">
+    <div class="col-md-12 well well-lg">
         <input type="hidden" name="_id" value="{{model.product._id}}"/>
         <label for="name">Nom du produit</label>
-        <input type="text" name="name" value="{{model.product.name}}" class="form-control" required/>
+        <input type="text" name="name" id="name" value="{{model.product.name}}" class="form-control" required/>
         <div class="clearfix"></div>
         <label for="price">Prix</label>
-        <input name="price" type="number" min="1" max="100" value="{{model.product.price}}" class="form-control" step="0.5" required/>
+        <input name="price" type="number" id="price" min="1" max="100" value="{{model.product.price}}" class="form-control" step="0.5" required/>
         <div class="clearfix"></div>
         <label for="description">Description</label>
-        <textarea name="description" class="form-control" required="required">{{model.product.description}}</textarea>
+        <textarea name="description" class="form-control" id="description" required="required">{{model.product.description}}</textarea>
         <div class="clearfix"></div>
         <label for="time" class="center-block">Temps moyen pour faire l'exercice</label>
-        <select name="time" class="selectpicker show-tick" data-style="btn-default form-control">
+        <select name="time" class="selectpicker show-tick" id="time" data-style="btn-default form-control">
             <option value="5" {{#ifCond model.product.time "==" "5"}}selected="selected"{{/ifCond}}>5 minutes</option>
             <option value="10" {{#ifCond model.product.time "==" "10"}}selected="selected"{{/ifCond}}>10 minutes</option>
             <option value="15" {{#ifCond model.product.time "==" "15"}}selected="selected"{{/ifCond}}>15 minutes</option>
@@ -27,7 +27,7 @@
         </select>
         <div class="clearfix"></div>
         <label for="university" class="center-block">Université</label>
-        <select name="university" class="selectpicker show-tick center-block" data-style="btn-blue form-control">
+        <select name="university" class="selectpicker show-tick center-block" id="university" data-width="auto">
             {{#each model.schools}}
             {{#if this.selected}}
             <option value="{{this.universityId}}" selected="selected">{{this.name}}</option>
@@ -38,27 +38,31 @@
         </select>
         <div class="clearfix"></div>
         <label for="categories" class="center-block">Catégorie</label>
-        <select name="categories" class="selectpicker show-tick center-block" data-style="btn-blue form-control">
+        <select name="categories" class="selectpicker show-tick center-block" id="categories" data-width="auto">
             {{#each model.categories}}
             {{#if this.selected}}
-            <option value="{{this.shortName}}" selected="selected">{{this.name}}</option>
+            <option value="{{this.shortName}}" selected="selected">{{this.name}}: {{this.description}}</option>
             {{else}}
-            <option value="{{this.shortName}}">{{this.name}}</option>
+            <option value="{{this.shortName}}">{{this.name}}: {{this.description}}</option>
             {{/if}}
             {{/each}}
         </select>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12 well well-lg">
         <label for="document">Document pdf</label>
         {{#if model.product.file}}
         <p data-filename="{{model.product.file}}">{{model.product.file}}</p>
-        <input type="file" name="productFile" accept="application/pdf" required="" />
+        <input type="file" name="productFile" id="document" accept="application/pdf" required="" />
         {{else}}
         <p data-filename="Déposez votre fichier .pdf ici">Déposez votre fichier .pdf ici</p>
-        <input type="file" required name="productFile" accept="application/pdf" />
+        <input type="file" required name="productFile" id="document" accept="application/pdf" />
         {{/if}}
-        <input type="button" value="Annuler" class="btn btn-default pull-right" />
-        <input type="submit" value="Enregistrer" class="btn btn-success pull-right" />
+    </div>
+    <div class="col-md-6">
+        <input type="button" value="Annuler" class="btn btn-default btn-block" />
+    </div>
+    <div class="col-md-6">
+        <input type="submit" value="Enregistrer" class="btn btn-success  btn-block" />
     </div>
 </form>
 {{#content "registerTopStylesheets"}}

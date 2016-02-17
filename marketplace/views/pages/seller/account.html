@@ -1,95 +1,104 @@
-<form method="POST" id="productForm" class="col-md-8 col-sm-8 well well-lg" action="/seller/account">		
-	<div class="col-md-12">
-		<h3>Modifier mes informations personnelles</h3>
-		<input type="button" value="Annuler" class="btn btn-default pull-right" />
-		<input type="submit" value="Enregistrer" class="btn btn-success pull-right" />
-		<br/>
-		<br/>
-		<div class="col-md-6">
-			<input type="hidden" name="_id" value="{{model.seller._id}}"/>
-			<label for="name">Pseudo</label>
-			<input type="text" name="displayName" value="{{model.seller.account.displayName}}" class="form-control" required/>
-			<br/>
-			<label for="name">Prénom</label>
-			<input type="text" name="firstName" value="{{model.seller.account.firstName}}" class="form-control" required/>
-			<br/>
-			<label for="name">Nom</label>
-			<input type="text" name="lastName" value="{{model.seller.account.lastName}}" class="form-control" required/>
-			<br/>
-			<label for="description">Description de votre parcours</label>
-			<p>Parlez de vous et de votre parcours. Donnez aux étudiants l'envie de réussir et de devenir comme vous !</p>
-			<textarea name="description" class="form-control" required>{{model.seller.account.description}}</textarea>
-			<br/>
-			<label for="university">Université</label>
-			
-			<br/>
-			<select name="university" class="selectpicker show-tick" data-style="btn-blue">
-				{{#each model.schools}}
-					{{#if this.selected}}
-					<option value="{{this.universityId}}" selected="selected">{{this.name}}</option>
-					{{else}}
-					<option value="{{this.universityId}}">{{this.name}}</option>
-					{{/if}}
-				{{/each}}
-			</select>
-		</div>
-		<div class="col-md-6">
-			<label for="document">Photo de profil</label>
-
-			<div class="upload-drop-zone" id="drop-zone">
-				<input type="file" name="files[]" id="js-upload-files" class="hidden" />
-				{{#if model.product.file}}
-		            <p data-filename="{{model.product.file}}">{{model.product.file}}</p>
-				{{else}}
-					<p data-filename="Déposez votre fichier .pdf ici">Déposez votre nouvelle image ici</p>
-				{{/if}}
-	          	</div>
-		</div>
-	</div>
-	<div class="col-md-12">
-		<br/><br/>
-		<h3>Modifier mes informations bancaire</h3>
-		<div class="col-md-6">
-			<label for="name">Adresse domicile</label>
-			<input type="text" name="address" value="{{model.seller.account.address}}" class="form-control" required/>
-			<br/>
-			<label for="iban">IBAN</label>
-			<input type="text" name="iban" value="{{model.seller.account.paymentInfos.iban}}" class="form-control" pattern="[a-zA-Z]{2}[0-9]{2}[a-zA-Z0-9]{4}[0-9]{7}([a-zA-Z0-9]?){0,16}" required/>
-			<br/>
-			<label for="bic">BIC</label>
-			<input type="text" name="bic" value="{{model.seller.account.paymentInfos.bic}}" class="form-control" required/>
-		</div>
-	</div>
+<form method="POST" id="productForm" enctype="multipart/form-data" class="col-md-9 form-horizontal" action="/seller/account">		
+    <div class="col-md-12 well well-lg">
+        <h3>Modifier mes informations personnelles</h3>
+        <div class="col-md-12">
+            <label for="pictureFile">Photo de profil</label>
+            {{#if model.seller.account.picture}}
+            <p data-filename="{{model.product.account.pictureName}}">{{model.seller.account.pictureName}}</p>
+            <input type="file" name="pictureFile" id="pictureFile" accept="image/*" />
+            {{else}}
+            <p data-filename="Déposez votre image ici">Déposez votre image ici</p>
+            <input type="file" required name="pictureFile" accept="image/*" />
+            {{/if}}
+        </div>
+        <div class="col-md-12">
+            <input type="hidden" name="_id" value="{{model.seller._id}}"/>
+            <label for="displayName">Pseudo</label>
+            <input type="text" name="displayName" id="displayName" value="{{model.seller.account.displayName}}" class="form-control" required/>
+        </div>
+        <div class="col-md-12">
+            <label for="firstName">Prénom</label>
+            <input type="text" name="firstName" id="firstName" value="{{model.seller.account.firstName}}" class="form-control" required/>
+        </div>
+        <div class="col-md-12">
+            <label for="lastName">Nom</label>
+            <input type="text" name="lastName" id="lastName" value="{{model.seller.account.lastName}}" class="form-control" required/>
+        </div>
+        <div class="col-md-12">
+            <label for="description">Description de votre parcours</label>
+            <p>Parlez de vous et de votre parcours. Donnez aux étudiants l'envie de réussir et de devenir comme vous !</p>
+            <textarea name="description" id="description" class="form-control" required>{{model.seller.account.description}}</textarea>
+        </div>
+        <div class="col-md-12">
+            <label for="university">Université</label>
+            <select name="university" id="university" class="selectpicker show-tick" data-with="auto">
+                {{#each model.schools}}
+                {{#if this.selected}}
+                <option value="{{this.universityId}}" selected="selected">{{this.name}}</option>
+                {{else}}
+                <option value="{{this.universityId}}">{{this.name}}</option>
+                {{/if}}
+                {{/each}}
+            </select>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <input type="button" value="Annuler" class="btn btn-default btn-block" />
+    </div>
+    <div class="col-md-6">
+        <input type="submit" value="Enregistrer" class="btn btn-success btn-block" />
+    </div>
+    <div class="col-md-12 well well-lg">
+        <h3>Modifier mes informations bancaire</h3>
+        <div class="col-md-12">
+            <label for="address">L'adresse domicile</label>
+            <input type="text" name="address" id="address" value="{{model.seller.account.address}}" class="form-control" required/>
+        </div>
+        <div class="col-md-12">
+            <label for="iban">IBAN</label>
+            <input type="text" name="iban" id="iban" value="{{model.seller.account.paymentInfos.iban}}" class="form-control" pattern="[a-zA-Z]{2}[0-9]{2}[a-zA-Z0-9]{4}[0-9]{7}([a-zA-Z0-9]?){0,16}" required/>
+        </div>
+        <div class="col-md-12">
+            <label for="bic">BIC</label>
+            <input type="text" name="bic" id="bic" value="{{model.seller.account.paymentInfos.bic}}" class="form-control" required/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <input type="button" value="Annuler" class="btn btn-default btn-block" />
+    </div>
+    <div class="col-md-6">
+        <input type="submit" value="Enregistrer" class="btn btn-success btn-block" />
+    </div>
 </form>
 {{#content "registerTopStylesheets"}}
-    <link href="/css/seller.css" rel="stylesheet">      
+<link href="/css/seller.css" rel="stylesheet">      
 {{/content}}
 {{#content "registerBottomScripts"}}
-    <script src="/js/seller.js"></script>
-    <script src="/js/libs/ckeditor/ckeditor.js"></script>
-    <script type="text/javascript">
-        CKEDITOR.replace( 'description', {
-	    	language: 'fr',
-	    	customConfig: '',
-	    	toolbarGroups : [
-				{ name: 'document',	   groups: [ 'mode', 'document', 'doctools' ] },
-				{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
-				{ name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
-				{ name: 'forms' },
-				{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-				{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
-				{ name: 'links' },
-				{ name: 'insert' },
-				{ name: 'styles' },
-				{ name: 'colors' },
-				{ name: 'tools' },
-				{ name: 'others' },
-				{ name: 'about' }
-			],
-			removeButtons : 'Cut,Copy,Paste,Undo,Redo,Anchor,Underline,Strike,Subscript,Superscript',
-			removeDialogTabs : 'link:advanced'
-		});
-    </script>
+<script src="/js/seller.js"></script>
+<script src="/js/libs/ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+CKEDITOR.replace('description', {
+    language: 'fr',
+    customConfig: '',
+    toolbarGroups: [
+        {name: 'document', groups: ['mode', 'document', 'doctools']},
+        {name: 'clipboard', groups: ['clipboard', 'undo']},
+        {name: 'editing', groups: ['find', 'selection', 'spellchecker']},
+        {name: 'forms'},
+        {name: 'basicstyles', groups: ['basicstyles', 'cleanup']},
+        {name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi']},
+        {name: 'links'},
+        {name: 'insert'},
+        {name: 'styles'},
+        {name: 'colors'},
+        {name: 'tools'},
+        {name: 'others'},
+        {name: 'about'}
+    ],
+    removeButtons: 'Cut,Copy,Paste,Undo,Redo,Anchor,Underline,Strike,Subscript,Superscript',
+    removeDialogTabs: 'link:advanced'
+});
+</script>
 {{/content}}
 {{#content "registerMeta"}}
 <title>PACES Store - Editer un produit</title>

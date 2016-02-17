@@ -25,7 +25,8 @@ body {
     border: 1px solid #dddddd;
     color: white;
     font-weight: 600 !important;
-    margin-bottom: -1px;
+    margin-bottom: 1px;
+    padding-bottom: 2px;
 }
 .filters-top > h4 {
     font-weight: 400 !important;

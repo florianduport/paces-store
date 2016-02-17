@@ -1,7 +1,11 @@
 {{#if model.req.body.ajax}}
 <input id="shoppingcartTotal-hidden" type="hidden" value="{{model.shoppingcart.total}}€" />
 {{#each model.shoppingcart.products}}
-<div class="col-md-12"><div class="col-md-8">{{this.name}}</div><div class="col-md-2">{{this.price}}€</div><div class="col-md-2"><button type="button" class="btn btn-sm btn-danger" removeFromShoppingCart data-productid="{{this._id}}"><i class="glyphicon glyphicon-trash"></i></button></div></div>
+<div class="col-md-12 shoppingcartLine">
+    <div class="col-sm-8 col-xs-6 shoppingcartNameProduct">{{this.category.name}} {{this.name}}</div>
+    <div class="col-sm-2 col-xs-3 shoppingcartPriceProduct">{{this.price}}€</div>
+    <div class="col-sm-2 col-xs-3"><button type="button" class="btn btn-sm btn-danger" removeFromShoppingCart data-productid="{{this._id}}"><i class="glyphicon glyphicon-trash"></i></button></div>
+</div>
 {{/each}}
 {{else}}
 <div class="container">

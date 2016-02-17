@@ -41,5 +41,8 @@ $(document).ready(function() {
 var updateGeolocZone = function(content){
 	$("#geolocZone").html(content);
 	window.localStorage.setItem("geolocZone", content);
-	$('#universitySelector').selectpicker();
+	$('#universitySelector').selectpicker( { 
+        style : "btn-blue",
+        width : "fit"
+    });
 }
