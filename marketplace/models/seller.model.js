@@ -335,7 +335,7 @@ var SellerModel = {
           username: req.session.seller
         }
       }, function(seller) {
-
+        model.seller = seller;
         model.products = products;
         for (var i = model.products.length - 1; i >= 0; i--) {
           model.products[i].sellerInfos = seller.account;
@@ -345,51 +345,68 @@ var SellerModel = {
     });
   },
   editProduct: function(req, callback) {
+    
     ConfigurationHelper.getConfig({
       application: "services",
       done: function(config) {
         var model = this;
-        ServiceHelper.getService('product', 'getProductById', {
+        ServiceHelper.getService("seller", "getSellerByUsername", {
           data: {
-            "productId": req.params.product
-          },
-          method: "POST"
-        }, function(product) {
-          model.product = product;
-          SellerModel._loadProductFormInfos(model, function(model) {
-
-
-
-            var files = [];
-
-            //var folder = config.parentFolder + "files/products/" + model.product["_id"] + "/";
-
-            try {
-              var folder = __dirname + "/../files/products/" + model.product["_id"] + "/";
-              var filenames = fs.readdirSync(folder);
-              for (var k = filenames.length - 1; k >= 0; k--) {
-                files.push(filenames[k]);
-              };
-
-              if (files.length > -1) {
-                model.product.file = files[0];
+            username: req.session.seller
+          }
+        }, function(seller) {
+          model.seller = seller;
+          ServiceHelper.getService('product', 'getProductById', {
+            data: {
+              "productId": req.params.product
+            },
+            method: "POST"
+          }, function(product) {
+            model.product = product;
+            SellerModel._loadProductFormInfos(model, function(model) {
+  
+  
+  
+              var files = [];
+  
+              //var folder = config.parentFolder + "files/products/" + model.product["_id"] + "/";
+  
+              try {
+                var folder = __dirname + "/../files/products/" + model.product["_id"] + "/";
+                var filenames = fs.readdirSync(folder);
+                for (var k = filenames.length - 1; k >= 0; k--) {
+                  files.push(filenames[k]);
+                };
+  
+                if (files.length > -1) {
+                  model.product.file = files[0];
+                }
+              } catch (err) {
+                console.log("file not found for product");
               }
-            } catch (err) {
-              console.log("file not found for product");
-            }
-
-
-            callback(model);
+  
+  
+              callback(model);
+            });
           });
         });
       }
     });
   },
   addProduct: function(req, callback) {
-    this.product = {};
-    SellerModel._loadProductFormInfos(this, function(model) {
-      callback(model);
-    });
+
+        var model = this;
+        model.product = {};
+        ServiceHelper.getService("seller", "getSellerByUsername", {
+          data: {
+            username: req.session.seller
+          }
+        }, function(seller) {
+          model.seller = seller;
+          SellerModel._loadProductFormInfos(model, function(model) {
+            callback(model);
+          });
+        });
   },
   _loadProductFormInfos: function(model, callback) {
 
@@ -422,7 +439,8 @@ var SellerModel = {
       description: req.body.description,
       university: req.body.university,
       categories: [req.body.categories],
-      time: [req.body.time]
+      time: [req.body.time],
+      image: req.body.image
     }
     var file = req.files !== undefined && req.files.productFile !== undefined ? req.files.productFile : undefined;
 
@@ -558,6 +576,14 @@ var SellerModel = {
             var newPath = __dirname + "/../public/img/sellers/" + seller["_id"] + "/" + file.name;
             if (!fs.existsSync(__dirname + "/../public/img/sellers/" + seller["_id"] + "/")) {
               fs.mkdirSync(__dirname + "/../public/img/sellers/" + seller["_id"] + "/");
+            } else {
+              fs.readdirSync(__dirname + "/../public/img/sellers/" + seller["_id"]).forEach(function(file,index){
+                var curPath = __dirname + "/../public/img/sellers/" + seller["_id"] + "/" + file;
+                if(fs.lstatSync(curPath).isDirectory()) { 
+                } else { // delete file
+                  fs.unlinkSync(curPath);
+                }
+              });
             }
             fs.writeFile(newPath, data, function(err) {
               if (err)

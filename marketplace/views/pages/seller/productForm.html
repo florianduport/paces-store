@@ -7,13 +7,13 @@
     <div class="clearfix"></div>
     <div class="col-md-12 well well-lg">
         <input type="hidden" name="_id" value="{{model.product._id}}"/>
-        <label for="name">Nom du produit</label>
+        <label for="name"  class="center-block">Nom du produit</label>
         <input type="text" name="name" id="name" value="{{model.product.name}}" class="form-control" required/>
         <div class="clearfix"></div>
-        <label for="price">Prix</label>
+        <label for="price"  class="center-block">Prix</label>
         <input name="price" type="number" id="price" min="1" max="100" value="{{model.product.price}}" class="form-control" step="0.5" required/>
         <div class="clearfix"></div>
-        <label for="description">Description</label>
+        <label for="description"  class="center-block">Description</label>
         <textarea name="description" class="form-control" id="description" required="required">{{model.product.description}}</textarea>
         <div class="clearfix"></div>
         <label for="time" class="center-block">Temps moyen pour faire l'exercice</label>
@@ -49,14 +49,39 @@
         </select>
     </div>
     <div class="col-md-12 well well-lg">
-        <label for="document">Document pdf</label>
+        <label for="document"  class="center-block">Document pdf</label>
         {{#if model.product.file}}
         <p data-filename="{{model.product.file}}">{{model.product.file}}</p>
-        <input type="file" name="productFile" id="document" accept="application/pdf" required="" />
+        <input type="file" name="productFile" id="document" accept="application/pdf" />
         {{else}}
-        <p data-filename="Déposez votre fichier .pdf ici">Déposez votre fichier .pdf ici</p>
+        <p data-filename="Déposez votre fichier .pdf ici">Déposez votre fichier .pdf ici. C'est le contenu qui sera téléchargé par les étudiants.</p>
         <input type="file" required name="productFile" id="document" accept="application/pdf" />
         {{/if}}
+    </div>
+    <div class="col-md-12 well well-lg">
+        <label for="document"  class="center-block">Image miniature</label>
+        <select name="image" class="selectpicker show-tick center-block" id="imageSelector" data-width="auto" required>
+            <option value="1" {{#ifCond model.product.image '==' '1'}}selected="selected"{{/ifCond}}>Image 1</option>
+            <option value="2" {{#ifCond model.product.image '==' '2'}}selected="selected"{{/ifCond}}>Image 2</option>
+            <option value="3" {{#ifCond model.product.image '==' '3'}}selected="selected"{{/ifCond}}>Image 3</option>
+            <option value="4" {{#ifCond model.product.image '==' '4'}}selected="selected"{{/ifCond}}>Image 4</option>
+            <option value="5" {{#ifCond model.product.image '==' '5'}}selected="selected"{{/ifCond}}>Image 5</option>
+            <option value="6" {{#ifCond model.product.image '==' '6'}}selected="selected"{{/ifCond}}>Image 6</option>
+            <option value="7" {{#ifCond model.product.image '==' '7'}}selected="selected"{{/ifCond}}>Image 7</option>
+            <option value="8" {{#ifCond model.product.image '==' '8'}}selected="selected"{{/ifCond}}>Image 8</option>
+            <option value="9" {{#ifCond model.product.image '==' '9'}}selected="selected"{{/ifCond}}>Image 9</option>
+        </select>
+        <div id="miniatureContainer">
+            <div style="background: url('/img/products/1.jpg')" class="pull-left {{#ifCond model.product.image '==' '1'}}active{{/ifCond}}">{{#ifCond model.product.image '==' '1'}}<i class="glyphicon glyphicon-ok-circle">&nbsp;</i>{{/ifCond}}</div>
+            <div style="background: url('/img/products/2.jpg')" class="pull-left {{#ifCond model.product.image '==' '2'}}active{{/ifCond}}">{{#ifCond model.product.image '==' '2'}}<i class="glyphicon glyphicon-ok-circle">&nbsp;</i>{{/ifCond}}</div>
+            <div style="background: url('/img/products/3.jpg')" class="pull-left {{#ifCond model.product.image '==' '3'}}active{{/ifCond}}">{{#ifCond model.product.image '==' '3'}}<i class="glyphicon glyphicon-ok-circle">&nbsp;</i>{{/ifCond}}</div>
+            <div style="background: url('/img/products/4.jpg')" class="pull-left {{#ifCond model.product.image '==' '4'}}active{{/ifCond}}">{{#ifCond model.product.image '==' '4'}}<i class="glyphicon glyphicon-ok-circle">&nbsp;</i>{{/ifCond}}</div>
+            <div style="background: url('/img/products/5.jpg')" class="pull-left {{#ifCond model.product.image '==' '5'}}active{{/ifCond}}">{{#ifCond model.product.image '==' '5'}}<i class="glyphicon glyphicon-ok-circle">&nbsp;</i>{{/ifCond}}</div>
+            <div style="background: url('/img/products/6.jpg')" class="pull-left {{#ifCond model.product.image '==' '6'}}active{{/ifCond}}">{{#ifCond model.product.image '==' '6'}}<i class="glyphicon glyphicon-ok-circle">&nbsp;</i>{{/ifCond}}</div>
+            <div style="background: url('/img/products/7.jpg')" class="pull-left {{#ifCond model.product.image '==' '7'}}active{{/ifCond}}">{{#ifCond model.product.image '==' '7'}}<i class="glyphicon glyphicon-ok-circle">&nbsp;</i>{{/ifCond}}</div>
+            <div style="background: url('/img/products/8.jpg')" class="pull-left {{#ifCond model.product.image '==' '8'}}active{{/ifCond}}">{{#ifCond model.product.image '==' '8'}}<i class="glyphicon glyphicon-ok-circle">&nbsp;</i>{{/ifCond}}</div>
+            <div style="background: url('/img/products/9.jpg')" class="pull-left {{#ifCond model.product.image '==' '9'}}active{{/ifCond}}">{{#ifCond model.product.image '==' '9'}}<i class="glyphicon glyphicon-ok-circle">&nbsp;</i>{{/ifCond}}</div>
+        </div>
     </div>
     <div class="col-md-6">
         <input type="button" value="Annuler" class="btn btn-default btn-block" />

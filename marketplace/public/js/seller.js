@@ -2,6 +2,69 @@ $(document).ready(function(){
 
     'use strict';
 
+    var handleImageSelectChange = function(){
+        
+        var icon = '';
+        //clean active
+        $("#miniatureContainer div").each(function(){
+            var element = $(this);
+            if(element.hasClass('active')){
+                element.removeClass('active');
+                icon = element.html();
+                element.html('');
+            }
+        });
+        var index = 0;
+        
+        var i = 0;
+        $("#imageSelector option").each(function(){
+            var element = $(this);
+            if(element.html() == $("#imageSelector option:selected").html()){
+               index = i; 
+            }
+            i++;
+        });
+        
+        $($("#miniatureContainer div")[index]).html(icon);
+        $($("#miniatureContainer div")[index]).addClass('active');
+ 
+    }
+
+
+    $("#imageSelector").on('change', handleImageSelectChange);
+    handleImageSelectChange();
+    $("#miniatureContainer div").click(function(){
+        var current = $(this);
+        var icon = '';
+        var index = 0;
+        
+        var i = 0;
+        $("#miniatureContainer div").each(function(){
+            var element = $(this);
+            if(element.hasClass('active')){
+                element.removeClass('active');
+                icon = element.html();
+                element.html('');
+            }
+            if(element.attr('style') == current.attr('style')){
+                index = i; 
+            }
+            i++;
+        });
+        
+        current.addClass('active');
+        current.html(icon);
+        
+        $("#imageSelector option").each(function(){
+           $(this).removeAttr('selected'); 
+        });
+        
+        $($("#imageSelector option")[index]).attr('selected', 'selected');
+        
+        $($("#imageSelector").selectpicker('refresh'));
+        
+    });
+
     // UPLOAD CLASS DEFINITION
     // ======================
 

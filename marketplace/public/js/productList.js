@@ -80,23 +80,28 @@ $(document).ready(function () {
     }
 
     function toggleCategories() {
-
-        var arrActiveUE = JSON.parse($('#categoriesSelected').val());
-        if (arrActiveUE.length > 0) {
-            var name = "Les contenus pour ";
-            var i = 0;
-            for (var val in arrActiveUE) {
-                if (i !== 0) {
-                    name += ", ";
+        try{
+            
+            var arrActiveUE = JSON.parse($('#categoriesSelected').val());
+            if (arrActiveUE.length > 0) {
+                var name = "Les contenus pour ";
+                var i = 0;
+                for (var val in arrActiveUE) {
+                    if (i !== 0) {
+                        name += ", ";
+                    }
+    //                console.log(arrActiveUE[val]);
+                    name += arrActiveUE[val];
+                    $('#toggle_cat_' + arrActiveUE[val]).addClass('bg-grey toggle-on');
+                    i++;
                 }
-//                console.log(arrActiveUE[val]);
-                name += arrActiveUE[val];
-                $('#toggle_cat_' + arrActiveUE[val]).addClass('bg-grey toggle-on');
-                i++;
+                $(".categories-names").html(name);
+            } else {
+                $(".categories-names").html("Tout le contenu");
             }
-            $(".categories-names").html(name);
-        } else {
-            $(".categories-names").html("Tout le contenu");
+            
+        } catch(e){
+            
         }
     }
     toggleCategories();

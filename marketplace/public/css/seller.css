@@ -101,3 +101,22 @@
   color: #222;
   border-color: #222;
 }
+
+#miniatureContainer{
+    max-height: 400px;
+    overflow-y: scroll;
+}
+#miniatureContainer div{
+    width: 310px;
+    height: 260px;
+    margin: 10px;
+    border: 6px white solid;
+}
+#miniatureContainer div.active{
+    border: 6px #00b22d solid;
+    border-radius: 2px;
+}
+#miniatureContainer div i{
+    color: #00b22d;
+    font-size: 30px;
+}
