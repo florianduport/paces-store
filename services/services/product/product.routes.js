@@ -45,6 +45,7 @@ var ProductRoutes = {
         req.body.university === undefined || !req.body.university ||
         req.body.categories === undefined || !req.body.categories ||
         req.body.time === undefined || !req.body.time ||
+        req.body.image === undefined || !req.body.image ||
         req.body.seller === undefined || !req.body.seller) {
         LoggerService.logError("services", "Wrong create product parameters", {});
         Base.send(req, res, false);
@@ -55,6 +56,7 @@ var ProductRoutes = {
           req.body.university,
           req.body.categories,
           req.body.time,
+          req.body.image,
           req.body.seller,
           function(result) {
             Base.send(req, res, result);
@@ -74,6 +76,7 @@ var ProductRoutes = {
         req.body.price === undefined || !req.body.price ||
         req.body.university === undefined || !req.body.university ||
         req.body.time === undefined || !req.body.time ||
+        req.body.image === undefined || !req.body.image ||
         req.body.categories === undefined || !req.body.categories) {
         LoggerService.logError("services", "Wrong update product parameters", {});
         Base.send(req, res, false);
@@ -85,6 +88,7 @@ var ProductRoutes = {
           req.body.price,
           req.body.university,
           req.body.time,
+          req.body.image,
           req.body.categories,
           function(result) {
             Base.send(req, res, result);

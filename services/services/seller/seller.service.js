@@ -157,7 +157,7 @@ var SellerService = {
    * @param done : la méthode de retour
    * @return le résultat de l'operation True / False
    */
-  createSeller: function(displayName, username, password, firstName, lastName, paymentInfos, done) {
+  createSeller: function(displayName, username, password, firstName, lastName, picture, paymentInfos, done) {
     try {
       DatabaseHelper.getDatabase(function(db) {
 
@@ -177,6 +177,7 @@ var SellerService = {
               displayName: displayName,
               firstName: firstName,
               lastName: lastName,
+              picture: picture,
               paymentInfos: paymentInfos
             }
           };
@@ -224,6 +225,9 @@ var SellerService = {
 
             if (data.password !== undefined)
               updatedUser.password = sha1(data.password);
+
+            if(data.picture !== undefined)
+              updatedUser.account.picture = data.picture;
 
             updatedUser.account.displayName = data.displayName;
             updatedUser.account.firstName = data.firstName;

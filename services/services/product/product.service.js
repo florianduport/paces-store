@@ -30,7 +30,7 @@ var ProductService = {
     });
   },
 
-  createProduct: function(name, description, price, university, categories, time, seller, done) {
+  createProduct: function(name, description, price, university, categories, time, image, seller, done) {
     DatabaseHelper.getDatabase(function(db) {
       db.collection("Products", function(err, products) {
         if (err || !products) {
@@ -46,6 +46,7 @@ var ProductService = {
           categories: categories,
           seller: seller,
           time: time,
+          image: image,
           rating: {
             value: 0,
             count: 0
@@ -66,7 +67,7 @@ var ProductService = {
     });
   },
 
-  updateProduct: function(id, name, description, price, university, time, categories, done) {
+  updateProduct: function(id, name, description, price, university, time, image, categories, done) {
     DatabaseHelper.getDatabase(function(db) {
       db.collection("Products", function(err, products) {
         if (err || !products) {
@@ -86,6 +87,7 @@ var ProductService = {
           updatedProduct.price = price;
           updatedProduct.university = university;
           updatedProduct.categories = categories;
+          updatedProduct.image = image;
           updatedProduct.time = time;
 
           products.save(updatedProduct, {
