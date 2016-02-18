@@ -15,25 +15,24 @@ $(document).ready(function () {
             sort: $("*[data-type=sort] option:selected").val(),
             ajax: true
         }, function (data) {
-            $(".thumbnail").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function () {
+             playAnimation(data);
+            /*$(".thumbnail").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function () {
                 playAnimation(data);
-                console.log('micheloo');
                 michelPlayer = true;
-            });
+            });*/
             //in case there's no animation end
-            if (michelPlayer === true) {
+            /*if (michelPlayer === true) {
                 setTimeout(function () {
-                    console.log('michel');
                     playAnimation(data);
                 }, 2000);
-            }
+            }*/
         });
 
         var playAnimation = function (data) {
             if (!animationPlayed) {
                 $(".thumbnail").removeClass("animated fadeOut");
-                $(".thumbnail").addClass("animated fadeIn");
                 $(".productList").html(data);
+                $(".thumbnail").addClass("animated fadeIn");
                 var name = "";
                 var i = 0;
                 $("input[filter-element]:checked + .category-name").each(
@@ -43,9 +42,6 @@ $(document).ready(function () {
                             name += $(this).html();
                             i++;
                         });
-//                if (!$(".categories-names").hasClass("search-names")) {
-//                    $(".categories-names").html(name + ' ');
-//                }
                 loadAddToCartButtons();
                 animationPlayed = true;
             }
