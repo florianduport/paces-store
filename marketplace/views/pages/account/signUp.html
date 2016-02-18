@@ -32,7 +32,7 @@
             <div class="col-md-6 col-md-offset-3 ">
                 <div class="card card-container">
                     <h2 class="text-center">Créer un compte</h2>
-                    <form action="/seller/signUp" method="post" class="signupForm">
+                    <form action="/signUp" method="post" class="signupForm">
                         <span id="reauth-email" class="reauth-email"></span>
                         {{#if model.error}}
                         <input type="hidden" name="referer" value="{{model.referer}}" />

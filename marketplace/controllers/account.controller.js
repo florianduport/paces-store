@@ -29,6 +29,18 @@ var AccountController = {
       });
     }
   },
+  
+  displaySignIn: function(req, res){
+    if (req.session.user !== undefined) {
+      res.redirect('/');
+    } else {
+      model.displaySignIn(req, function(model) {
+        res.render('pages/account/signIn', {
+          model: model
+        });
+      });
+    }
+  },
 
   /**
    * signIn : Connexion
