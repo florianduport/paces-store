@@ -3,8 +3,17 @@ var model = require('../models/productlist.model').ProductListModel;
 var ProductListController = {
 
   initialize: function(req, res) {
-    model.initialize(req, function(model) {
+    /*model.initialize(req, function(model) {
       //res.send(model.products);
+      if (req.params.universityId !== undefined) {
+        res.cookie("current-university", req.params.universityId);
+      }
+      res.render('pages/productList', {
+        model: model
+      });
+    });*/
+    model.initializeFilter(req, function(model) {
+    
       if (req.params.universityId !== undefined) {
         res.cookie("current-university", req.params.universityId);
       }

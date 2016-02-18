@@ -59,7 +59,7 @@ var ProductListModel = {
 
   _getOrder: function(req) {
     var order = {
-      order: "price",
+      order: "_id",
       reversed: true
     };
     if (req.body.sort !== undefined) {
