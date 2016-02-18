@@ -144,6 +144,10 @@ main{
     background-color: #337ab7;
     min-width: 28px;
 }
+.badge-grey {
+    background-color: lightgrey;
+    min-width: 28px;
+}
 
 .thumbnail a {
     text-decoration: none;
@@ -261,7 +265,7 @@ main{
     background: #333333 none repeat scroll 0 0 !important;
 }
 .bg-grey {
-    background-color: #f0f0f0;
+    background-color: #e1e1e1;
 }
 .carousel-control.left {
     background-image: none;

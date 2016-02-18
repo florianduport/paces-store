@@ -93,6 +93,8 @@ $(document).ready(function () {
     //                console.log(arrActiveUE[val]);
                     name += arrActiveUE[val];
                     $('#toggle_cat_' + arrActiveUE[val]).addClass('bg-grey toggle-on');
+                    $('#toggle_cat_' + arrActiveUE[val]).find(".badge").removeClass("badge-blue");
+                    $('#toggle_cat_' + arrActiveUE[val]).find(".badge").addClass("badge-green");
                     i++;
                 }
                 $(".categories-names").html(name);
@@ -108,6 +110,8 @@ $(document).ready(function () {
 
     $(".list-group-item").click(function (e) {
         $(this).removeClass('bg-grey toggle-on');
+        $(this).find(".badge").removeClass("badge-green");
+        $(this).find(".badge").addClass("badge-blue");
         toggleCategories();
     });
 

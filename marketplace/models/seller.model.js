@@ -507,7 +507,7 @@ var SellerModel = {
       model.seller = seller;
       
       
-      if(seller.account.picture !== undefined){
+      if(seller !== undefined && seller.account !== undefined && seller.account.picture !== undefined){
         seller.account.pictureName = seller.account.picture.split('/')[seller.account.picture.split('/').length-1];
       }
       
