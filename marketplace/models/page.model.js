@@ -66,16 +66,21 @@ var PageModel = {
     var schoolDistance = 0;
 
     for (var i = schools.length - 1; i >= 0; i--) {
-      var distance = Geolib.getDistance({
-        latitude: model.position.latitude,
-        longitude: model.position.longitude
-      }, {
-        latitude: schools[i].latitude,
-        longitude: schools[i].longitude
-      });
-      if (distance <= schoolDistance || i == schools.length - 1) {
-        schoolIndex = i;
-        schoolDistance = distance;
+      try{
+        var distance = Geolib.getDistance({
+          latitude: model.position.latitude,
+          longitude: model.position.longitude
+        }, {
+          latitude: schools[i].latitude,
+          longitude: schools[i].longitude
+        });
+        if (distance <= schoolDistance || i == schools.length - 1) {
+          schoolIndex = i;
+          schoolDistance = distance;
+        }
+      } catch(e){
+        console.log("ERROR GEOLOC");
+        console.log(model.position);
       }
     }
 
