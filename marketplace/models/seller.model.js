@@ -559,12 +559,17 @@ var SellerModel = {
             infos: bankAccountInfos
           }
         }, function(bankAccount) {
-          updatedSeller.account.paymentInfos.bankId = bankAccount.Id;
-          ServiceHelper.getService("seller", "updateSeller", {
-            data: updatedSeller
-          }, function(seller) {
-            callback(model);
-          });
+          if(!bankAccount){
+            callback(false);
+          } else {
+            updatedSeller.account.paymentInfos.bankId = bankAccount.Id;
+            ServiceHelper.getService("seller", "updateSeller", {
+              data: updatedSeller
+            }, function(seller) {
+              callback(model);
+            });
+          }
+          
         });
       }
       
