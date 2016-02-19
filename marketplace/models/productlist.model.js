@@ -242,7 +242,7 @@ var ProductListModel = {
     } else
       categoryObject.isChecked = "";
     for (var i = products.length - 1; i >= 0; i--) {
-      if (products[i].categories.indexOf(category.shortName) > -1) {
+      if (products[i].categories !== undefined && products[i].categories.indexOf(category.shortName) > -1) {
         categoryObject.count++;
       }
     };
