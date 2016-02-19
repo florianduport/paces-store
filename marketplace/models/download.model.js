@@ -7,7 +7,7 @@ var ShoppingCartModel = require('./shoppingcart.model').ShoppingCartModel;
 var DownloadModel = {
 
   checkDownload: function(req, callback) {
-    console.log("check download");
+
     //check si la commande n'a pas déjà été téléchargée plus de 3 fois.
     if (req.params !== undefined && req.params.orderId !== undefined) {
 
@@ -19,7 +19,7 @@ var DownloadModel = {
       }, function(order) {
 
         if (order === undefined ||  order.downloadCount === undefined || order.products === undefined || order.products.length < 1 || order.downloadCount > 2) {
-          console.log("failed");
+
           callback(false);
         } else {
           callback(true);
@@ -27,7 +27,7 @@ var DownloadModel = {
       });
 
     } else {
-      console.log("failed");
+
       callback(false);
     }
   },
@@ -65,7 +65,6 @@ var DownloadModel = {
 
       //on stream closed we can end the request
       res.on('close', function() {
-        console.log('Archive wrote %d bytes', archive.pointer());
         return res.status(200).send('OK').end();
       });
 

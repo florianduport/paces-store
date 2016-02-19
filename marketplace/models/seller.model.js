@@ -154,11 +154,9 @@ var SellerModel = {
           form.pictureFile = "/img/default-profile.png";
         }
         if (isBannedDomain) {
-          console.log('mange mes mains 1');
           done(false);
         } else {
 
-          console.log('mange mes mains 2');
           ServiceHelper.getService("seller", "getSellerByUsername", {
             data: {
               username: form.username
@@ -167,12 +165,9 @@ var SellerModel = {
           }, function(response) {
             if (response) {
               //seller already exist !
-
-              console.log('mange mes mains 4');
               done(false);
             } else {
 
-              console.log('mange mes mains 5');
               ServiceHelper.getService("payment", "createWallet", {
                 data: {
                   infos: {
@@ -365,11 +360,7 @@ var SellerModel = {
             model.product = product;
             SellerModel._loadProductFormInfos(model, function(model) {
   
-  
-  
               var files = [];
-  
-              //var folder = config.parentFolder + "files/products/" + model.product["_id"] + "/";
   
               try {
                 var folder = __dirname + "/../files/products/" + model.product["_id"] + "/";
@@ -457,7 +448,7 @@ var SellerModel = {
               fs.mkdirSync(__dirname + "/../files/products/" + productId + "/");
             }
             fs.writeFile(newPath, data, function(err) {
-              console.log('writefile');
+
               if (err)
                 console.log(err);
               callback(true);
@@ -534,9 +525,8 @@ var SellerModel = {
     }, function(seller) {
 
       var file = req.files !== undefined && req.files.pictureFile !== undefined ? req.files.pictureFile : undefined;
-      console.log(file);
+
       var updatedSeller = seller;
-      
       
       var editAccountInternal = function(){
         updatedSeller.account.displayName = req.body["displayName"];
@@ -559,6 +549,7 @@ var SellerModel = {
             infos: bankAccountInfos
           }
         }, function(bankAccount) {
+          
           if(!bankAccount){
             callback(false);
           } else {
@@ -607,13 +598,6 @@ var SellerModel = {
         updatedSeller.account.picture = seller.account.picture;
         editAccountInternal();
       } 
-
-      console.log("YOOOO");
-      console.log(updatedSeller.account.picture);
-      
-      
-      
-      
 
     });
   },

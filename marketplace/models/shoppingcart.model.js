@@ -84,9 +84,9 @@ var ShoppingCartModel = {
     }
   },
   removeAllFromShoppingCart: function(req, res, callback) {
-    console.log("REMOVE ALL FROM SHOPPINGCART");
+
     if (req.session !== undefined && req.session.shoppingcart !== undefined && req.session.shoppingcart.length > 0) {
-      console.log("REMOVE ALL FROM SHOPPINGCART");
+
       req.session.shoppingcart = [];
       res.cookie("cart-count", 0);
       callback(true);

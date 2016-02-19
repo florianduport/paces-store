@@ -19,7 +19,6 @@ var AccountController = {
    */
   checkSignIn: function(req, res, next) {
     if (req.session.user !== undefined) {
-      console.log("neeext")
       next();
     } else {
       model.displaySignIn(req, function(model) {
