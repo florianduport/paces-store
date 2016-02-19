@@ -79,7 +79,7 @@ var ProductModel = {
       data: {
         filter: filter,
         order: order,
-        limit: 3
+        limit: 4
       },
       method: "POST"
     }, function(products) {
