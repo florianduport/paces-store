@@ -1,4 +1,4 @@
-var Geocoder = require('node-geocoder').getGeocoder("openstreetmap", "http", {});
+var Geocoder = require('node-geocoder').getGeocoder("google", "https", { apiKey : "AIzaSyClpWGhP-U5GTI64DxHs7d0vJMDExH6kYQ" });
 var IpGeocoder = require('node-geocoder').getGeocoder("freegeoip", "http", {});
 var Geolib = require('geolib');
 var ServiceHelper = require('../helpers/service.helper').ServiceHelper;
@@ -96,19 +96,27 @@ var PageModel = {
 
     if (req.cookies.position !== undefined) {
       //Si on a une position dans les cookies => on l'utilise
-
       if (req.cookies.position.isNew !== undefined && req.cookies.position.isNew && !req.cookies.position.isAlreadyCalculated) {
+        
         //Si l'utilisateur vient de mettre à jour sa géoloc => on recharge la Ville
         Geocoder.reverse(req.cookies.position.latitude, req.cookies.position.longitude, function(err, res) {
           if (!err && res !== undefined && res.length > 0) {
+            console.log("geoloc received");
+            console.log(res);
             model.position = req.cookies.position;
             model.position.isNew = false;
             model.position.city = res[0].city !== undefined ? res[0].city : model.position.city;
             model.position.latitude = req.cookies.position.latitude;
             model.position.longitude = req.cookies.position.longitude;
             model.position.isAlreadyCalculated = true;
+            callback(model);
+          } 
+          if(err){
+            console.log("reverse geocode fail");
+            console.log(err);
+            callback(false);
           }
-          callback(model);
+          
         });
       } else {
         model.position = req.cookies.position;
