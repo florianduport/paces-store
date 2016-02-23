@@ -80,6 +80,7 @@ var PageModel = {
         }
       } catch(e){
         console.log("ERROR GEOLOC");
+        console.log(e);
         console.log(model.position);
       }
     }
