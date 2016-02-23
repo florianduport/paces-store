@@ -119,7 +119,7 @@ var PageModel = {
 
       //tips to debug
       var remoteAddress = req.ip == "127.0.0.1" ? "88.121.230.3" : req.ip;
-
+      console.log(remoteAddress);
       IpGeocoder.geocode(remoteAddress, function(err, res) {
 
         if (!err && res !== undefined && res.length > 0) {
