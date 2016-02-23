@@ -45,6 +45,11 @@ var Main = {
 
           app.use(express.static(path.join(__dirname, 'public')));
 
+          app.set('trust proxy', function (ip) {
+            return true;
+          });
+
+
           app.use(bodyParser({
             keepExtensions: true,
             uploadDir: __dirname + "/files/tmp"

@@ -33,8 +33,7 @@ var PageModel = {
     var model = this;
     this.loadPosition(req, this, function(model) {
       if (model.position !== undefined && model.position.universityId === undefined) {
-        //console.log("here");
-        //console.log(model.position);
+
         ServiceHelper.getService('school', 'getSchools', {
           data: {},
           method: "POST"
@@ -48,7 +47,6 @@ var PageModel = {
                 model.position.city = model.school.city;
               }
               model.position.universityId = model.school.universityId;
-              //console.log(model.position.universityId);
 
               callback(model);
             });
@@ -95,6 +93,7 @@ var PageModel = {
   },
 
   loadPosition: function(req, model, callback) {
+
     if (req.cookies.position !== undefined) {
       //Si on a une position dans les cookies => on l'utilise
 
@@ -119,22 +118,24 @@ var PageModel = {
       //Sinon on géolocalise par l'IP
 
       //tips to debug
-      var remoteAddress = req.socket.remoteAddress == "127.0.0.1" ? "88.121.230.3" : req.socket.remoteAddress;
+      var remoteAddress = req.ip == "127.0.0.1" ? "88.121.230.3" : req.ip;
 
       IpGeocoder.geocode(remoteAddress, function(err, res) {
+
         if (!err && res !== undefined && res.length > 0) {
           model.position = {};
           model.position.latitude = res[0].latitude;
           model.position.longitude = res[0].longitude;
-          model.position.city = res[0].city;
+          model.position.city = res[0].city !== '' ? res[0].city : undefined;
           model.position.isNew = false;
           model.position.isAlreadyCalculated = false;
         } else {
           //that's baaaaaad
-
+          console.log(err);
+          console.log("false geoloc");
           model.position = {
-            latitude: "48.856614",
-            longitude: "2.352222",
+            latitude: 48.856614,
+            longitude: 2.352222,
             city: undefined,
             isNew: false,
             isAlreadyCalculated: false
@@ -163,7 +164,7 @@ var PageModel = {
               model.position.city = model.school.city;
             }
             model.position.universityId = model.school.universityId;
-            //console.log(model.position.universityId);
+            
             callback(model);
           });
 
