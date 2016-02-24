@@ -60,7 +60,7 @@ main{
 .stars
 {
     font-size: 21px;
-    color: gold;
+    color: orange;
     float: left;
 }
 .icon {
@@ -105,9 +105,6 @@ main{
     font-weight: 300;
     text-align: right;
     white-space: nowrap;
-}
-#seller-button {
-    margin-top: 3px;
 }
 .thumbnail-seller {
     /*height: 0px;*/
@@ -189,12 +186,12 @@ main{
     font-weight: 700;
     text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
-    font-size: 20px;
+    /*font-size: 20px;*/
 }
 .btn-default {
     font-weight: 500;
     box-sizing: border-box;
-    font-size: 20px;
+    /*font-size: 20px;*/
     border-color: lightgrey;
 }
 .btn-blue {
@@ -275,4 +272,30 @@ main{
 }
 .btn {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
+}
+.navbar{
+    background-color: #303d4d;
+    min-height: 60px;
+
+}
+@media (min-width: 768px) {
+.navbar{
+    padding-left: 100px;
+    padding-right: 100px;
+}
+}
+#logoHeader{
+    max-height: 40px;
+}
+
+.navbarMargin{
+    margin-top: 7px;
+}
+.navbarLinks a{
+    color: #ffffff;
+    margin-top: 3px;
+}
+.navbarLinks a:hover{
+    color: #ffffff;
+    text-decoration: none;
 }

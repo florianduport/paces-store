@@ -9,7 +9,8 @@ var HomepageController = {
 
     model.initialize(req, res, function(model) {
       res.render('pages/homepage', {
-        model: model
+        model: model,
+        layout: null
       });
     });
   }

@@ -32,8 +32,8 @@ var Routes = {
     //routes / mapping controller
 
     //CATALOG
-    //app.get('/', PageController.initializeGeoloc, HomepageController.initialize);
-    app.get('/', PageController.initializeGeoloc, ProductListController.initializeFilter);
+    app.get('/', PageController.initializeGeoloc, HomepageController.initialize);
+    //app.get('/', PageController.initializeGeoloc, ProductListController.initializeFilter);
 
     app.post('/search/', PageController.initializeGeoloc, ProductListController.initializeFilter);
     app.get('/search/', PageController.initializeGeoloc, function(req, res) {

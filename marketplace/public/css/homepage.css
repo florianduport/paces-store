@@ -1,0 +1,50 @@
+.topContent{
+    min-height: 500px;
+    background: url('/img/homepageTopBg.jpg');
+    background-size: 100%;
+}
+.transparentZone{
+    background-color: grey;
+    opacity: 0.5;
+    min-height: 60px;
+    color: #ffffff;
+}
+.transparentZone .btn:hover{
+    color: #ffffff;
+    cursor: text !important;
+}
+.transparentZone > div > div:first-child{
+    border-right: 1px solid #ffffff;
+}
+.universitySelectorHomepageZone{
+    background-color: #303d4d;
+    color: #ffffff;
+    height: 60px;
+    padding-top: 10px;
+    opacity: 0.8;
+}
+.topContent > div + div{
+    margin-top: 70px;
+}
+.universitySelectorHomepageZone{
+    margin-top: 70px;
+}
+.explanationContent,
+.productContent{
+    padding-top: 50px;
+}
+
+.thumbnail img{
+    max-width: 250px;
+}
+.thumbnail a{
+    color: #000000;
+}
+.thumbnail .productName{
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+.thumbnail-seller{
+    margin-top: 2px;
+}

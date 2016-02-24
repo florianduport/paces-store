@@ -1,1 +1,168 @@
-<p>Homepage inexistante = liste produit</p>
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <link rel="icon" href="/img/paces-store.ico" />
+
+        <title>PACES Store - Accueil</title>
+
+        <!-- Include Stylesheets -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="https://bootswatch.com/yeti/bootstrap.min.css" type="text/css">
+        <link href="/css/libs/app.css" rel="stylesheet" type="text/css">
+        <link href="/css/libs/animate.css" rel="stylesheet" type="text/css">
+        <link href="/css/libs/style.css" rel="stylesheet" type="text/css">
+        <link href="/css/global.css" rel="stylesheet" type="text/css">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" rel="stylesheet" type="text/css">    
+        <link href="/css/libs/bootstrap-dialog.css" rel="stylesheet">    
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css" rel="stylesheet">
+        <link href="/css/homepage.css" rel="stylesheet" type="text/css">    
+
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div id="users-device-size">
+            <div id="xs" class="visible-xs"></div>
+            <div id="sm" class="visible-sm"></div>
+            <div id="md" class="visible-md"></div>
+            <div id="lg" class="visible-lg"></div>
+        </div>
+        <!-- Start Header/Navbar  -->
+        <section>
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header col-sm-3 col-md-2">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand text-uppercase" rel="home" href="/"><img class="navbarMargin" id="logoHeader"  src="http://www.paces-store.fr/landing/img/Logo-PACES-Store.png"></a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="col-sm-9 col-md-10 col-xs-12 navbarMargin navbarLinks">
+                            <div class="collapse navbar-collapse" id="navbar">
+                                <div class="form-group-sm form-inline form-horizontal">
+                                    <a id="seller-button" href="/seller" class="btn btn-success pull-right">Commencer à vendre</a> 
+                                    <a href="/signin" class="btn pull-right">Se connecter</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </section>
+        <!-- End Header/Navbar  -->
+
+        <section class="section topContent">
+            <div class="transparentZone col-md-12">
+                <div class="col-md-offset-4 col-md-4 navbarMargin">
+                    <div class="col-md-6 text-center"><div class="btn">Unités d'Enseignement communes</div></div>
+                    <div class="col-md-6 text-center"><div class="btn">Unités d'Enseignement spécifiques</div></div>
+                </div>
+            </div>
+            
+            <div class="col-md-12">
+                <h1 class="text-center">LA PACES PAR ET POUR LES ETUDIANTS</h1>
+                <h2 class="text-center">Travaillez sur des supports élaborés par des 2èmes et 3èmes années</h2>
+                <h2 class="text-center">Grâce à la première plateforme collaborative et participative de travail</h2>
+            </div>
+            
+            <div class="col-md-offset-4 col-md-4 text-center universitySelectorHomepageZone">
+                <!-- Start Main Content  -->
+                <div>
+                    <select id="universitySelectorHomepage" class="selectpicker show-tick" data-width="auto" data-style="btn-default">
+                	{{#each model.schools}}
+                		<option value="{{this.universityId}}">{{this.name}} </option>
+                	{{/each}}
+                    </select>
+                    <input type="button" class="btn btn-success" value="Rechercher"/>
+                </div>
+            </div>
+            <!-- End Main Content -->
+        </section>
+        
+        <section class="section productContent col-md-12">
+            <h2 class="text-center">Le contenu tendance du moment</h2>
+            <div class="productList">
+                {{> productListBlockHomepage}}
+            </div>
+            <div class="col-md-offset-4 col-md-4 text-center universitySelectorHomepageZone">
+                <!-- Start Main Content  -->
+                <div>
+                    <select id="universitySelectorHomepage" class="selectpicker show-tick" data-width="auto" data-style="btn-default">
+                        <option>Université Bordeau Segalen</option>
+                        <option>Paris</option>
+                    </select>
+                    <input type="button" class="btn btn-success" value="Rechercher"/>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section explanationContent col-md-12">
+            <h2 class="text-center">PACES STORE, comment ça marche ?</h2>
+            <img src="/img/PACES-Store-schema.png" class="img-responsive center-block">
+        </section>
+
+        <div class="clearfix"></div>
+        <!-- Start Footer -->
+        <section class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12 col-sm-12 well">
+                        <h2 class="text-center center-block">Qui sommes-nous ?</h2>
+                        <p class="text-center center-block">
+                            Elaboré avec
+                            <i class="fa fa-heart"></i>
+                            par</p>
+                        <p class="text-center center-block">
+                            <img class="img-responsive center-block" alt="PACES Store" src="http://www.paces-store.fr/landing/img/Logo-RMP-PACES-STORE-COLORED.png" style="max-height: 110px;">
+                        </p>
+                    </div>
+                    <div class="col-md-12"> 
+                        <p class="text-center">
+                            <a href="#">Accueil</a> - 
+                            <a href="/about">A propos</a> - 
+                            <a href="/contact">Contact</a> 
+                        </p>
+                        <p class="text-center">
+                            <a href="#" class="btn btn-default" >Twitter <i class="fa fa-twitter"></i></a>
+                            <a href="#" class="btn btn-default">Facebook <i class="fa fa-facebook"></i></a>
+                            <a href="#" class="btn btn-default" >Google+ <i class="fa fa-google-plus"></i></a>
+                        </p> 
+                    </div>
+                    <div class="col-md-12">
+                        <p class="text-right small">
+                            <strong>PACES Store</strong> - par RéussirMaPaces
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Footer -->
+
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="/js/libs/jquery.min.js"></script>
+        <script src="/js/libs/jquery.cookie.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/i18n/defaults-fr_FR.min.js"></script>
+        <script src="/js/libs/bootstrap-dialog.js"></script>
+        <script src="/js/libs/animate.js"></script>
+        <script src="/js/homepage.js"></script>
+        <script src="/js/globalcart.js"></script>
+        <script src="/js/geoloc.js"></script>
+    </body>
+</html>
+
+
+
+
