@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     if (navigator !== undefined && navigator.geolocation !== undefined && navigator.geolocation.getCurrentPosition !== undefined) {
+        console.log("here");
         navigator.geolocation.getCurrentPosition(function (position) {
 
             var currentPosition = JSON.parse($.cookie("position").replace("j:", ""));
@@ -14,7 +15,11 @@ $(document).ready(function () {
             }
 
         }, function () {
-        }, {});
+        }, {
+            
+            //geoloc refused
+            
+        });
     }
 
     var applyFilter = function () {
@@ -33,16 +38,6 @@ $(document).ready(function () {
             ajax: true
         }, function (data) {
              playAnimation(data);
-            /*$(".thumbnail").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function () {
-                playAnimation(data);
-                michelPlayer = true;
-            });*/
-            //in case there's no animation end
-            /*if (michelPlayer === true) {
-                setTimeout(function () {
-                    playAnimation(data);
-                }, 2000);
-            }*/
         });
 
         var playAnimation = function (data) {
