@@ -26,8 +26,8 @@ $(document).ready(function () {
         }
     });
     
-	$("body").delegate("#universitySelectorHomepage", "change", function(){
-		var currentPosition = JSON.parse($.cookie("position").replace("j:", ""));
+    function selectUniversity(){
+    	var currentPosition = JSON.parse($.cookie("position").replace("j:", ""));
 		currentPosition.universityId = $("#universitySelectorHomepage").val();
 
 		var currentPositionString = "j:"+JSON.stringify(currentPosition);
@@ -46,5 +46,13 @@ $(document).ready(function () {
 		window.localStorage.setItem("geolocZone", container.html());
 		//console.log(container.html());
 		window.location.href = "/list";
+    }
+    
+    $("body").delegate("#universitySelectorHomepage + div + input", "click", function(){
+        selectUniversity();
+    });
+    
+	$("body").delegate("#universitySelectorHomepage", "change", function(){
+	    selectUniversity();
 	});
 });
