@@ -25,4 +25,26 @@ $(document).ready(function () {
             $(this).data("opened", "true");
         }
     });
+    
+	$("body").delegate("#universitySelectorHomepage", "change", function(){
+		var currentPosition = JSON.parse($.cookie("position").replace("j:", ""));
+		currentPosition.universityId = $("#universitySelectorHomepage").val();
+
+		var currentPositionString = "j:"+JSON.stringify(currentPosition);
+		$.cookie("position", currentPositionString);
+
+		var container = $("<div>");
+		var selectElement = $(window.localStorage.getItem("geolocZone"));
+		$(selectElement).find("option").removeAttr("selected");
+		$(selectElement).find("option").each(function(optionElement){
+			if($(this).val() == $("#universitySelectorHomepage option:selected").val()){
+				$(this).attr("selected", "selected");
+			}
+		});
+		container.html(selectElement);
+
+		window.localStorage.setItem("geolocZone", container.html());
+		//console.log(container.html());
+		window.location.href = "/list";
+	});
 });

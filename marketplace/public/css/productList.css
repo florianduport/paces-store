@@ -21,16 +21,31 @@ body {
     margin-top: 20px;
 }
 .filters-top {
-    background: #333333 none repeat scroll 0 0;
+    background: #303d4d none repeat scroll 0 0;
     border: 1px solid #dddddd;
     color: white;
-    font-weight: 600 !important;
     margin-bottom: 1px;
-    padding-bottom: 2px;
+    min-height: 45px;
 }
 .filters-top > h4 {
     font-weight: 400 !important;
 }
 .filters-top > .bootstrap-select {
+    margin-top: 2px;
+}
+
+.thumbnail img{
+    width: 250px;
+    height: 200px;
+}
+.thumbnail a{
+    color: #000000;
+}
+.thumbnail .productName{
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+.thumbnail-seller{
     margin-top: 2px;
 }

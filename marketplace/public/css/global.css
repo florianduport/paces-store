@@ -158,10 +158,12 @@ main{
     border-top-right-radius: 0;
 }
 .title-list{
-    background: #333333;
+    background: #303d4d;
     color: white;
     font-weight: 300;
     cursor: pointer;
+    font-size: 18px;
+    line-height: 22px;
 }
 .navbar{
 
@@ -178,7 +180,7 @@ main{
 }
 .categories-names {
     font-size: 18px;
-    line-height: 24px;
+    line-height: 22px;
 }
 .btn-success {
     background: rgba(0, 0, 0, 0) linear-gradient(#35c350, #03b525) repeat scroll 0 0;
@@ -259,7 +261,7 @@ main{
     padding: 0px 0px 0px 15px ;
 }
 .bootstrap-dialog.type-success .modal-header {
-    background: #333333 none repeat scroll 0 0 !important;
+    background: #303d4d none repeat scroll 0 0 !important;
 }
 .bg-grey {
     background-color: #e1e1e1;
