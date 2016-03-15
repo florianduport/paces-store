@@ -52,7 +52,15 @@ $(document).ready(function () {
         selectUniversity();
     });
     
+    $("body").delegate("#universitySelectorHomepageBottom + div + input", "click", function(){
+        selectUniversity();
+    });
+    
 	$("body").delegate("#universitySelectorHomepage", "change", function(){
+	    selectUniversity();
+	});
+	
+	$("body").delegate("#universitySelectorHomepageBottom", "change", function(){
 	    selectUniversity();
 	});
 });

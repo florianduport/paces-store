@@ -9,6 +9,7 @@ var HomepageModel = {
   initialize: function(req, res, callback) {
     this.position = req.session.position;
     var model = this;
+    model.user = req.session.user;
     ServiceHelper.getService('school', 'getSchools', {
       data: {},
       method: "POST"

@@ -52,7 +52,12 @@
                             <div class="collapse navbar-collapse" id="navbar">
                                 <div class="form-group-sm form-inline form-horizontal">
                                     <a id="seller-button" href="/seller" class="btn btn-success pull-right">Commencer à vendre</a> 
+                                    {{#if model.user}}
+                                    <a href="/signout" class="btn pull-right">Se déconnecter</a>
+                                    <a href="#" class="btn pull-right">{{model.user}}</a>
+                                    {{else}}
                                     <a href="/signin" class="btn pull-right">Se connecter</a>
+                                    {{/if}}
                                 </div>
                             </div>
                         </div>
