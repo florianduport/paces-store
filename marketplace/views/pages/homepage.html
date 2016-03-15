@@ -52,7 +52,12 @@
                             <div class="collapse navbar-collapse" id="navbar">
                                 <div class="form-group-sm form-inline form-horizontal">
                                     <a id="seller-button" href="/seller" class="btn btn-success pull-right">Commencer à vendre</a> 
+                                    {{#if model.user}}
+                                    <a href="/signout" class="btn pull-right">Se déconnecter</a>
+                                    <a href="#" class="btn pull-right">{{model.user}}</a>
+                                    {{else}}
                                     <a href="/signin" class="btn pull-right">Se connecter</a>
+                                    {{/if}}
                                 </div>
                             </div>
                         </div>
@@ -69,7 +74,6 @@
                     <div class="col-md-6 text-center"><div class="btn">Unités d'Enseignement spécifiques</div></div>
                 </div>
             </div>
-            
             <div class="col-md-12">
                 <h1 class="text-center">LA PACES PAR ET POUR LES ETUDIANTS</h1>
                 <h2 class="text-center">Travaillez sur des supports élaborés par des 2èmes et 3èmes années</h2>
@@ -98,9 +102,10 @@
             <div class="col-md-offset-4 col-md-4 text-center universitySelectorHomepageZone">
                 <!-- Start Main Content  -->
                 <div>
-                    <select id="universitySelectorHomepage" class="selectpicker show-tick" data-width="auto" data-style="btn-default">
-                        <option>Université Bordeau Segalen</option>
-                        <option>Paris</option>
+                    <select id="universitySelectorHomepageBottom" class="selectpicker show-tick" data-width="auto" data-style="btn-default">
+                	{{#each model.schools}}
+                		<option value="{{this.universityId}}">{{this.name}} </option>
+                	{{/each}}
                     </select>
                     <input type="button" class="btn btn-success" value="Rechercher"/>
                 </div>

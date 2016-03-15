@@ -10,6 +10,7 @@ var ProductListModel = {
   initialize: function(req, callback) {
     this.position = req.session.position;
     var model = this;
+    model.user = req.session.user;
     if (req.params.universityId !== undefined) {
 
       var filter = {
@@ -28,6 +29,7 @@ var ProductListModel = {
     this.position = req.cookies.position;
     this.req = req;
     var model = this;
+    model.user = req.session.user;
     model.ajax = req.body.ajax !== undefined && req.body.ajax == "true" ? true : false;
 
     if (req.body !== undefined && req.body.keywords !== undefined) {

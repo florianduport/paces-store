@@ -1,7 +1,7 @@
 .topContent{
     min-height: 500px;
     background: url('/img/homepageTopBg.jpg');
-    background-size: 100%;
+    /*background-position-y: 100%;*/
 }
 .transparentZone{
     background-color: grey;

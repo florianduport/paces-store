@@ -1,33 +1,10 @@
-<nav class="navbar-signin">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3">
-                        <div class="col-md-4 element-navbar-signin active vcenter pull-left">
-                            Identification
-                        </div>
-                        {{#if model.displayCheckoutSteps}}
-                        <div class="col-md-4 element-navbar-signin vcenter pull-left">
-                            Informations de paiement
-                        </div>
-                        <div class="col-md-4 element-navbar-signin vcenter pull-left">
-                            Confirmation de commande
-                        </div>
-                        {{/if}}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
 <div class="signInContainer container">
     <div class="row">
         <div class="col-md-12 ">
             <h1 class="text-center">Identifiez-vous avant de poursuivre</h1>
             <div class="col-md-6 col-md-offset-3 ">
                 <div class="card card-container">
-                    <h2 class="text-center">Se connecter</h2>
+                    <h2 class="text-center">Se connecter en tant que vendeur</h2>
                     <form action="/seller/signIn" method="post" class="signinForm">
                         <span id="reauth-email" class="reauth-email"></span>
                         <input type="email" id="inputEmail" name="username" class="form-control" placeholder="Adresse Email" required autofocus>
@@ -45,7 +22,7 @@
             <div class="col-md-6 col-md-offset-3">
                 <div class="card card-container">
                     <h3 class="text-center">Vous n'avez pas encore de compte ?</h3>
-                    <input type="button" class="btn btn-lg btn-blue btn-block btn-signin signUp" data-link="/seller/signUp/display" value="Créer mon profil" />
+                    <input type="button" class="btn btn-lg btn-blue btn-block btn-signin signUp" data-link="/seller/signUp/display" value="Créer mon compte vendeur" />
                 </div>
             </div>
         </div>
