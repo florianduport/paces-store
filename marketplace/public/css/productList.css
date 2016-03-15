@@ -49,3 +49,10 @@ body {
 .thumbnail-seller{
     margin-top: 2px;
 }
+.img-product {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 140px;
+    display: block;
+}

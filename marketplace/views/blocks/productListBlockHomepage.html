@@ -1,39 +1,37 @@
 {{#if model.products}}
-<div class="col-md-offset-1 col-md-10">
+<div class="col-md-12">
     {{#each model.products}}
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-        <div class="thumbnail center-block row">
-            <a href="/product/{{this._id}}">
-                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-                    <div class="bg-primary">
-                        {{#if this.image}}
-                            <img data-src="holder.js/100x100" alt="100x100" class="img-responsive center-block" src="/img/products/{{this.image}}.jpg">
-                        {{else}}
-                            <img data-src="holder.js/100x100" alt="100x100" class="img-responsive center-block" src="/img/products/1.jpg">
-                        {{/if}}
-                    </div>
+        <div class="col-md-12 thumbnail">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                {{#if this.image}}
+                <div class="img-product" style="background-image: url('/img/products/{{this.image}}.jpg')">
                 </div>
-                <!--<div class="clearfix"></div>-->
-                <div class="col-md-12 thumbnail-seller small">
-                    Par <strong>{{this.sellerInfos.displayName}} John Doe</strong>
-                    <div class="stars stars-sm pull-right" data-rating="4">
-                        <span class="glyphicon .glyphicon-star-empty glyphicon-star"></span>
-                        <span class="glyphicon .glyphicon-star-empty glyphicon-star"></span>
-                        <span class="glyphicon .glyphicon-star-empty glyphicon-star"></span>
-                        <span class="glyphicon .glyphicon-star-empty glyphicon-star"></span>
-                        <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
-                    </div>
+                {{else}}
+                <div class="img-product" style="background-image: url('/img/products/1.jpg')">
                 </div>
-                <div class="col-md-12">
-                    <h3 class="productName">{{this.truncateName}}</h3>
+                {{/if}}
+            </div>
+            <!--<div class="clearfix"></div>-->
+            <div class="col-md-12 thumbnail-seller small">
+                Par <strong>{{this.sellerInfos.displayName}} John Doe</strong>
+                <div class="stars stars-sm pull-right" data-rating="4">
+                    <span class="glyphicon .glyphicon-star-empty glyphicon-star"></span>
+                    <span class="glyphicon .glyphicon-star-empty glyphicon-star"></span>
+                    <span class="glyphicon .glyphicon-star-empty glyphicon-star"></span>
+                    <span class="glyphicon .glyphicon-star-empty glyphicon-star"></span>
+                    <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
                 </div>
-                <div class="col-md-6 text-left thumbnail-ue">#{{this.categories}} #{{this.university}}</div>
-                <div class="col-md-6 text-right thumbnail-price">{{this.price}} €</div>
+            </div>
+            <div class="col-md-12">
+                <h3 class="productName"><a href="/product/{{this._id}}">{{this.truncateName}}</a></h3>
+            </div>
+            <div class="col-md-6 text-left thumbnail-ue">#{{this.categories}} #{{this.university}}</div>
+            <div class="col-md-6 text-right thumbnail-price">{{this.price}} €</div>
+        </div> 
+        <!--<div class="clearfix"></div>-->
 
-                <!--<div class="clearfix"></div>-->
-            </a>
-            <!--        <input type="button" class="btn btn-block btn-success add-to-cart-button" data-product="{{this._id}}" value="Ajouter" />-->
-        </div>
+        <!--        <input type="button" class="btn btn-block btn-success add-to-cart-button" data-product="{{this._id}}" value="Ajouter" />-->
     </div>
     {{/each}}
 </div>

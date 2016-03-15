@@ -63,50 +63,52 @@
         <!-- End Header/Navbar  -->
 
         <section class="section topContent">
-            <div class="transparentZone col-md-12">
-                <div class="col-md-offset-4 col-md-4 navbarMargin">
-                    <div class="col-md-6 text-center"><div class="btn">Unités d'Enseignement communes</div></div>
-                    <div class="col-md-6 text-center"><div class="btn">Unités d'Enseignement spécifiques</div></div>
-                </div>
+            <div class="transparentZone col-md-12 navbarMargin ">
+                <div class="col-md-6 col-sm-6 text-right hidden-xs"><div class="btn">Unités d'Enseignement communes</div></div>
+                <div class="col-md-6 col-sm-6 text-left hidden-xs"><div class="btn">Unités d'Enseignement spécifiques</div></div>
             </div>
-            
             <div class="col-md-12">
                 <h1 class="text-center">LA PACES PAR ET POUR LES ETUDIANTS</h1>
                 <h2 class="text-center">Travaillez sur des supports élaborés par des 2èmes et 3èmes années</h2>
                 <h2 class="text-center">Grâce à la première plateforme collaborative et participative de travail</h2>
             </div>
-            
-            <div class="col-md-offset-4 col-md-4 text-center universitySelectorHomepageZone">
+            <div class="col-md-12 text-center universitySelectorHomepageZone">
                 <!-- Start Main Content  -->
                 <div>
                     <select id="universitySelectorHomepage" class="selectpicker show-tick" data-width="auto" data-style="btn-default">
-                	{{#each model.schools}}
-                		<option value="{{this.universityId}}">{{this.name}} </option>
-                	{{/each}}
+                        {{#each model.schools}}
+                        <option value="{{this.universityId}}">{{this.name}} </option>
+                        {{/each}}
                     </select>
                     <input type="button" class="btn btn-success" value="Rechercher"/>
                 </div>
             </div>
             <!-- End Main Content -->
         </section>
-        
-        <section class="section productContent col-md-12">
-            <h2 class="text-center">Le contenu tendance du moment</h2>
-            <div class="productList">
-                {{> productListBlockHomepage}}
-            </div>
-            <div class="col-md-offset-4 col-md-4 text-center universitySelectorHomepageZone">
-                <!-- Start Main Content  -->
-                <div>
-                    <select id="universitySelectorHomepage" class="selectpicker show-tick" data-width="auto" data-style="btn-default">
-                        <option>Université Bordeau Segalen</option>
-                        <option>Paris</option>
-                    </select>
-                    <input type="button" class="btn btn-success" value="Rechercher"/>
+
+        <section class="section productContent">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="text-center">Le contenu tendance du moment</h2>
+                        <div class="productList">
+                            {{> productListBlockHomepage}}
+                        </div>
+                        <div class="col-md-12 text-center universitySelectorHomepageZone">
+                            <!-- Start Main Content  -->
+                            <div>
+                                <select id="universitySelectorHomepage" class="selectpicker show-tick" data-width="auto" data-style="btn-default">
+                                    <option>Université Bordeau Segalen</option>
+                                    <option>Paris</option>
+                                </select>
+                                <input type="button" class="btn btn-success" value="Rechercher"/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-        
+
         <section class="section explanationContent col-md-12">
             <h2 class="text-center">PACES STORE, comment ça marche ?</h2>
             <img src="/img/PACES-Store-schema.png" class="img-responsive center-block">
