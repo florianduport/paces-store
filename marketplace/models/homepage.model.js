@@ -1,7 +1,7 @@
 var Geocoder = require('node-geocoder').getGeocoder("openstreetmap", "http", {});
 var IpGeocoder = require('node-geocoder').getGeocoder("freegeoip", "http", {});
-var Geolib = require('geolib');
-ServiceHelper = require('../helpers/service.helper').ServiceHelper;
+var Geolib = require('geolib'),
+ServiceHelper = require('../helpers/service.helper').ServiceHelper,
 cookieParser = require('cookie-parser')
 
 var HomepageModel = {
@@ -9,6 +9,7 @@ var HomepageModel = {
   initialize: function(req, res, callback) {
     this.position = req.session.position;
     var model = this;
+    model.user = req.session.user;
     ServiceHelper.getService('school', 'getSchools', {
       data: {},
       method: "POST"
@@ -17,12 +18,22 @@ var HomepageModel = {
       if (!schools)
         callback(false);
       else {
-        model.loadSchool(req, schools, model, function(model) {
-          if (model.position.city === undefined || model.position.city === "") {
-            model.position.city = model.school.city;
-          }
+        model.schools = schools;
+        
+        ServiceHelper.getService('productList', 'getProductsByFilter', {
+          data: {
+            filter: {},
+            order: {},
+            limit: 8
+          },
+          method: "POST"
+        }, function(products) {
+          model.products = products;
           callback(model);
+          
         });
+        
+        
       }
     });
   },
@@ -43,7 +54,6 @@ var HomepageModel = {
         schoolIndex = i;
         schoolDistance = distance;
       }
-      console.log("distance from " + schools[i].city + " is " + distance);
     }
 
     model.school = schools[schoolIndex];

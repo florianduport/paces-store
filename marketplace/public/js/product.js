@@ -3,7 +3,6 @@ $(document).ready(function () {
     $(document).scroll(function () {
         var titles = $(".title-navbar-product");
         for (var i = titles.length - 1; i >= 0; i--) {
-            console.log($(titles[i]).offset().top - 100);
             if ($(titles[i]).offset().top - 100 < $(".navbar-product").offset().top) {
                 $($(".element-navbar-product")[i]).addClass("active");
 
@@ -32,8 +31,6 @@ $(document).ready(function () {
                 if ($(element).html() == $($(".element-navbar-product")[i]).html())
                     index = i;
             }
-            ;
-            console.log(index);
             if (index != 0)
                 $("html, body").animate({scrollTop: "" + $($(".title-navbar-product")[index]).offset().top - 100 + ""});
         }

@@ -2,7 +2,7 @@
     <div class="col-md-12 well well-lg">
         <h3>Modifier mes informations personnelles</h3>
         <div class="col-md-12">
-            <label for="pictureFile">Photo de profil</label>
+            <label for="pictureFile" class="center-block">Photo de profil</label>
             {{#if model.seller.account.picture}}
             <p data-filename="{{model.product.account.pictureName}}">{{model.seller.account.pictureName}}</p>
             <input type="file" name="pictureFile" id="pictureFile" accept="image/*" />
@@ -13,24 +13,24 @@
         </div>
         <div class="col-md-12">
             <input type="hidden" name="_id" value="{{model.seller._id}}"/>
-            <label for="displayName">Pseudo</label>
+            <label for="displayName" class="center-block">Pseudo</label>
             <input type="text" name="displayName" id="displayName" value="{{model.seller.account.displayName}}" class="form-control" required/>
         </div>
         <div class="col-md-12">
-            <label for="firstName">Prénom</label>
+            <label for="firstName" class="center-block">Prénom</label>
             <input type="text" name="firstName" id="firstName" value="{{model.seller.account.firstName}}" class="form-control" required/>
         </div>
         <div class="col-md-12">
-            <label for="lastName">Nom</label>
+            <label for="lastName" class="center-block">Nom</label>
             <input type="text" name="lastName" id="lastName" value="{{model.seller.account.lastName}}" class="form-control" required/>
         </div>
         <div class="col-md-12">
-            <label for="description">Description de votre parcours</label>
+            <label for="description" class="center-block">Description de votre parcours</label>
             <p>Parlez de vous et de votre parcours. Donnez aux étudiants l'envie de réussir et de devenir comme vous !</p>
             <textarea name="description" id="description" class="form-control" required>{{model.seller.account.description}}</textarea>
         </div>
         <div class="col-md-12">
-            <label for="university">Université</label>
+            <label for="university" class="center-block">Université</label>
             <select name="university" id="university" class="selectpicker show-tick" data-with="auto">
                 {{#each model.schools}}
                 {{#if this.selected}}
@@ -42,24 +42,18 @@
             </select>
         </div>
     </div>
-    <div class="col-md-6">
-        <input type="button" value="Annuler" class="btn btn-default btn-block" />
-    </div>
-    <div class="col-md-6">
-        <input type="submit" value="Enregistrer" class="btn btn-success btn-block" />
-    </div>
     <div class="col-md-12 well well-lg">
         <h3>Modifier mes informations bancaire</h3>
         <div class="col-md-12">
-            <label for="address">L'adresse domicile</label>
+            <label for="address" class="center-block">L'adresse domicile</label>
             <input type="text" name="address" id="address" value="{{model.seller.account.address}}" class="form-control" required/>
         </div>
         <div class="col-md-12">
-            <label for="iban">IBAN</label>
+            <label for="iban" class="center-block">IBAN</label>
             <input type="text" name="iban" id="iban" value="{{model.seller.account.paymentInfos.iban}}" class="form-control" pattern="[a-zA-Z]{2}[0-9]{2}[a-zA-Z0-9]{4}[0-9]{7}([a-zA-Z0-9]?){0,16}" required/>
         </div>
         <div class="col-md-12">
-            <label for="bic">BIC</label>
+            <label for="bic" class="center-block">BIC</label>
             <input type="text" name="bic" id="bic" value="{{model.seller.account.paymentInfos.bic}}" class="form-control" required/>
         </div>
     </div>

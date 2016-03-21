@@ -42,7 +42,7 @@ var updateGeolocZone = function(content){
 	$("#geolocZone").html(content);
 	window.localStorage.setItem("geolocZone", content);
 	$('#universitySelector').selectpicker( { 
-        style : "btn-blue",
+        style : "btn-default",
         width : "fit"
     });
 }

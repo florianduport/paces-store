@@ -32,8 +32,8 @@ var Routes = {
     //routes / mapping controller
 
     //CATALOG
-    //app.get('/', PageController.initializeGeoloc, HomepageController.initialize);
-    app.get('/', PageController.initializeGeoloc, ProductListController.initializeFilter);
+    app.get('/', PageController.initializeGeoloc, HomepageController.initialize);
+    //app.get('/', PageController.initializeGeoloc, ProductListController.initializeFilter);
 
     app.post('/search/', PageController.initializeGeoloc, ProductListController.initializeFilter);
     app.get('/search/', PageController.initializeGeoloc, function(req, res) {
@@ -67,7 +67,7 @@ var Routes = {
     app.get('/download/:orderId', AccountController.checkSignIn, DownloadController.checkDownload, DownloadController.getDownloadOrder);
 
     //CUSTOMER ACCOUNT
-    app.get('/signin', AccountController.signIn);
+    app.get('/signin', AccountController.displaySignIn);
     app.post('/signin', AccountController.signIn);
     app.post('/signup/display', AccountController.displaySignUp);
     app.post('/signup', AccountController.signUp);

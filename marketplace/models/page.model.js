@@ -1,5 +1,5 @@
-var Geocoder = require('node-geocoder').getGeocoder("openstreetmap", "http", {});
-var IpGeocoder = require('node-geocoder').getGeocoder("freegeoip", "http", {});
+var Geocoder = require('node-geocoder').getGeocoder("google", "https", { apiKey : "AIzaSyClpWGhP-U5GTI64DxHs7d0vJMDExH6kYQ" });
+var IpGeocoder = require('node-geocoder').getGeocoder("freegeoip", "http", { timeout: 2000 });
 var Geolib = require('geolib');
 var ServiceHelper = require('../helpers/service.helper').ServiceHelper;
 var MailHelper = require('../helpers/mail.helper').MailHelper;
@@ -33,8 +33,7 @@ var PageModel = {
     var model = this;
     this.loadPosition(req, this, function(model) {
       if (model.position !== undefined && model.position.universityId === undefined) {
-        //console.log("here");
-        //console.log(model.position);
+
         ServiceHelper.getService('school', 'getSchools', {
           data: {},
           method: "POST"
@@ -48,7 +47,6 @@ var PageModel = {
                 model.position.city = model.school.city;
               }
               model.position.universityId = model.school.universityId;
-              //console.log(model.position.universityId);
 
               callback(model);
             });
@@ -74,12 +72,14 @@ var PageModel = {
           latitude: schools[i].latitude,
           longitude: schools[i].longitude
         });
+        
         if (distance <= schoolDistance || i == schools.length - 1) {
           schoolIndex = i;
           schoolDistance = distance;
         }
       } catch(e){
         console.log("ERROR GEOLOC");
+        console.log(e);
         console.log(model.position);
       }
     }
@@ -94,21 +94,29 @@ var PageModel = {
   },
 
   loadPosition: function(req, model, callback) {
+
     if (req.cookies.position !== undefined) {
       //Si on a une position dans les cookies => on l'utilise
-
       if (req.cookies.position.isNew !== undefined && req.cookies.position.isNew && !req.cookies.position.isAlreadyCalculated) {
+        
         //Si l'utilisateur vient de mettre à jour sa géoloc => on recharge la Ville
         Geocoder.reverse(req.cookies.position.latitude, req.cookies.position.longitude, function(err, res) {
           if (!err && res !== undefined && res.length > 0) {
+
             model.position = req.cookies.position;
             model.position.isNew = false;
             model.position.city = res[0].city !== undefined ? res[0].city : model.position.city;
             model.position.latitude = req.cookies.position.latitude;
             model.position.longitude = req.cookies.position.longitude;
             model.position.isAlreadyCalculated = true;
+            callback(model);
+          } 
+          if(err){
+            console.log("reverse geocode fail");
+            console.log(err);
+            callback(false);
           }
-          callback(model);
+          
         });
       } else {
         model.position = req.cookies.position;
@@ -118,29 +126,40 @@ var PageModel = {
       //Sinon on géolocalise par l'IP
 
       //tips to debug
-      var remoteAddress = req.socket.remoteAddress == "127.0.0.1" ? "88.121.230.3" : req.socket.remoteAddress;
+      //var remoteAddress = req.ip == "127.0.0.1" ? "88.121.230.3" : req.ip;
+      //console.log(remoteAddress);
+      model.position = {
+        latitude: 44.8638281,
+        longitude: -0.6563526,
+        city: "bordeaux",
+        isNew: false,
+        isAlreadyCalculated: false
+      };
+      callback(model);
+      /*IpGeocoder.geocode(remoteAddress, function(err, res) {
 
-      IpGeocoder.geocode(remoteAddress, function(err, res) {
         if (!err && res !== undefined && res.length > 0) {
           model.position = {};
           model.position.latitude = res[0].latitude;
           model.position.longitude = res[0].longitude;
-          model.position.city = res[0].city;
+          model.position.city = res[0].city !== '' ? res[0].city : undefined;
           model.position.isNew = false;
           model.position.isAlreadyCalculated = false;
         } else {
           //that's baaaaaad
-
+          console.log(err);
+          console.log("false geoloc");
+          callback(false);
           model.position = {
-            latitude: "48.856614",
-            longitude: "2.352222",
+            latitude: 48.856614,
+            longitude: 2.352222,
             city: undefined,
             isNew: false,
             isAlreadyCalculated: false
           };
         }
         callback(model);
-      });
+      });*/
     }
   },
 
@@ -162,7 +181,7 @@ var PageModel = {
               model.position.city = model.school.city;
             }
             model.position.universityId = model.school.universityId;
-            //console.log(model.position.universityId);
+            
             callback(model);
           });
 

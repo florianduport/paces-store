@@ -19,8 +19,19 @@ var AccountController = {
    */
   checkSignIn: function(req, res, next) {
     if (req.session.user !== undefined) {
-      console.log("neeext")
       next();
+    } else {
+      model.displaySignIn(req, function(model) {
+        res.render('pages/account/signIn', {
+          model: model
+        });
+      });
+    }
+  },
+  
+  displaySignIn: function(req, res){
+    if (req.session.user !== undefined) {
+      res.redirect('/');
     } else {
       model.displaySignIn(req, function(model) {
         res.render('pages/account/signIn', {

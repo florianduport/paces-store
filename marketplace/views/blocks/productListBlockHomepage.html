@@ -1,0 +1,45 @@
+{{#if model.products}}
+<div class="col-md-12">
+    {{#each model.products}}
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+        <div class="col-md-12 thumbnail">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                {{#if this.image}}
+                <div class="img-product" style="background-image: url('/img/products/{{this.image}}.jpg')">
+                </div>
+                {{else}}
+                <div class="img-product" style="background-image: url('/img/products/1.jpg')">
+                </div>
+                {{/if}}
+            </div>
+            <!--<div class="clearfix"></div>-->
+            <div class="col-md-12 thumbnail-seller small">
+                Par <strong>{{this.sellerInfos.displayName}} John Doe</strong>
+                <div class="stars stars-sm pull-right" data-rating="4">
+                    <span class="glyphicon .glyphicon-star-empty glyphicon-star"></span>
+                    <span class="glyphicon .glyphicon-star-empty glyphicon-star"></span>
+                    <span class="glyphicon .glyphicon-star-empty glyphicon-star"></span>
+                    <span class="glyphicon .glyphicon-star-empty glyphicon-star"></span>
+                    <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h3 class="productName"><a href="/product/{{this._id}}">{{this.truncateName}}</a></h3>
+            </div>
+            <div class="col-md-6 text-left thumbnail-ue">#{{this.categories}} #{{this.university}}</div>
+            <div class="col-md-6 text-right thumbnail-price">{{this.price}} €</div>
+        </div> 
+        <!--<div class="clearfix"></div>-->
+
+        <!--        <input type="button" class="btn btn-block btn-success add-to-cart-button" data-product="{{this._id}}" value="Ajouter" />-->
+    </div>
+    {{/each}}
+</div>
+{{else}}
+<div class="col-md-12">
+    <br/>
+    <h4>Aucun produit disponible ne correspond à vos critères</h4>
+    <a id="cleanSearch" href="/">Réinitialiser vos critères</a>
+</div>
+{{/if}}
+<!--<div class="clearfix"></div>-->

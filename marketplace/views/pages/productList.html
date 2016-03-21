@@ -62,7 +62,7 @@
                 <h4 class="categories-names pull-left">Tout le contenu</h4>
                 <!--{{/if}}-->
 
-                <select filter-element-change="filter-element-change" data-type="sort" id="tri" data-width="auto" name="tri" class="selectpicker pull-right" data-style="btn-blue">
+                <select filter-element-change="filter-element-change" data-type="sort" id="tri" data-width="auto" name="tri" class="selectpicker pull-right" data-style="btn-default">
                     <option data-icon="glyphicon-calendar" value="dateDown" {{#ifCond model.req.body '!==' undefined}}{{#ifCond model.req.body.sort '!==' undefined}}{{#ifCond model.req.body.sort '===' "dateDown"}}selected{{/ifCond}}{{/ifCond}}{{/ifCond}}> Plus récents</option>
                     <option data-icon="glyphicon-sort-by-attributes" value="priceDown" {{#ifCond model.req.body '!==' undefined}}{{#ifCond model.req.body.sort '!==' undefined}}{{#ifCond model.req.body.sort '===' "priceDown"}}selected{{/ifCond}}{{/ifCond}}{{/ifCond}}> Prix croissant</option>
                     <option data-icon="glyphicon-sort-by-attributes-alt" value="priceUp" {{#ifCond model.req.body '!==' undefined}}{{#ifCond model.req.body.sort '!==' undefined}}{{#ifCond model.req.body.sort '===' "priceUp"}}selected{{/ifCond}}{{/ifCond}}{{/ifCond}}> Prix décroissant</option>

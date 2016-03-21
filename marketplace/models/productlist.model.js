@@ -10,6 +10,7 @@ var ProductListModel = {
   initialize: function(req, callback) {
     this.position = req.session.position;
     var model = this;
+    model.user = req.session.user;
     if (req.params.universityId !== undefined) {
 
       var filter = {
@@ -28,6 +29,7 @@ var ProductListModel = {
     this.position = req.cookies.position;
     this.req = req;
     var model = this;
+    model.user = req.session.user;
     model.ajax = req.body.ajax !== undefined && req.body.ajax == "true" ? true : false;
 
     if (req.body !== undefined && req.body.keywords !== undefined) {
@@ -59,7 +61,7 @@ var ProductListModel = {
 
   _getOrder: function(req) {
     var order = {
-      order: "price",
+      order: "_id",
       reversed: true
     };
     if (req.body.sort !== undefined) {
@@ -242,7 +244,7 @@ var ProductListModel = {
     } else
       categoryObject.isChecked = "";
     for (var i = products.length - 1; i >= 0; i--) {
-      if (products[i].categories.indexOf(category.shortName) > -1) {
+      if (products[i].categories !== undefined && products[i].categories.indexOf(category.shortName) > -1) {
         categoryObject.count++;
       }
     };

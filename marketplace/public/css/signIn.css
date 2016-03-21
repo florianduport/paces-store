@@ -15,7 +15,7 @@
     top: 45px !important;
 }
 .navbar-signin {
-    top: 45px !important;
+    top: 60px !important;
     position: fixed;
     z-index: 1028;
     background: linear-gradient(to bottom,#fff 0,#f8f8f8 100%);  
@@ -124,7 +124,7 @@
 
 
 .navbar-signin {
-    top: 45px !important;
+    top: 60px !important;
     position: fixed;
     z-index: 1028;
     background: linear-gradient(to bottom,#fff 0,#f8f8f8 100%);  

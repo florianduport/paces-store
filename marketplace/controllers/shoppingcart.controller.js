@@ -18,7 +18,6 @@ var ShoppingCartController = {
 
   addToShoppingCart: function(req, res) {
     model.addToShoppingCart(req, function(model) {
-      console.log("test" + model.articleCount);
       res.send(200, "" + model.articleCount);
     });
   },

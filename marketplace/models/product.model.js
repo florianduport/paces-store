@@ -3,6 +3,7 @@ var SchoolsHelper = require('../helpers/schools.helper').SchoolsHelper;
 
 var ProductModel = {
   initialize: function(req, callback) {
+
     ServiceHelper.getService('product', 'getProductById', {
       data: {
         "productId": req.params.product
@@ -16,6 +17,7 @@ var ProductModel = {
         var model = this;
         model.req = req;
         model.callback = callback;
+        model.user = req.session.user;
         ProductModel._getSeller(model, function(model) {
           SchoolsHelper.loadSchool({
             model: model,
@@ -79,7 +81,7 @@ var ProductModel = {
       data: {
         filter: filter,
         order: order,
-        limit: 3
+        limit: 4
       },
       method: "POST"
     }, function(products) {

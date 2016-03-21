@@ -121,7 +121,7 @@ var CheckoutModel = {
               method: "POST"
             }, function(sellers) {
               if (!sellers) {
-                console.log("FAAAAAAAAIL");
+
                 callback(false);
               } else {
                 ServiceHelper.getService("payment", "payWithNewCard", {
@@ -137,9 +137,7 @@ var CheckoutModel = {
                   },
                   method: "POST"
                 }, function(resp) {
-                  console.log("msg received");
-                  console.log("resp :");
-                  console.log(resp);
+
                   if (!resp) {
                     callback(false);
                   } else {
@@ -153,8 +151,6 @@ var CheckoutModel = {
                     if (order.linesConfirmed == lines.length) {
                       order.orderConfirmed = true;
                     }
-                    console.log(order.linesConfirmed);
-                    console.log(order.orderConfirmed);
                     ServiceHelper.getService('order', 'updateOrder', {
                       data: {
                         order: createdOrder

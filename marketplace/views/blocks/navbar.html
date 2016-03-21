@@ -1,3 +1,37 @@
+<!--<section>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="navbar-header col-sm-3 col-md-2">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand text-uppercase" rel="home" href="/"><img class="img-responsive" id="logoHeader"  src="http://www.paces-store.fr/landing/img/Logo-PACES-Store.png"></a>
+                </div>
+                <div class="col-sm-9 col-md-10 col-xs-12">
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <div class="form-group-sm form-inline form-horizontal">
+                            <a id="shoppingcart-button" href="#" class="btn btn-default pull-right"><i class="glyphicon glyphicon-shopping-cart"></i> 
+                                <span class="badge badge-green" id="cart-number-products"></span>
+                            </a>
+                            <a id="seller-button" href="/seller" class="btn btn-warning pull-right">Espace vendeur</a> 
+                        </div>
+
+                        <form action="/search/" method="post" name="searchForm" class="searchForm form-inline form-horizontal" >
+                            <div class="form-group-sm pull-right">
+
+                                <span id="geolocZone"></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>-->
 <section>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -10,29 +44,32 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand text-uppercase" rel="home" href="/"><img class="img-responsive" style="max-height: 45px;" src="http://www.paces-store.fr/landing/img/Logo-PACES-Store.png"></a>
+                    <a class="navbar-brand text-uppercase" rel="home" href="/list"><img class="navbarMargin" id="logoHeader"  src="http://www.paces-store.fr/landing/img/Logo-PACES-Store.png"></a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="col-sm-9 col-md-10 col-xs-12">
+                <div class="col-sm-9 col-md-10 col-xs-12 navbarMargin navbarLinks">
+                    <form action="/search/" method="post" name="searchForm" class="searchForm navbarMargin form-inline form-horizontal pull-left" >
+                        <div class="form-group-sm pull-right">
+                            <span id="geolocZone"></span>
+                        </div>
+                    </form>
                     <div class="collapse navbar-collapse" id="navbar">
                         <div class="form-group-sm form-inline form-horizontal">
-                            <a id="shoppingcart-button" href="#" class="btn btn-default pull-right"><i class="glyphicon glyphicon-shopping-cart"></i> 
+                            <a id="seller-button" href="/seller" class="btn btn-success pull-right">Commencer à vendre</a> 
+                            {{#if model.user}}
+                            <a href="/signout" class="btn pull-right">Se déconnecter</a>
+                            <a href="#" class="btn pull-right">{{model.user}}</a>
+                            {{else}}
+                            <a href="/signin" class="btn pull-right">Se connecter</a>
+                            {{/if}}
+                            <a id="shoppingcart-button" href="#" class="btn pull-right"><i class="glyphicon glyphicon-shopping-cart"></i> 
                                 <span class="badge badge-green" id="cart-number-products"></span>
                             </a>
-                            <a id="seller-button" href="/seller" class="btn btn-warning pull-right">Espace vendeur</a> 
                         </div>
-
-                        <form action="/search/" method="post" name="searchForm" class="searchForm form-inline form-horizontal" >
-                            <div class="form-group-sm pull-right">
-                                <!--                                <input type="text" name="searchText" class="form-control" id="searchText" data-provide="typeahead" placeholder="Tout le contenu..." {{#if model.previousSearch}} value="{{model.previousSearch}}" {{/if}} data-items="4" />
-                                                                       <button id="submitSearch" type="button" class="btn btn-success"><i class="glyphicon glyphicon-search"></i></button>-->
-                                <!--<span class="btn btn-default hidden-xs">Votre université :</span>-->
-                                <span id="geolocZone"></span>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
+
 </section>

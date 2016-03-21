@@ -90,7 +90,6 @@ var PageController = {
     var i = 0;
     while (i < 100) {
       model.testInc(i, function(model) {
-        console.log("callback");
       });
       i++;
     }
