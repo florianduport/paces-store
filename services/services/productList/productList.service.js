@@ -39,7 +39,7 @@ var ProductListService = {
             "$meta": "textScore"
           }
         }).limit(limit).sort(sortObject).toArray(function(err, products) {
-          console.log(err);
+          //console.log(err);
           if (err || !products) {
             return done(false);
           }
