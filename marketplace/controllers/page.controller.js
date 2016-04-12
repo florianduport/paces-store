@@ -50,7 +50,9 @@ var PageController = {
     });
   },
   displayAbout: function(req, res) {
-    res.render('pages/about', {});
+    var model = {};
+    model.user = req.session.user;
+    res.render('pages/about', {model : model});
   },
   test: function(req, res) {
     /*var options = {

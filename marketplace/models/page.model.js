@@ -193,6 +193,7 @@ var PageModel = {
 
   displayContact: function(req, callback) {
     this.email = req.session.user;
+    this.user = req.session.user;
     callback(this);
   },
 

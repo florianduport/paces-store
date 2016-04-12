@@ -22,6 +22,7 @@ var CheckoutModel = {
       }
     };
     var model = this;
+    model.user = req.session.user;
     ServiceHelper.getService('productList', 'getProductsByFilter', {
       data: {
         filter: filter,
@@ -49,6 +50,7 @@ var CheckoutModel = {
   },
   payWithNewCard: function(req, callback) {
     var model = this;
+    model.user = req.session.user;
     ServiceHelper.getService("customer", "getCustomerByUsername", {
       data: {
         username: req.session.user
