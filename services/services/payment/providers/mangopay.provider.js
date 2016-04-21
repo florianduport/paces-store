@@ -132,8 +132,6 @@ var Provider = {
                     callback(false);
                   } else {
                     //TRANSFER
-                    console.log("CALL TRANSFER");
-                    console.log(amount * 100);
                     mango.wallet.transfer({
                       AuthorId: user.paymentInfos.accountId,
                       DebitedFunds: {
@@ -150,7 +148,6 @@ var Provider = {
                       Tag: "DefaultTag"
                     }, function(err, transfer, res) {
                       if (!err) {
-                        console.log("%%%%%%%%%%%%%%%%%%%%%");
                         if (i + 1 == lines.length) {
                           callback(true);
                         } else {
@@ -204,6 +201,7 @@ var Provider = {
           IBAN: bankAccountInfos.infos.iban,
           BIC: bankAccountInfos.infos.bic
         }, function(err, bankAccount, res) {
+
           if (err) {
             done(false);
           }

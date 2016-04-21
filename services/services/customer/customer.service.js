@@ -26,7 +26,7 @@ var CustomerService = {
           password: password
         }, function(err, user) {
           if (err || !user) {
-            console.log("no user found ==========" + username + "/" + password);
+            //console.log("no user found ==========" + username + "/" + password);
             return done(false);
           }
           return done(true);
@@ -147,7 +147,7 @@ var CustomerService = {
           if (!customerExist) {
             db.collection("Customers", function(err, customers) {
               if (err || !customers) {
-                console.log(customers);
+                //console.log(customers);
                 done(false);
               }
               customers.insert(customerObject, {

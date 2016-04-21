@@ -60,7 +60,6 @@ var ProductService = {
         products.insert(productObject, {
           w: 0
         }, function(err, result) {
-          console.log(productObject);
           return done(productObject["_id"]);
         });
       });
