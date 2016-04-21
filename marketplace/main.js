@@ -8,6 +8,9 @@ var express = require('express'),
   ConfigurationHelper = require('./helpers/configuration.helper').ConfigurationHelper,
   HandlebarsHelper = require('./helpers/handlebars.helper').HandlebarsHelper;
 
+
+
+
 /**
  * Classe principale - Keep it simple in here
  * @class Main
@@ -16,6 +19,20 @@ var Main = {
   /**
    * start : lance l'application express
    */
+   
+     _serviceRoutes: [
+    //require('./services/logger/logger.routes').LoggerRoutes,
+    require('./services/customer/customer.routes').CustomerRoutes,
+    /*require('./services/seller/seller.routes').SellerRoutes,
+    require('./services/payment/payment.routes').PaymentRoutes,
+    require('./services/order/order.routes').OrderRoutes,
+    require('./services/product/product.routes').ProductRoutes,
+    require('./services/productList/productList.routes').ProductListRoutes,
+    require('./services/school/school.routes').SchoolRoutes,
+    require('./services/category/category.routes').CategoryRoutes,
+    require('./helpers/error.helper').ErrorHelper //last one */
+  ],
+  
   start: function() {
 
     ConfigurationHelper.getConfig({
@@ -56,6 +73,12 @@ var Main = {
           }));
 
           Routes.loadRoutes(app, configuration);
+
+          var serviceRoutes = Main._serviceRoutes;
+          //load all routes
+          for (var i = 0; i < serviceRoutes.length; i++) {
+            serviceRoutes[i].loadRoutes(app, configuration);
+          } 
 
           //lancement du serveur
           app.listen(configuration.port, function() {
